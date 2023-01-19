@@ -7,3 +7,12 @@ FlapJack is designing and developing a web app to assist in the education of chi
 - Delaney Edwards - Lead Designer ([GitHub](https://github.com/delaneyedwards), [LinkedIn]())
 - Aaron Ho - Lead Developer ([GitHub](https://github.com/AaronHoUW), [LinkedIn](https://www.linkedin.com/in/aaron-ho-ba00a1196))
 - Brian Ho - Lead Researcher, Developer ([GitHub](https://github.com/btho1), [LinkedIn](https://www.linkedin.com/in/brian-ho-967a0923b))
+
+## Build and Deploy
+Instructions are unavailable at this time.
+
+## Contribute
+Please make a separate branch for your work and submit a pull request. Contributed code must be reviewed and approved by a developer of FlapJack. If approved, the team may merge your contribution.
+
+## License
+Code is licensed under the [Apache 2.0 License](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)).
