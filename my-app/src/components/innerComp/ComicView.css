@@ -1,0 +1,102 @@
+/* @import '../styles/colors'; */
+
+.comic-view {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.comic-view .comic-view-sprite[id] {
+    transition: 250ms all;
+}
+
+.comic-view .comic-view-sprite {
+    position: absolute;
+}
+
+.comic-view .comic-view-sprite.flip-x {
+    transform: scaleX(-1);
+}
+
+.comic-view #dialogue {
+    height: 100%;
+    width: 100%;
+    font-family: 'Balsamiq Sans';
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.comic-view #dialogue > img {
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+    left: 0;
+}
+
+.comic-view #dialogue .message-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 12%;
+    height: 15%;
+    left: 85px;
+    right: 85px;
+}
+
+.comic-view #dialogue .message-container p {
+    white-space: pre-wrap;
+}
+
+.comic-view #dialogue .speaker-container {
+    display: flex;
+    position: absolute;
+    top: calc(100% - 50px);
+    left: 85px;
+    right: 85px;
+}
+
+.comic-view #dialogue .speaker-container span {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 16px;
+}
+
+.comic-view #dialogue.dialogue-left img {
+    transform: scaleX(-1);
+}
+
+.comic-view #dialogue.dialogue-left span {
+    background-color: pink;
+}
+
+.comic-view #dialogue.dialogue-right .speaker-container {
+    justify-content: flex-end;
+}
+
+.comic-view #dialogue.dialogue-right .speaker-container span {
+    background-color: blue;
+}
+
+.comic-view #decision {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px 85px;
+    background-color: purple;
+}
+
+.comic-view #decision button {
+    flex: 1;
+    background-color: blue;
+    border: none;
+    font-family: 'Balsamiq Sans';
+    font-weight: 700;
+    font-size: 20px;
+    padding: 16px;
+    border-radius: 32px;
+    margin: 0 8px;
+}

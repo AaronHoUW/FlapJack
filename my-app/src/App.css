@@ -1,3 +1,9 @@
+body {
+  font-family: 'Mulish';
+  height: inherit;
+  /* overflow: hidden; */
+}
+
 .main-container{
   display: flex;
   flex: 1;
@@ -7,15 +13,48 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100px;
 }
 
 body {
-  background-color: #2C8C99;
+  background-color: #012348;
 }
 
 .nav-title {
   color: #FFFFFF;
   padding-left: 1rem;
   padding-top: 1rem;
+  font-size: 38px;
+}
+
+h1 {
+  color: white;
+}
+
+footer {
+  background: #FF8E01;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem;
+}
+
+.circle {
+  display: flex;
+  width: 65px;
+  height: 40px;
+  background-color: #012348;
+  border-radius: 25%;
+}
+
+.nav-play {
+  background-color: #FF8E01;
+}
+
+.nav-parents {
+  width: 90px;
+}
+
+.circle-text {
+  margin: auto;
 }
