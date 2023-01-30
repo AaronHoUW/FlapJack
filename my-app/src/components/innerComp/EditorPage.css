@@ -5,6 +5,7 @@
 .editor-page .editor-pane {
     flex: 1;
     height: 100vh;
+    background-color: #787878;
 }
 
 .editor-page .editor-section {
@@ -111,4 +112,24 @@
     height: 100%;
 }
 
+.editor-nav {
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C7F2FF;
+    width: 100%;
+}
 
+.editor-nav button {
+    border: none;
+    background-color: #C7F2FF;
+    padding: 16px;
+    margin: 0 50px;
+    cursor: pointer;
+}
+
+.editor-nav button:focus, .editor-nav button:active {
+    outline: none;
+    
+}
