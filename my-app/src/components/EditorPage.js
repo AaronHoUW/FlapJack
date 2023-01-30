@@ -1032,24 +1032,39 @@ class EditorPage extends React.Component {
         }
     }
 
+
+
     render() {
         return (
-            <div id="storyteller" className="editor-page">
-                <div className="editor-pane">
-                    {this.renderEditorPrimarySection()}
-                    {this.renderSpriteSpawner()}
+            <>
+                <div className='editor-nav'>
+                    <button>File</button>
+                    <button>Scene</button>
+                    <button>Frame</button>
+                    <button>Help</button>
+                    {/* <div id="storyteller" className="editor-page">
+                        <div className="editor-pane">
+                            {this.renderEditorPrimarySection()}
+                            {this.renderSpriteSpawner()}
+                        </div>
+                        <div id="storyteller-view">
+                            {this.renderStorytellerView()}
+                        </div>
+                        <div className="editor-pane">
+                            {this.renderSceneSelection()}
+                            {this.renderFrameSelection()}
+                            {this.renderSceneEditor()}
+                            {this.renderDialogueEditor()}
+                            {this.renderSpriteEditor()}
+                        </div>
+                    </div> */}
                 </div>
-                <div id="storyteller-view">
-                    {this.renderStorytellerView()}
+                <div id='storyteller' className='editor-page'>
+                    <div className='editor-pane'>
+
+                    </div>
                 </div>
-                <div className="editor-pane">
-                    {this.renderSceneSelection()}
-                    {this.renderFrameSelection()}
-                    {this.renderSceneEditor()}
-                    {this.renderDialogueEditor()}
-                    {this.renderSpriteEditor()}
-                </div>
-            </div>
+            </>
         );
     }
 }
