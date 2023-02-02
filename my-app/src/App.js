@@ -10,16 +10,34 @@ import EditorPage from './components/EditorPage';
 
 function App() {
 
-
   return (
     <div className='page-container'>
-		<Navbar /> 
 			<div className='fill-content'>
 				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/about' element={<About />} />
-					<Route path='/parents' element={<Parents />} />
-					<Route path='/play' element={<Play />} />
+					<Route path='/' element={
+						<>
+							<Navbar />
+							<Home />
+						</>
+					} />
+					<Route path='/about' element={
+						<>
+							<Navbar />
+							<About />
+						</>
+					} />
+					<Route path='/parents' element={
+						<>
+							<Navbar />
+							<Parents />
+						</>
+					} />
+					<Route path='/play' element={
+						<>
+							<Navbar />
+							<Play />
+						</>
+					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
 				</Routes>
 			</div>

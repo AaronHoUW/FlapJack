@@ -1,10 +1,11 @@
 #storyteller-view {
     height: 100vh;
+    /* width: 750px; */
 }
 
 .editor-page .editor-pane {
-    flex: 1;
     height: 100vh;
+    background-color: #787878;
 }
 
 .editor-page .editor-section {
@@ -102,13 +103,45 @@
     height: 80px;
 }
 
-.editor-page .sprite-spawner-section .selection img {
+.sprite-spawner-section.editor-page.selector.section .selection img {
     width: 40px;
-    max-height: 100%;
+    max-height: 100px;
 }
 
 .editor-page .sprite-spawner-section .selection button {
     height: 100%;
 }
 
+.editor-nav {
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #C7F2FF;
+    width: 100%;
+}
 
+.editor-nav > button, .editor-nav > .btn-group > button {
+    border: none;
+    background-color: #C7F2FF;
+    padding: 16px;
+    margin: 0 50px;
+    cursor: pointer;
+}
+
+.editor-nav button:focus, .editor-nav button:active {
+    outline: none;
+}
+
+.img-size {
+    max-width: 100px;
+}
+
+.offcanvas-height-limit {
+    height: 375px;
+}
+
+.sprite-button {
+    width: fit-content;
+    height: min-content;
+}
