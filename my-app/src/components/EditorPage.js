@@ -306,13 +306,13 @@ class EditorPage extends React.Component {
 
         currentFrameSprites.forEach(sprite => {
             // For all sprites in the current frame, add a callback
-            onmousedown='myFunction()'
             onClickListeners.push(rawIdx => event => {
                 const idx = rawIdx - baseFrameSize;
                 this.setState({
                     targetSpriteIdx: idx,
                 });
                 this.setSpriteFollowMouse(false);
+
                 if(event.shiftKey) {
                     this.setSpriteFollowMouse(true);
 
@@ -335,10 +335,6 @@ class EditorPage extends React.Component {
         });
 
         return onClickListeners;
-    }
-    
-    myFunction() {
-        console.log('hello world');
     }
 
     // render editor view for import, export, instructions
@@ -385,9 +381,9 @@ class EditorPage extends React.Component {
 
     // Render sprite spawner view
     renderSpriteSpawner() {
-        if (this.getCurrentScene().type === 'minigame') {
-            return <div></div>;
-        }
+        // if (this.getCurrentScene().type === 'minigame') {
+        //     return <div></div>;
+        // }
 
         // Update current sprite spawn search filter
         const updateFilter = event => {
@@ -634,7 +630,7 @@ class EditorPage extends React.Component {
             <div className="attrs-section editor-section">
                 <h2>Sprite Attrs</h2>
 
-                <button onClick={deselectTargetSprite.bind(this)}>Deselect</button>
+                {/* <button onClick={deselectTargetSprite.bind(this)}>Deselect</button> */}
                 
                 <button onClick={deleteTargetSprite.bind(this)}>Delete</button>
 
@@ -1035,7 +1031,9 @@ class EditorPage extends React.Component {
                     frame={this.getCurrentComicViewData().frame}
                     dialogue={this.getCurrentComicViewData().dialogue}
                     decision={this.getCurrentComicViewData().decision}
-                    onClickListeners={this.getCurrentOnClickListeners()} />
+                    onClickListeners={this.getCurrentOnClickListeners()} 
+                    onEditorPage={'true'}
+                    LoadSpriteEditor={this.renderSpriteEditor()}/>
             );
         }
         else if (currentScene.type === 'minigame') {
