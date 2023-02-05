@@ -80,6 +80,11 @@ const IMAGES = {
         'trash-can',
         'waves',
         'question',
+        // Ours Import
+        'sally-salmon',
+        'submarine',
+        'user-placeholder',
+        'wendy-whale'
     ],
 };
 
