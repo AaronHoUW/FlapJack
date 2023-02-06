@@ -46,24 +46,51 @@ class ComicView extends React.Component {
 
     // Render an element as a sprite
     renderSprite(element, idx) {
+        // Loaded from Editor Page
+        let ifFromEditor = false;
+        if (this.props.onEditorPage) {
+            ifFromEditor = true;
+        }
+
         const classes = {
             'flip-x': !!element.flipX,
         };
         const id = !!element.id ? `assigned-${this.props.sceneName}-${element.id}` : null;
+        console.log(id)
+        // console.log('sprite-' + id + idx)
         return (
-            <img
-                className={this.toClassName(classes, 'comic-view-sprite')}
-                id={id}
-                style={{
-                    left: element.x,
-                    top: element.y,
-                    width: `${element.size}%`,
-                }}
-                onClick={this.getSpriteOnClickListenerForIdx(idx)}
-                alt=""
-                src={`/sprites/sprite-${element.image}.png`}
-                key={id || idx}
-            />
+            <>
+                <img
+                    className={this.toClassName(classes, 'comic-view-sprite')}
+                    id={id + idx}
+                    style={{
+                        left: element.x,
+                        top: element.y,
+                        width: `${element.size}%`,
+                    }}
+                    onClick={this.getSpriteOnClickListenerForIdx(idx)}
+                    alt=""
+                    src={`/sprites/sprite-${element.image}.png`}
+                    key={id || idx}
+                    // Offcanvas Editor
+                    data-bs-toggle="offcanvas" 
+                    href={'#sprite-' + id + idx}  
+                    role="button" 
+                    aria-controls="offcanvasExample"
+                />
+                {
+                    ifFromEditor &&
+                    <div className="offcanvas offcanvas-start" tabIndex="-1" id={'sprite-' + id + idx}  aria-labelledby="offcanvasExampleLabel">
+                        <div className="offcanvas-header">
+                            <h5 className="offcanvas-title" id="offcanvasExampleLabel">Sprite</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div className="offcanvas-body">
+                            {this.props.LoadSpriteEditor}
+                        </div>
+                    </div>
+                }
+            </>
         )
     }
 

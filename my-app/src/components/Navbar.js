@@ -9,22 +9,22 @@ function Navbar() {
             </NavLink>
         
             <div className="form-inline" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto ml-auto">
-                    <li className='nav-item mr-5'>
+                <ul className="navbar-nav me-auto ml-auto">
+                    <li className='nav-item me-5'>
                         <NavLink className='text-white' to='/about'>
                             <div class="circle">
                                 <p class="circle-text text-white">About</p>
                             </div>
                         </NavLink>
                     </li>
-                    <li className='nav-item mr-5'>
+                    <li className='nav-item me-5'>
                         <NavLink className='text-white' to='/parents'>
                             <div class="circle nav-parents">
                                 <p class="circle-text text-white">For Parents</p>
                             </div>
                         </NavLink>
                     </li>
-                    <li className='nav-item mr-5'>
+                    <li className='nav-item me-5'>
                         <NavLink className='text-white' to='/play'>
                             <div class="circle nav-play">
                                 <p class="circle-text text-white">Play</p>

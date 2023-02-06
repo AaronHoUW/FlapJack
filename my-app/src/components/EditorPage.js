@@ -19,6 +19,8 @@ const IMAGES = {
         'beach-rocks',
         'beach-rocks-2',
         'beach-wrack',
+        'sc-earth-pod',
+        'space-test'
     ],
     sprites: [
         'annie-bag',
@@ -78,6 +80,11 @@ const IMAGES = {
         'trash-can',
         'waves',
         'question',
+        // Ours Import
+        'sally-salmon',
+        'submarine',
+        'user-placeholder',
+        'wendy-whale'
     ],
 };
 
@@ -310,6 +317,7 @@ class EditorPage extends React.Component {
                     targetSpriteIdx: idx,
                 });
                 this.setSpriteFollowMouse(false);
+
                 if(event.shiftKey) {
                     this.setSpriteFollowMouse(true);
 
@@ -317,6 +325,9 @@ class EditorPage extends React.Component {
                     const [clickX, clickY] = this.posToPerc(event.pageX, event.pageY);
                     const targetSpriteRect = event.target.getBoundingClientRect();
                     const [elementOriginX, elementOriginY] = this.posToPerc(targetSpriteRect.left, targetSpriteRect.top);
+                    
+                    console.log(clickX, clickY);
+                    console.log(elementOriginX, elementOriginY);
 
                     this.setState({
                         targetSpriteMoveOffsetPxX: elementOriginX - clickX,
@@ -324,6 +335,8 @@ class EditorPage extends React.Component {
                     });
                 }
             });
+
+
         });
 
         return onClickListeners;
@@ -344,11 +357,17 @@ class EditorPage extends React.Component {
                     <button onClick={this.import.bind(this)}>
                         <span className="material-icons-outlined">file_upload</span>
                     </button>
-                    <button onClick={toggleInstructions.bind(this)}>
+                    
+                    {/* To be Removed */}
+
+                    {/* <button onClick={toggleInstructions.bind(this)}>
                         <span className="material-icons-outlined">help_outline</span>
-                    </button>
+                    </button> */}
                 </div>
-                {
+
+                {/* To be Removed */}
+
+                {/* {
                     this.state.showInstructions && 
                         <>
                             <h2>Instructions</h2>
@@ -360,16 +379,16 @@ class EditorPage extends React.Component {
                                 <li>Don't forget to import/export</li>
                             </ul>
                         </>
-                }
+                } */}
             </div>
         )
     }
 
     // Render sprite spawner view
     renderSpriteSpawner() {
-        if (this.getCurrentScene().type === 'minigame') {
-            return <div></div>;
-        }
+        // if (this.getCurrentScene().type === 'minigame') {
+        //     return <div></div>;
+        // }
 
         // Update current sprite spawn search filter
         const updateFilter = event => {
@@ -425,15 +444,14 @@ class EditorPage extends React.Component {
             <div className="sprite-spawner-section editor-section selector-section">
                 <h2>Add Sprite</h2>
                 <input type="text" onChange={updateFilter.bind(this)} value={this.state.spriteSearchFilter} placeholder="Search..." />
-                <div className="selector-scroll">
+                <div className="selector-scroll container offcanvas-height-limit overflow-auto">
                     {
                         this.getFilteredSpawnSprites().map((sprite, idx) => (
-                            <div className="selection" key={idx}>
-                                <img src={`/sprites/sprite-${sprite}.png`} alt="" />
+                            <div className="selection row border-top" key={idx}>
+                                <img src={`/sprites/sprite-${sprite}.png`} className='img-size' alt="" />
                                 <button
-                                    className="selection-primary"
-                                    onClick={() => spawnSprite.bind(this)(sprite)}
-                                >
+                                    className="selection-primary sprite-button mt-auto mb-auto"
+                                    onClick={() => spawnSprite.bind(this)(sprite)}>
                                     {sprite}
                                 </button>
                             </div>
@@ -485,33 +503,16 @@ class EditorPage extends React.Component {
 
         return (
             <div className="attrs-section editor-section">
-                <h2>Scene Attrs</h2>
+                <h2>Attributes</h2>
                 <div className="attr">
-                    <label htmlFor="scene-type">Scene Type</label>
+                    {/* Speaker */}
+                    {/* <label htmlFor="scene-type">Scene Type</label>
                     <Dropdown
                         id="scene-type"
                         options={['Comic', 'Minigame']}
                         onChange={updateSceneType.bind(this)}
-                        selected={this.getCurrentScene().type} />
+                        selected={this.getCurrentScene().type} /> */}
                 </div>
-
-                <div className="attr">
-                    <label htmlFor="scene-type">Next Scene</label>
-                    {
-                        typeof(this.getCurrentScene().nextScene) === 'string' &&
-                            <Dropdown
-                                id="scene-type"
-                                options={Object.keys(this.state.storytellerData)}
-                                onChange={updateSceneNext.bind(this)}
-                                selected={this.getCurrentScene().nextScene} />
-                    }
-                    {
-                        typeof(this.getCurrentScene().nextScene) !== 'string' &&
-                            <span>Decision on frame {this.getCurrentScene().frames.length - 1}</span>
-                    }
-                </div>
-
-                
 
                 {
                     this.getCurrentScene().type === 'minigame' &&
@@ -540,6 +541,22 @@ class EditorPage extends React.Component {
                             </div>
                         </>
                 }
+
+                <div className="attr">
+                    <label htmlFor="scene-type">Next Scene</label>
+                    {
+                        typeof(this.getCurrentScene().nextScene) === 'string' &&
+                            <Dropdown
+                                id="scene-type"
+                                options={Object.keys(this.state.storytellerData)}
+                                onChange={updateSceneNext.bind(this)}
+                                selected={this.getCurrentScene().nextScene} />
+                    }
+                    {
+                        typeof(this.getCurrentScene().nextScene) !== 'string' &&
+                            <span>Decision on frame {this.getCurrentScene().frames.length - 1}</span>
+                    }
+                </div>
             </div>
         );
     }
@@ -618,7 +635,7 @@ class EditorPage extends React.Component {
             <div className="attrs-section editor-section">
                 <h2>Sprite Attrs</h2>
 
-                <button onClick={deselectTargetSprite.bind(this)}>Deselect</button>
+                {/* <button onClick={deselectTargetSprite.bind(this)}>Deselect</button> */}
                 
                 <button onClick={deleteTargetSprite.bind(this)}>Delete</button>
 
@@ -964,15 +981,17 @@ class EditorPage extends React.Component {
 
         return (
             <div className="selector-section editor-section">
-                <h2>Frames</h2>
+                <h2>Manage Frames</h2>
                 <div className="selector-scroll">
                     <div className={`selection ${this.state.currentFrame === -1 ? 'selected' : ''}`}>
                         <button
                             className='selection-primary'
-                            onClick={() => setCurrentFrameCallback.bind(this)(-1)}
-                        >
+                            onClick={() => setCurrentFrameCallback.bind(this)(-1)}>
                             Base Frame
                         </button>
+                    </div>
+                    <div className="selection">
+                        <button className="selection-primary" onClick={() => addNewFrame.bind(this)([])}>Add New Frame</button>
                     </div>
                     
                     {
@@ -1000,11 +1019,7 @@ class EditorPage extends React.Component {
                                 </button>
                             </div>
                         ))
-                    }
-
-                    <div className="selection">
-                        <button className="selection-primary" onClick={() => addNewFrame.bind(this)([])}>Add New Frame</button>
-                    </div>
+                    } 
                 </div>
             </div>
         );
@@ -1021,7 +1036,9 @@ class EditorPage extends React.Component {
                     frame={this.getCurrentComicViewData().frame}
                     dialogue={this.getCurrentComicViewData().dialogue}
                     decision={this.getCurrentComicViewData().decision}
-                    onClickListeners={this.getCurrentOnClickListeners()} />
+                    onClickListeners={this.getCurrentOnClickListeners()} 
+                    onEditorPage={'true'}
+                    LoadSpriteEditor={this.renderSpriteEditor()}/>
             );
         }
         else if (currentScene.type === 'minigame') {
@@ -1037,33 +1054,97 @@ class EditorPage extends React.Component {
     render() {
         return (
             <>
+                {/* Navbar at the top */}
                 <div className='editor-nav'>
-                    <button>File</button>
-                    <button>Scene</button>
-                    <button>Frame</button>
-                    <button>Help</button>
-                    {/* <div id="storyteller" className="editor-page">
-                        <div className="editor-pane">
+                    {/* File */}
+                    <div className="btn-group">
+                        <button className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            File
+                        </button>
+                        <ul className="dropdown-menu">
                             {this.renderEditorPrimarySection()}
-                            {this.renderSpriteSpawner()}
+                        </ul>
+                    </div>
+
+                    {/* Scene */}
+                    <button data-bs-toggle="offcanvas" data-bs-target="#sceneOffCanvas" aria-controls="offcanvasWithBothOptions">
+                        Scene
+                    </button>
+                        <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="sceneOffCanvas" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div className="offcanvas-header">
+                            <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">Scene</h2>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
+                        <div className="offcanvas-body">
+                            <div className="editor-pane">
+                                {this.renderFrameSelection()}
+                                {this.renderSceneEditor()}
+
+                            
+                                {/* {this.renderFrameSelection()}
+                                {this.renderDialogueEditor()}
+                                {this.renderSpriteEditor()} */}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Frame */}
+                    <button data-bs-toggle="offcanvas" data-bs-target="#frameOffCanvas" aria-controls="offcanvasWithBothOptions">
+                        Frame
+                    </button>
+                        <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="frameOffCanvas" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div className="offcanvas-header">
+                            <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">Frame</h2>
+                            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div className="offcanvas-body">
+                            <div className="editor-pane">
+                                {this.renderSpriteSpawner()}
+                                {this.renderDialogueEditor()}
+                                {/* {this.renderFrameSelection()}
+                                {this.renderDialogueEditor()}
+                                {this.renderSpriteEditor()} */}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Help */}
+                    <div className="btn-group">
+                        <button data-bs-toggle="dropdown" aria-expanded="false">
+                            Help
+                        </button>
+                        <ul className="dropdown-menu">
+                            <h2>Instructions</h2>
+                                <ul>
+                                    <li>Use scenes and frames sections to navigate game</li>
+                                    <li>Use attributes sections to edit attributes</li>
+                                    <li>Click on a sprite to select it for editing</li>
+                                    <li>Shift+click on a sprite to follow cursor, then click again to drop</li>
+                                    <li>Don't forget to import/export</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="storyteller" className="editor-page">
+                    {/* <div id='storyteller' className='editor-page'>
+                        <div className='editor-pane'> */}
+                            {/* {this.renderEditorPrimarySection()} */}
+                            {/* {this.renderSpriteSpawner()} */}
+                        {/* </div>
+                    </div> */}
+
                         <div id="storyteller-view">
                             {this.renderStorytellerView()}
                         </div>
-                        <div className="editor-pane">
+
+                        {/* <div className="editor-pane">
                             {this.renderSceneSelection()}
                             {this.renderFrameSelection()}
                             {this.renderSceneEditor()}
                             {this.renderDialogueEditor()}
                             {this.renderSpriteEditor()}
-                        </div>
-                    </div> */}
-                </div>
-                <div id='storyteller' className='editor-page'>
-                    <div className='editor-pane'>
-
+                        </div> */}
                     </div>
-                </div>
             </>
         );
     }
