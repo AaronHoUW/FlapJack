@@ -84,7 +84,8 @@ const IMAGES = {
         'sally-salmon',
         'submarine',
         'user-placeholder',
-        'wendy-whale'
+        'wendy-whale',
+        'pancake-flapjack-octopus',
     ],
 };
 
