@@ -1,7 +1,7 @@
 const DEFAULT_DATA = {
   testScene: {
     type: 'comic',
-    background: 'test-1',
+    background: 'sea',
     nextScene: 'testScene2',
     baseFrame: [
       {},
