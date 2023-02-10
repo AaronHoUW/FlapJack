@@ -58,3 +58,16 @@ footer {
 .circle-text {
   margin: auto;
 }
+
+.play-area {
+  background-color: lightblue;
+  height: 80vh;
+}
+
+#playable {
+  position: relative;
+}
+
+:focus { 
+  outline: none
+}
