@@ -4,7 +4,7 @@ const DEFAULT_DATA = {
     background: 'sea',
     nextScene: 'testScene2',
     baseFrame: [],
-    frames: [],
+    frames: [[]],
   },
 };
 
