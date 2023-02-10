@@ -8,8 +8,6 @@ import './innerComp/EditorPage.css';
 
 const IMAGES = {
     backgrounds: [
-        'test-1',
-        'test-2',
         'beige',
         'sea',
         'sea-mountains',
@@ -23,61 +21,8 @@ const IMAGES = {
         'space-test'
     ],
     sprites: [
-        'annie-bag',
-        'annie-smile',
-        'annie-zoom-feet',
-        'annie-zoom-waist',
-        'blue-bag',
-        'blue-circle',
-        'boat',
-        'broken-bottle',
-        'buoy-net-marker',
-        'color-scale',
-        'fish',
-        'fishingline',
         'exclaim',
-        'garbage-bag',
-        'humphrey-blush',
-        'humphrey-sad',
-        'humphrey-surprised',
-        'humphrey',
-        'jade-birds-eye-view',
-        'jade-birds-eye-view2',
-        'jade-happy',
-        'jade-heart',
-        'jade-mad',
-        'jade-sad',
-        'jellyfish-purpleblue',
-        'jellyfish-white',
-        'journal-closed',
-        'journal-open',
-        'lighter',
-        'log',
-        'log-2',
         'net',
-        'ronald',
-        'seashell',
-        'sophie-and-ronald',
-        'sophie-and-ronald-2',
-        'sophie-and-ronald-love',
-        'squid',
-        'sqwacky-blank',
-        'sqwacky-doodle',
-        'sqwacky-exclaim',
-        'sqwacky-love',
-        'sqwacky-mad',
-        'sqwacky-surprised',
-        'sqwacky-worried',
-        'sqwacky',
-        'sqwackyv2-belly',
-        'sqwackyv2-fly',
-        'sqwackyv2-worried',
-        'strawberry',
-        'strawberry-love',
-        'strawberry-sad',
-        'strawberry-surprised',
-        'strawberry-zoom-tail',
-        'trash-can',
         'waves',
         'question',
         // Ours Import
@@ -352,11 +297,11 @@ class EditorPage extends React.Component {
         return (
             <div className="primary-section editor-section">
                 <div className="primary-section-btns">
-                    <button onClick={this.export.bind(this)}>
-                        <span className="material-icons-outlined">file_download</span>
+                    <button onClick={this.export.bind(this)} className='download-upload-btn'>
+                        <span>Download</span>
                     </button>
-                    <button onClick={this.import.bind(this)}>
-                        <span className="material-icons-outlined">file_upload</span>
+                    <button onClick={this.import.bind(this)} className='download-upload-btn'>
+                        <span>Upload</span>
                     </button>
                     
                     {/* To be Removed */}
@@ -1058,11 +1003,9 @@ class EditorPage extends React.Component {
                 {/* Navbar at the top */}
                 <div className='editor-nav'>
                     {/* File */}
-                    <div className="btn-group">
-                        <button className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            File
-                        </button>
-                        <ul className="dropdown-menu">
+                    <div className="dropdown">
+                        <button className='dropdown-btn'>File</button>
+                        <ul className='dropdown-content'>
                             {this.renderEditorPrimarySection()}
                         </ul>
                     </div>
@@ -1110,11 +1053,9 @@ class EditorPage extends React.Component {
                     </div>
                     
                     {/* Help */}
-                    <div className="btn-group">
-                        <button data-bs-toggle="dropdown" aria-expanded="false">
-                            Help
-                        </button>
-                        <ul className="dropdown-menu">
+                    <div className="dropdown">
+                        <button className='dropdown-btn help'>Help</button>
+                        <ul className="dropdown-content">
                             <h2>Instructions</h2>
                                 <ul>
                                     <li>Use scenes and frames sections to navigate game</li>
