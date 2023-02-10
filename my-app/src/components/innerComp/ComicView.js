@@ -1,15 +1,7 @@
 import React from 'react';
 import './ComicView.css'
-// import './ComicView.scss';
-// import {
-//     Journal,
-//     JOURNAL_ENTRY_VIEW,
-// } from './Journal';
-
-// import JOURNAL_DATA from './JournalData'
 
 const ELEMENT_TYPE_SPRITE = 'sprite';
-// const ELEMENT_TYPE_JOURNAL = 'journal';
 
 class ComicView extends React.Component {
     // Given a classObj that maps classes to booleans and optional default classes, returns className

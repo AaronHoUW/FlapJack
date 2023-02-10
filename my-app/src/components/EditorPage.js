@@ -3,7 +3,6 @@ import React from 'react';
 import STORYTELLER_DATA from './innerComp/minigames/data/StorytellerData';
 import Dropdown from './innerComp/Dropdown';
 import ComicView from './innerComp/ComicView';
-// import './innerComp/EditorPage.scss'
 import './innerComp/EditorPage.css';
 
 const IMAGES = {
@@ -25,7 +24,7 @@ const IMAGES = {
         'net',
         'waves',
         'question',
-        // Ours Import
+        // Our sprites
         'sally-salmon',
         'submarine',
         'user-placeholder',
