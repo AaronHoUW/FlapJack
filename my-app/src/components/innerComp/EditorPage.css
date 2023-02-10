@@ -80,6 +80,43 @@
     display: flex;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 4px;
+    border-radius: 0 4px 4px 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover {
+    background-color: #95d1e4;
+}
+
+.download-upload-btn {
+    border: none;
+    background-color: #FFFFFF;
+    text-align: left;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+.download-upload-btn:hover {
+    background-color: lightgrey;
+}
+
 .editor-page .primary-section-btns button {
     flex: 1;
 }
@@ -121,12 +158,16 @@
     width: 100%;
 }
 
-.editor-nav > button, .editor-nav > .btn-group > button {
+.editor-nav > button, .editor-nav > .btn-group > button, .dropdown-btn {
     border: none;
     background-color: #C7F2FF;
     padding: 16px;
     margin: 0 50px;
     cursor: pointer;
+}
+
+.dropdown-btn {
+    background-color: transparent;
 }
 
 .editor-nav button:focus, .editor-nav button:active {

@@ -3,12 +3,8 @@ const DEFAULT_DATA = {
     type: 'comic',
     background: 'sea',
     nextScene: 'testScene2',
-    baseFrame: [
-      {},
-    ],
-    frames: [
-      [],
-    ]
+    baseFrame: [],
+    frames: [],
   },
 };
 
