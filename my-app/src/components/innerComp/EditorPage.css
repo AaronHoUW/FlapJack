@@ -182,6 +182,10 @@
     height: 375px;
 }
 
+.scene-height-limit {
+    height: 200px;
+}
+
 .sprite-button {
     width: fit-content;
     height: min-content;
