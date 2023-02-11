@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
-interface FishProps {
-    src: string;
+interface Props {
+    style?: object;
     ref: any;
-    onClick: any;
+    tabIndex?: number;
+    onKeyDown?: any;
+    src: string;
+    id?: string;
     className: string;
     alt: string;
 }
 
-export const Fish = styled.img<FishProps>`
-    top: 100px;
-    left: 250px;
+export const Fish = styled.img<Props>`
+    position: relative;
+`;
+
+export const User = styled.img<Props>`
+`;
+
+export const Net = styled.img<Props>`
     position: relative;
 `;
