@@ -419,7 +419,7 @@ class EditorPage extends React.Component {
             }
             else if (newSceneType === 'comic' && !this.getCurrentScene().background) {
                 this.updateCurrentSceneAttributes({
-                    background: 'test-1',
+                    background: 'sea',
                     baseFrame: [],
                     frames: [],
                 });
@@ -835,7 +835,7 @@ class EditorPage extends React.Component {
                     ...this.state.storytellerData,
                     [newSceneName]: {
                         type: 'comic',
-                        background: 'test-1',
+                        background: 'sea',
                         nextScene: 'testScene2',
                         baseFrame: [],
                         frames: []
@@ -844,10 +844,34 @@ class EditorPage extends React.Component {
             });
         }
 
+        const HandleDelete = (sceneName) => {
+            if (Object.keys(this.state.storytellerData).length === 1) {
+                window.alert("Can't delete if there's only one scene")
+            } else {
+                let newList = {};
+                Object.keys(this.state.storytellerData).forEach((scene) => {
+                    if(scene !== sceneName) {
+                        newList[scene] = this.state.storytellerData[scene]
+                    }
+                });
+                this.setState({
+                    storytellerData: newList
+                });
+                // Then redirects to the first one
+                if(this.state.currentSceneName === sceneName) {
+                    this.setState({
+                        currentSceneName: Object.keys(newList)[0],
+                        currentFrame: 0,
+                        targetSpriteIdx: -1,
+                    });
+                }
+            }
+        }
+
         return (
             <div className="selector-section editor-section">
                 <h2>Scenes</h2>
-                <div className="selector-scroll">
+                <div className="selector-scroll container scene-height-limit overflow-auto">
                     {
                         Object.keys(this.state.storytellerData).map((sceneName, idx) => (
                             <div className={`selection ${this.state.currentSceneName === sceneName ? 'selected' : ''}`} key={idx}>
@@ -857,13 +881,13 @@ class EditorPage extends React.Component {
                                 >
                                     {sceneName}
                                 </button>
+                                <button onClick={() => HandleDelete(sceneName)}>Delete</button>
                             </div>
                         ))
                     }
-
-                    <div className="selection">
-                        <button className="selection-primary" onClick={() => addNewScene.bind(this)()}>Add New Scene</button>
-                    </div>
+                </div>
+                <div className="selection">
+                    <button className="selection-primary" onClick={() => addNewScene.bind(this)()}>Add New Scene</button>
                 </div>
             </div>
         );
@@ -927,7 +951,7 @@ class EditorPage extends React.Component {
         return (
             <div className="selector-section editor-section">
                 <h2>Manage Frames</h2>
-                <div className="selector-scroll">
+                <div className="selector-scroll ">
                     <div className={`selection ${this.state.currentFrame === -1 ? 'selected' : ''}`}>
                         <button
                             className='selection-primary'
@@ -1015,15 +1039,14 @@ class EditorPage extends React.Component {
                     </button>
                         <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="sceneOffCanvas" aria-labelledby="offcanvasWithBothOptionsLabel">
                         <div className="offcanvas-header">
-                            <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">Scene</h2>
+                            <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">Scene: {this.state.currentSceneName}</h2>
                             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div className="offcanvas-body">
                             <div className="editor-pane">
+                                {this.renderSceneSelection()}
                                 {this.renderFrameSelection()}
                                 {this.renderSceneEditor()}
-
-                            
                                 {/* {this.renderFrameSelection()}
                                 {this.renderDialogueEditor()}
                                 {this.renderSpriteEditor()} */}
