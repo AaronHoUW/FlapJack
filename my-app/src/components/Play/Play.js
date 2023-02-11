@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
 	Fish,
 	User,
@@ -8,7 +8,6 @@ import {
 function Play() {
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
-	const [fishPlacement, setFishPlacement] = useState({});
 	const [netPlacement, setNetPlacement] = useState({});
     const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 
@@ -41,7 +40,6 @@ function Play() {
 		user.current.focus();
 		fish.current.focus();
 		net.current.focus();
-		setFishPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 	}, []);
 
@@ -96,7 +94,6 @@ function Play() {
 			/>
 			{/* Fish */}
 			<Fish
-				style={fishPlacement}
 				src={`/sprites/sprite-sally-salmon.png`}
 				ref={fish}
 				onClick={handleWithinRange}
