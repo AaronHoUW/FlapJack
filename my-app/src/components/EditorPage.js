@@ -24,6 +24,7 @@ const IMAGES = {
         'net',
         'waves',
         'question',
+        'seaweed',
         // Our sprites
         'sally-salmon',
         'submarine',
