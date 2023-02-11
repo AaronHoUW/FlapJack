@@ -16,8 +16,16 @@ body {
   min-height: 100px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 body {
   background-color: #012348;
+}
+
+.in-range {
+  border: 1px solid red;
 }
 
 .nav-title {

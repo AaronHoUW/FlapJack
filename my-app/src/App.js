@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Parents from './components/Parents';
-import Play from './components/Play';
+import Play from './components/Play/Play';
 import EditorPage from './components/EditorPage';
 
 function App() {
