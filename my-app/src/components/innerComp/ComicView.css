@@ -31,25 +31,25 @@
 
 .comic-view #dialogue > img {
     position: absolute;
-    width: 80%;
+    width: 1000px;
     bottom: 30px;
+}
+
+.comic-view #dialogue .speaker-container {
+    position: absolute;
+    top: calc(100% - 240px);
+    left: 200px;
 }
 
 .comic-view #dialogue .message-container {
     position: absolute;
     top: 80%;
-    left: 20%;
+    left: 45%;
     transform: translate(-50%, -50%);
 }
 
 .comic-view #dialogue .message-container p {
     white-space: pre-wrap;
-}
-
-.comic-view #dialogue .speaker-container {
-    position: absolute;
-    top: calc(100% - 300px);
-    left: 250px;
 }
 
 .comic-view #dialogue .speaker-container span {
@@ -67,14 +67,6 @@
     text-decoration: underline;
 }
 
-.comic-view #dialogue.dialogue-right .speaker-container {
-    justify-content: flex-end;
-}
-
-.comic-view #dialogue.dialogue-right .speaker-container span {
-    background-color: blue;
-}
-
 .comic-view #decision {
     display: flex;
     position: absolute;
@@ -82,17 +74,40 @@
     right: 0;
     bottom: 0;
     padding: 40px 85px;
-    background-color: purple;
+    background-color: #2b312d;
+    flex-direction: column;
 }
 
 .comic-view #decision button {
     flex: 1;
-    background-color: blue;
+    background-color: #E3E6E7;
     border: none;
     font-family: 'Balsamiq Sans';
     font-weight: 700;
     font-size: 20px;
     padding: 16px;
     border-radius: 32px;
-    margin: 0 8px;
+    margin: 8px;
+}
+
+@media screen and (min-width: 1600px) {
+    .comic-view #dialogue > img {
+        position: absolute;
+        width: 80%;
+        bottom: 30px;
+    }
+
+    .comic-view #dialogue .message-container {
+        position: absolute;
+        top: 80%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+    }
+
+    .comic-view #dialogue .speaker-container {
+        position: absolute;
+        top: calc(100% - 300px);
+        left: 250px;
+        text-decoration: underline;
+    }
 }
