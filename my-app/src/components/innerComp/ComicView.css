@@ -21,28 +21,25 @@
 }
 
 .comic-view #dialogue {
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 100%;
-    font-family: 'Balsamiq Sans';
-    font-weight: 700;
-    font-size: 20px;
+    font-family: 'Mulish';
+    font-size: 36px;
 }
 
 .comic-view #dialogue > img {
     position: absolute;
-    width: 100%;
-    bottom: 40px;
-    left: 0;
+    width: 80%;
+    bottom: 30px;
 }
 
 .comic-view #dialogue .message-container {
-    display: flex;
-    align-items: center;
     position: absolute;
-    bottom: 12%;
-    height: 15%;
-    left: 85px;
-    right: 85px;
+    top: 80%;
+    left: 20%;
+    transform: translate(-50%, -50%);
 }
 
 .comic-view #dialogue .message-container p {
@@ -50,11 +47,9 @@
 }
 
 .comic-view #dialogue .speaker-container {
-    display: flex;
     position: absolute;
-    top: calc(100% - 50px);
-    left: 85px;
-    right: 85px;
+    top: calc(100% - 300px);
+    left: 250px;
 }
 
 .comic-view #dialogue .speaker-container span {
@@ -68,7 +63,8 @@
 }
 
 .comic-view #dialogue.dialogue-left span {
-    background-color: pink;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 .comic-view #dialogue.dialogue-right .speaker-container {

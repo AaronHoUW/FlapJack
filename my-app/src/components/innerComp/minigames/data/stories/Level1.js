@@ -1,4 +1,4 @@
-const MEET_STRAWBERRY = {
+const LEVEL1 = {
   "testScene": {
     "type": "comic",
     "background": "sea",
@@ -136,4 +136,4 @@ const MEET_STRAWBERRY = {
   }
 }
 
-export default MEET_STRAWBERRY;
+export default LEVEL1;
