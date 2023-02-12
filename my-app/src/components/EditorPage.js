@@ -8,6 +8,8 @@ import './innerComp/EditorPage.css';
 const IMAGES = {
     backgrounds: [
         'beige',
+        'dam',
+        'elwha-estuary',
         'sea',
         'sea-mountains',
         'sea-mountains-left',
