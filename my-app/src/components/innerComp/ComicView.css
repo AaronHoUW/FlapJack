@@ -100,7 +100,6 @@
     .comic-view #dialogue .message-container {
         position: absolute;
         top: 80%;
-        left: 30%;
         transform: translate(-50%, -50%);
     }
 
