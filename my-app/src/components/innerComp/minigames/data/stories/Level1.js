@@ -4,26 +4,7 @@ const LEVEL1 = {
     "background": "sea",
     "nextScene": "testScene2",
     "baseFrame": [],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": 0,
-          "y": 0,
-          "size": 50,
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "user-placeholder",
-          "x": 55.4,
-          "y": -6.799999999999999,
-          "size": 50,
-          "flipX": false
-        }
-      ]
-    ]
+    "frames": []
   },
   "pancakeIntro": {
     "type": "comic",
@@ -288,7 +269,25 @@ const LEVEL1 = {
     "background": "sea",
     "nextScene": "sallytalkingacontinued",
     "baseFrame": [],
-    "frames": []
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "20",
+          "y": "50",
+          "size": "10",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "These nets that get left behind by fishing companies are called ghost nets. These can be dangerous for fish and other marine life that get caught in them.",
+        "type": "nospeaker"
+      }
+    ]
   },
   "sallyTalkingB": {
     "type": "comic",
@@ -331,6 +330,55 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "Now that I’m back, I’ve noticed that things are changing in the ocean too. There’s more nets floating around and  less of my friends have returned from spawning.",
+        "type": "left"
+      }
+    ]
+  },
+  "postGame": {
+    "type": "comic",
+    "background": "sea",
+    "nextScene": "testScene2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "sally-salmon",
+          "x": "15",
+          "y": "40",
+          "size": "15",
+          "flipX": true
+        }
+      ],
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "20",
+          "y": "40",
+          "size": "10",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "Great job today! You really helped make the ocean more safe for the animals living here.",
         "type": "left"
       }
     ]
