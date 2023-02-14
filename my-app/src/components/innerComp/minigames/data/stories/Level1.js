@@ -1,4 +1,4 @@
-{
+const LEVEL1 = {
   "testScene": {
     "type": "comic",
     "background": "sea",
@@ -319,3 +319,5 @@
     ]
   }
 }
+
+export default LEVEL1;
