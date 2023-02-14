@@ -43,7 +43,7 @@ const LEVEL1 = {
         {
           "type": "sprite",
           "image": "pancake-flapjack-octopus",
-          "x": 8.600000000000003,
+          "x": "18",
           "y": "35",
           "size": "15",
           "flipX": false
@@ -61,7 +61,7 @@ const LEVEL1 = {
         {
           "type": "sprite",
           "image": "pancake-flapjack-octopus",
-          "x": 8.600000000000003,
+          "x": "18",
           "y": "35",
           "size": "15",
           "flipX": false
@@ -84,12 +84,15 @@ const LEVEL1 = {
   "sallyTalking": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "testScene2",
+    "nextScene": {
+      "Where did you go?": "sallytalkinga",
+      "How has Elwha Dam effected you?": "sallytalkingb"
+    },
     "baseFrame": [
       {
         "type": "sprite",
         "image": "sally-salmon",
-        "x": "14",
+        "x": "18",
         "y": "40",
         "size": "15",
         "flipX": true
@@ -105,31 +108,36 @@ const LEVEL1 = {
     ],
     "frames": [
       [],
-      [],
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "50",
+          "y": "30",
+          "size": "8",
+          "flipX": false
+        }
+      ],
       [],
       []
     ],
     "dialogue": [
       {
         "speaker": "",
-        "message": "",
+        "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
         "type": "left"
       },
       {
         "speaker": "",
-        "message": "",
+        "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
         "type": "left"
       },
       {
         "speaker": "",
-        "message": "",
+        "message": "I migrated to the ocean two years ago.",
         "type": "left"
       },
-      {
-        "speaker": "",
-        "message": "",
-        "type": "left"
-      }
+      null
     ]
   },
   "sallyTalkingA": {
@@ -162,7 +170,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "",
+        "message": "I swam up the Elwha river where I was born and laid eggs! Its called spawning.",
         "type": "left"
       },
       {
@@ -172,7 +180,7 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "",
+        "message": "Now that I’m back, I’ve noticed that things are changing in the ocean too. There’s more nets floating around and  less of my friends have returned from spawning.",
         "type": "left"
       }
     ]
@@ -197,7 +205,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "",
+        "message": "Right now we’re in the Elwha estuary, which is connected to the Elwha river in the Olympic National Park. ",
         "type": "nospeaker"
       }
     ]
@@ -250,7 +258,16 @@ const LEVEL1 = {
       }
     ],
     "frames": [
-      [],
+      [
+        {
+          "type": "sprite",
+          "image": "sally-salmon",
+          "x": "25",
+          "y": "20",
+          "size": "15",
+          "flipX": true
+        }
+      ],
       []
     ],
     "dialogue": [
@@ -308,12 +325,12 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "",
+        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! Its called spawning.",
         "type": "left"
       },
       {
         "speaker": "",
-        "message": "",
+        "message": "Now that I’m back, I’ve noticed that things are changing in the ocean too. There’s more nets floating around and  less of my friends have returned from spawning.",
         "type": "left"
       }
     ]
