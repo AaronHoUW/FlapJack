@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -34,8 +34,8 @@ function App() {
 					} />
 					<Route path='/play' element={
 						<>
-							<Navbar />
 							<Play />
+							<NavLink className='exit-play' to='/'>Exit</NavLink>
 						</>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
