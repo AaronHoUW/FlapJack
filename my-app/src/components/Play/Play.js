@@ -2,8 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
 	Fish,
 	User,
-	Net
+	Net,
 } from './styles.tsx';
+import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
+import { useNavigate } from 'react-router-dom';
+import ComicView from '../innerComp/ComicView';
 
 function Play() {
 	// Player Movement
@@ -13,10 +16,10 @@ function Play() {
 	const [netPlacement, setNetPlacement] = useState({});
 	const [netPlacement2, setNetPlacement2] = useState({});
 	const [netPlacement3, setNetPlacement3] = useState({});
-
 	const [netRemove, setNetRemove] = useState(0);
-    // Change Player's Position
-	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+  // Change Player's Position
+  const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+	const navigate = useNavigate();
 
     const handleKeyDown = event => {
 		if(event.key === 'ArrowRight') {
@@ -54,20 +57,21 @@ function Play() {
 		net.current.focus();
 		net2.current.focus();
 		net3.current.focus();
-		// Hard Cord
-		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' })
+
+		// Hard Code
+		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
 	}, []);
 
 	const handleWithinRange = (event) => {
-		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 200) {
-			console.log("Hello You're within Range, I should make the next thing");
+		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 400) {
+			navigate('/level1');
 		}
 	}
 
 	function checkWithinRange() {
-		if(Math.sqrt((user.current.x - fish.current.x)**2 + (user.current.y - fish.current.y)**2 ) <= 200) {
+		if(Math.sqrt((user.current.x - fish.current.x)**2 + (user.current.y - fish.current.y)**2 ) <= 400) {
 			document.getElementById('sally-salmon').classList.add('in-range');
 		} else {
 			document.getElementById('sally-salmon').classList.remove('in-range');
@@ -152,7 +156,6 @@ function Play() {
 				id='sally-salmon'
 				alt="Sally the salmon"
 			/>
-
         </div>
     );
 }

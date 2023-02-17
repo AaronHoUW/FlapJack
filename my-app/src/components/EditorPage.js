@@ -20,7 +20,7 @@ const IMAGES = {
         'beach-wrack',
         'sc-earth-pod',
         'space-test',
-        'net'
+        'net',
     ],
     sprites: [
         'exclaim',

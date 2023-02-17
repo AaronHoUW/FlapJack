@@ -16,12 +16,25 @@ body {
   min-height: 100px;
 }
 
+.exit-play {
+  border: none;
+  color: black;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 14px 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  text-decoration: none;
+}
+
 .hidden {
   visibility: hidden;
 }
 
 body {
-  background-color: #012348;
+  background-color: #FFFFFF;
 }
 
 .in-range {
@@ -68,8 +81,8 @@ footer {
 }
 
 .play-area {
-  background-color: lightblue;
-  height: 91.3vh;
+  background-image: url('../public/sprites/bg-sea.png');
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -81,7 +94,7 @@ footer {
   position: relative;
 }
 
-:focus { 
+:focus {
   outline: none
 }
 
