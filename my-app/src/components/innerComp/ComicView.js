@@ -149,8 +149,8 @@ class ComicView extends React.Component {
             <div className="comic-view" style={{
                 backgroundImage: `url("/sprites/bg-${this.props.background}.png")`
             }}>
-                {this.getElements().map((element, idx) => this.renderElement(element, idx))}
                 {this.props.dialogue && this.renderDialogue(this.props.dialogue)}
+                {this.getElements().map((element, idx) => this.renderElement(element, idx))}
                 {this.props.decision && this.renderDecision(this.props.decision)}
             </div>
         );

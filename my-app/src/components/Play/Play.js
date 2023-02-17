@@ -9,14 +9,16 @@ import { useNavigate } from 'react-router-dom';
 import ComicView from '../innerComp/ComicView';
 
 function Play() {
+	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
+	// Nets
 	const [netPlacement, setNetPlacement] = useState({});
 	const [netPlacement2, setNetPlacement2] = useState({});
 	const [netPlacement3, setNetPlacement3] = useState({});
 	const [netRemove, setNetRemove] = useState(0);
-
-    const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+  // Change Player's Position
+  const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	const navigate = useNavigate();
 
     const handleKeyDown = event => {
@@ -33,6 +35,7 @@ function Play() {
 			setYAxis(yAxis - 50)
 		}
 		checkWithinRange();
+		// console.log(document.getElementById('net'))
 	};
 
 	function randomPx() {
@@ -42,6 +45,7 @@ function Play() {
 
 	const user = useRef(null);
 	const fish = useRef(null);
+	// Hard Code
 	const net = useRef(null);
 	const net2 = useRef(null);
 	const net3 = useRef(null);
@@ -49,9 +53,11 @@ function Play() {
 	useEffect(() => {
 		user.current.focus();
 		fish.current.focus();
+
 		net.current.focus();
 		net2.current.focus();
 		net3.current.focus();
+
 		// Hard Code
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
@@ -93,6 +99,7 @@ function Play() {
 	const removeNet = (event) => {
 		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 500) {
 			event.target.classList.add('hidden');
+			setNetRemove(netRemove + 1);
 		}
 	}
 
@@ -152,6 +159,7 @@ function Play() {
         </div>
     );
 }
+
 
 export default Play;
 
