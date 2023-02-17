@@ -83,12 +83,28 @@ footer {
 .play-area {
   background-image: url('../public/sprites/bg-sea.png');
   height: 100vh;
+  overflow: hidden;
+}
+
+.play-area::-webkit-scrollbar {
+  display: none;
 }
 
 #playable {
   position: relative;
 }
 
-:focus { 
+:focus {
   outline: none
+}
+
+.net-counter {
+  position: absolute;
+  right: 0px;
+  width: 175px;
+  height: 50px;
+  font-size: 1.2em;
+  /* text-align: center; */
+  display: inline-flex;
+  align-items: center;
 }

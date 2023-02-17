@@ -19,7 +19,8 @@ const IMAGES = {
         'beach-rocks-2',
         'beach-wrack',
         'sc-earth-pod',
-        'space-test'
+        'space-test',
+        'net',
     ],
     sprites: [
         'exclaim',
