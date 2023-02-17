@@ -17,8 +17,8 @@ function Play() {
 	const [netPlacement2, setNetPlacement2] = useState({});
 	const [netPlacement3, setNetPlacement3] = useState({});
 	const [netRemove, setNetRemove] = useState(0);
-  // Change Player's Position
-  const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+	// Change Player's Position
+	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	const navigate = useNavigate();
 
     const handleKeyDown = event => {
@@ -39,7 +39,7 @@ function Play() {
 	};
 
 	function randomPx() {
-		let px = Math.floor((Math.random() * 50) + 25);
+		let px = Math.floor((Math.random() * 250) + 50);
 		return px;
 	}
 
