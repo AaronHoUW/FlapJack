@@ -10,8 +10,6 @@ import {
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 
 function VisualNovel() {
-    const scenes = Object.keys(LEVEL1);
-    let scenePosition = 1;
     let currentScene = LEVEL1['pancakeIntro'];
     let dialoguePosition = 0;
     const navigate = useNavigate();
@@ -19,12 +17,24 @@ function VisualNovel() {
     let speechTimer = 0;
 
     function nextScene(scene) {
+        // document.getElementById('dialogue').classList.add(`dialogue-${scene.dialogue[dialoguePosition].type}`);
         console.log(scene);
-        document.getElementById('dialogue').classList.add(`dialogue-${scene.dialogue[dialoguePosition].type}`);
-        document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;    
+        document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
         }
+    }
+
+    function createImage(frames) {
+        return frames.map((frame) => {
+            if (frame && frame.length > 0) {
+                return frame.map((sprite) => {
+                    return (
+                        <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}}/>
+                    )
+                })
+            }
+        });
     }
 
     // scenes.map((scene) => {
@@ -52,19 +62,7 @@ function VisualNovel() {
                 <DialogueMessageContainer className="message-container">
                     <p>{currentScene.dialogue[dialoguePosition].message}</p>
                 </DialogueMessageContainer>
-                {
-                    currentScene.frames.map((frame) => {
-                        if (frame && frame.length > 0) {
-                            return frame.map((sprite) => {
-                                return (
-                                    <div>
-                                        <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}}/>
-                                    </div>
-                                )
-                            })
-                        }
-                    })
-                }
+                {createImage(currentScene.frames)}
                 {
                     currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
                         <SpeakerContainer className="speaker-container">
@@ -77,7 +75,7 @@ function VisualNovel() {
 
     function buildVisuals() {
         return (
-            <VisualNovelContainer backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
+            <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
                 <h1 style={{color: 'black'}}>Visual Novel Page</h1>
                 <button onClick={() => navigate('/play')} style={{color: 'black'}}>Finished!</button>
                 <button className='nextBtn' onClick={() => {
@@ -86,11 +84,10 @@ function VisualNovel() {
                         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
                             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
                         }
-                        document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;    
+                        document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
                     } else {
                         dialoguePosition = 0;
-                        scenePosition += 1;
-                        currentScene = LEVEL1[scenes[scenePosition]];
+                        currentScene = LEVEL1[currentScene.nextScene];
                         nextScene(currentScene);
                     }
                 }}>

@@ -9,7 +9,7 @@ const LEVEL1 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "pancakemap",
+    "nextScene": "pancakeMap",
     "baseFrame": [],
     "frames": [
       [
@@ -66,8 +66,8 @@ const LEVEL1 = {
     "type": "comic",
     "background": "sea",
     "nextScene": {
-      "Where did you go?": "sallytalkinga",
-      "How has Elwha Dam effected you?": "sallytalkingb"
+      "Where did you go?": "sallyTalkingA",
+      "How has the Elwha Dam effected you?": "sallyTalkingB"
     },
     "baseFrame": [
       {
@@ -118,7 +118,7 @@ const LEVEL1 = {
   "sallyTalkingA": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallynetcutscene",
+    "nextScene": "sallyNetCutscene",
     "baseFrame": [
       {
         "type": "sprite",
@@ -163,7 +163,7 @@ const LEVEL1 = {
   "pancakeMap": {
     "type": "comic",
     "background": "elwha-estuary",
-    "nextScene": "pancakedam",
+    "nextScene": "pancakeDam",
     "baseFrame": [
       {
         "type": "sprite",
@@ -188,7 +188,7 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
-    "nextScene": "testScene2",
+    "nextScene": "meetSally",
     "baseFrame": [],
     "frames": [
       [
@@ -261,7 +261,7 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallytalkingacontinued",
+    "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
       [
@@ -286,7 +286,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallynetcutscene",
+    "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
         "type": "sprite",
