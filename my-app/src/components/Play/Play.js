@@ -2,75 +2,103 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
 	Fish,
 	User,
-	Net
+	Net,
 } from './styles.tsx';
+import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
+import { useNavigate } from 'react-router-dom';
+import ComicView from '../innerComp/ComicView';
 
 function Play() {
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
 	const [netPlacement, setNetPlacement] = useState({});
+	const [netPlacement2, setNetPlacement2] = useState({});
+	const [netPlacement3, setNetPlacement3] = useState({});
+	const [netRemove, setNetRemove] = useState(0);
+
     const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+	const navigate = useNavigate();
 
     const handleKeyDown = event => {
 		if(event.key === 'ArrowRight') {
-			setXAxis(xAxis + 10)
+			setXAxis(xAxis + 50)
 		}
 		if(event.key === 'ArrowLeft') {
-			setXAxis(xAxis - 10)
+			setXAxis(xAxis - 50)
 		}
 		if(event.key === 'ArrowDown') {
-			setYAxis(yAxis + 10)
+			setYAxis(yAxis + 50)
 		}
 		if(event.key === 'ArrowUp') {
-			setYAxis(yAxis - 10)
+			setYAxis(yAxis - 50)
 		}
 		checkWithinRange();
 	};
 
 	function randomPx() {
-		let px = Math.floor((Math.random() * 250) + 50);
+		let px = Math.floor((Math.random() * 50) + 25);
 		return px;
 	}
 
 	const user = useRef(null);
 	const fish = useRef(null);
 	const net = useRef(null);
+	const net2 = useRef(null);
+	const net3 = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
 		fish.current.focus();
 		net.current.focus();
+		net2.current.focus();
+		net3.current.focus();
+		// Hard Code
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
+		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
+		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
 	}, []);
 
 	const handleWithinRange = (event) => {
-		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 200) {
-			console.log("Hello You're within Range, I should make the next thing");
+		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 400) {
+			navigate('/level1');
 		}
 	}
 
 	function checkWithinRange() {
-		if(Math.sqrt((user.current.x - fish.current.x)**2 + (user.current.y - fish.current.y)**2 ) <= 200) {
+		if(Math.sqrt((user.current.x - fish.current.x)**2 + (user.current.y - fish.current.y)**2 ) <= 400) {
 			document.getElementById('sally-salmon').classList.add('in-range');
 		} else {
 			document.getElementById('sally-salmon').classList.remove('in-range');
 		}
 
-		if(Math.sqrt((user.current.x - net.current.x)**2 + (user.current.y - net.current.y)**2 ) <= 200) {
+		if(Math.sqrt((user.current.x - net.current.x)**2 + (user.current.y - net.current.y)**2 ) <= 400) {
 			document.getElementById('net').classList.add('in-range');
 		} else {
 			document.getElementById('net').classList.remove('in-range');
 		}
+
+		if(Math.sqrt((user.current.x - net2.current.x)**2 + (user.current.y - net2.current.y)**2 ) <= 400) {
+			document.getElementById('net2').classList.add('in-range');
+		} else {
+			document.getElementById('net2').classList.remove('in-range');
+		}
+
+		if(Math.sqrt((user.current.x - net3.current.x)**2 + (user.current.y - net3.current.y)**2 ) <= 400) {
+			document.getElementById('net3').classList.add('in-range');
+		} else {
+			document.getElementById('net3').classList.remove('in-range');
+		}
 	}
 
 	const removeNet = (event) => {
-		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 200) {
+		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 500) {
 			event.target.classList.add('hidden');
 		}
 	}
 
     return (
         <div className='play-area' onClick={() => user.current.focus()}>
+			<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 			{/* User */}
             <User
 				style={userPlacement}
@@ -92,6 +120,26 @@ function Play() {
 				alt="Net"
 				id='net'
 			/>
+			{/* Net 2 */}
+			<Net
+				style={netPlacement2}
+				src={`/sprites/sprite-fishing-net.png`}
+				ref={net2}
+				onClick={removeNet}
+				className='img-size'
+				alt="Net2"
+				id='net2'
+			/>
+			{/* Net 3 */}
+			<Net
+				style={netPlacement3}
+				src={`/sprites/sprite-fishing-net.png`}
+				ref={net3}
+				onClick={removeNet}
+				className='img-size'
+				alt="Net3"
+				id='net3'
+			/>
 			{/* Fish */}
 			<Fish
 				src={`/sprites/sprite-sally-salmon.png`}
@@ -101,7 +149,6 @@ function Play() {
 				id='sally-salmon'
 				alt="Sally the salmon"
 			/>
-
         </div>
     );
 }
