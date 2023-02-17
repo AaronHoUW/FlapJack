@@ -1,0 +1,55 @@
+import styled from 'styled-components';
+
+interface ContainerProps {
+    backgroundImage: string,
+}
+
+export const VisualNovelContainer = styled.div<ContainerProps>`
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
+    background-image: ${(props) => props.backgroundImage};
+    
+    .dialogue-left .textBox {
+        transform: scaleX(-1);
+    }
+`;
+
+export const DialogueBox = styled.div`
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-family: 'Mulish';
+    font-size: 36px;
+`;
+
+export const DialogueImg = styled.img`
+    position: absolute;
+    width: 80%;
+    bottom: 30px;
+`;
+
+export const DialogueMessageContainer = styled.div`
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+`;
+
+export const SpeakerContainer = styled.div`
+    position: absolute;
+    top: calc(100% - 300px);
+    left: 250px;
+    text-decoration: underline;
+
+    span {
+        display: block;
+        padding: 8px 16px;
+        border-radius: 16px;
+    }
+
+    p {
+        white-space: pre-wrap;
+    }
+`;

@@ -110,15 +110,9 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
-        "type": "left"
-      },
-      {
-        "speaker": "",
         "message": "I migrated to the ocean two years ago.",
         "type": "left"
       },
-      null
     ]
   },
   "sallyTalkingA": {

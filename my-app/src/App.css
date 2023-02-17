@@ -81,8 +81,8 @@ footer {
 }
 
 .play-area {
-  background-color: lightblue;
-  height: 80vh;
+  background-image: url('../public/sprites/bg-sea.png');
+  height: 100vh;
 }
 
 #playable {
