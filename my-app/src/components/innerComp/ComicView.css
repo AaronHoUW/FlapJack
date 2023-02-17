@@ -31,7 +31,7 @@
 
 .comic-view #dialogue > img {
     position: absolute;
-    width: 1000px;
+    width: 1200px;
     bottom: 30px;
 }
 
@@ -43,9 +43,10 @@
 
 .comic-view #dialogue .message-container {
     position: absolute;
-    top: 80%;
-    left: 45%;
+    top: 75%;
+    left: 51.5%;
     transform: translate(-50%, -50%);
+    width: 1200px;
 }
 
 .comic-view #dialogue .message-container p {
@@ -93,7 +94,7 @@
 @media screen and (min-width: 1600px) {
     .comic-view #dialogue > img {
         position: absolute;
-        width: 80%;
+        width: 90%;
         bottom: 30px;
     }
 
