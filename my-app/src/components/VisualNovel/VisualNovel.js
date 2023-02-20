@@ -16,25 +16,56 @@ function VisualNovel() {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
-    function nextScene(scene) {
-        // document.getElementById('dialogue').classList.add(`dialogue-${scene.dialogue[dialoguePosition].type}`);
+    async function nextScene(scene) {
+        if (scene.background) {
+            document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
+        }
         console.log(scene);
+
+        clearSprites();
+
+        createBaseFrame(scene.baseFrame);
+        createImage(scene.frames);
+
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
         }
     }
 
+    function clearSprites() {
+        let sprites = document.getElementsByClassName('sprite');
+        while(sprites[0]) {
+            sprites[0].parentNode.removeChild(sprites[0]);
+        };
+    }
+
+    function createBaseFrame(baseFrame) {
+        if (baseFrame) {
+            return baseFrame.map((base) => {
+                if (base && base.length > 0) {
+                    return base.map((sprite) => {
+                        return (
+                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
+                        )
+                    })
+                }
+            });
+        }
+    }
+
     function createImage(frames) {
-        return frames.map((frame) => {
-            if (frame && frame.length > 0) {
-                return frame.map((sprite) => {
-                    return (
-                        <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}}/>
-                    )
-                })
-            }
-        });
+        if (frames) {
+            return frames.map((frame) => {
+                if (frame && frame.length > 0) {
+                    return frame.map((sprite) => {
+                        return (
+                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
+                        )
+                    })
+                }
+            });
+        }
     }
 
     // scenes.map((scene) => {
@@ -62,6 +93,7 @@ function VisualNovel() {
                 <DialogueMessageContainer className="message-container">
                     <p>{currentScene.dialogue[dialoguePosition].message}</p>
                 </DialogueMessageContainer>
+                {createBaseFrame(currentScene.baseFrame)}
                 {createImage(currentScene.frames)}
                 {
                     currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
@@ -76,7 +108,6 @@ function VisualNovel() {
     function buildVisuals() {
         return (
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
-                <h1 style={{color: 'black'}}>Visual Novel Page</h1>
                 <button onClick={() => navigate('/play')} style={{color: 'black'}}>Finished!</button>
                 <button className='nextBtn' onClick={() => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
