@@ -112,7 +112,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "I migrated to the ocean two years ago.",
         "type": "left"
-      },
+      }
     ]
   },
   "sallyTalkingA": {
@@ -145,17 +145,17 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "I swam up the Elwha river where I was born and laid eggs! Its called spawning.",
+        "message": "I swam up the Elwha river where I was born and laid eggs! It is called spawning.",
         "type": "left"
       },
       {
         "speaker": "",
-        "message": "My parents weren’t able to swim as far up the Elwha because the dam was in the way.",
+        "message": "My parents were not able to swim as far up the Elwha because the dam was in the way.",
         "type": "left"
       },
       {
         "speaker": "",
-        "message": "Now that I’m back, I’ve noticed that things are changing in the ocean too. There’s more nets floating around and  less of my friends have returned from spawning.",
+        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from",
         "type": "left"
       }
     ]
@@ -253,15 +253,15 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Because of this, I’m scared of getting caught by a net! I wonder if you could help clean up the nets?",
+        "message": "Because of this, I am scared of getting caught by a net! I wonder if you could help clean up the nets?",
         "type": "left"
       }
     ]
   },
   "sallyNetCutScene": {
     "type": "comic",
-    "background": "sea",
-    "nextScene": "sallyTalkingAContinued",
+    "background": "net",
+    "nextScene": "sallytalkingacontinued",
     "baseFrame": [],
     "frames": [
       [
@@ -286,7 +286,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutScene",
+    "nextScene": "sallynetcutscene",
     "baseFrame": [
       {
         "type": "sprite",
@@ -313,7 +313,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "My parents weren’t able to swim very far up the Elwha because the dam was in the way.",
+        "message": "My parents were not able to swim very far up the Elwha because the dam was in the way.",
         "type": "left"
       },
       {
@@ -323,7 +323,7 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Now that I’m back, I’ve noticed that things are changing in the ocean too. There’s more nets floating around and  less of my friends have returned from spawning.",
+        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
         "type": "left"
       }
     ]
