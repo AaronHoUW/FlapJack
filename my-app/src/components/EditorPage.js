@@ -738,7 +738,6 @@ class EditorPage extends React.Component {
 
         const currentFrameDialogue = this.getCurrentComicViewData().dialogue;
         const currentFrameDecision = this.getCurrentComicViewData().decision;
-        console.log(this.getCurrentComicViewData());
         const currentFrameHasDialogue = currentFrameDialogue !== null;
         const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
         const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
