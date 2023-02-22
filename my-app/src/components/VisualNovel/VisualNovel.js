@@ -86,6 +86,7 @@ function VisualNovel() {
     //         }
     //       }, TALK_SPEED);
     // }
+    
     function buildDialogue() {
         return (
             <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
