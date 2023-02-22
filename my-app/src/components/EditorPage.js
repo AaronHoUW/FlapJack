@@ -504,7 +504,7 @@ class EditorPage extends React.Component {
                     }
                     {
                         typeof(this.getCurrentScene().nextScene) !== 'string' &&
-                            <span>Decision on frame {this.getCurrentScene().frames.length - 1}</span>
+                            <p>Decision on frame {this.getCurrentScene().frames.length - 1}</p>
                     }
                 </div>
             </div>
@@ -737,6 +737,8 @@ class EditorPage extends React.Component {
         }
 
         const currentFrameDialogue = this.getCurrentComicViewData().dialogue;
+        const currentFrameDecision = this.getCurrentComicViewData().decision;
+        console.log(this.getCurrentComicViewData());
         const currentFrameHasDialogue = currentFrameDialogue !== null;
         const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
         const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
@@ -759,7 +761,7 @@ class EditorPage extends React.Component {
                 }
 
                 {
-                    currentFrameHasDialogue &&
+                    currentFrameHasDialogue || currentFrameDecision !== null &&
                         <>
                             <div className="attr">
                                 <label htmlFor="dialogue-speaker">Speaker</label>
