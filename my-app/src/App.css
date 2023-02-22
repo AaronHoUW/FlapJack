@@ -108,3 +108,195 @@ footer {
   display: inline-flex;
   align-items: center;
 }
+
+.about-us {
+  color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  background-color: #1E7FA4;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 9px;
+  padding-right: 2px;
+  font-family: Mulish, Arial;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 25px;
+  display: flex;
+}
+
+.info-section {
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 1px;
+  display: flex;
+}
+
+.the-goal {
+  font-size: 3rem;
+  line-height: 60px;
+  margin-left: 1rem;
+  
+}
+
+.marine-rescue {
+  font-size: 1.25rem;
+}
+
+.wendy-whale {
+  width: 350px;
+  height: 162px;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 4px;
+  margin-left: 23px;
+}
+
+.about-team {
+  color: #000;
+  width: 100%;
+  height: 100%;
+  background-color: #85C9E3;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  padding-top: 11px;
+  padding-left: 20px;
+  padding-right: 11px;
+  font-family: 'Mulish', Arial;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 60px;
+  display: flex;
+}
+
+.flap-team {
+  margin-top: 1px;
+  margin-left: 3px;
+  font-size: 3rem;
+}
+
+.four-members {
+  margin-bottom: 16px;
+  margin-left: 1px;
+  font-size: 1.25rem;
+  line-height: 25px;
+}
+
+.profile-group {
+  color: #000;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 37px;
+  padding-left: 20px;
+  font-family: 'Mulish', Arial;
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 45px;
+  display: flex;
+  ;
+}
+
+.profile-center {
+  margin-top: 2px;
+  margin-bottom: 7px;
+  font-size: 1.25rem;
+  line-height: 25px;
+  text-align: center;
+}
+
+
+.profile-role {
+  margin-top: 2px;
+  margin-bottom: 7px;
+  font-size: 1.25rem;
+  line-height: 25px;
+  width:100%; float:left; 
+  text-align: center; 
+}
+
+ .profile-name {
+  margin-bottom: 1px;
+  font-size: 2.25rem;
+  line-height: 45px;
+  text-align: center;
+ }
+
+
+.ack-section {
+  color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  background-color: #1E7FA4;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  padding-left: 20px;
+  font-family: 'Mulish', Arial;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 60px;
+  display: flex;
+}
+
+.last-section {
+  margin-top: 5px;
+  margin-left: 1px;
+  font-size: 3rem;
+}
+
+.shout-out {
+  align-self: center;
+  margin-bottom: 6px;
+  line-height: 25px;
+}
+
+.foot-section {
+  color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  background-color: #1E7FA4;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+  padding-left: 29px;
+  padding-right: 27px;
+  font-family: Mulish, Arial;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 25px;
+  display: flex;
+}
+
+.foot-title {
+  height: 55%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+  margin-left: 1px;
+  display: flex;
+}
+
+.github-logo {
+  size: 0cap;
+  width: 24px;
+  height: 12px;
+  object-fit: cover;
+}
+
+.i-school {
+  width: 238px;
+  height: 45px;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 2px;
+}
