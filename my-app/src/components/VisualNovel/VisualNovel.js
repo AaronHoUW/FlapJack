@@ -20,7 +20,6 @@ function VisualNovel() {
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
-        console.log(scene);
 
         clearSprites();
 
@@ -86,8 +85,12 @@ function VisualNovel() {
     //         }
     //       }, TALK_SPEED);
     // }
-    
+
     function buildDialogue() {
+        if (document.getElementById('dialogue')) {
+            document.getElementById('dialogue').innerHTML = '';
+        }
+
         return (
             <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
                 <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
@@ -106,6 +109,34 @@ function VisualNovel() {
         );
     }
 
+    function buildChoice(nextScene) {
+        let dialogue = document.getElementById('dialogue');
+        dialogue.innerHTML = '';
+
+        let buttons = Object.keys(nextScene).map((choice) => {
+            console.log(choice);
+            return (
+                `
+                    <button className='choiceButton' key=${choice}>
+                        ${choice}
+                    </button>
+                `
+            );
+        }).join('');
+
+        console.log(buttons);
+
+        dialogue.classList.add('vn-decision');
+        dialogue.innerHTML = buttons;
+
+        document.querySelectorAll('.choiceButton').forEach((button) => {
+            console.log(button);
+            button.addEventListener('click', (e) => {
+                nextScene(e.target.getAttribute('key'))
+            });
+        });
+    }
+
     function buildVisuals() {
         return (
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
@@ -119,8 +150,17 @@ function VisualNovel() {
                         document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
                     } else {
                         dialoguePosition = 0;
-                        currentScene = LEVEL1[currentScene.nextScene];
-                        nextScene(currentScene);
+                        console.log(currentScene.nextScene);
+                        if (typeof currentScene.nextScene === 'object') {
+                            // Display the choice scene
+                            buildChoice(currentScene.nextScene);
+                        } else {
+                            // Display the next scene
+                            console.log(currentScene);
+                            currentScene = LEVEL1[currentScene.nextScene];
+                            console.log(currentScene);
+                            nextScene(currentScene);
+                        }
                     }
                 }}>
                     Next

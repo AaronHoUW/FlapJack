@@ -188,7 +188,7 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
-    "nextScene": "meetSally",
+    "nextScene": "sallyTalking",
     "baseFrame": [],
     "frames": [
       [
