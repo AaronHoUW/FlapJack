@@ -7,22 +7,22 @@ function Navbar() {
             <div>
                 <ul style={{listStyleType: 'none', margin: 0, padding: 0, overflow: 'hidden', backgroundColor: '#FFFFFF'}}>
                     <li style={{float: 'left'}}>
-                    <NavLink to='/' style={{display: 'block', color: '#0474BA', textAlign: 'center', fontSize: '36px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                    <NavLink to='/' style={{display: 'block', color: '#000000', textAlign: 'center', fontSize: '36px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
                         Marine Rescue: The Sea-quel
                     </NavLink>
                     </li>
-                    <li style={{float: 'right', marginLeft: '40px', backgroundColor: '#FFA630', borderRadius: '20px', marginTop: '10px', marginRight: '16px'}}>
-                        <NavLink to='/play' style={{display: 'block', color: '#012348', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
-                            Play
+                    <li style={{float: 'right', marginLeft: '40px', backgroundColor: '#134254', borderRadius: '20px', marginTop: '10px', marginRight: '16px'}}>
+                        <NavLink to='/play' style={{display: 'block', color: '#FFFFFF', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                            Play Now
                         </NavLink>
                     </li>
                     <li style={{float: 'right', marginLeft: '40px', marginTop: '10px'}}>
-                        <NavLink to='/parents' style={{display: 'block', color: '#0474BA', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                        <NavLink to='/parents' style={{display: 'block', color: '#000000', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
                             Parents
                         </NavLink>
                     </li>
                     <li style={{float: 'right', marginTop: '10px'}}>
-                        <NavLink to='/about' style={{display: 'block', color: '#0474BA', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                        <NavLink to='/about' style={{display: 'block', color: '#000000', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
                             About
                         </NavLink>
                     </li>
