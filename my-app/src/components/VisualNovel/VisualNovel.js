@@ -117,24 +117,32 @@ function VisualNovel() {
             console.log(choice);
             return (
                 `
-                    <button className='choiceButton' key=${choice}>
+                    <button className='choiceButton' key=${choice.replace(/\s/g, '')}>
                         ${choice}
                     </button>
                 `
             );
         }).join('');
 
-        console.log(buttons);
+        // console.log(buttons);
+        // buttons.forEach((button) => {
+        //     console.log(button);
+        //     button.addEventListener('click', (e) => {
+        //         nextScene(e.target.getAttribute('key'))
+        //     });
+        // });
 
         dialogue.classList.add('vn-decision');
         dialogue.innerHTML = buttons;
 
-        document.querySelectorAll('.choiceButton').forEach((button) => {
-            console.log(button);
-            button.addEventListener('click', (e) => {
-                nextScene(e.target.getAttribute('key'))
-            });
-        });
+        // let domButtons = document.getElementsByClassName('choiceButton');
+        // console.log(domButtons);
+        // document.querySelectorAll('.choiceButton').forEach((button) => {
+        //     console.log(button);
+        //     button.addEventListener('click', (e) => {
+        //         nextScene(e.target.getAttribute('key'))
+        //     });
+        // });
     }
 
     function buildVisuals() {
@@ -154,6 +162,13 @@ function VisualNovel() {
                         if (typeof currentScene.nextScene === 'object') {
                             // Display the choice scene
                             buildChoice(currentScene.nextScene);
+                            document.querySelectorAll('.choiceButton').forEach((button) => {
+                                console.log(button);
+                                button.addEventListener('click', (e) => {
+                                    console.log(e.target);
+                                    nextScene(e.target.getAttribute('key'))
+                                });
+                            });
                         } else {
                             // Display the next scene
                             console.log(currentScene);

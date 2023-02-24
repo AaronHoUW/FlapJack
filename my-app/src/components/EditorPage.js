@@ -30,6 +30,7 @@ const IMAGES = {
         'seaweed',
         // Our sprites
         'sally-salmon',
+        'simon-salmon',
         'submarine',
         'user-placeholder',
         'wendy-whale',
