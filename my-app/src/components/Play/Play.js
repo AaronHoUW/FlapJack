@@ -3,6 +3,7 @@ import {
 	Fish,
 	User,
 	Net,
+	Flapjack,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +20,7 @@ function Play() {
 	const [netRemove, setNetRemove] = useState(0);
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+	const flapjackPlacement = { top: 20 + 'px', left: 80 + 'px'}
 	const navigate = useNavigate();
 
     const handleKeyDown = event => {
@@ -107,6 +109,7 @@ function Play() {
         <div className='play-area' onClick={() => user.current.focus()}>
 			<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 			{/* User */}
+
             <User
 				style={userPlacement}
 				ref={user}
@@ -156,6 +159,17 @@ function Play() {
 				id='sally-salmon'
 				alt="Sally the salmon"
 			/>
+
+<Flapjack
+				style={userPlacement}
+				ref={Flapjack}
+				tabIndex={-1}
+				onKeyDown={handleKeyDown}
+				src={`/sprites/sprite-pancake-flapjack-octopus.png`}
+				id='playable'
+				className='img-size'
+				alt="Pancake the flapjack"
+				/>
         </div>
     );
 }
