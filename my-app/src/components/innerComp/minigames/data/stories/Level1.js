@@ -118,7 +118,7 @@ const LEVEL1 = {
   "sallyTalkingA": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutscene",
+    "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
         "type": "sprite",
@@ -155,7 +155,7 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from",
+        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
         "type": "left"
       }
     ]
@@ -213,7 +213,7 @@ const LEVEL1 = {
   "sallyTalkingAContinued": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "testScene2",
+    "nextScene": "minigame",
     "baseFrame": [
       {
         "type": "sprite",
@@ -261,7 +261,7 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "net",
-    "nextScene": "sallytalkingacontinued",
+    "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
       [
@@ -286,7 +286,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallynetcutscene",
+    "nextScene": "sallyNetCutscene",
     "baseFrame": [
       {
         "type": "sprite",

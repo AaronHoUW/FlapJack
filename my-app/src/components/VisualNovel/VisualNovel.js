@@ -16,12 +16,11 @@ function VisualNovel() {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
-    async function nextScene(scene) {
+    function nextScene(scene) {
+        console.log(scene);
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
-
-        clearSprites();
 
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
@@ -42,12 +41,10 @@ function VisualNovel() {
     function createBaseFrame(baseFrame) {
         if (baseFrame) {
             return baseFrame.map((base) => {
-                if (base && base.length > 0) {
-                    return base.map((sprite) => {
-                        return (
-                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
-                        )
-                    })
+                if (base) {
+                    return (
+                        <img src={`/sprites/sprite-${base.image}.png`} style={{width: `${base.size}%`, position: 'absolute', top: `${base.y}%`, left: `${base.x}%`}} className='sprite'/>
+                    );
                 }
             });
         }
@@ -61,7 +58,7 @@ function VisualNovel() {
                         return (
                             <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
                         )
-                    })
+                    });
                 }
             });
         }
@@ -89,10 +86,12 @@ function VisualNovel() {
     function buildDialogue() {
         if (document.getElementById('dialogue')) {
             document.getElementById('dialogue').innerHTML = '';
+            document.getElementById('dialogue').classList.remove('vn-decision');
         }
 
+        console.log(currentScene.dialogue);
         return (
-            <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
+            <>
                 <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
                 <DialogueMessageContainer className="message-container">
                     <p>{currentScene.dialogue[dialoguePosition].message}</p>
@@ -105,7 +104,7 @@ function VisualNovel() {
                             <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
                         </SpeakerContainer>
                 }
-            </DialogueBox>
+            </>
         );
     }
 
@@ -114,35 +113,16 @@ function VisualNovel() {
         dialogue.innerHTML = '';
 
         let buttons = Object.keys(nextScene).map((choice) => {
-            console.log(choice);
             return (
                 `
-                    <button className='choiceButton' key=${choice.replace(/\s/g, '')}>
+                    <button class='choiceButton' key=${nextScene[choice]}>
                         ${choice}
                     </button>
                 `
             );
         }).join('');
-
-        // console.log(buttons);
-        // buttons.forEach((button) => {
-        //     console.log(button);
-        //     button.addEventListener('click', (e) => {
-        //         nextScene(e.target.getAttribute('key'))
-        //     });
-        // });
-
         dialogue.classList.add('vn-decision');
         dialogue.innerHTML = buttons;
-
-        // let domButtons = document.getElementsByClassName('choiceButton');
-        // console.log(domButtons);
-        // document.querySelectorAll('.choiceButton').forEach((button) => {
-        //     console.log(button);
-        //     button.addEventListener('click', (e) => {
-        //         nextScene(e.target.getAttribute('key'))
-        //     });
-        // });
     }
 
     function buildVisuals() {
@@ -158,22 +138,20 @@ function VisualNovel() {
                         document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
                     } else {
                         dialoguePosition = 0;
-                        console.log(currentScene.nextScene);
                         if (typeof currentScene.nextScene === 'object') {
                             // Display the choice scene
                             buildChoice(currentScene.nextScene);
                             document.querySelectorAll('.choiceButton').forEach((button) => {
-                                console.log(button);
                                 button.addEventListener('click', (e) => {
-                                    console.log(e.target);
-                                    nextScene(e.target.getAttribute('key'))
+                                    currentScene = LEVEL1[e.target.getAttribute('key')];
+                                    buildDialogue();
+                                    nextScene(currentScene);
                                 });
                             });
                         } else {
                             // Display the next scene
-                            console.log(currentScene);
+                            clearSprites();
                             currentScene = LEVEL1[currentScene.nextScene];
-                            console.log(currentScene);
                             nextScene(currentScene);
                         }
                     }
@@ -181,31 +159,6 @@ function VisualNovel() {
                     Next
                 </button>
                 {buildDialogue()}
-                {/* <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
-                    <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
-                    <DialogueMessageContainer className="message-container">
-                        <p>{currentScene.dialogue[dialoguePosition].message}</p>
-                    </DialogueMessageContainer>
-                    {
-                        currentScene.frames.map((frame) => {
-                            if (frame && frame.length > 0) {
-                                return frame.map((sprite) => {
-                                    return (
-                                        <div>
-                                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}}/>
-                                        </div>
-                                    )
-                                })
-                            }
-                        })
-                    }
-                    {
-                        currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
-                            <SpeakerContainer className="speaker-container">
-                                <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
-                            </SpeakerContainer>
-                    }
-                </DialogueBox> */}
             </VisualNovelContainer>
         )
     }
@@ -213,51 +166,8 @@ function VisualNovel() {
     return (
         <div>
             {buildVisuals()}
-            {/* <VisualNovelContainer backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
-                <h1 style={{color: 'black'}}>Visual Novel Page</h1>
-                <button onClick={() => navigate('/play')} style={{color: 'black'}}>Finished!</button>
-                <button className='nextBtn' onClick={() => {
-                    if (dialoguePosition < currentScene.dialogue.length - 1) {
-                        dialoguePosition++;
-                        if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
-                            document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
-                        }
-                        document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;    
-                    } else {
-                        dialoguePosition = 0;
-                        scenePosition += 1;
-                        currentScene = LEVEL1[scenes[scenePosition]];
-                        nextScene(currentScene);
-                    }
-                }}>
-                    Next
-                </button>
-                <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
-                    <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
-                    <DialogueMessageContainer className="message-container">
-                        <p>{currentScene.dialogue[dialoguePosition].message}</p>
-                    </DialogueMessageContainer>
-                    {
-                        currentScene.frames.map((frame) => {
-                            if (frame && frame.length > 0) {
-                                return frame.map((sprite) => {
-                                    return (
-                                        <div>
-                                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}}/>
-                                        </div>
-                                    )
-                                })
-                            }
-                        })
-                    }
-                    {
-                        currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
-                            <SpeakerContainer className="speaker-container">
-                                <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
-                            </SpeakerContainer>
-                    }
-                </DialogueBox>
-            </VisualNovelContainer> */}
+            <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
+            </DialogueBox>
         </div>
     );
 }

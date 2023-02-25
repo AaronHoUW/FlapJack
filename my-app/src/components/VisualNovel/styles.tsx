@@ -35,6 +35,14 @@ export const DialogueMessageContainer = styled.div`
     top: 80%;
     left: 45%;
     transform: translate(-50%, -50%);
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+
+    color: #000000;
 `;
 
 export const SpeakerContainer = styled.div`
