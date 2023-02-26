@@ -28,6 +28,7 @@ export const DialogueImg = styled.img`
     position: absolute;
     width: 80%;
     bottom: 30px;
+    z-index: 1;
 `;
 
 export const DialogueMessageContainer = styled.div`
@@ -35,6 +36,15 @@ export const DialogueMessageContainer = styled.div`
     top: 80%;
     left: 45%;
     transform: translate(-50%, -50%);
+    z-index: 2;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+
+    color: #000000;
 `;
 
 export const SpeakerContainer = styled.div`
@@ -42,6 +52,7 @@ export const SpeakerContainer = styled.div`
     top: calc(100% - 300px);
     left: 250px;
     text-decoration: underline;
+    z-index: 2;
 
     span {
         display: block;

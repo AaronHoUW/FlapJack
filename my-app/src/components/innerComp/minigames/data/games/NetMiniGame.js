@@ -3,7 +3,7 @@ import {
 	User,
 	Net,
 } from './NetMiniGame.tsx';
-import postGameDialouge from './postGameDialouge.json'
+import postGameDialouge from './postGameDialogue.json';
 import { useNavigate } from 'react-router-dom';
 import PancakeModal from './PancakeModal.png';
 

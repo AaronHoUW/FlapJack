@@ -81,7 +81,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": 55.099999999999994,
+        "x": 47.099999999999994,
         "y": -3.1999999999999993,
         "size": 50,
         "flipX": false
@@ -118,12 +118,12 @@ const LEVEL1 = {
   "sallyTalkingA": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutscene",
+    "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "55.6",
+        "x": "47.6",
         "y": "-3",
         "size": 50,
         "flipX": false
@@ -155,7 +155,7 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from",
+        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
         "type": "left"
       }
     ]
@@ -188,7 +188,7 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
-    "nextScene": "meetSally",
+    "nextScene": "sallyTalking",
     "baseFrame": [],
     "frames": [
       [
@@ -213,12 +213,12 @@ const LEVEL1 = {
   "sallyTalkingAContinued": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "testScene2",
+    "nextScene": "minigame",
     "baseFrame": [
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "54.6",
+        "x": "47.6",
         "y": "-1",
         "size": 50,
         "flipX": false
@@ -261,7 +261,7 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "net",
-    "nextScene": "sallytalkingacontinued",
+    "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
       [
@@ -286,7 +286,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallynetcutscene",
+    "nextScene": "sallyNetCutscene",
     "baseFrame": [
       {
         "type": "sprite",
