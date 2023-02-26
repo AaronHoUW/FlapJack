@@ -123,6 +123,7 @@ function VisualNovel() {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
         }
+
         let type = currentScene.dialogue[dialoguePosition].type;
         let image = '';
         if (type === 'nospeaker') {
