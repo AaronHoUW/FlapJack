@@ -15,6 +15,49 @@ export const VisualNovelContainer = styled.div<ContainerProps>`
     }
 `;
 
+export const ExitButton = styled.button`
+    position: absolute;
+    margin: 20px;
+    top: 0;
+    right: 0;
+    
+    padding: 12px 24px;
+    
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    background: #FFFFFF;
+    border-radius: 20px;
+    z-index: 1;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
+export const NextButton = styled.button`
+    position: absolute;
+    margin: 20px;
+    bottom: 0;
+    right: 0;
+    
+    padding: 12px 24px;
+    
+    border: none;
+    background: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
 export const DialogueBox = styled.div`
     display: flex;
     justify-content: center;
@@ -28,6 +71,7 @@ export const DialogueImg = styled.img`
     position: absolute;
     width: 80%;
     bottom: 30px;
+    left: 150px;
     z-index: 1;
 `;
 
@@ -62,5 +106,58 @@ export const SpeakerContainer = styled.div`
 
     p {
         white-space: pre-wrap;
+    }
+`;
+
+export const IntroContainer = styled.div`
+    background: url('/sprites/bg-sea.png');
+    height: 100vh;
+    overflow: hidden;
+`;
+
+export const IntroBox = styled.div`
+    box-sizing: border-box;
+    border: 10px solid black;
+    background-color: #F7EDE1;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 56px;
+    align-items: center;
+    gap: 40px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+        color: black;
+    }
+`;
+
+export const IntroText = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+`;
+
+export const IntroButton = styled.button`
+    padding: 16px 24px;
+    background: #134254;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    width: 298px;
+    height: 82px;
+    
+    h3 {
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 50px;
+        color: #FFFFFF;
     }
 `;

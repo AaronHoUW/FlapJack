@@ -6,6 +6,8 @@ import {
     DialogueImg,
     DialogueMessageContainer,
     SpeakerContainer,
+    ExitButton,
+    NextButton,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
@@ -169,8 +171,8 @@ function VisualNovel() {
     function buildVisuals() {
         return (
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
-                <button onClick={() => navigate('/play')} style={{color: 'black'}}>Finished!</button>
-                <button className='nextBtn' onClick={() => {
+                <ExitButton onClick={() => navigate('/')}>Exit</ExitButton>
+                <NextButton className='nextBtn' onClick={() => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
                         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
@@ -198,7 +200,7 @@ function VisualNovel() {
                     }
                 }}>
                     Next
-                </button>
+                </NextButton>
                 {buildDialogue()}
             </VisualNovelContainer>
         )
