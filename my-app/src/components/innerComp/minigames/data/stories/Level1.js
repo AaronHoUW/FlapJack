@@ -81,7 +81,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": 55.099999999999994,
+        "x": 47.099999999999994,
         "y": -3.1999999999999993,
         "size": 50,
         "flipX": false
@@ -123,7 +123,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "55.6",
+        "x": "47.6",
         "y": "-3",
         "size": 50,
         "flipX": false
@@ -218,7 +218,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "54.6",
+        "x": "47.6",
         "y": "-1",
         "size": 50,
         "flipX": false

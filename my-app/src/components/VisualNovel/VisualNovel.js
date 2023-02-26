@@ -8,16 +8,26 @@ import {
     SpeakerContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
+import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
 
 function VisualNovel() {
+    const  [loadGame, setLoadGame] = useState(false);
     let currentScene = LEVEL1['pancakeIntro'];
     let dialoguePosition = 0;
     const navigate = useNavigate();
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
+    if (loadGame) {
+        return <NetMinigame />
+    }
+
     function nextScene(scene) {
-        console.log(scene);
+        if (scene === undefined) {
+            console.log('Load Game');
+            setLoadGame(true);
+        }
+        
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
@@ -28,6 +38,16 @@ function VisualNovel() {
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
+        }
+
+        if (scene.dialogue[dialoguePosition].type === 'nospeaker') {
+            document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-nospeaker.png');
+        } else {
+            if (scene.dialogue[dialoguePosition].type === 'left') {
+                document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-left.png');
+            } else {
+                document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-right.png');
+            }
         }
     }
 
@@ -41,10 +61,23 @@ function VisualNovel() {
     function createBaseFrame(baseFrame) {
         if (baseFrame) {
             return baseFrame.map((base) => {
-                if (base) {
-                    return (
-                        <img src={`/sprites/sprite-${base.image}.png`} style={{width: `${base.size}%`, position: 'absolute', top: `${base.y}%`, left: `${base.x}%`}} className='sprite'/>
-                    );
+                if (base && baseFrame.length > 0) {
+                    baseFrame.forEach((sprite, i) => {
+                        const newSprite = document.createElement('img');
+
+                        newSprite.setAttribute('src' ,`/sprites/sprite-${base.image}.png`);
+                        newSprite.setAttribute('width', `${base.size}%`);
+                        newSprite.setAttribute('class', 'sprite');
+
+                        if (base.image === 'pancake-flapjack-octopus') {
+                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${base.x}%; top: ${base.y}%`);
+                        } else {
+                            newSprite.setAttribute('style', `position: absolute; left: ${base.x}%; top: ${base.y}%`);
+                        }
+
+                        let spriteContainer = document.getElementById('dialogue');
+                        spriteContainer.appendChild(newSprite);
+                    });
                 }
             });
         }
@@ -88,11 +121,19 @@ function VisualNovel() {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
         }
+        let type = currentScene.dialogue[dialoguePosition].type;
+        let image = '';
+        if (type === 'nospeaker') {
+            image = '/sprites/misc-textbubble-nospeaker.png';
+        } else if (type === 'left') {
+            image = '/sprites/misc-textbubble-left.png';
+        } else {
+            image = '/sprites/misc-textbubble-right.png';
+        }
 
-        console.log(currentScene.dialogue);
         return (
             <>
-                <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
+                <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox"/>
                 <DialogueMessageContainer className="message-container">
                     <p>{currentScene.dialogue[dialoguePosition].message}</p>
                 </DialogueMessageContainer>
