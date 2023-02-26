@@ -2,12 +2,13 @@ import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import About from './components/About';
 import Parents from './components/Parents';
 import Play from './components/Play/Play';
 import EditorPage from './components/EditorPage';
 import VisualNovel from './components/VisualNovel/VisualNovel';
+import Intro from './components/VisualNovel/Intro';
 
 function App() {
 
@@ -36,6 +37,12 @@ function App() {
 				<Route path='/play' element={
 					<>
 						<Play />
+						<NavLink className='exit-play' to='/'>Exit</NavLink>
+					</>
+				} />
+				<Route path='preface' element={
+					<>
+						<Intro />
 						<NavLink className='exit-play' to='/'>Exit</NavLink>
 					</>
 				} />
