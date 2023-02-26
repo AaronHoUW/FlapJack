@@ -8,28 +8,45 @@ import {
     SpeakerContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
+import NetMiniGame from '../innerComp/minigames/data/games/NetMiniGame';
 
 function VisualNovel() {
-    let currentScene = LEVEL1['pancakeIntro'];
+    const[loadGame, setLoadGame] = useState(false)
+    let currentScene = LEVEL1['pancakeIntro']; //It's hard reset into this, so we need to set props to call it
     let dialoguePosition = 0;
     const navigate = useNavigate();
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
+    // Load the minigame
+    if(loadGame) {
+        return <NetMiniGame /> //set currentScene based on given informations
+    }
+
     async function nextScene(scene) {
+        // Navigates to the play page at the end.
+        // This is just hard coded, but need to have a different 'if statement' for other levels/go to other levels
+        if(scene === undefined) {
+            console.log('Load Game')
+            setLoadGame(true);
+        }
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
-        console.log(scene);
 
         clearSprites();
-
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
 
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
+        }
+
+        if (scene.dialogue[dialoguePosition].type === 'nospeaker') {
+            document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-nospeaker.png')
+        } else {
+            document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble.png')
         }
     }
 
@@ -42,13 +59,18 @@ function VisualNovel() {
 
     function createBaseFrame(baseFrame) {
         if (baseFrame) {
+            // console.log(baseFrame, 'baseframe')
             return baseFrame.map((base) => {
-                if (base && base.length > 0) {
-                    return base.map((sprite) => {
-                        return (
-                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
-                        )
-                    })
+                if (base && baseFrame.length > 0) {
+                    baseFrame.forEach((sprite, i) => {
+                        const newSprite = document.createElement('img')
+                        newSprite.setAttribute('src' ,`/sprites/sprite-${base.image}.png`)
+                        newSprite.setAttribute('style', `position: absolute; left: ${base.x}%; top: ${base.y}%` )
+                        newSprite.setAttribute('width', `${base.size}%`)
+                        newSprite.setAttribute('className', 'sprite');
+                        let spriteContainer = document.getElementById('dialogue')
+                        spriteContainer.appendChild(newSprite)
+                    });
                 }
             });
         }
@@ -90,7 +112,7 @@ function VisualNovel() {
     function buildDialogue() {
         return (
             <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
-                <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox'/>
+                <DialogueImg src={currentScene.dialogue[dialoguePosition].type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" className='textBox' id="dialogueBox"/>
                 <DialogueMessageContainer className="message-container">
                     <p>{currentScene.dialogue[dialoguePosition].message}</p>
                 </DialogueMessageContainer>
