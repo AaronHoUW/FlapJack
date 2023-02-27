@@ -298,7 +298,6 @@ footer {
   line-height: 25px;
   display: flex;
 }
-
 .foot-title {
   height: 55%;
   flex-direction: column;
@@ -325,6 +324,7 @@ footer {
   margin-bottom: 2px;
 }
 
+<<<<<<< HEAD
 .parent-what-is-section {
   background-color: #1E7FA4;
   width: 100%;
@@ -482,3 +482,5 @@ z-index: 10;
   top: 513px;
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
+=======
+>>>>>>> 5c1e74f5c9adb3ecb6d0ee0c462a223b4f06ac6d
