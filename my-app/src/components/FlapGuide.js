@@ -5,7 +5,7 @@ import rectangle from "../imgs/excel.png";
 import bubble from "../imgs/bubbles.png";
 import pancake from "../imgs/flapjack-guide.png";
 import userPlaceholder from "../imgs/user.png";
-import fish from "../imgs/sally.png";
+import fish from "../imgs/sal.png";
 
 const App = () => {
   return (<>

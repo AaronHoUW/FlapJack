@@ -3,7 +3,6 @@ import {
 	Fish,
 	User,
 	Net,
- Flapjack,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import { useNavigate } from 'react-router-dom';
@@ -41,9 +40,6 @@ function Play() {
 		checkWithinRange();
 		// console.log(document.getElementById('net'))
 	};
-
-	// flapjack postion
-	const flapjackPlacement = { top: 20 + 'px', left: 80 + 'px' };
 
 
 	function randomPx() {
@@ -117,17 +113,6 @@ function Play() {
         <div className='play-area' onClick={() => user.current.focus()}>
 			<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 			{/* User */}
-						{/* Octopus */}
-						<Flapjack
-			style={flapjackPlacement}
-			ref={flapjack}
-			tabIndex={-1}
-			onKeyDown={handleKeyDown}
-			src={`/sprites/sprite-pancake-flapjack-octopus.png`}
-			id='flapjack guide'
-			className='img-size'
-			alt="Pancake the Flapjack"
-				/>
 				
             <User
 				style={userPlacement}
