@@ -1,5 +1,9 @@
 import * as React from "react";
-import Footer from "./Footer";
+import {
+    FooterContainer,
+    FooterText,
+    FooterCopyright,
+} from './Home/styles.tsx';
 import wendywhale from "../imgs/wendy.png";
 import profileborder from "../imgs/profile-border.png";
 
@@ -91,7 +95,14 @@ const About = () => {
                        
                 </div>
             </main>
-            <Footer />
+            <FooterContainer>
+                <FooterText>Marine Rescue: The Sea-quel</FooterText>
+                <FooterCopyright>
+                    <p>Copyright &copy; FlapJack</p>
+                    <img src='./imgs/mdi_github.png' alt='Github logo' />
+                </FooterCopyright>
+                <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
+            </FooterContainer>
         </>
     );
 };
