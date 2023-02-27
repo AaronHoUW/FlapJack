@@ -115,11 +115,6 @@ function Play() {
         <div className='play-area' onClick={() => user.current.focus()}>
 			<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 			{/* User */}
-<<<<<<< HEAD
-				
-=======
-
->>>>>>> 5c1e74f5c9adb3ecb6d0ee0c462a223b4f06ac6d
             <User
 				style={userPlacement}
 				ref={user}
@@ -170,8 +165,6 @@ function Play() {
 				alt="Sally the salmon"
 			/>
 
-<<<<<<< HEAD
-=======
 <Flapjack
 				style={userPlacement}
 				ref={Flapjack}
@@ -182,7 +175,6 @@ function Play() {
 				className='img-size'
 				alt="Pancake the flapjack"
 				/>
->>>>>>> 5c1e74f5c9adb3ecb6d0ee0c462a223b4f06ac6d
         </div>
     );
 }

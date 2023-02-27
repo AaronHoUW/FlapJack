@@ -18,11 +18,8 @@ export const Fish = styled.img<Props>`
 export const User = styled.img<Props>`
 `;
 
-<<<<<<< HEAD
-=======
 export const Flapjack = styled.img<Props>`
 `;
->>>>>>> 5c1e74f5c9adb3ecb6d0ee0c462a223b4f06ac6d
 
 export const Net = styled.img<Props>`
     position: relative;
