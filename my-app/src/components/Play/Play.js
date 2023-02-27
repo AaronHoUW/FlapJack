@@ -13,6 +13,9 @@ function Play() {
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
+	// Pancake Movement
+	// const [20, 80] = useState(20);
+	// const [80, 20] = useState(80);
 	// Nets
 	const [netPlacement, setNetPlacement] = useState({});
 	const [netPlacement2, setNetPlacement2] = useState({});
