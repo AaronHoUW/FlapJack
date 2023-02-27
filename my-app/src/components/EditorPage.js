@@ -21,6 +21,8 @@ const IMAGES = {
         'sc-earth-pod',
         'space-test',
         'net',
+        'north-america',
+        'washington-state',
     ],
     sprites: [
         'exclaim',
@@ -30,6 +32,7 @@ const IMAGES = {
         'seaweed',
         // Our sprites
         'sally-salmon',
+        'simon-salmon',
         'submarine',
         'user-placeholder',
         'wendy-whale',

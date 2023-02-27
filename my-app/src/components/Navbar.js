@@ -12,7 +12,7 @@ function Navbar() {
                     </NavLink>
                     </li>
                     <li style={{float: 'right', marginLeft: '40px', backgroundColor: '#134254', borderRadius: '20px', marginTop: '10px', marginRight: '16px'}}>
-                        <NavLink to='/play' style={{display: 'block', color: '#FFFFFF', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                        <NavLink to='/preface' style={{display: 'block', color: '#FFFFFF', textAlign: 'center', fontSize: '20px', padding: '14px 16px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
                             Play Now
                         </NavLink>
                     </li>

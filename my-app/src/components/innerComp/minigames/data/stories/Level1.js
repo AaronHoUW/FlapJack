@@ -9,7 +9,7 @@ const LEVEL1 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "pancakeMap",
+    "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
     "frames": [
       [
@@ -81,7 +81,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": 55.099999999999994,
+        "x": 47.099999999999994,
         "y": -3.1999999999999993,
         "size": 50,
         "flipX": false
@@ -106,24 +106,26 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
-        "type": "left"
+        "type": "left",
+        "keyword": "Chum Salmon",
       },
       {
         "speaker": "",
         "message": "I migrated to the ocean two years ago.",
-        "type": "left"
+        "type": "left",
+        "keyword": "migrated",
       }
     ]
   },
   "sallyTalkingA": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutscene",
+    "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "55.6",
+        "x": "47.6",
         "y": "-3",
         "size": 50,
         "flipX": false
@@ -146,7 +148,8 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "I swam up the Elwha river where I was born and laid eggs! It is called spawning.",
-        "type": "left"
+        "type": "left",
+        "keyword": "spawning",
       },
       {
         "speaker": "",
@@ -155,8 +158,59 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from",
-        "type": "left"
+        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
+        "type": "left",
+        "keyword": "spawning",
+      }
+    ]
+  },
+  "pancakeNorthAmerica": {
+    "type": "comic",
+    "background": "north-america",
+    "nextScene": "pancakeWashingtonState",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
+    ],
+    "frames": [
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "This is a map of North America. Right now, we are in the Pacific Ocean, which is west of the United States. We are in an area near Washington State.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "pancakeWashingtonState": {
+    "type": "comic",
+    "background": "washington-state",
+    "nextScene": "pancakeMap",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
+    ],
+    "frames": [
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "This is Washington state. The area circled in red is where we will be exploring and meeting new friends!",
+        "type": "nospeaker"
       }
     ]
   },
@@ -188,16 +242,16 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
-    "nextScene": "meetSally",
+    "nextScene": "sallyTalking",
     "baseFrame": [],
     "frames": [
       [
         {
           "type": "sprite",
           "image": "pancake-flapjack-octopus",
-          "x": "10",
-          "y": "55",
-          "size": "10",
+          "x": "5",
+          "y": "80",
+          "size": "010",
           "flipX": false
         }
       ]
@@ -213,12 +267,12 @@ const LEVEL1 = {
   "sallyTalkingAContinued": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "testScene2",
+    "nextScene": "minigame",
     "baseFrame": [
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "54.6",
+        "x": "47.6",
         "y": "-1",
         "size": 50,
         "flipX": false
@@ -262,7 +316,7 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "net",
-    "nextScene": "sallytalkingacontinued",
+    "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
       [
@@ -287,7 +341,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallynetcutscene",
+    "nextScene": "sallyNetCutscene",
     "baseFrame": [
       {
         "type": "sprite",
@@ -300,7 +354,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "55",
+        "x": "47.6",
         "y": "-3",
         "size": 50,
         "flipX": false
@@ -320,12 +374,14 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! Its called spawning.",
-        "type": "left"
+        "type": "left",
+        "keyword": "spawning",
       },
       {
         "speaker": "",
         "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
-        "type": "left"
+        "type": "left",
+        "keyword": "spawning",
       }
     ]
   },

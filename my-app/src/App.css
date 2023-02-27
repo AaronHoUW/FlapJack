@@ -1,6 +1,7 @@
 body {
   font-family: 'Mulish';
   height: inherit;
+  box-sizing: border-box;
   /* overflow: hidden; */
 }
 
@@ -96,6 +97,29 @@ footer {
 
 :focus {
   outline: none
+}
+
+.vn-decision {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 85px;
+  background-color: #2b312d;
+  flex-direction: column;
+}
+
+.choice-button {
+  flex: 1;
+  background-color: #E3E6E7;
+  border: none;
+  font-family: 'Balsamiq Sans';
+  font-weight: 700;
+  font-size: 20px;
+  padding: 16px;
+  border-radius: 32px;
+  margin: 8px;
 }
 
 .net-counter {
@@ -299,6 +323,69 @@ footer {
   background-position: center;
   background-size: cover;
   margin-bottom: 2px;
+}
+
+.parent-what-is-section {
+  background-color: #1E7FA4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: white;
+  font-family: Mulish, Arial;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 25px;
+  display: flex;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+}
+
+.what-content-height {
+  height: 371px;
+}
+
+.content-height {
+  height: 500px;
+}
+
+.parent-what-learn-section {
+  color: #000;
+  width: 100%;
+  height: 100%;
+  background-color: #85C9E3;
+  font-family: 'Mulish', Arial;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 60px;
+  display: flex;
+}
+
+.modal-title {
+  color: #134254;
+}
+
+.modal-content {
+  background-color: #F7EDE1;
+  border: 10px solid #000000;
+}
+
+.modal-buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: end;
+}
+
+.pancake-modal {
+  position: absolute;
+  top: 25%;
+  left: 27%;
+  /* right: 50%; */
+  /* margin-left: 25%;  */
 }
 
 

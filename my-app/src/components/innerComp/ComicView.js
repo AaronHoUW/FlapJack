@@ -120,8 +120,18 @@ class ComicView extends React.Component {
 
     // Render dialogue
     renderDialogue(dialogue) {
+        let type = dialogue.type;
+        let image = '';
+        if (type === 'nospeaker') {
+            image = '/sprites/misc-textbubble-nospeaker.png';
+        } else if (type === 'left') {
+            image = '/sprites/misc-textbubble-left.png';
+        } else {
+            image = '/sprites/misc-textbubble-right.png';
+        }
+        
         return (<div id="dialogue" className={`dialogue-${dialogue.type}`}>
-            <img src={dialogue.type === 'nospeaker' ? '/sprites/misc-textbubble-nospeaker.png' : '/sprites/misc-textbubble.png'} alt="Text bubble background" />
+            <img src={image} alt="Text bubble background" />
             <div className="message-container">
                 <p>{dialogue.message}</p>
             </div>
