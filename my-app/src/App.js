@@ -8,6 +8,7 @@ import Parents from './components/Parents';
 import Play from './components/Play/Play';
 import EditorPage from './components/EditorPage';
 import VisualNovel from './components/VisualNovel/VisualNovel';
+import Flapguide from './components/FlapGuide';
 
 function App() {
 
@@ -36,6 +37,12 @@ function App() {
 				<Route path='/play' element={
 					<>
 						<Play />
+						<NavLink className='exit-play' to='/'>Exit</NavLink>
+					</>
+				} />
+				<Route path='/flapguide' element={
+					<>
+						<Flapguide />
 						<NavLink className='exit-play' to='/'>Exit</NavLink>
 					</>
 				} />
