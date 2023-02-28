@@ -6,7 +6,8 @@ import {
 import postGameDialouge from './postGameDialogue.json';
 import { useNavigate } from 'react-router-dom';
 import PancakeModal from './PancakeModal.png';
-
+import continueButton from './ContinueButton.png';
+import locationButton from './LocationButton.png'
 
 function NetMiniGame(props) {
 	// Player Movement
@@ -23,12 +24,13 @@ function NetMiniGame(props) {
     const [level, setLevel] = useState(1)
 	const [page, setPage] = useState(1);
 
-    console.log(level);
-
-    if(netRemove === 3) {
-        document.getElementById("testing").click();
+	// 
+    if(netRemove === 3 && page === 1) {
+		// Load Modal
+        document.getElementById("load-modal-1").click();
     }
 
+	// Player Controls
     const handleKeyDown = event => {
 		if(event.key === 'ArrowRight') {
 			setXAxis(xAxis + 50)
@@ -96,32 +98,74 @@ function NetMiniGame(props) {
 		}
 	}
 
-	console.log(postGameDialouge);
+	const loadNextModal = () => {
+		setPage(2);
+		document.getElementById("load-modal-2").click();
+	}
 
+	const loadNextLevel = () => {
+		console.log(level, 'clicked')
+		console.log(level === 1);
+		// Load Beach Level
+		if(level === 1) {
+			console.log('switch to level 2')
+			// document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
+			setNetRemove(0);
+		}
+		setLevel(level + 1);
+	} 
+
+	// Note: When finished watching video, it closes with next video
     return (
         <>
-        <a id="testing" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
-		<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <a id="load-modal-1" data-bs-toggle="modal" data-bs-target="#modal-1-Backdrop" />
+		<div className="modal fade" id="modal-1-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			{/* Pancake Image */}
 			{/* <img src={PancakeModal} className='pancake-modal'/> */}
-			<div className="modal-dialog">
+			<div className="modal-dialog modal-dialog-centered">
 				<div className="modal-content">
-					<div className='container'>
+					<div className='container modal-container'>
 						<div className='row'>
-							<h1 className="modal-title fs-5" id="staticBackdropLabel">Great job removing the nets!</h1>
+							<h1 className="modal-title fs-5" id="staticBackdropLabel">{postGameDialouge[level]['page-1'].title}</h1>
 						</div>
 						<div className='row model-info'>
-							<p>Users</p>
+							<p className='modal-body'>{postGameDialouge[level]['page-1'].body}</p>
 						</div>
 						<div className='modal-buttons'>
-							<button type="button" className="btn btn-secondary me-1" data-bs-dismiss="modal">Close</button>
-							<button type="button" className="btn btn-primary">Understood</button>
+							<button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+								<img src={continueButton} className='modal-button-img'/>
+							</button>
 						</div>
 					</div>
 				</div>
 			</div>
         </div>
-        <div className='play-area' onClick={() => user.current.focus()}>
+		<a id="load-modal-2" data-bs-toggle="modal" data-bs-target="#modal-2-Backdrop" />
+		<div className="modal fade" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			{/* Pancake Image */}
+			{/* <img src={PancakeModal} className='pancake-modal'/> */}
+			<div className="modal-dialog modal-dialog-centered">
+				<div className="modal-content">
+					<div className='container modal-container'>
+						<div className='row'>
+							<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialouge[level]['page-2'].title}</h1>
+						</div>
+						<div className='row model-info modal-video-content'>
+							<iframe width="100%" height="100%" src={postGameDialouge[level]['page-2'].video} /> 
+							<p className='pt-1' >{postGameDialouge[level]['page-2'].body}</p>
+						</div>
+						
+						<div className='modal-buttons'>
+							<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal"> 
+								<img src={locationButton} className='modal-button-img'/>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 			<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 			{/* User */}
             <User
