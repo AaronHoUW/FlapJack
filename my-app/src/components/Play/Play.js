@@ -3,6 +3,7 @@ import {
 	Fish,
 	User,
 	Net,
+	Flapjack,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +13,9 @@ function Play() {
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
+	// Pancake Movement
+	// const [20, 80] = useState(20);
+	// const [80, 20] = useState(80);
 	// Nets
 	const [netPlacement, setNetPlacement] = useState({});
 	const [netPlacement2, setNetPlacement2] = useState({});
@@ -19,6 +23,7 @@ function Play() {
 	const [netRemove, setNetRemove] = useState(0);
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
+	const flapjackPlacement = { top: 20 + 'px', left: 80 + 'px'}
 	const navigate = useNavigate();
 
     const handleKeyDown = event => {
@@ -38,6 +43,7 @@ function Play() {
 		// console.log(document.getElementById('net'))
 	};
 
+
 	function randomPx() {
 		let px = Math.floor((Math.random() * 250) + 50);
 		return px;
@@ -45,6 +51,7 @@ function Play() {
 
 	const user = useRef(null);
 	const fish = useRef(null);
+	const flapjack = useRef(null);
 	// Hard Code
 	// const net = useRef(null);
 	// const net2 = useRef(null);
@@ -53,6 +60,7 @@ function Play() {
 	useEffect(() => {
 		user.current.focus();
 		fish.current.focus();
+		flapjack.current.focus();
 
 		// net.current.focus();
 		// net2.current.focus();
@@ -156,6 +164,17 @@ function Play() {
 				id='sally-salmon'
 				alt="Sally the salmon"
 			/>
+
+<Flapjack
+				style={userPlacement}
+				ref={Flapjack}
+				tabIndex={-1}
+				onKeyDown={handleKeyDown}
+				src={`/sprites/sprite-pancake-flapjack-octopus.png`}
+				id='playable'
+				className='img-size'
+				alt="Pancake the flapjack"
+				/>
         </div>
     );
 }
