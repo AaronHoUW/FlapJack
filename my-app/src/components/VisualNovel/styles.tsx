@@ -95,6 +95,8 @@ export const SpeakerContainer = styled.div`
     position: absolute;
     top: calc(100% - 300px);
     left: 250px;
+    font-family: 'Mulish';
+    font-size: 36px;
     text-decoration: underline;
     z-index: 2;
 

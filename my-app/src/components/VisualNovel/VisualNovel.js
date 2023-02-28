@@ -107,8 +107,13 @@ function VisualNovel(props) {
             return frames.map((frame) => {
                 if (frame && frame.length > 0) {
                     return frame.map((sprite) => {
+                        let flip = 1;
+                        if (sprite.flipX) {
+                            flip = -1;
+                        }
+                        
                         return (
-                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`}} className='sprite'/>
+                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
                         )
                     });
                 }
@@ -205,7 +210,12 @@ function VisualNovel(props) {
     function buildVisuals() {
         return (
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
-                <ExitButton onClick={() => navigate('/')}>Exit</ExitButton>
+                <ExitButton onClick={
+                    () => {
+                        setIsFlapGuide(false);
+                        navigate('/');
+                    }
+                }>Exit</ExitButton>
                 <NextButton className='nextBtn' onClick={() => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
