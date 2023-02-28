@@ -8,15 +8,32 @@ import {
     SpeakerContainer,
     ExitButton,
     NextButton,
+    TermContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
 
-function VisualNovel() {
+function VisualNovel(props) {
     const  [loadGame, setLoadGame] = useState(false);
+    const { isFlapGuide, setIsFlapGuide } = props;
     let currentScene = LEVEL1['pancakeIntro'];
+
+    useEffect(() => {
+        console.log(isFlapGuide);
+        if (isFlapGuide) {
+            clearSprites();
+            currentScene = LEVEL1['sallyTalking'];
+            buildDialogue();
+        } else {
+            currentScene = LEVEL1['pancakeIntro'];
+        }
+    }, [isFlapGuide]);
+
+    console.log(currentScene);
+
     let dialoguePosition = 0;
     const navigate = useNavigate();
+
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
@@ -118,11 +135,27 @@ function VisualNovel() {
     //       }, TALK_SPEED);
     // }
 
+    function buildTerm() {
+        return (
+            <TermContainer>
+
+            </TermContainer>
+        );
+    }
+
     function buildDialogue() {
         if (document.getElementById('dialogue')) {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
         }
+
+        // if (isFlapGuide) {
+        //     currentScene = LEVEL1['sallyTalking'];
+        // } else {
+        //     currentScene = LEVEL1['pancakeIntro'];
+        // }
+        console.log(currentScene.dialogue[dialoguePosition].message);
+        console.log(dialoguePosition);
 
         let type = currentScene.dialogue[dialoguePosition].type;
         let image = '';
@@ -138,7 +171,7 @@ function VisualNovel() {
             <>
                 <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox"/>
                 <DialogueMessageContainer className="message-container">
-                    <p>{currentScene.dialogue[dialoguePosition].message}</p>
+                    <p>{isFlapGuide ? 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.' : currentScene.dialogue[dialoguePosition].message}</p>
                 </DialogueMessageContainer>
                 {createBaseFrame(currentScene.baseFrame)}
                 {createImage(currentScene.frames)}
@@ -192,9 +225,12 @@ function VisualNovel() {
                                     nextScene(currentScene);
                                 });
                             });
+                        } else if (currentScene.nextScene === 'pancakeGuide') {
+                            navigate('/flapguide');
                         } else {
                             // Display the next scene
                             clearSprites();
+                            console.log(currentScene);
                             currentScene = LEVEL1[currentScene.nextScene];
                             nextScene(currentScene);
                         }

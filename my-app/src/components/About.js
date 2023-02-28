@@ -4,11 +4,8 @@ import {
     FooterText,
     FooterCopyright,
 } from './Home/styles.tsx';
-import wendywhale from "../imgs/wendy.png";
-import profileborder from "../imgs/profile-border.png";
-
-
 import "../index.css";
+
 const About = () => {
     return (
         <>
@@ -34,7 +31,7 @@ const About = () => {
                             classroom. Read more about our capstone project.
                         </span>
                     </div>
-                    <img className="wendywhale" src={wendywhale} />
+                    <img className="wendywhale" src='./sprites/sprite-wendy-whale.png' />
                 </div>
                 <div className="about-team cotainer">
                         <span className="flap-team mb-1">Our Team</span>
@@ -44,14 +41,14 @@ const About = () => {
                         </span>
                         <div className="profile-group row">
                             <div className="profile col text-center mt-4">
-                                <img className="picture-one" src={profileborder} />
+                                <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body">
                                     <h5 className="profile-name col-xs-12 col-md-12 mt-5">Aaron Ho</h5>
                                     <p className="profile-role col-xs-12 col-md-12 mt-4">Software Engineer</p>
                                 </div>
                             </div>
                             <div className="profile col text-center mt-4">
-                                <img className="picture-one" src={profileborder} />
+                                <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body text-center">
                                     <h5 className="profile-name col-xs-12 col-md-12 mt-5">Brian Ho</h5>
                                     <p className="profile-role col-xs-12 col-md-12 mt-4">User Researcher</p>
@@ -60,14 +57,14 @@ const About = () => {
                                 </div>
                             </div>
                             <div className="profile col text-center mt-4">
-                                <img className="picture-one" src={profileborder} />
+                                <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body">
                                     <h5 className="profile-name col-xs-12 col-md-12 mt-5">Delaney Edwards</h5>
                                     <p className="profile-role col-xs-12 col-md-12 mt-4 ">UX Designer</p>
                                 </div>
                                 </div>
                                 <div className="profile col text-center mt-4">
-                                    <img className="picture-one" src={profileborder} />
+                                    <img className="picture-one" src='./imgs/profile-border.png' />
                                     <div className="profile-body">
                                         <h5 className="profile-name col-xs-12 col-md-12 mt-5">Jun Nguyen</h5>
                                         <p className="profile-role col-xs-12 col-md-12 mt-4">Project Manager</p>

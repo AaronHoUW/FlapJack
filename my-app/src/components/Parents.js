@@ -1,6 +1,4 @@
 import React from 'react';
-import PlayerAndFlapjack from '../imgs/PlayerAndFlapJack.png';
-
 
 function Parents() {
     return (
@@ -17,7 +15,7 @@ function Parents() {
                         </p>
                     </div>
                     <div className='col'>
-                        <img className='center-image mt-3' src={PlayerAndFlapjack} alt="Player Character and Flapjack"></img>
+                        <img className='center-image mt-3' src='./imgs/player-and-pancake.png' alt="Player Character and Flapjack"></img>
                     </div>
                 </div>
                 <div className='row content-height mt-5'>

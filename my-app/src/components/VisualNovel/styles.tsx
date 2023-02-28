@@ -161,3 +161,13 @@ export const IntroButton = styled.button`
         color: #FFFFFF;
     }
 `;
+
+export const TermContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+
+    position: absolute;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
