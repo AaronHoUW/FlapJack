@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -8,10 +8,11 @@ import Parents from './components/Parents';
 import Play from './components/Play/Play';
 import EditorPage from './components/EditorPage';
 import VisualNovel from './components/VisualNovel/VisualNovel';
-import Flapguide from './components/FlapGuide';
+import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import Intro from './components/VisualNovel/Intro';
 
 function App() {
+	const [isFlapGuide, setIsFlapGuide] = useState(false);
 
   return (
     <div className='page-container'>
@@ -43,7 +44,7 @@ function App() {
 				} />
 				<Route path='/flapguide' element={
 					<>
-						<Flapguide />
+						<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 					</>
 				}/> 
 				<Route path='preface' element= {
@@ -54,7 +55,7 @@ function App() {
 				} />
 				<Route path='level1' element={
 					<>
-						<VisualNovel />
+						<VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 					</>
 				} />
 				<Route path='/storyteller/editor' element={<EditorPage />} />

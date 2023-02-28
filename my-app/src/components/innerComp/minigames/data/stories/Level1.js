@@ -242,7 +242,7 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
-    "nextScene": "sallyTalking",
+    "nextScene": "pancakeGuide",
     "baseFrame": [],
     "frames": [
       [
@@ -259,7 +259,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Lets go find a salmon to talk to! ",
+        "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
         "type": "nospeaker"
       }
     ]
@@ -341,7 +341,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutscene",
+    "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
         "type": "sprite",

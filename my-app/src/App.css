@@ -417,7 +417,7 @@ z-index: 10;
 }
 
 .image-3 {
-  background-image: url("./imgs/text.png");
+  background-image: url("../public/imgs/text.png");
   position: absolute;
   width: 694px;
   height: 159px;
