@@ -4,10 +4,10 @@ import {
 	Net,
 } from './NetMiniGame.tsx';
 import postGameDialouge from './postGameDialogue.json';
-import { useNavigate } from 'react-router-dom';
 import PancakeModal from './PancakeModal.png';
 import continueButton from './ContinueButton.png';
-import locationButton from './LocationButton.png'
+import locationButton from './LocationButton.png';
+import finishButton from './FinishButton.png'
 
 function NetMiniGame(props) {
 	// Player Movement
@@ -24,9 +24,8 @@ function NetMiniGame(props) {
     const [level, setLevel] = useState(1)
 	const [page, setPage] = useState(1);
 
-	// 
+	// Load Modal
     if(netRemove === 3 && page === 1) {
-		// Load Modal
         document.getElementById("load-modal-1").click();
     }
 
@@ -105,15 +104,33 @@ function NetMiniGame(props) {
 
 	const loadNextLevel = () => {
 		console.log(level, 'clicked')
-		console.log(level === 1);
 		// Load Beach Level
 		if(level === 1) {
 			console.log('switch to level 2')
-			// document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
-			setNetRemove(0);
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;	
+		} else if (level === 2) {
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-see-level.png)`;	
 		}
-		setLevel(level + 1);
+		if (level < 3) {
+			document.getElementById("play-area").click();
+			// Reset Level
+			setXAxis(60);
+			setYAxis(100)
+			setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
+			setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
+			setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
+			document.getElementById('net').classList.remove('hidden');
+			document.getElementById('net2').classList.remove('hidden');
+			document.getElementById('net3').classList.remove('hidden');
+			// Reset Values
+			setNetRemove(0);
+			checkWithinRange();
+			setLevel(level + 1);
+			setPage(1);
+		} else {
+			console.log('move to post game')
+			props.setIsGameComplete(true);
+		}
 	} 
 
 	// Note: When finished watching video, it closes with next video
@@ -158,7 +175,8 @@ function NetMiniGame(props) {
 						
 						<div className='modal-buttons'>
 							<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal"> 
-								<img src={locationButton} className='modal-button-img'/>
+								{(level < 3) && <img src={locationButton} className='modal-button-img'/>}
+								{(level === 3) && <img src={finishButton} className='modal-button-img'/>}
 							</button>
 						</div>
 					</div>

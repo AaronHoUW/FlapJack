@@ -16,20 +16,27 @@ import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
 function VisualNovel(props) {
     const  [loadGame, setLoadGame] = useState(false);
     const { isFlapGuide, setIsFlapGuide } = props;
+    const { isGameComplete, setIsGameComplete} = props;
     let currentScene = LEVEL1['pancakeIntro'];
 
+    console.log(currentScene, 'testing');
+
     useEffect(() => {
-        console.log(isFlapGuide);
-        if (isFlapGuide) {
+        console.log('inside useEffect')
+        console.log(isFlapGuide, isGameComplete);
+        if (isFlapGuide && !isGameComplete) {
             clearSprites();
             currentScene = LEVEL1['sallyTalking'];
+            buildDialogue();
+        } else if (isFlapGuide && isGameComplete) {
+            console.log('it passed, creating post game')
+            clearSprites();
+            currentScene = LEVEL1['postGame'];
             buildDialogue();
         } else {
             currentScene = LEVEL1['pancakeIntro'];
         }
-    }, [isFlapGuide]);
-
-    console.log(currentScene);
+    }, [isFlapGuide, isGameComplete]);
 
     let dialoguePosition = 0;
     const navigate = useNavigate();
@@ -37,9 +44,13 @@ function VisualNovel(props) {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
-    if (loadGame) {
-        return <NetMinigame />
+    if (loadGame && !isGameComplete) {
+        return <NetMinigame setIsGameComplete={props.setIsGameComplete} />
     }
+
+    // if(gameComplete) {
+    //     return <VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />;
+    // }
 
     function nextScene(scene) {
         if (scene === undefined) {
