@@ -13,7 +13,7 @@ const About = () => {
                 <div className="about-us">
                     <div className="info-section ">
                         <span className="the-goal">The Goal</span>
-                        <span className="marine-rescue col-xs-5 m-4">
+                        <span className="marine-rescue col-xs-5 m-3">
                             Marine Rescue is a platform for elementary students to learn about
                             debris&#39; impacts on marine wildlife. This is the second iteration
                             of Marine Rescue, built as the final product of our Informatics
@@ -75,7 +75,7 @@ const About = () => {
                         </div>
                     </div>
                 <div className="ack-section">
-                    <span className="last-section">Acknowledgements</span>
+                    <span className="last-section mb-3">Acknowledgements</span>
                     <span className="shout-out  m-1 mb-3">
                         Our team is grateful for the support from our mentors and peers at the
                         University of Washington’s Information School for their advice through

@@ -1,6 +1,6 @@
 import * as React from "react";
-import wendywhale from "../imgs/github.png";
-import profileborder from "../imgs/ischool-logo.png";
+import wendywhale from "./imgs/github.png";
+import profileborder from "./imgs/ischool-logo.png";
 const Footer = () => {
   return (
     <div className="foot-section border-top">
@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="foot-title">
         <span>Copyright FlapJack</span>
         <img className="'
-        " src={require( "../imgs/github.png")} />
+        " src={require( "./imgs/github.png")} />
       </div>
-      <img className="" src={require("../imgs/ischool-logo.png")} />
+      <img className="" src={require("./imgs/ischool-logo.png")} />
     </div>
   );
 };
