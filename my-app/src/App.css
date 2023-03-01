@@ -85,6 +85,7 @@ footer {
   background-image: url('../public/sprites/bg-sea.png');
   height: 100vh;
   overflow: hidden;
+  background-size: contain;
 }
 
 .play-area::-webkit-scrollbar {
@@ -366,6 +367,9 @@ footer {
 
 .modal-title {
   color: #134254;
+  font-weight: 400;
+  font-size: 30px !important; 
+  font-style: normal;
 }
 
 .modal-content {
@@ -497,3 +501,29 @@ z-index: 10;
     line-height: 60px;
     display: flex;
   }
+
+.modal-container {
+  padding-top: 16px;
+  padding-left: 17px;
+  padding-right: 17px;
+}
+
+.modal-body{
+  font-weight: 400;
+  font-size: 20px !important; 
+  font-style: normal;
+  padding-bottom: 0;
+}
+
+.modal-continue {
+  border: 0;
+}
+
+.modal-button-img {
+  max-height: 50px;
+}
+
+.modal-video-content {
+  margin-bottom: 50px;
+  height: 250px;
+}

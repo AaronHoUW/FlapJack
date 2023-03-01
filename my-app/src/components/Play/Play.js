@@ -40,7 +40,6 @@ function Play() {
 			setYAxis(yAxis - 50)
 		}
 		checkWithinRange();
-		// console.log(document.getElementById('net'))
 	};
 
 
