@@ -388,7 +388,7 @@ const LEVEL1 = {
   "postGame": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "testScene2",
+    "nextScene": "end",
     "baseFrame": [
       {
         "type": "sprite",

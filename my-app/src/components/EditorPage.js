@@ -279,8 +279,6 @@ class EditorPage extends React.Component {
                     const targetSpriteRect = event.target.getBoundingClientRect();
                     const [elementOriginX, elementOriginY] = this.posToPerc(targetSpriteRect.left, targetSpriteRect.top);
                     
-                    console.log(clickX, clickY);
-                    console.log(elementOriginX, elementOriginY);
 
                     this.setState({
                         targetSpriteMoveOffsetPxX: elementOriginX - clickX,
