@@ -13,6 +13,7 @@ import Intro from './components/VisualNovel/Intro';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
+	const [isGameComplete, setIsGameComplete] = useState(false);
 
   return (
     <div className='page-container'>
@@ -55,7 +56,7 @@ function App() {
 				} />
 				<Route path='level1' element={
 					<>
-						<VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
+						<VisualNovel isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 					</>
 				} />
 				<Route path='/storyteller/editor' element={<EditorPage />} />
