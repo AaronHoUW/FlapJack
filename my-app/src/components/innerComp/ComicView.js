@@ -48,7 +48,6 @@ class ComicView extends React.Component {
             'flip-x': !!element.flipX,
         };
         const id = !!element.id ? `assigned-${this.props.sceneName}-${element.id}` : null;
-        // console.log('sprite-' + id + idx)
         return (
             <>
                 <img

@@ -13,7 +13,7 @@
     "2" : {
         "page-1": {
             "title": "Great job removing the nets!",
-            "body" : "Those nets were dangerous to animals on the beach, such as Seagulls and crabs. Their feet or wings can get caught in the nets, making it difficult for fly or walk."
+            "body" : "Those nets were dangerous to animals on the beach, such as Seagulls and crabs. Their feet or wings can get caught in the nets, making it difficult to fly or walk."
         },
         "page-2": {
             "title": "Watch this video to see how you can help clean up trash in the ocean!",
@@ -29,7 +29,7 @@
         "page-2": {
             "title": "Watch this video to learn about how ghost nets are cleaned up!",
             "video" : "https://www.youtube.com/embed/xCKPsVi3vBo",
-            "body" : "Portecting our Oceans from Ghost Traps"
+            "body" : "Protecting our Oceans from Ghost Traps"
         }
     }
 }

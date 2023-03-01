@@ -10,6 +10,7 @@ import EditorPage from './components/EditorPage';
 import VisualNovel from './components/VisualNovel/VisualNovel';
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import Intro from './components/VisualNovel/Intro';
+import NetMiniGame from './components/innerComp/minigames/data/games/NetMiniGame';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -39,8 +40,7 @@ function App() {
 				} />
 				<Route path='/play' element={
 					<>
-						<Play />
-						<NavLink className='exit-play' to='/'>Exit</NavLink>
+						<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 					</>
 				} />
 				<Route path='/flapguide' element={
@@ -56,7 +56,7 @@ function App() {
 				} />
 				<Route path='level1' element={
 					<>
-						<VisualNovel isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
+						<VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 					</>
 				} />
 				<Route path='/storyteller/editor' element={<EditorPage />} />

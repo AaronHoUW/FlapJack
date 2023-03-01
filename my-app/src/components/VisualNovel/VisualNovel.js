@@ -15,21 +15,15 @@ import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
 
 function VisualNovel(props) {
     const  [loadGame, setLoadGame] = useState(false);
-    const { isFlapGuide, setIsFlapGuide } = props;
-    const { isGameComplete, setIsGameComplete} = props;
+    const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
     let currentScene = LEVEL1['pancakeIntro'];
 
-    console.log(currentScene, 'testing');
-
     useEffect(() => {
-        console.log('inside useEffect')
-        console.log(isFlapGuide, isGameComplete);
         if (isFlapGuide && !isGameComplete) {
             clearSprites();
             currentScene = LEVEL1['sallyTalking'];
             buildDialogue();
-        } else if (isFlapGuide && isGameComplete) {
-            console.log('it passed, creating post game')
+        } else if (isGameComplete) {
             clearSprites();
             currentScene = LEVEL1['postGame'];
             buildDialogue();
@@ -44,17 +38,8 @@ function VisualNovel(props) {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
-    if (loadGame && !isGameComplete) {
-        return <NetMinigame setIsGameComplete={props.setIsGameComplete} />
-    }
-
-    // if(gameComplete) {
-    //     return <VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />;
-    // }
-
     function nextScene(scene) {
         if (scene === undefined) {
-            console.log('Load Game');
             setLoadGame(true);
         }
         
@@ -124,7 +109,7 @@ function VisualNovel(props) {
                         }
                         
                         return (
-                            <img src={`/sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
+                            <img src={`./sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
                         )
                     });
                 }
@@ -165,14 +150,6 @@ function VisualNovel(props) {
             document.getElementById('dialogue').classList.remove('vn-decision');
         }
 
-        // if (isFlapGuide) {
-        //     currentScene = LEVEL1['sallyTalking'];
-        // } else {
-        //     currentScene = LEVEL1['pancakeIntro'];
-        // }
-        console.log(currentScene.dialogue[dialoguePosition].message);
-        console.log(dialoguePosition);
-
         let type = currentScene.dialogue[dialoguePosition].type;
         let image = '';
         if (type === 'nospeaker') {
@@ -183,11 +160,18 @@ function VisualNovel(props) {
             image = '/sprites/misc-textbubble-right.png';
         }
 
+        let message = currentScene.dialogue[dialoguePosition].message;
+        if (isFlapGuide && !isGameComplete) {
+            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.'
+        } else if (isGameComplete) {
+            message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
+        }
+
         return (
             <>
                 <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox"/>
                 <DialogueMessageContainer className="message-container">
-                    <p>{isFlapGuide ? 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.' : currentScene.dialogue[dialoguePosition].message}</p>
+                    <p>{message}</p>
                 </DialogueMessageContainer>
                 {createBaseFrame(currentScene.baseFrame)}
                 {createImage(currentScene.frames)}
@@ -224,6 +208,7 @@ function VisualNovel(props) {
                 <ExitButton onClick={
                     () => {
                         setIsFlapGuide(false);
+                        setIsGameComplete(false);
                         navigate('/');
                     }
                 }>Exit</ExitButton>
@@ -248,10 +233,13 @@ function VisualNovel(props) {
                             });
                         } else if (currentScene.nextScene === 'pancakeGuide') {
                             navigate('/flapguide');
+                        } else if (currentScene.nextScene === 'minigame') {
+                            navigate('/play');
+                        } else if (currentScene.nextScene === 'end') {
+                            navigate('/');
                         } else {
                             // Display the next scene
                             clearSprites();
-                            console.log(currentScene);
                             currentScene = LEVEL1[currentScene.nextScene];
                             nextScene(currentScene);
                         }
