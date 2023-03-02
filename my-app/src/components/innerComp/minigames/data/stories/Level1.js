@@ -235,7 +235,8 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "Right now we’re in the Elwha estuary, which is connected to the Elwha river in the Olympic National Park. ",
-        "type": "nospeaker"
+        "type": "nospeaker",
+        "keyword": "Elwha",
       }
     ]
   },

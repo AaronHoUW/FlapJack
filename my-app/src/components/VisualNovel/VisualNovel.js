@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     VisualNovelContainer,
@@ -11,10 +11,10 @@ import {
     TermContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
-import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
+import TERMS from './Terms';
 
 function VisualNovel(props) {
-    const  [loadGame, setLoadGame] = useState(false);
+    const [loadGame, setLoadGame] = useState(false);
     const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
     let currentScene = LEVEL1['pancakeIntro'];
 
@@ -42,7 +42,7 @@ function VisualNovel(props) {
         if (scene === undefined) {
             setLoadGame(true);
         }
-        
+
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
@@ -68,7 +68,7 @@ function VisualNovel(props) {
 
     function clearSprites() {
         let sprites = document.getElementsByClassName('sprite');
-        while(sprites[0]) {
+        while (sprites[0]) {
             sprites[0].parentNode.removeChild(sprites[0]);
         };
     }
@@ -80,7 +80,7 @@ function VisualNovel(props) {
                     baseFrame.forEach((sprite, i) => {
                         const newSprite = document.createElement('img');
 
-                        newSprite.setAttribute('src' ,`/sprites/sprite-${base.image}.png`);
+                        newSprite.setAttribute('src', `/sprites/sprite-${base.image}.png`);
                         newSprite.setAttribute('width', `${base.size}%`);
                         newSprite.setAttribute('class', 'sprite');
 
@@ -107,9 +107,9 @@ function VisualNovel(props) {
                         if (sprite.flipX) {
                             flip = -1;
                         }
-                        
+
                         return (
-                            <img src={`./sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
+                            <img src={`./sprites/sprite-${sprite.image}.png`} style={{ width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})` }} className='sprite' />
                         )
                     });
                 }
@@ -136,10 +136,36 @@ function VisualNovel(props) {
     //       }, TALK_SPEED);
     // }
 
-    function buildTerm() {
+    function buildTerm(keyword) {
+        let dialogue = document.querySelector('.message-container p');
+        let message = currentScene.dialogue[dialoguePosition].message;
+        dialogue.innerHTML = message.replace(keyword, 
+            `<div class="popup">
+                ${keyword}
+                <div class="keyword">
+                    <div>
+                        <h4>${keyword}</h4>
+                        <img src='./imgs/audio.png' alt='Audio symbol' />
+                    </div>
+                    <p>${TERMS[keyword]}</p>
+                </div>
+            </div>`
+        );
+
+        document.querySelectorAll('.popup').forEach((button) => {
+            button.addEventListener('click', (e) => {
+                let popup = document.querySelector('.keyword');
+                popup.classList.add('show');
+                buildTermDefinition(e.target.innerHTML);
+            });
+        });
+    }
+
+    function buildTermDefinition(keyword) {
         return (
             <TermContainer>
-
+                <h4>{keyword}</h4>
+                <p>{TERMS[keyword]}</p>
             </TermContainer>
         );
     }
@@ -162,14 +188,19 @@ function VisualNovel(props) {
 
         let message = currentScene.dialogue[dialoguePosition].message;
         if (isFlapGuide && !isGameComplete) {
-            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.'
+            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         }
 
+        if (currentScene.dialogue[dialoguePosition].keyword) {
+            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+            console.log('has keyword');
+        }
+
         return (
             <>
-                <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox"/>
+                <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox" />
                 <DialogueMessageContainer className="message-container">
                     <p>{message}</p>
                 </DialogueMessageContainer>
@@ -177,9 +208,9 @@ function VisualNovel(props) {
                 {createImage(currentScene.frames)}
                 {
                     currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
-                        <SpeakerContainer className="speaker-container">
-                            <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
-                        </SpeakerContainer>
+                    <SpeakerContainer className="speaker-container">
+                        <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
+                    </SpeakerContainer>
                 }
             </>
         );
@@ -214,6 +245,11 @@ function VisualNovel(props) {
                 }>Exit</ExitButton>
                 <NextButton className='nextBtn' onClick={() => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
+                        if (currentScene.dialogue[dialoguePosition].keyword) {
+                            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                            console.log('has keyword');
+                        }
+
                         dialoguePosition++;
                         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
                             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;

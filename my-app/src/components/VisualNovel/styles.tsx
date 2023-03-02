@@ -168,7 +168,7 @@ export const IntroButton = styled.button`
 `;
 
 export const TermContainer = styled.div`
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     padding: 10px;
