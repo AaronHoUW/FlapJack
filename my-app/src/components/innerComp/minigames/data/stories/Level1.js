@@ -261,7 +261,8 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
-        "type": "nospeaker"
+        "type": "nospeaker",
+        "keyword": "dam",
       }
     ]
   },
@@ -374,7 +375,7 @@ const LEVEL1 = {
       },
       {
         "speaker": "",
-        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! Its called spawning.",
+        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! It's called spawning.",
         "type": "left",
         "keyword": "spawning",
       },

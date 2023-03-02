@@ -38,6 +38,10 @@ function VisualNovel(props) {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     function nextScene(scene) {
         if (scene === undefined) {
             setLoadGame(true);
@@ -63,6 +67,11 @@ function VisualNovel(props) {
             } else {
                 document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-right.png');
             }
+        }
+
+        if (scene.dialogue[dialoguePosition].keyword) {
+            buildTerm(scene.dialogue[dialoguePosition].keyword);
+            console.log('has keyword');
         }
     }
 
@@ -144,7 +153,7 @@ function VisualNovel(props) {
                 ${keyword}
                 <div class="keyword">
                     <div>
-                        <h4>${keyword}</h4>
+                        <h4>${capitalizeFirstLetter(keyword)}</h4>
                         <img src='./imgs/audio.png' alt='Audio symbol' />
                     </div>
                     <p>${TERMS[keyword]}</p>
@@ -156,7 +165,7 @@ function VisualNovel(props) {
             button.addEventListener('click', (e) => {
                 let popup = document.querySelector('.keyword');
                 popup.classList.add('show');
-                buildTermDefinition(e.target.innerHTML);
+                buildTermDefinition(keyword);
             });
         });
     }
