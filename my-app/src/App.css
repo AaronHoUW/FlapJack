@@ -100,27 +100,24 @@ footer {
   outline: none
 }
 
-.vn-decision {
+.fill-content > div > #dialogue > .vn-decision {
   display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   padding: 40px 85px;
-  background-color: #2b312d;
   flex-direction: column;
+  width: 30%;
+  height: 40%;
+  position: absolute;
+  bottom: 40%;
+  background: none;
 }
 
-.choice-button {
-  flex: 1;
+.fill-content > div > #dialogue > .vn-decision > .choiceButton {
   background-color: #E3E6E7;
   border: none;
-  font-family: 'Balsamiq Sans';
-  font-weight: 700;
   font-size: 20px;
   padding: 16px;
-  border-radius: 32px;
-  margin: 8px;
+  border-radius: 8px;
+  margin: 10px;
 }
 
 .net-counter {
@@ -545,7 +542,7 @@ z-index: 10;
   color: black;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 8px;
   position: absolute;
   z-index: 1;
   bottom: 125%;

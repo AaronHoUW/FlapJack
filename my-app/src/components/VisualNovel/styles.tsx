@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
     backgroundImage: string,
@@ -6,10 +6,11 @@ interface ContainerProps {
 
 export const VisualNovelContainer = styled.div<ContainerProps>`
     height: 100vh;
-    background-size: cover;
+    background-size: contain;
     overflow: hidden;
     background-image: ${(props) => props.backgroundImage};
-    
+    background-size: cover;
+
     .dialogue-left .textBox {
         transform: scaleX(-1);
     }
