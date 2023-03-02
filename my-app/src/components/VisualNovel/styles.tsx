@@ -9,6 +9,7 @@ export const VisualNovelContainer = styled.div<ContainerProps>`
     background-size: contain;
     overflow: hidden;
     background-image: ${(props) => props.backgroundImage};
+    background-size: cover;
 
     .dialogue-left .textBox {
         transform: scaleX(-1);
