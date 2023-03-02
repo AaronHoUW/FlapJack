@@ -111,6 +111,7 @@ function VisualNovel(props) {
     function createImage(frames) {
         if (frames) {
             return frames.map((frame) => {
+                console.log(frame);
                 if (frame && frame.length > 0) {
                     return frame.map((sprite) => {
                         return (

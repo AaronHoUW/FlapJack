@@ -458,6 +458,37 @@ const LEVEL1 = {
   "postGame": {
     "type": "comic",
     "background": "sea",
+    "nextScene": "postGame2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "sally-salmon",
+        "x": "15",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
+        "type": "left"
+      }
+    ]
+  },
+  "postGame2": {
+    "type": "comic",
+    "background": "sea",
     "nextScene": "end",
     "baseFrame": [
       {
@@ -467,36 +498,18 @@ const LEVEL1 = {
         "y": 0,
         "size": 50,
         "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "20",
+        "y": "40",
+        "size": "10",
+        "flipX": false
       }
     ],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "sally-salmon",
-          "x": "15",
-          "y": "40",
-          "size": "15",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "20",
-          "y": "40",
-          "size": "10",
-          "flipX": false
-        }
-      ]
-    ],
+    "frames": [],
     "dialogue": [
-      {
-        "speaker": "",
-        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
-        "type": "left"
-      },
       {
         "speaker": "",
         "message": "Great job today! You really helped make the ocean more safe for the animals living here.",
