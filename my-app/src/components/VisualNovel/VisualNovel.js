@@ -101,13 +101,13 @@ function VisualNovel(props) {
     function createImage(frames) {
         if (frames) {
             return frames.map((frame) => {
+                console.log(frame);
                 if (frame && frame.length > 0) {
                     return frame.map((sprite) => {
                         let flip = 1;
                         if (sprite.flipX) {
                             flip = -1;
                         }
-                        
                         return (
                             <img src={`./sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
                         )
