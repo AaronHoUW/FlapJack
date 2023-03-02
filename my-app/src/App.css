@@ -100,27 +100,24 @@ footer {
   outline: none
 }
 
-.vn-decision {
+.fill-content > div > #dialogue > .vn-decision {
   display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   padding: 40px 85px;
-  background-color: #2b312d;
   flex-direction: column;
+  width: 30%;
+  height: 40%;
+  position: absolute;
+  bottom: 40%;
+  background: none;
 }
 
-.choice-button {
-  flex: 1;
+.fill-content > div > #dialogue > .vn-decision > .choiceButton {
   background-color: #E3E6E7;
   border: none;
-  font-family: 'Balsamiq Sans';
-  font-weight: 700;
   font-size: 20px;
   padding: 16px;
-  border-radius: 32px;
-  margin: 8px;
+  border-radius: 8px;
+  margin: 10px;
 }
 
 .net-counter {
@@ -526,4 +523,87 @@ z-index: 10;
 .modal-video-content {
   margin-bottom: 50px;
   height: 250px;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: underline;
+}
+
+.keyword {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  width: 400px;
+  left: 0;
+  margin-left: -90px;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.keyword div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.keyword h4 {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+}
+
+.keyword p {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.popup .keyword::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  text-decoration: none;
+}
+
+.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
