@@ -3,7 +3,7 @@ const TERMS = {
     'Elwha': '',
     'Estuary': '',
     'Dam': '',
-    'Migrated': 'Migrate means to move from one habitat to another according to the seasons.',
+    'migrated': 'Migrate means to move from one habitat to another according to the seasons.',
     'Spawn': 'Spawn means to lay eggs.',
     'spawning': 'Spawn means to lay eggs.',
 }
