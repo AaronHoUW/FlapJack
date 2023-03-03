@@ -29,6 +29,12 @@ function NetMiniGame(props) {
 
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		if(level === 1) {
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-mid-sea.png)`;
+		}
+	})
+
 	// Load Modal
 	if (netRemove === 3 && page === 1) {
 		document.getElementById("load-modal-1").click();
