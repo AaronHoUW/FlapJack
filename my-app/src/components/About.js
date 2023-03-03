@@ -4,15 +4,14 @@ import {
     FooterText,
     FooterCopyright,
 } from './Home/styles.tsx';
-import "../index.css";
 
 const About = () => {
     return (
         <>
             <main>
-                <div className="about-us">
-                    <div className="info-section">
-                        <span className="the-goal m-1 mb-4">The Goal</span>
+                <div className="about-us row">
+                    <div className="info-section col">
+                    <span className="the-goal m-1 mb-4">The Goal</span>
                         <span className="marine-rescue m-1 mb-4">
                             Marine Rescue is a platform for elementary students to learn about
                             debris&#39; impacts on marine wildlife. This is the second iteration
@@ -29,9 +28,11 @@ const About = () => {
                             Marine Rescue to make as an accessible and hands-on learning
                             experience for students to learn marine science outside of the
                             classroom. Read more about our capstone project.
-                        </span>
+                        </span>            
                     </div>
-                    <img className="wendywhale" src='./sprites/sprite-wendy-whale.png' />
+                    <div className="col">
+                        <img className=" wendywhale center-image" src='./sprites/sprite-wendy-whale.png' />
+                        </div>
                 </div>
                 <div className="about-team cotainer">
                         <span className="flap-team">Our Team</span>
@@ -43,14 +44,14 @@ const About = () => {
                             <div className="profile col text-center">
                                 <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body">
-                                    <h5 className="profile-name">Aaron Ho</h5>
+                                    <h5 className="profile-name m-4">Aaron Ho</h5>
                                     <p className="profile-role ">Software Engineer</p>
                                 </div>
                             </div>
                             <div className="profile col text-center">
                                 <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body text-center">
-                                    <h5 className="profile-name">Brian Ho</h5>
+                                    <h5 className="profile-name m-4">Brian Ho</h5>
                                     <p className="profile-role">User Researcher</p>
                                         <p className="profile-center"> &amp; </p>
                                         <p className="profile-role  m-1 mb-5">Software Engineer</p>
@@ -59,14 +60,14 @@ const About = () => {
                             <div className="profile col text-center">
                                 <img className="picture-one" src='./imgs/profile-border.png' />
                                 <div className="profile-body">
-                                    <h5 className="profile-name">Delaney Edwards</h5>
+                                    <h5 className="profile-name m-4">Delaney Edwards</h5>
                                     <p className="profile-role">UX Designer</p>
                                 </div>
                                 </div>
                                 <div className="profile col text-center">
                                     <img className="picture-one" src='./imgs/profile-border.png' />
                                     <div className="profile-body">
-                                        <h5 className="profile-name">Jun Nguyen</h5>
+                                        <h5 className="profile-name m-4">Jun Nguyen</h5>
                                         <p className="profile-role">Project Manager</p>
                                         <p className="profile-center"> &amp; </p>
                                         <p className="profile-role">Software Engineer</p>

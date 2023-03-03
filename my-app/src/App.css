@@ -174,7 +174,6 @@ footer {
 
 .marine-rescue {
   font-size: 1.25rem;
-  width: 40%;
 font-family: 'Mulish';
 font-style: normal;
 font-weight: 400;
@@ -187,14 +186,12 @@ align-self: stretch;
 flex-grow: 0;
 }
 
-.wendy-whale {
+.wendywhale {
   width: 350px;
-  height: 162px;
   object-fit: cover;
-  background-position: center;
-  background-size: cover;
   margin-bottom: 4px;
   margin-left: 23px;
+  flex-direction: row;
 }
 
 .about-team {
@@ -554,3 +551,8 @@ z-index: 10;
   margin-bottom: 50px;
   height: 250px;
 }
+
+.mission {
+  width: 100%;
+}
+

@@ -187,7 +187,7 @@ export const FooterContainer = styled.div`
     align-items: center;
     padding: 20px 40px;
     gap: 15px;
-
+    border-top: 1px solid white;
     width: 100%;
     height: 15vh;
     background: #1E7FA4;
