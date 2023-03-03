@@ -52,7 +52,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "Hello there! I’m Pancake the Flapjack Octopus. \nPress the arrow in the bottom right to keep going!",
+        "message": "Hello there! I’m Pancake the Flapjack Octopus. \nPress the Next button in the bottom right to keep going!",
         "type": "left"
       },
       {
