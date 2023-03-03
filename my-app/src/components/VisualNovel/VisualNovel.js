@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     VisualNovelContainer,
@@ -11,10 +11,10 @@ import {
     TermContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
-import NetMinigame from '../innerComp/minigames/data/games/NetMiniGame';
+import TERMS from './Terms';
 
 function VisualNovel(props) {
-    const  [loadGame, setLoadGame] = useState(false);
+    const [loadGame, setLoadGame] = useState(false);
     const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
     let currentScene = LEVEL1['pancakeIntro'];
 
@@ -30,6 +30,7 @@ function VisualNovel(props) {
         } else {
             currentScene = LEVEL1['pancakeIntro'];
         }
+        document.getElementsByClassName('.nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
 
     let dialoguePosition = 0;
@@ -38,11 +39,15 @@ function VisualNovel(props) {
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     function nextScene(scene) {
         if (scene === undefined) {
             setLoadGame(true);
         }
-        
+
         if (scene.background) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
@@ -64,11 +69,16 @@ function VisualNovel(props) {
                 document.getElementById('dialogueBox').setAttribute('src', '/sprites/misc-textbubble-right.png');
             }
         }
+
+        if (scene.dialogue[dialoguePosition].keyword) {
+            buildTerm(scene.dialogue[dialoguePosition].keyword);
+            console.log('has keyword');
+        }
     }
 
     function clearSprites() {
         let sprites = document.getElementsByClassName('sprite');
-        while(sprites[0]) {
+        while (sprites[0]) {
             sprites[0].parentNode.removeChild(sprites[0]);
         };
     }
@@ -80,14 +90,14 @@ function VisualNovel(props) {
                     baseFrame.forEach((sprite, i) => {
                         const newSprite = document.createElement('img');
 
-                        newSprite.setAttribute('src' ,`/sprites/sprite-${base.image}.png`);
+                        newSprite.setAttribute('src', `/sprites/sprite-${base.image}.png`);
                         newSprite.setAttribute('width', `${base.size}%`);
                         newSprite.setAttribute('class', 'sprite');
 
                         if (base.image === 'pancake-flapjack-octopus') {
-                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${base.x}%; top: ${base.y}%`);
+                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${base.x}%; top: ${base.y}%; transform: scaleX(${base.flipX ? -1 : 1});`);
                         } else {
-                            newSprite.setAttribute('style', `position: absolute; left: ${base.x}%; top: ${base.y}%`);
+                            newSprite.setAttribute('style', `position: absolute; left: ${base.x}%; top: ${base.y}%; transform: scaleX(${base.flipX ? -1 : 1});`);
                         }
 
                         let spriteContainer = document.getElementById('dialogue');
@@ -101,15 +111,22 @@ function VisualNovel(props) {
     function createImage(frames) {
         if (frames) {
             return frames.map((frame) => {
+                console.log(frame);
                 if (frame && frame.length > 0) {
                     return frame.map((sprite) => {
-                        let flip = 1;
-                        if (sprite.flipX) {
-                            flip = -1;
-                        }
-                        
                         return (
-                            <img src={`./sprites/sprite-${sprite.image}.png`} style={{width: `${sprite.size}%`, position: 'absolute', top: `${sprite.y}%`, left: `${sprite.x}%`, transform: `scaleX(${flip})`}} className='sprite'/>
+                            <img
+                                src={`./sprites/sprite-${sprite.image}.png`}
+                                style={{
+                                    width: `${sprite.size}%`,
+                                    position: 'absolute',
+                                    top: `${sprite.y}%`,
+                                    left: `${sprite.x}%`,
+                                    transform: `scaleX(${sprite.flipX ? -1 : 1}` ,
+                                    maxHeight: '100vh'
+                                }}
+                                className='sprite'
+                            />
                         )
                     });
                 }
@@ -136,10 +153,36 @@ function VisualNovel(props) {
     //       }, TALK_SPEED);
     // }
 
-    function buildTerm() {
+    function buildTerm(keyword) {
+        let dialogue = document.querySelector('.message-container p');
+        let message = currentScene.dialogue[dialoguePosition].message;
+        dialogue.innerHTML = message.replace(keyword,
+            `<div class="popup">
+                ${keyword}
+                <div class="keyword">
+                    <div>
+                        <h4>${capitalizeFirstLetter(keyword)}</h4>
+                        <img src='./imgs/audio.png' alt='Audio symbol' />
+                    </div>
+                    <p>${TERMS[keyword]}</p>
+                </div>
+            </div>`
+        );
+
+        document.querySelectorAll('.popup').forEach((button) => {
+            button.addEventListener('click', (e) => {
+                let popup = document.querySelector('.keyword');
+                popup.classList.add('show');
+                buildTermDefinition(keyword);
+            });
+        });
+    }
+
+    function buildTermDefinition(keyword) {
         return (
             <TermContainer>
-
+                <h4>{keyword}</h4>
+                <p>{TERMS[keyword]}</p>
             </TermContainer>
         );
     }
@@ -162,14 +205,19 @@ function VisualNovel(props) {
 
         let message = currentScene.dialogue[dialoguePosition].message;
         if (isFlapGuide && !isGameComplete) {
-            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.'
+            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         }
 
+        if (currentScene.dialogue[dialoguePosition].keyword) {
+            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+            console.log('has keyword');
+        }
+
         return (
             <>
-                <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox"/>
+                <DialogueImg src={image} alt="Text bubble background" className='textBox' id="dialogueBox" />
                 <DialogueMessageContainer className="message-container">
                     <p>{message}</p>
                 </DialogueMessageContainer>
@@ -177,9 +225,9 @@ function VisualNovel(props) {
                 {createImage(currentScene.frames)}
                 {
                     currentScene.dialogue[dialoguePosition].speaker.length > 0 &&
-                        <SpeakerContainer className="speaker-container">
-                            <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
-                        </SpeakerContainer>
+                    <SpeakerContainer className="speaker-container">
+                        <span>{currentScene.dialogue[dialoguePosition].speaker}</span>
+                    </SpeakerContainer>
                 }
             </>
         );
@@ -187,19 +235,18 @@ function VisualNovel(props) {
 
     function buildChoice(nextScene) {
         let dialogue = document.getElementById('dialogue');
-        dialogue.innerHTML = '';
+        let newDiv = document.createElement('div');
 
-        let buttons = Object.keys(nextScene).map((choice) => {
-            return (
-                `
-                    <button class='choiceButton' key=${nextScene[choice]}>
-                        ${choice}
-                    </button>
-                `
-            );
-        }).join('');
-        dialogue.classList.add('vn-decision');
-        dialogue.innerHTML = buttons;
+        Object.keys(nextScene).forEach((choice) => {
+            const newButton = document.createElement('button');
+            newButton.classList.add('choiceButton');
+            newButton.setAttribute('key', nextScene[choice]);
+            newButton.textContent = choice;
+            newDiv.appendChild(newButton);
+        });
+
+        newDiv.classList.add('vn-decision');
+        dialogue.appendChild(newDiv);
     }
 
     function buildVisuals() {
@@ -212,9 +259,12 @@ function VisualNovel(props) {
                         navigate('/');
                     }
                 }>Exit</ExitButton>
-                <NextButton className='nextBtn' onClick={() => {
+                <NextButton className='nextBtn' onClick={(nextEvent) => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
+                        if (currentScene.dialogue[dialoguePosition].keyword) {
+                            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                        }
                         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
                             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
                         }
@@ -222,10 +272,12 @@ function VisualNovel(props) {
                     } else {
                         dialoguePosition = 0;
                         if (typeof currentScene.nextScene === 'object') {
+                            nextEvent.target.disabled = true;
                             // Display the choice scene
                             buildChoice(currentScene.nextScene);
                             document.querySelectorAll('.choiceButton').forEach((button) => {
                                 button.addEventListener('click', (e) => {
+                                    nextEvent.target.disabled = false;
                                     currentScene = LEVEL1[e.target.getAttribute('key')];
                                     buildDialogue();
                                     nextScene(currentScene);

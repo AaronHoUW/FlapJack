@@ -16,8 +16,8 @@ const LEVEL1 = {
         {
           "type": "sprite",
           "image": "user-placeholder",
-          "x": 49.900000000000006,
-          "y": -0.8999999999999986,
+          "x": "47.6",
+          "y": "-1",
           "size": 50,
           "flipX": false
         },
@@ -34,8 +34,8 @@ const LEVEL1 = {
         {
           "type": "sprite",
           "image": "user-placeholder",
-          "x": 49.900000000000006,
-          "y": -0.8999999999999986,
+          "x": "47.6",
+          "y": "-1",
           "size": 50,
           "flipX": false
         },
@@ -65,10 +65,7 @@ const LEVEL1 = {
   "sallyTalking": {
     "type": "comic",
     "background": "sea",
-    "nextScene": {
-      "Where did you go?": "sallyTalkingA",
-      "How has the Elwha Dam effected you?": "sallyTalkingB"
-    },
+    "nextScene": "sallyTalking2",
     "baseFrame": [
       {
         "type": "sprite",
@@ -109,6 +106,49 @@ const LEVEL1 = {
         "type": "left",
         "keyword": "Chum Salmon",
       },
+    ]
+  },
+  "sallyTalking2": {
+    "type": "comic",
+    "background": "sea",
+    "nextScene": {
+      "Where did you go?": "sallyTalkingA",
+      "How has the Elwha Dam affected you?": "sallyTalkingB"
+    },
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "sally-salmon",
+        "x": "18",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": 47.099999999999994,
+        "y": -3.1999999999999993,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [],
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "50",
+          "y": "30",
+          "size": "8",
+          "flipX": false
+        }
+      ],
+      [],
+      []
+    ],
+    "dialogue": [
       {
         "speaker": "",
         "message": "I migrated to the ocean two years ago.",
@@ -235,7 +275,8 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "Right now we’re in the Elwha estuary, which is connected to the Elwha river in the Olympic National Park. ",
-        "type": "nospeaker"
+        "type": "nospeaker",
+        "keyword": "Elwha",
       }
     ]
   },
@@ -260,7 +301,8 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
-        "type": "nospeaker"
+        "type": "nospeaker",
+        "keyword": "dam",
       }
     ]
   },
@@ -284,20 +326,18 @@ const LEVEL1 = {
         "y": "40",
         "size": "15",
         "flipX": true
-      }
+      },
+      {
+        "type": "sprite",
+        "image": "simon-salmon",
+        "x": "25",
+        "y": "20",
+        "size": "15",
+        "flipX": true
+      },
     ],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "sally-salmon",
-          "x": "25",
-          "y": "20",
-          "size": "15",
-          "flipX": true
-        }
-        
-      ],
+      [],
       []
     ],
     "dialogue": [
@@ -341,7 +381,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "nextScene": "sallyNetCutScene",
+    "nextScene": "sallyTalkingB2",
     "baseFrame": [
       {
         "type": "sprite",
@@ -371,9 +411,39 @@ const LEVEL1 = {
         "message": "My parents were not able to swim very far up the Elwha because the dam was in the way.",
         "type": "left"
       },
+    ]
+  },
+  "sallyTalkingB2": {
+    "type": "comic",
+    "background": "sea",
+    "nextScene": "sallyNetCutScene",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "sally-salmon",
+        "x": "14",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-3",
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [],
+      [],
+      []
+    ],
+    "dialogue": [
       {
         "speaker": "",
-        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! Its called spawning.",
+        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! It's called spawning.",
         "type": "left",
         "keyword": "spawning",
       },
@@ -388,6 +458,37 @@ const LEVEL1 = {
   "postGame": {
     "type": "comic",
     "background": "sea",
+    "nextScene": "postGame2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "sally-salmon",
+        "x": "15",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
+        "type": "left"
+      }
+    ]
+  },
+  "postGame2": {
+    "type": "comic",
+    "background": "sea",
     "nextScene": "end",
     "baseFrame": [
       {
@@ -397,36 +498,18 @@ const LEVEL1 = {
         "y": 0,
         "size": 50,
         "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "20",
+        "y": "40",
+        "size": "10",
+        "flipX": false
       }
     ],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "sally-salmon",
-          "x": "15",
-          "y": "40",
-          "size": "15",
-          "flipX": true
-        }
-      ],
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "20",
-          "y": "40",
-          "size": "10",
-          "flipX": false
-        }
-      ]
-    ],
+    "frames": [],
     "dialogue": [
-      {
-        "speaker": "",
-        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
-        "type": "left"
-      },
       {
         "speaker": "",
         "message": "Great job today! You really helped make the ocean more safe for the animals living here.",
