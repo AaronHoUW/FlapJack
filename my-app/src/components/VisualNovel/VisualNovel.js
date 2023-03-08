@@ -40,7 +40,12 @@ function VisualNovel(props) {
     let speechTimer = 0;
 
     function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        console.log(string);
+        // if (typeof string === 'object') {
+        //     return string.map((str) => str.charAt(0).toUpperCase() + string.slice(1));
+        // } else {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        // }
     }
 
     function nextScene(scene) {
@@ -71,8 +76,12 @@ function VisualNovel(props) {
         }
 
         if (scene.dialogue[dialoguePosition].keyword) {
-            buildTerm(scene.dialogue[dialoguePosition].keyword);
-            console.log('has keyword');
+            if (typeof scene.dialogue[dialoguePosition].keyword === 'object') {
+                scene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
+            } else {
+                buildTerm(scene.dialogue[dialoguePosition].keyword);
+                console.log('has keyword');
+            }
         }
     }
 
@@ -152,10 +161,31 @@ function VisualNovel(props) {
     //       }, TALK_SPEED);
     // }
 
+    // function buildMultipleTerms(keywords) {
+    //     console.log(keywords);
+    //     let dialogue = document.querySelector('.message-container p');
+    //     let message = currentScene.dialogue[dialoguePosition].message;
+    //     let keywordPosition = 0;
+    //     let keyword = keywords[keywordPosition];
+    //     let popups = keywords.map((keyword) => {
+    //         `
+    //             <div class="popup">
+    //                 ${keyword}
+    //                 <div class="keyword">
+    //                     <h4>${capitalizeFirstLetter(keyword)}</h4>
+    //                     <img src='./imgs/audio.png' alt='Audio symbol' />
+    //                 </div>
+    //                 <p>${TERMS[keyword]}</p>
+    //             </div>
+    //         `
+    //     });
+    //     console.log(popups);
+    // }
+
     function buildTerm(keyword) {
         let dialogue = document.querySelector('.message-container p');
         let message = currentScene.dialogue[dialoguePosition].message;
-        dialogue.innerHTML = message.replace(keyword,
+        message = message.replace(keyword,
             `<div class="popup">
                 ${keyword}
                 <div class="keyword">
@@ -165,8 +195,8 @@ function VisualNovel(props) {
                     </div>
                     <p>${TERMS[keyword]}</p>
                 </div>
-            </div>`
-        );
+            </div>`)
+        dialogue.innerHTML = message;
 
         document.querySelectorAll('.popup').forEach((button) => {
             button.addEventListener('click', (e) => {
@@ -210,8 +240,12 @@ function VisualNovel(props) {
         }
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
-            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
-            console.log('has keyword');
+            if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
+                currentScene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
+            } else {
+                buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                console.log('has keyword');
+            }
         }
 
         return (
