@@ -41,11 +41,7 @@ function VisualNovel(props) {
 
     function capitalizeFirstLetter(string) {
         console.log(string);
-        // if (typeof string === 'object') {
-        //     return string.map((str) => str.charAt(0).toUpperCase() + string.slice(1));
-        // } else {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        // }
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     function nextScene(scene) {
@@ -80,7 +76,6 @@ function VisualNovel(props) {
                 scene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
             } else {
                 buildTerm(scene.dialogue[dialoguePosition].keyword);
-                console.log('has keyword');
             }
         }
     }
@@ -120,7 +115,6 @@ function VisualNovel(props) {
     function createImage(frames) {
         if (frames) {
             return frames.map((frame) => {
-                console.log(frame);
                 if (frame && frame.length > 0) {
                     return frame.map((sprite) => {
                         return (
@@ -162,26 +156,36 @@ function VisualNovel(props) {
     //       }, TALK_SPEED);
     // }
 
-    // function buildMultipleTerms(keywords) {
-    //     console.log(keywords);
-    //     let dialogue = document.querySelector('.message-container p');
-    //     let message = currentScene.dialogue[dialoguePosition].message;
-    //     let keywordPosition = 0;
-    //     let keyword = keywords[keywordPosition];
-    //     let popups = keywords.map((keyword) => {
-    //         `
-    //             <div class="popup">
-    //                 ${keyword}
-    //                 <div class="keyword">
-    //                     <h4>${capitalizeFirstLetter(keyword)}</h4>
-    //                     <img src='./imgs/audio.png' alt='Audio symbol' />
-    //                 </div>
-    //                 <p>${TERMS[keyword]}</p>
-    //             </div>
-    //         `
-    //     });
-    //     console.log(popups);
-    // }
+    function buildMultipleTerms(keywords) {
+        console.log(keywords);
+        let dialogue = document.querySelector('.message-container p');
+        let message = currentScene.dialogue[dialoguePosition].message;
+        let keywordPosition = 0;
+        let keyword = keywords[keywordPosition];
+        let popups = keywords.map((keyword) => {
+            return `
+                <div class="popup">
+                    ${keyword}
+                    <div class="keyword">
+                        <h4>${capitalizeFirstLetter(keyword)}</h4>
+                        <img src='./imgs/audio.png' alt='Audio symbol' />
+                    </div>
+                    <p>${TERMS[keyword]}</p>
+                </div>
+            `
+        });
+        message = message.replace(keywords[keywordPosition], popups);
+        dialogue.innerHTML = message;
+
+        document.querySelectorAll('.popup').forEach((button) => {
+            button.addEventListener('click', () => {
+                let popup = document.querySelector('.keyword');
+                popup.classList.add('show');
+                buildTermDefinition(keyword);
+            });
+        });
+        keywordPosition += 1;
+    }
 
     function buildTerm(keyword) {
         let dialogue = document.querySelector('.message-container p');
@@ -200,7 +204,7 @@ function VisualNovel(props) {
         dialogue.innerHTML = message;
 
         document.querySelectorAll('.popup').forEach((button) => {
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', () => {
                 let popup = document.querySelector('.keyword');
                 popup.classList.add('show');
                 buildTermDefinition(keyword);
@@ -242,10 +246,10 @@ function VisualNovel(props) {
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
             if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
-                currentScene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
+                buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
+                console.log('has multiple keyword');
             } else {
                 buildTerm(currentScene.dialogue[dialoguePosition].keyword);
-                console.log('has keyword');
             }
         }
 
@@ -322,6 +326,7 @@ function VisualNovel(props) {
                         } else if (currentScene.nextScene === 'minigame') {
                             navigate('/play');
                         } else if (currentScene.nextScene === 'end') {
+                            setIsGameComplete(false);
                             navigate('/');
                         } else {
                             // Display the next scene
