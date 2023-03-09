@@ -29,12 +29,6 @@ function NetMiniGame(props) {
 
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		if(level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-mid-sea.png)`;
-		}
-	})
-
 	// Load Modal
 	if (netRemove === 3 && page === 1) {
 		document.getElementById("load-modal-1").click();
@@ -148,7 +142,7 @@ function NetMiniGame(props) {
 			<div className="modal fade" id="modal-1-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<img src={PancakeModal} className='pancake-modal'/>
-				<div className="modal-dialog modal-dialog-centered">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
 							<div className='row'>
@@ -170,14 +164,16 @@ function NetMiniGame(props) {
 			<div className="modal fade" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<img src={PancakeModal} className='pancake-modal'/>
-				<div className="modal-dialog modal-dialog-centered">
+				<div className="modal-dialog modal-lg modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
 							<div className='row'>
 								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
 							</div>
-							<div className='row model-info modal-video-content'>
-								<iframe width="100%" height="100%" src={postGameDialogue[level]['page-2'].video} />
+							<div className='row model-info modal-video-content mt-1'>
+								<div className='modal-video-content'>
+									<iframe width="100%" height="100%" src={postGameDialogue[level]['page-2'].video} />
+								</div>
 								<p className='pt-1' >{postGameDialogue[level]['page-2'].body}</p>
 							</div>
 
