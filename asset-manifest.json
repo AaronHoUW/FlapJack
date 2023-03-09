@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/flapjack/static/css/main.e226a190.css",
-    "main.js": "/flapjack/static/js/main.78a21855.js",
-    "static/media/bg-sea.png": "/flapjack/static/media/bg-sea.bbff34249a5478592ae1.png",
-    "static/media/text.png": "/flapjack/static/media/text.8ab3cc7d6ba5b671cc68.png",
-    "static/media/PancakeModal.png": "/flapjack/static/media/PancakeModal.03ff055ea307d18fac1b.png",
-    "index.html": "/flapjack/index.html",
-    "main.e226a190.css.map": "/flapjack/static/css/main.e226a190.css.map",
-    "main.78a21855.js.map": "/flapjack/static/js/main.78a21855.js.map"
+    "main.css": "/FlapJack/static/css/main.feb0885e.css",
+    "main.js": "/FlapJack/static/js/main.8be3ad9b.js",
+    "static/media/bg-sea.png": "/FlapJack/static/media/bg-sea.bbff34249a5478592ae1.png",
+    "static/media/text.png": "/FlapJack/static/media/text.8ab3cc7d6ba5b671cc68.png",
+    "static/media/PancakeModal.png": "/FlapJack/static/media/PancakeModal.03ff055ea307d18fac1b.png",
+    "index.html": "/FlapJack/index.html",
+    "main.feb0885e.css.map": "/FlapJack/static/css/main.feb0885e.css.map",
+    "main.8be3ad9b.js.map": "/FlapJack/static/js/main.8be3ad9b.js.map"
   },
   "entrypoints": [
-    "static/css/main.e226a190.css",
-    "static/js/main.78a21855.js"
+    "static/css/main.feb0885e.css",
+    "static/js/main.8be3ad9b.js"
   ]
 }
