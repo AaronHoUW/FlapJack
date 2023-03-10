@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home/Home';
 import About from './components/About';
 import Parents from './components/Parents/Parents';
+import Resources from './components/Resources';
 import EditorPage from './components/EditorPage';
 import VisualNovel from './components/VisualNovel/VisualNovel';
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
@@ -35,6 +36,12 @@ function App() {
 					<>
 						<Navbar />
 						<Parents />
+					</>
+				} />
+				<Route path='/resources' element={
+					<>
+						<Navbar />
+						<Resources />
 					</>
 				} />
 				<Route path='/play' element={
