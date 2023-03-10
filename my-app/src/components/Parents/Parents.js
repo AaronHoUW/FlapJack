@@ -41,7 +41,7 @@ function Parents() {
 
             <HelpContainer>
                 <HelpVideoContainer>
-                    <HelpVideo src="https://www.youtube.com/embed/YCPDVVLUw-4" width='100%' height='80%' />
+                    <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='80%' />
                 </HelpVideoContainer>
                 <HelpText>
                     <IntroTitle>How can I help my child play Marine Rescue?</IntroTitle>
