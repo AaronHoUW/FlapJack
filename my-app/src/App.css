@@ -610,3 +610,23 @@ z-index: 10;
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+.mt-5 {
+  width:inherit;
+}
+
+.resource-page {
+  color:#FFFFFF;
+  background-color: #1E7FA4;
+  padding-right: 500px;
+}
+
+.link-button {
+  color: #000000;
+  background-color: #85C9E3;
+  border-radius: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top:5px;
+  padding-bottom:5px;
+}

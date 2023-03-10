@@ -26,6 +26,11 @@ function Navbar() {
                             About
                         </NavLink>
                     </li>
+                    <li style={{float: 'right', marginTop: '10px'}}>
+                        <NavLink to='/resources' style={{display: 'block', color: '#000000', textAlign: 'center', fontSize: '20px', padding: '14px 50px', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'Mulish'}}>
+                            Resources
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>
