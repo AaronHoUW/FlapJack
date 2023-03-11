@@ -8,6 +8,9 @@ FlapJack is designing and developing a web app to assist in the education of chi
 - Aaron Ho - Lead Developer ([GitHub](https://github.com/AaronHoUW), [LinkedIn](https://www.linkedin.com/in/aaron-ho-ba00a1196))
 - Brian Ho - Lead Researcher, Developer ([GitHub](https://github.com/btho1), [LinkedIn](https://www.linkedin.com/in/brian-ho-967a0923b))
 
+## Website
+Our website has been deployed via Firebase and can be found here: [https://marine-rescue-seaquel.web.app](https://marine-rescue-seaquel.web.app)
+
 ## Build and Deploy
 Instructions are unavailable at this time.
 
