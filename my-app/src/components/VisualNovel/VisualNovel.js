@@ -322,7 +322,7 @@ function VisualNovel(props) {
                                 });
                             });
                         } else if (currentScene.nextScene === 'pancakeGuide') {
-                            navigate('/flapguide');
+                            navigate('/tutorial');
                         } else if (currentScene.nextScene === 'minigame') {
                             navigate('/play');
                         } else if (currentScene.nextScene === 'end') {
