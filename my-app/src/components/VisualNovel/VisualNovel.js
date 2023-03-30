@@ -8,6 +8,7 @@ import {
     SpeakerContainer,
     ExitButton,
     NextButton,
+    BackButton,
     TermContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
@@ -297,9 +298,40 @@ function VisualNovel(props) {
                         navigate('/');
                     }
                 }>Exit</ExitButton>
+                <BackButton id='backBtn' onClick={(event) => {
+                    if (dialoguePosition > 0) {
+                        dialoguePosition--;
+                        event.target.disabled = false;
+                        if (currentScene.dialogue[dialoguePosition].keyword) {
+                            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                        }
+                        if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
+                            document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
+                        }
+                        document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
+                    } else {
+                        dialoguePosition = 0;
+                        event.target.disabled = true;
+                        if (typeof currentScene.previousScene === 'object') {
+                            event.target.disabled = true;
+                            // Display the choice scene
+                            buildChoice(currentScene.previousScene);
+                            document.querySelectorAll('.choiceButton').forEach((button) => {
+                                button.addEventListener('click', (e) => {
+                                    event.target.disabled = false;
+                                    currentScene = LEVEL1[e.target.getAttribute('key')];
+                                    buildDialogue();
+                                    nextScene(currentScene);
+                                });
+                            });
+                        }
+                    }
+                    console.log(currentScene);
+                }}>Back</BackButton>
                 <NextButton className='nextBtn' onClick={(nextEvent) => {
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
+                        document.getElementById('backBtn').disabled = false;
                         if (currentScene.dialogue[dialoguePosition].keyword) {
                             buildTerm(currentScene.dialogue[dialoguePosition].keyword);
                         }
