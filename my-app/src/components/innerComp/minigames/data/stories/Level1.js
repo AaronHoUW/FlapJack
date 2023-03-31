@@ -31,24 +31,6 @@ const LEVEL1 = {
           "flipX": false
         }
       ],
-      [
-        {
-          "type": "sprite",
-          "image": "user-placeholder",
-          "x": "47.6",
-          "y": "-1",
-          "size": 50,
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "18",
-          "y": "35",
-          "size": "15",
-          "flipX": false
-        }
-      ]
     ],
     "dialogue": [
       {

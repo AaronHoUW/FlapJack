@@ -337,6 +337,7 @@ function VisualNovel(props) {
                         } else if (currentScene.previousScene !== undefined) {
                             currentScene = LEVEL1[currentScene.previousScene];
                             dialoguePosition = currentScene.dialogue.length - 1;
+                            createImage(currentScene.frames);
                             buildDialogue();
                             nextScene(currentScene);
                         }
