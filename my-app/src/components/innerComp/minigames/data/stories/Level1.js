@@ -390,7 +390,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
-    "previousScene": "sallyTalking",
+    "previousScene": "sallyTalking2",
     "nextScene": "sallyTalkingB2",
     "baseFrame": [
       {

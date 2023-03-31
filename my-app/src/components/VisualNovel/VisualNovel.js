@@ -46,6 +46,8 @@ function VisualNovel(props) {
     }
 
     function nextScene(scene) {
+        console.log("next scene");
+        console.log(scene);
         if (scene === undefined) {
             setLoadGame(true);
         }
@@ -301,7 +303,6 @@ function VisualNovel(props) {
                 <BackButton id='backBtn' onClick={(event) => {
                     if (dialoguePosition > 0) {
                         dialoguePosition--;
-                        event.target.disabled = false;
                         if (currentScene.dialogue[dialoguePosition].keyword) {
                             buildTerm(currentScene.dialogue[dialoguePosition].keyword);
                         }
@@ -309,21 +310,35 @@ function VisualNovel(props) {
                             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
                         }
                         document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
+                        if (dialoguePosition === 0) {
+                            if (currentScene.previousScene === undefined) {
+                                event.target.disabled = true;
+                            } else {
+                                event.target.disabled = false;
+                            }
+                        } else {
+                            event.target.disabled = false;
+                        }
                     } else {
                         dialoguePosition = 0;
-                        event.target.disabled = true;
+                        // event.target.disabled = true;
                         if (typeof currentScene.previousScene === 'object') {
-                            event.target.disabled = true;
+                            // event.target.disabled = true;
                             // Display the choice scene
                             buildChoice(currentScene.previousScene);
                             document.querySelectorAll('.choiceButton').forEach((button) => {
                                 button.addEventListener('click', (e) => {
-                                    event.target.disabled = false;
+                                    // event.target.disabled = false;
                                     currentScene = LEVEL1[e.target.getAttribute('key')];
                                     buildDialogue();
                                     nextScene(currentScene);
                                 });
                             });
+                        } else if (currentScene.previousScene !== undefined) {
+                            currentScene = LEVEL1[currentScene.previousScene];
+                            dialoguePosition = currentScene.dialogue.length - 1;
+                            buildDialogue();
+                            nextScene(currentScene);
                         }
                     }
                     console.log(currentScene);
