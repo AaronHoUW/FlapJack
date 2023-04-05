@@ -9,6 +9,7 @@ const LEVEL1 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
+    "previousScene": undefined,
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
     "frames": [
@@ -30,24 +31,6 @@ const LEVEL1 = {
           "flipX": false
         }
       ],
-      [
-        {
-          "type": "sprite",
-          "image": "user-placeholder",
-          "x": "47.6",
-          "y": "-1",
-          "size": 50,
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "18",
-          "y": "35",
-          "size": "15",
-          "flipX": false
-        }
-      ]
     ],
     "dialogue": [
       {
@@ -65,6 +48,7 @@ const LEVEL1 = {
   "sallyTalking": {
     "type": "comic",
     "background": "sea",
+    "previousScene": undefined,
     "nextScene": "sallyTalking2",
     "baseFrame": [
       {
@@ -111,6 +95,7 @@ const LEVEL1 = {
   "sallyTalking2": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "sallyTalking",
     "nextScene": {
       "Where did you go?": "sallyTalkingA",
       "How has the Elwha Dam affected you?": "sallyTalkingB"
@@ -160,6 +145,7 @@ const LEVEL1 = {
   "sallyTalkingA": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "sallyTalking2",
     "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
@@ -207,6 +193,7 @@ const LEVEL1 = {
   "pancakeNorthAmerica": {
     "type": "comic",
     "background": "north-america",
+    "previousScene": "pancakeIntro",
     "nextScene": "pancakeWashingtonState",
     "baseFrame": [
       {
@@ -232,6 +219,7 @@ const LEVEL1 = {
   "pancakeWashingtonState": {
     "type": "comic",
     "background": "washington-state",
+    "previousScene": "pancakeNorthAmerica",
     "nextScene": "pancakeMap",
     "baseFrame": [
       {
@@ -257,6 +245,7 @@ const LEVEL1 = {
   "pancakeMap": {
     "type": "comic",
     "background": "elwha-estuary",
+    "previousScene": "pancakeWashingtonState",
     "nextScene": "pancakeDam",
     "baseFrame": [
       {
@@ -283,6 +272,7 @@ const LEVEL1 = {
   "pancakeDam": {
     "type": "comic",
     "background": "dam",
+    "previousScene": "pancakeMap",
     "nextScene": "pancakeGuide",
     "baseFrame": [],
     "frames": [
@@ -309,6 +299,7 @@ const LEVEL1 = {
   "sallyTalkingAContinued": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "sallyNetCutScene",
     "nextScene": "minigame",
     "baseFrame": [
       {
@@ -356,6 +347,7 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "net",
+    "previousScene": ["sallyTalkingA2", "sallyTalkingB2"],
     "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
@@ -381,6 +373,7 @@ const LEVEL1 = {
   "sallyTalkingB": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "sallyTalking2",
     "nextScene": "sallyTalkingB2",
     "baseFrame": [
       {
@@ -416,6 +409,7 @@ const LEVEL1 = {
   "sallyTalkingB2": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "sallyTalkingB",
     "nextScene": "sallyNetCutScene",
     "baseFrame": [
       {
@@ -489,6 +483,7 @@ const LEVEL1 = {
   "postGame2": {
     "type": "comic",
     "background": "sea",
+    "previousScene": "postGame2",
     "nextScene": "end",
     "baseFrame": [
       {

@@ -8,6 +8,7 @@ import {
     SpeakerContainer,
     ExitButton,
     NextButton,
+    BackButton,
     TermContainer,
 } from './styles.tsx';
 import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
@@ -17,6 +18,9 @@ function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
     const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
     let currentScene = LEVEL1['pancakeIntro'];
+
+    let dialoguePosition = 0;
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
@@ -29,18 +33,21 @@ function VisualNovel(props) {
             buildDialogue();
         } else {
             currentScene = LEVEL1['pancakeIntro'];
+            document.getElementById('backBtn').disabled = true;
+        }
+        if (currentScene === LEVEL1['pancakeIntro']
+            || currentScene === LEVEL1['sallyTalking']
+            || currentScene === LEVEL1['minigame']
+            || currentScene === LEVEL1['end']) {
+            document.getElementById('backBtn').disabled = true;
         }
         document.getElementsByClassName('.nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
-
-    let dialoguePosition = 0;
-    const navigate = useNavigate();
 
     const TALK_SPEED = 10;
     let speechTimer = 0;
 
     function capitalizeFirstLetter(string) {
-        console.log(string);
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
@@ -125,7 +132,7 @@ function VisualNovel(props) {
                                     position: 'absolute',
                                     top: `${sprite.y}%`,
                                     left: `${sprite.x}%`,
-                                    transform: `scaleX(${sprite.flipX ? -1 : 1}` ,
+                                    transform: `scaleX(${sprite.flipX ? -1 : 1}`,
                                     maxHeight: '100vh'
                                 }}
                                 className='sprite'
@@ -157,7 +164,6 @@ function VisualNovel(props) {
     // }
 
     function buildMultipleTerms(keywords) {
-        console.log(keywords);
         let dialogue = document.querySelector('.message-container p');
         let message = currentScene.dialogue[dialoguePosition].message;
         let keywordPosition = 0;
@@ -247,7 +253,6 @@ function VisualNovel(props) {
         if (currentScene.dialogue[dialoguePosition].keyword) {
             if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
                 buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
-                console.log('has multiple keyword');
             } else {
                 buildTerm(currentScene.dialogue[dialoguePosition].keyword);
             }
@@ -297,7 +302,53 @@ function VisualNovel(props) {
                         navigate('/');
                     }
                 }>Exit</ExitButton>
+                <BackButton id='backBtn' onClick={(event) => {
+                    if (dialoguePosition > 0) {
+                        dialoguePosition--;
+                        if (currentScene.dialogue[dialoguePosition].keyword) {
+                            buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                        }
+                        if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
+                            document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
+                        }
+                        document.querySelector('.message-container p').textContent = currentScene.dialogue[dialoguePosition].message;
+                        if (dialoguePosition === 0) {
+                            if (currentScene.previousScene === undefined) {
+                                event.target.disabled = true;
+                            } else {
+                                event.target.disabled = false;
+                            }
+                        } else {
+                            event.target.disabled = false;
+                        }
+                    } else {
+                        dialoguePosition = 0;
+                        event.target.disabled = true;
+                        if (currentScene.previousScene === 'sallyTalking2') {
+                            dialoguePosition = 0;
+                            event.target.disabled = false;
+                            currentScene = LEVEL1['sallyTalking2'];
+                            buildDialogue();
+                            nextScene(currentScene);
+                        } else if (typeof currentScene.previousScene === 'object') {
+                            dialoguePosition = 0;
+                            currentScene = LEVEL1['sallyTalking'];
+                            event.target.disabled = true;
+                            buildDialogue();
+                            nextScene(currentScene);
+                        } else if (currentScene.previousScene === undefined && dialoguePosition === 0) {
+                            event.target.disabled = true;
+                        } else if (currentScene.previousScene !== undefined) {
+                            currentScene = LEVEL1[currentScene.previousScene];
+                            dialoguePosition = currentScene.dialogue.length - 1;
+                            createImage(currentScene.frames);
+                            buildDialogue();
+                            nextScene(currentScene);
+                        }
+                    }
+                }}>Back</BackButton>
                 <NextButton className='nextBtn' onClick={(nextEvent) => {
+                    document.getElementById('backBtn').disabled = false;
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
                         if (currentScene.dialogue[dialoguePosition].keyword) {
