@@ -48,6 +48,7 @@ function NetMiniGame(props) {
 		if (event.key === 'ArrowUp') {
 			setYAxis(yAxis - 50)
 		}
+		console.log(user.current.x, user.current.y)
 		checkWithinRange();
 	};
 
