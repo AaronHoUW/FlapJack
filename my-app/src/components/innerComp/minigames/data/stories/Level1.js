@@ -48,6 +48,7 @@ const LEVEL1 = {
   "sallyTalking": {
     "type": "comic",
     "background": "sea",
+    "previousScene": undefined,
     "nextScene": "sallyTalking2",
     "baseFrame": [
       {
