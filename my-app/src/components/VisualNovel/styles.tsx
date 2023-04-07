@@ -59,6 +59,27 @@ export const NextButton = styled.button`
     font-size: 30px;
 `;
 
+export const BackButton = styled.button`
+    position: absolute;
+    margin: 20px;
+    bottom: 0;
+    left: 0;
+
+    padding: 12px 24px;
+
+    border: none;
+    background: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
 export const DialogueBox = styled.div`
     display: flex;
     justify-content: center;

@@ -11,9 +11,13 @@ import VisualNovel from './components/VisualNovel/VisualNovel';
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/innerComp/minigames/data/games/NetMiniGame';
+<<<<<<< HEAD
 import Tutorial from './components/Tutorial/Tutorial.js';
 import Secretplayground from './components/secretplayground/Secretplayground.js';
 import QuizPage from './components/QuizPage/QuizPage.js'
+=======
+import Tutorial from './components/Tutorial/Tutorial';
+>>>>>>> 0e6c070dda762d2b367aaf347c7e42046afe3dae
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
