@@ -645,6 +645,7 @@ class EditorPage extends React.Component {
 
     // Render dialogue editor
     renderDialogueEditor() {
+        console.log(this.getCurrentScene().type, "what type")
         if (this.getCurrentScene().type === 'minigame' || this.state.currentFrame === -1) {
             return <></>;
         }
@@ -742,6 +743,7 @@ class EditorPage extends React.Component {
         const currentFrameHasDialogue = currentFrameDialogue !== null;
         const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
         const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
+
         return (
             <div className="dialogue-section attrs-section editor-section">
                 <h2>Dialogue</h2>
@@ -761,7 +763,7 @@ class EditorPage extends React.Component {
                 }
 
                 {
-                    currentFrameHasDialogue || currentFrameDecision !== null &&
+                    (currentFrameHasDialogue || currentFrameDecision !== null) &&
                         <>
                             <div className="attr">
                                 <label htmlFor="dialogue-speaker">Speaker</label>
