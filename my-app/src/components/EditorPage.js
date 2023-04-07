@@ -10,6 +10,7 @@ const IMAGES = {
         'beige',
         'dam',
         'elwha-estuary',
+        'elwha-news',
         'sea',
         'sea-mountains',
         'sea-mountains-left',
@@ -22,6 +23,7 @@ const IMAGES = {
         'space-test',
         'net',
         'north-america',
+        'north-america-blank',
         'washington-state',
     ],
     sprites: [
