@@ -41,6 +41,7 @@ const IMAGES = {
         'user-placeholder',
         'wendy-whale',
         'pancake-flapjack-octopus',
+        'pancake-bowl',
         'net-rectangle',
     ],
 };
