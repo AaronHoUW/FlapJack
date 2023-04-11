@@ -181,7 +181,7 @@ function NetMiniGame(props) {
 								<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal">
 									{(level < 3) && <img src={locationButton} className='modal-button-img' />}
 									{(level === 3) && <img src={finishButton} className='modal-button-img' onClick={() => {
-										navigate('/level1');
+										navigate('/level2');
 										setIsGameComplete(true);
 									}}/>}
 								</button>

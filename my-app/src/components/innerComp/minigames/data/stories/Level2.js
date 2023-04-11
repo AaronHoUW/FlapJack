@@ -70,16 +70,7 @@ const LEVEL2 = {
     ],
     "frames": [
       [],
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "50",
-          "y": "30",
-          "size": "8",
-          "flipX": false
-        }
-      ],
+      [],
       [],
       []
     ],
@@ -120,16 +111,7 @@ const LEVEL2 = {
     ],
     "frames": [
       [],
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "50",
-          "y": "30",
-          "size": "8",
-          "flipX": false
-        }
-      ],
+      [],
       [],
       []
     ],
@@ -296,10 +278,36 @@ const LEVEL2 = {
       }
     ]
   },
-  "sallyTalkingAContinued": {
+  "sallyCardGame": {
     "type": "comic",
     "background": "sea",
     "previousScene": "sallyNetCutScene",
+    "nextScene": "sallyTalkingAContinued",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "5",
+          "y": "80",
+          "size": "010",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Can you help to identify the images that have nets in them?",
+        "type": "nospeaker",
+      }
+    ]
+  },
+  "sallyTalkingAContinued": {
+    "type": "comic",
+    "background": "sea",
+    "previousScene": "sallyCardGame",
     "nextScene": "minigame",
     "baseFrame": [
       {
@@ -348,7 +356,7 @@ const LEVEL2 = {
     "type": "comic",
     "background": "net",
     "previousScene": ["sallyTalkingA2", "sallyTalkingB2"],
-    "nextScene": "sallyTalkingAContinued",
+    "nextScene": "sallyCardGame",
     "baseFrame": [],
     "frames": [
       [

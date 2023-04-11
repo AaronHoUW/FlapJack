@@ -17,6 +17,23 @@ body {
   min-height: 100px;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.row img {
+  flex: 1;
+  height: 291px;
+}
+
 .exit-play {
   border: none;
   color: black;
