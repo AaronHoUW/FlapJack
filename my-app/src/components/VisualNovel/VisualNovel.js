@@ -12,10 +12,12 @@ import {
     TermContainer,
 } from './styles.tsx';
 import TERMS from './Terms';
+import CardGame from '../CardGame/CardGame.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
     const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
     let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
@@ -69,6 +71,10 @@ function VisualNovel(props) {
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
 
+        if (scene === level['sallyCardGame']) {
+            createCards();
+        }
+
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
             document.querySelector('.speaker-container span').textContent = currentScene.dialogue[dialoguePosition].speaker;
@@ -92,6 +98,31 @@ function VisualNovel(props) {
             }
         }
     }
+
+    function createCards() {
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('card-container');
+        let count = 0;
+
+        for (let i = 0; i < 2; i++) {
+            const row = document.createElement('div');
+            row.classList.add('row');
+            while (count < 3) {
+                const image = document.createElement('img');
+                image.setAttribute('src', `/imgs/cards/nets/${images[0]}.png`);
+                image.setAttribute('alt', `${images[0]}`);
+                row.appendChild(image);
+                images.shift();
+                count++;
+            }
+            count = 0;
+            cardContainer.append(row);
+        }
+
+        document.getElementById('visual-novel-container').appendChild(cardContainer);
+    }
+
+
 
     function createClickSpace() {
         const clickSpaces = document.createElement('div');
@@ -169,17 +200,17 @@ function VisualNovel(props) {
                     if (spriteContainer) {
                         frame.forEach((sprite) => {
                             const newSprite = document.createElement('img');
-    
+
                             newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
                             newSprite.setAttribute('width', `${sprite.size}%`);
                             newSprite.setAttribute('class', 'sprite');
-    
+
                             if (sprite.image === 'pancake-flapjack-octopus') {
                                 newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                             } else {
                                 newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                             }
-    
+
                             spriteContainer.appendChild(newSprite);
                         });
                     } else {
