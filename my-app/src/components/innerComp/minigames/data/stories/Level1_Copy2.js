@@ -9,8 +9,7 @@ const LEVEL1 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
-    "previousScene": undefined,
-    "nextScene": "pancakeNorthAmerica",
+    "nextScene": "pancakenorthamerica",
     "baseFrame": [],
     "frames": [
       [
@@ -31,6 +30,7 @@ const LEVEL1 = {
           "flipX": false
         }
       ],
+      []
     ],
     "dialogue": [
       {
@@ -42,13 +42,13 @@ const LEVEL1 = {
         "speaker": "",
         "message": " I will lead you around your adventure today and help you learn about the ocean, sea creatures and the impact humans have on the ocean.",
         "type": "left"
-      }
+      },
+      null
     ]
   },
   "sallyTalking": {
     "type": "comic",
     "background": "sea",
-    "previousScene": undefined,
     "nextScene": "sallyTalking2",
     "baseFrame": [
       {
@@ -88,8 +88,8 @@ const LEVEL1 = {
         "speaker": "",
         "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
         "type": "left",
-        "keyword": "Chum Salmon",
-      },
+        "keyword": "Chum Salmon"
+      }
     ]
   },
   "sallyTalking2": {
@@ -138,7 +138,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "I migrated to the ocean two years ago.",
         "type": "left",
-        "keyword": "migrated",
+        "keyword": "migrated"
       }
     ]
   },
@@ -175,7 +175,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "I swam up the Elwha river where I was born and laid eggs! It is called spawning.",
         "type": "left",
-        "keyword": "spawning",
+        "keyword": "spawning"
       },
       {
         "speaker": "",
@@ -186,7 +186,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
         "type": "left",
-        "keyword": "spawning",
+        "keyword": "spawning"
       }
     ]
   },
@@ -194,7 +194,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "north-america-blank",
     "previousScene": "pancakeIntro",
-    "nextScene": "clickMap",
+    "nextScene": "pancakeWashingtonState",
     "baseFrame": [
       {
         "type": "sprite",
@@ -220,7 +220,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "washington-state",
     "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeMap",
+    "nextScene": "pancakemap",
     "baseFrame": [
       {
         "type": "sprite",
@@ -246,7 +246,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "elwha-estuary",
     "previousScene": "pancakeWashingtonState",
-    "nextScene": "pancakeDam",
+    "nextScene": "pancakedam",
     "baseFrame": [
       {
         "type": "sprite",
@@ -265,7 +265,10 @@ const LEVEL1 = {
         "speaker": "",
         "message": "Right now we’re in the Elwha estuary, which is connected to the Elwha river in the Olympic National Park. ",
         "type": "nospeaker",
-        "keyword": ["Elwha", "estuary"],
+        "keyword": [
+          "Elwha",
+          "estuary"
+        ]
       }
     ]
   },
@@ -273,7 +276,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "dam",
     "previousScene": "pancakeMap",
-    "nextScene": "pancakeElwhaNews",
+    "nextScene": "pancakeelwhanews",
     "baseFrame": [],
     "frames": [
       [
@@ -292,7 +295,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
         "type": "nospeaker",
-        "keyword": "dam",
+        "keyword": "dam"
       }
     ]
   },
@@ -325,7 +328,7 @@ const LEVEL1 = {
         "y": "20",
         "size": "15",
         "flipX": true
-      },
+      }
     ],
     "frames": [
       [],
@@ -347,7 +350,10 @@ const LEVEL1 = {
   "sallyNetCutScene": {
     "type": "comic",
     "background": "net",
-    "previousScene": ["sallyTalkingA2", "sallyTalkingB2"],
+    "previousScene": [
+      "sallyTalkingA2",
+      "sallyTalkingB2"
+    ],
     "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
@@ -403,7 +409,7 @@ const LEVEL1 = {
         "speaker": "",
         "message": "My parents were not able to swim very far up the Elwha because the dam was in the way.",
         "type": "left"
-      },
+      }
     ]
   },
   "sallyTalkingB2": {
@@ -439,13 +445,13 @@ const LEVEL1 = {
         "speaker": "",
         "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! It's called spawning.",
         "type": "left",
-        "keyword": "spawning",
+        "keyword": "spawning"
       },
       {
         "speaker": "",
         "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
         "type": "left",
-        "keyword": "spawning",
+        "keyword": "spawning"
       }
     ]
   },
@@ -480,122 +486,6 @@ const LEVEL1 = {
       }
     ]
   },
-  "pacificOcean_correct": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      },
-      null
-    ]
-  },
-  "pacificOcean_incorrect": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "10",
-          "flipX": false
-        }
-      ]
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Uh Oh! Looks like you weren’t sure where the Pacific Ocean is. Its on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pancakeElwhaNews": {
-    "type": "comic",
-    "background": "elwha-news",
-    "previousScene": "pancakeDam",
-    "nextScene": "quiz",
-    "baseFrame": [],
-    "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Now, the dams have been removed. One species that was particularly impacted was Salmon because they couldn’t migrate all the way up the river to spawn. Now, the Elwha ecosystem is naturally repairing itself.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pancakeTalkToSalmon": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": undefined,
-    "nextScene": {
-      "Yes, I can help!": "tutorial",
-      "No, I'd like to exit the game.": "end",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-1",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "18",
-        "y": "35",
-        "size": "15",
-        "flipX": false
-      }
-    ],
-    "frames": [
-      []
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!",
-        "type": "left"
-      }
-    ]
-  },
   "postGame2": {
     "type": "comic",
     "background": "sea",
@@ -625,6 +515,115 @@ const LEVEL1 = {
         "speaker": "",
         "message": "Great job today! You really helped make the ocean more safe for the animals living here.",
         "type": "left"
+      }
+    ]
+  },
+  "pacificOcean_correct": {
+    "type": "comic",
+    "background": "north-america",
+    "nextScene": "pancakewashingtonstate",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "5",
+          "y": "80",
+          "size": "010",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
+        "type": "nospeaker"
+      },
+      null
+    ]
+  },
+  "pacificOcean_incorrect": {
+    "type": "comic",
+    "background": "north-america",
+    "nextScene": "pancakewashingtonstate",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "5",
+          "y": "80",
+          "size": "10",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Uh Oh! Looks like you weren’t sure where the Pacific Ocean is. Its on the west side of the United States, near Washington, Oregon and California.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "pancakeElwhaNews": {
+    "type": "comic",
+    "background": "elwha-news",
+    "nextScene": "testScene2",
+    "baseFrame": [],
+    "frames": [
+      [
+        {
+          "type": "sprite",
+          "image": "pancake-flapjack-octopus",
+          "x": "5",
+          "y": "80",
+          "size": "010",
+          "flipX": false
+        }
+      ]
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Now, the dams have been removed. One species that was particularly impacted was Salmon because they couldn’t migrate all the way up the river to spawn. Now, the Elwha ecosystem is naturally repairing itself.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "pancakeTalkToSalmon": {
+    "type": "comic",
+    "background": "sea",
+    "nextScene": "testScene2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "080",
+        "size": "010",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-1",
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!",
+        "type": "nospeaker"
       }
     ]
   }

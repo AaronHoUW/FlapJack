@@ -93,6 +93,8 @@ class EditorPage extends React.Component {
         const currentScene = this.getCurrentScene();
 
         let currentDialogue = null;
+        console.log(sceneFrame);
+        console.log(currentScene);
         if (sceneFrame !== -1 && 'dialogue' in currentScene) {
             currentDialogue = currentScene.dialogue[sceneFrame];
         }
@@ -746,6 +748,7 @@ class EditorPage extends React.Component {
         const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
         const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
 
+        console.log(currentFrameDialogue);
         return (
             <div className="dialogue-section attrs-section editor-section">
                 <h2>Dialogue</h2>
