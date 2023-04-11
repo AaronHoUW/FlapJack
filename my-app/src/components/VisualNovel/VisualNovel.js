@@ -60,6 +60,12 @@ function VisualNovel(props) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
 
+        if (scene.nextScene === 'clickMap') {
+            createClickSpace();
+        } else {
+            clearClickSpaces();
+        }
+
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
 
@@ -83,6 +89,41 @@ function VisualNovel(props) {
                 scene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
             } else {
                 buildTerm(scene.dialogue[dialoguePosition].keyword);
+            }
+        }
+    }
+
+    function createClickSpace() {
+        const clickSpaces = document.createElement('div');
+        clickSpaces.classList.add('space');
+        clickSpaces.setAttribute('style', 'display: flex;');
+
+        const correctClickSpace = document.createElement('div');
+        correctClickSpace.setAttribute('style', 'width: 550px; height: 600px; margin: 0;');
+        correctClickSpace.addEventListener('click', () => {
+            currentScene = LEVEL1['pacificOcean_correct'];
+            nextScene(currentScene);
+        });
+
+        const incorrectClickSpace = document.createElement('div');
+        incorrectClickSpace.setAttribute('style', 'width: 1500px; height: 600px; margin: 0');
+        incorrectClickSpace.addEventListener('click', () => {
+            currentScene = LEVEL1['pacificOcean_incorrect'];
+            nextScene(currentScene);
+        });
+
+        let container = document.getElementById('visual-novel-container');
+        clickSpaces.appendChild(correctClickSpace);
+        clickSpaces.appendChild(incorrectClickSpace);
+        container.appendChild(clickSpaces);
+        document.getElementsByClassName('.nextBtn').disabled = false;
+    }
+
+    function clearClickSpaces() {
+        let spaces = document.getElementsByClassName('space');
+        if (spaces) {
+            while (spaces[0]) {
+                spaces[0].parentNode.removeChild(spaces[0]);
             }
         }
     }
@@ -368,17 +409,28 @@ function VisualNovel(props) {
                                 button.addEventListener('click', (e) => {
                                     nextEvent.target.disabled = false;
                                     currentScene = LEVEL1[e.target.getAttribute('key')];
-                                    buildDialogue();
-                                    nextScene(currentScene);
+                                    if (e.target.getAttribute('key') === 'tutorial') {
+                                        navigate('/tutorial');
+                                    } else if (e.target.getAttribute('key') === 'end') {
+                                        setIsGameComplete(false);
+                                        navigate('/')
+                                    } else {
+                                        buildDialogue();
+                                        nextScene(currentScene);
+                                    }
                                 });
                             });
-                        } else if (currentScene.nextScene === 'pancakeGuide') {
-                            navigate('/tutorial');
                         } else if (currentScene.nextScene === 'minigame') {
                             navigate('/play');
                         } else if (currentScene.nextScene === 'end') {
                             setIsGameComplete(false);
                             navigate('/');
+                        } else if (currentScene.nextScene === 'clickMap') {
+                            document.getElementsByClassName('.nextBtn').disabled = true;
+                        } else if (currentScene.nextScene === 'quiz') {
+                            // Aaron - remove the code here once you have the quiz component ready
+                            currentScene = LEVEL1['pancakeTalkToSalmon'];
+                            nextScene(currentScene);
                         } else {
                             // Display the next scene
                             clearSprites();
