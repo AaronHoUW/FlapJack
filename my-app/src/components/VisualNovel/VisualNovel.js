@@ -11,13 +11,12 @@ import {
     BackButton,
     TermContainer,
 } from './styles.tsx';
-import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import TERMS from './Terms';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
-    let currentScene = LEVEL1['pancakeIntro'];
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
     const navigate = useNavigate();
@@ -25,20 +24,20 @@ function VisualNovel(props) {
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
             clearSprites();
-            currentScene = LEVEL1['sallyTalking'];
+            currentScene = level['sallyTalking'];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
-            currentScene = LEVEL1['postGame'];
+            currentScene = level['postGame'];
             buildDialogue();
         } else {
-            currentScene = LEVEL1['pancakeIntro'];
+            currentScene = level['pancakeIntro'];
             document.getElementById('backBtn').disabled = true;
         }
-        if (currentScene === LEVEL1['pancakeIntro']
-            || currentScene === LEVEL1['sallyTalking']
-            || currentScene === LEVEL1['minigame']
-            || currentScene === LEVEL1['end']) {
+        if (currentScene === level['pancakeIntro']
+            || currentScene === level['sallyTalking']
+            || currentScene === level['minigame']
+            || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
@@ -64,6 +63,7 @@ function VisualNovel(props) {
             createClickSpace();
         } else {
             clearClickSpaces();
+            clearSprites();
         }
 
         createBaseFrame(scene.baseFrame);
@@ -102,7 +102,7 @@ function VisualNovel(props) {
         correctClickSpace.setAttribute('style', 'width: 550px; height: 600px; margin: 0;');
         correctClickSpace.addEventListener('click', () => {
             document.getElementById('nextBtn').disabled = false;
-            currentScene = LEVEL1['pacificOcean_correct'];
+            currentScene = level['pacificOcean_correct'];
             nextScene(currentScene);
         });
 
@@ -110,7 +110,7 @@ function VisualNovel(props) {
         incorrectClickSpace.setAttribute('style', 'width: 1500px; height: 600px; margin: 0');
         incorrectClickSpace.addEventListener('click', () => {
             document.getElementById('nextBtn').disabled = false;
-            currentScene = LEVEL1['pacificOcean_incorrect'];
+            currentScene = level['pacificOcean_incorrect'];
             nextScene(currentScene);
         });
 
@@ -206,7 +206,7 @@ function VisualNovel(props) {
     }
 
     // scenes.map((scene) => {
-    //     let current = LEVEL1[scene];
+    //     let current = level[scene];
     //     currentScene = current;
     // });
 
@@ -389,19 +389,27 @@ function VisualNovel(props) {
                         if (currentScene.previousScene === 'sallyTalking2') {
                             dialoguePosition = 0;
                             event.target.disabled = false;
-                            currentScene = LEVEL1['sallyTalking2'];
+                            currentScene = level['sallyTalking2'];
                             buildDialogue();
                             nextScene(currentScene);
                         } else if (typeof currentScene.previousScene === 'object') {
                             dialoguePosition = 0;
-                            currentScene = LEVEL1['sallyTalking'];
+                            currentScene = level['sallyTalking'];
                             event.target.disabled = true;
                             buildDialogue();
                             nextScene(currentScene);
                         } else if (currentScene.previousScene === undefined && dialoguePosition === 0) {
                             event.target.disabled = true;
+                        } else if (currentScene.previousScene === 'pancakeNorthAmerica') {
+                            document.getElementById('nextBtn').disabled = true;
+                            currentScene = level[currentScene.previousScene];
+                            dialoguePosition = currentScene.dialogue.length - 1;
+                            event.target.disabled = false;
+                            createImage(currentScene.frames);
+                            buildDialogue();
+                            nextScene(currentScene);
                         } else if (currentScene.previousScene !== undefined) {
-                            currentScene = LEVEL1[currentScene.previousScene];
+                            currentScene = level[currentScene.previousScene];
                             dialoguePosition = currentScene.dialogue.length - 1;
                             event.target.disabled = false;
                             createImage(currentScene.frames);
@@ -430,7 +438,7 @@ function VisualNovel(props) {
                             document.querySelectorAll('.choiceButton').forEach((button) => {
                                 button.addEventListener('click', (e) => {
                                     nextEvent.target.disabled = false;
-                                    currentScene = LEVEL1[e.target.getAttribute('key')];
+                                    currentScene = level[e.target.getAttribute('key')];
                                     if (e.target.getAttribute('key') === 'tutorial') {
                                         navigate('/tutorial');
                                     } else if (e.target.getAttribute('key') === 'end') {
@@ -449,12 +457,12 @@ function VisualNovel(props) {
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
                             // Aaron - remove the code here once you have the quiz component ready
-                            currentScene = LEVEL1['pancakeTalkToSalmon'];
+                            currentScene = level['pancakeTalkToSalmon'];
                             nextScene(currentScene);
                         } else {
                             // Display the next scene
                             clearSprites();
-                            currentScene = LEVEL1[currentScene.nextScene];
+                            currentScene = level[currentScene.nextScene];
                             if (currentScene.nextScene === 'clickMap') {
                                 nextEvent.target.disabled = true;
                             }
