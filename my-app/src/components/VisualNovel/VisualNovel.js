@@ -12,7 +12,6 @@ import {
     TermContainer,
 } from './styles.tsx';
 import TERMS from './Terms';
-import CardGame from '../CardGame/CardGame.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
