@@ -151,8 +151,12 @@ footer {
   background-size: contain;
 }
 
-.sprite {
+.sprite-container, .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
+}
+
+.sprite-container {
+  width: 100%;
 }
 
 @keyframes MoveUpDown {
