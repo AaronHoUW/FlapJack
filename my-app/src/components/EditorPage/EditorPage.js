@@ -42,6 +42,7 @@ const IMAGES = {
         'pancake-flapjack-octopus',
         'pancake-bowl',
         'net-rectangle',
+        'thought-bubble',
     ],
 };
 

@@ -245,6 +245,7 @@ function VisualNovel(props) {
                     if (spriteContainer) {
                         frame.forEach((sprite) => {
                             const newSprite = document.createElement('img');
+                            console.log(sprite.flipX);
 
                             newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
                             newSprite.setAttribute('width', `${sprite.size}%`);
