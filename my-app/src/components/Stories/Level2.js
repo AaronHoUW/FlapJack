@@ -13,24 +13,22 @@ const LEVEL2 = {
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "user-placeholder",
-          "x": "47.6",
-          "y": "-1",
-          "size": 50,
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "18",
-          "y": "35",
-          "size": "15",
-          "flipX": false
-        }
-      ],
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-1",
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "18",
+        "y": "35",
+        "size": "15",
+        "flipX": false
+      },
     ],
     "dialogue": [
       {
@@ -68,12 +66,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -109,12 +102,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -147,11 +135,7 @@ const LEVEL2 = {
         "flipX": true
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -187,9 +171,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -213,9 +195,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -239,9 +219,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -258,7 +236,6 @@ const LEVEL2 = {
     "nextScene": "pancakeElwhaNews",
     "baseFrame": [],
     "frames": [
-      [
         {
           "type": "sprite",
           "image": "pancake-flapjack-octopus",
@@ -267,7 +244,6 @@ const LEVEL2 = {
           "size": "010",
           "flipX": false
         }
-      ]
     ],
     "dialogue": [
       {
@@ -285,16 +261,14 @@ const LEVEL2 = {
     "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -341,12 +315,9 @@ const LEVEL2 = {
         "y": "8",
         "size": "15",
         "flipX": true
-      },  
+      },
     ],
-    "frames": [
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -367,16 +338,14 @@ const LEVEL2 = {
     "nextScene": "sallyCardGame",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "20",
-          "y": "50",
-          "size": "10",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "10",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -409,11 +378,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -445,11 +410,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -503,16 +464,14 @@ const LEVEL2 = {
     "nextScene": "pancakeWashingtonState",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -529,16 +488,14 @@ const LEVEL2 = {
     "nextScene": "pancakeWashingtonState",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "10",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "10",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -555,16 +512,14 @@ const LEVEL2 = {
     "nextScene": "quiz",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -600,9 +555,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",

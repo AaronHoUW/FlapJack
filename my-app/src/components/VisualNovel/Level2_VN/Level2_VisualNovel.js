@@ -159,7 +159,7 @@ function VisualNovel(props) {
 
         document.getElementById('visual-novel-container').appendChild(cardContainer);
     }
-    
+
     function clearCards() {
         let cards = document.getElementsByClassName('card');
         if (cards) {
@@ -206,27 +206,33 @@ function VisualNovel(props) {
     }
 
     function clearSprites() {
-        let sprites = document.getElementsByClassName('sprite');
-        while (sprites[0]) {
-            sprites[0].parentNode.removeChild(sprites[0]);
-        };
+        let sprites = document.getElementsByClassName('sprite-container');
+        if (sprites) {
+            while (sprites[0]) {
+                sprites[0].parentNode.removeChild(sprites[0]);
+            };
+        }
     }
 
     function createBaseFrame(baseFrame) {
-        if (baseFrame) {
-            return baseFrame.map((base) => {
-                if (base && baseFrame.length > 0) {
-                    baseFrame.forEach((sprite) => {
-                        // console.log(sprite);
+        let dialogue = document.getElementById('dialogue');
+        if (dialogue) {
+            if (baseFrame) {
+                if (baseFrame.length > 0) {
+                    return baseFrame.forEach((sprite) => {
                         const spriteContainer = document.createElement('div');
                         spriteContainer.setAttribute('class', 'sprite-container');
 
                         let spriteSize = sprite.size;
-                        if (base.image !== 'sally-the-salmon') {
+                        if (sprite.image === 'user-placeholder') {
                             spriteSize = sprite.size - 5;
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
+                        } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
+                        } else if (sprite.image === 'dead-salmon' || sprite.image === 'thought-bubble') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: ${sprite.y}%;`);
                         } else {
-                            spriteContainer.setAttribute('style', `position: absolute;`);
+                            spriteContainer.setAttribute('style', `position: absolute; top: 40%;`);
                         }
 
                         const newSprite = document.createElement('img');
@@ -242,38 +248,49 @@ function VisualNovel(props) {
                         }
                         spriteContainer.appendChild(newSprite);
 
-                        let dialogue = document.getElementById('dialogue');
                         dialogue.appendChild(spriteContainer);
                     });
                 }
-            });
+            }
         }
     }
 
     function createImage(frames) {
+        let dialogue = document.getElementById('dialogue');
         if (frames) {
-            return frames.map((frame) => {
-                let spriteContainer = document.getElementById('dialogue');
-                if (frame && frame.length > 0) {
-                    if (spriteContainer) {
-                        frame.forEach((sprite) => {
-                            const newSprite = document.createElement('img');
+            if (frames.length > 0) {
+                if (dialogue) {
+                    frames.forEach((sprite) => {
+                        const spriteContainer = document.createElement('div');
+                        spriteContainer.setAttribute('class', 'sprite-container');
 
-                            newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
-                            newSprite.setAttribute('width', `${sprite.size}%`);
-                            newSprite.setAttribute('class', 'sprite');
+                        let spriteSize = sprite.size;
+                        if (sprite.image === 'user-placeholder') {
+                            spriteSize = sprite.size - 5;
+                            spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
+                        } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
+                        } 
 
-                            if (sprite.image === 'pancake-flapjack-octopus') {
-                                newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-                            } else {
-                                newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-                            }
+                        const newSprite = document.createElement('img');
 
-                            spriteContainer.appendChild(newSprite);
-                        });
-                    } else {
-                        return frame.map((sprite) => {
-                            return (
+                        newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
+                        newSprite.setAttribute('width', `${spriteSize}%`);
+                        newSprite.setAttribute('class', 'sprite-normal');
+
+                        if (sprite.image === 'pancake-flapjack-octopus') {
+                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+                        } else {
+                            newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+                        }
+                        spriteContainer.appendChild(newSprite);
+
+                        dialogue.appendChild(spriteContainer);
+                    });
+                } else {
+                    return frames.map((sprite) => {
+                        return (
+                            <div className='sprite-container' style={{position: 'absolute', top: `${sprite.y}%`}}>
                                 <img
                                     src={`./sprites/sprite-${sprite.image}.png`}
                                     style={{
@@ -284,14 +301,55 @@ function VisualNovel(props) {
                                         transform: `scaleX(${sprite.flipX ? -1 : 1}`,
                                         maxHeight: '100vh'
                                     }}
-                                    className='sprite'
+                                    className='sprite-normal'
                                 />
-                            )
-                        });
-                    }
+                            </div>
+                        )
+                    });
                 }
-            });
+            }
         }
+        // if (frames) {
+        //     return frames.map((frame) => {
+        //         let spriteContainer = document.getElementById('dialogue');
+        //         if (frame && frame.length > 0) {
+        //             if (spriteContainer) {
+        //                 frame.forEach((sprite) => {
+        //                     const newSprite = document.createElement('img');
+
+        //                     newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
+        //                     newSprite.setAttribute('width', `${sprite.size}%`);
+        //                     newSprite.setAttribute('class', 'sprite');
+
+        //                     if (sprite.image === 'pancake-flapjack-octopus') {
+        //                         newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+        //                     } else {
+        //                         newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+        //                     }
+
+        //                     spriteContainer.appendChild(newSprite);
+        //                 });
+        //             } else {
+        //                 return frame.map((sprite) => {
+        //                     return (
+        //                         <img
+        //                             src={`./sprites/sprite-${sprite.image}.png`}
+        //                             style={{
+        //                                 width: `${sprite.size}%`,
+        //                                 position: 'absolute',
+        //                                 top: `${sprite.y}%`,
+        //                                 left: `${sprite.x}%`,
+        //                                 transform: `scaleX(${sprite.flipX ? -1 : 1}`,
+        //                                 maxHeight: '100vh'
+        //                             }}
+        //                             className='sprite-normal'
+        //                         />
+        //                     )
+        //                 });
+        //             }
+        //         }
+        //     });
+        // }
     }
 
     // scenes.map((scene) => {
