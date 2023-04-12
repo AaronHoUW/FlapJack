@@ -16,7 +16,6 @@ import TERMS from './Terms.js';
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
     const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
-    let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
     let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
@@ -103,6 +102,7 @@ function VisualNovel(props) {
     function createCards() {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add('card-container');
+        let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
         let count = 0;
 
         for (let i = 0; i < 2; i++) {
