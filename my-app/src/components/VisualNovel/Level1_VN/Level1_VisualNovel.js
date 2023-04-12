@@ -10,8 +10,8 @@ import {
     NextButton,
     BackButton,
     TermContainer,
-} from './styles.tsx';
-import TERMS from './Terms';
+} from '../styles.tsx';
+import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);

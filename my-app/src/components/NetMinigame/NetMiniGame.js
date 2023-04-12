@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import {
 	User,
 	Net,
-} from './NetMiniGame.tsx';
-import postGameDialogue from './postGameDialogue.json';
-import PancakeModal from './PancakeModal.png';
-import continueButton from './ContinueButton.png';
-import locationButton from './LocationButton.png';
-import finishButton from './FinishButton.png'
+} from './styles.tsx';
+import postGameDialogue from '../Stories/postGameDialogue.json';
+import PancakeModal from './images/PancakeModal.png';
+import continueButton from './images/ContinueButton.png';
+import locationButton from './images/LocationButton.png';
+import finishButton from './images/FinishButton.png';
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
