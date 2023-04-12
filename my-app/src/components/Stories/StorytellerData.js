@@ -4,8 +4,8 @@ import LEVEL2 from './Level2';
 
 const STORYTELLER_DATA = {
   ...DEFAULT_DATA,
-  // ...LEVEL1,
-  ...LEVEL2,
+  ...LEVEL1,
+  // ...LEVEL2,
 };
 
 export default STORYTELLER_DATA;
