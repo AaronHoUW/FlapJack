@@ -216,22 +216,26 @@ function VisualNovel(props) {
         if (baseFrame) {
             return baseFrame.map((base) => {
                 if (base && baseFrame.length > 0) {
-                    baseFrame.forEach((sprite, i) => {
-                        const newSprite = document.createElement('img');
-                        console.log(base);
+                    baseFrame.forEach((sprite) => {
+                        // console.log(sprite);
+                        // const spriteContainer = document.createElement('div');
+                        // spriteContainer.setAttribute('class', 'sprite-container');
 
-                        newSprite.setAttribute('src', `/sprites/sprite-${base.image}.png`);
-                        newSprite.setAttribute('width', `${base.size}%`);
+                        const newSprite = document.createElement('img');
+
+                        newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
+                        newSprite.setAttribute('width', `${sprite.size}%`);
                         newSprite.setAttribute('class', 'sprite');
 
-                        if (base.image === 'pancake-flapjack-octopus') {
-                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${base.x}%; top: ${base.y}%; transform: scaleX(${base.flipX ? -1 : 1});`);
+                        if (sprite.image === 'pancake-flapjack-octopus') {
+                            newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                         } else {
-                            newSprite.setAttribute('style', `position: absolute; left: ${base.x}%; top: ${base.y}%; transform: scaleX(${base.flipX ? -1 : 1});`);
+                            newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                         }
+                        // spriteContainer.appendChild(newSprite);
 
-                        let spriteContainer = document.getElementById('dialogue');
-                        spriteContainer.appendChild(newSprite);
+                        let dialogue = document.getElementById('dialogue');
+                        dialogue.appendChild(newSprite);
                     });
                 }
             });

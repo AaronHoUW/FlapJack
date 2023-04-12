@@ -155,6 +155,11 @@ footer {
   animation: MoveUpDown 1.5s linear infinite;
 }
 
+.sprite-container {
+  animation: MoveUpDown 1.5s linear infinite;
+  width: 100%;
+}
+
 @keyframes MoveUpDown {
   0%, 100% {
       transform: translateY(0);
