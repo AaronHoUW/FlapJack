@@ -1,9 +1,8 @@
 import React from 'react';
-
-import STORYTELLER_DATA from './innerComp/minigames/data/StorytellerData';
-import Dropdown from './innerComp/Dropdown';
-import ComicView from './innerComp/ComicView';
-import './innerComp/EditorPage.css';
+import STORYTELLER_DATA from '../Stories/StorytellerData';
+import Dropdown from './Dropdown/Dropdown'
+import ComicView from './ComicView/ComicView';
+import './EditorPage.css';
 
 const IMAGES = {
     backgrounds: [

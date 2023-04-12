@@ -3,7 +3,7 @@ import {
     FooterContainer,
     FooterText,
     FooterCopyright,
-} from './Home/styles.tsx';
+} from '../Home/styles.tsx';
 
 const About = () => {
     return (
