@@ -72,6 +72,8 @@ function VisualNovel(props) {
 
         if (scene === level['sallyCardGame']) {
             createCards();
+        } else {
+            clearCards();
         }
 
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
@@ -107,10 +109,47 @@ function VisualNovel(props) {
             const row = document.createElement('div');
             row.classList.add('row');
             while (count < 3) {
-                const image = document.createElement('img');
-                image.setAttribute('src', `/imgs/cards/nets/${images[0]}.png`);
-                image.setAttribute('alt', `${images[0]}`);
-                row.appendChild(image);
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const cardInner = document.createElement('div');
+                cardInner.classList.add('card-inner');
+
+                const imageFront = document.createElement('img');
+                imageFront.setAttribute('src', `/imgs/cards/nets/${images[0]}.png`);
+                imageFront.setAttribute('alt', `${images[0]}`);
+                imageFront.classList.add('front-image');
+
+                const imageBack = document.createElement('div');
+                const text = document.createElement('p');
+                const correct = document.createElement('span');
+                const incorrect = document.createElement('span');
+
+                correct.classList.add('correct-text');
+                incorrect.classList.add('incorrect-text');
+
+                correct.textContent = "Correct!";
+                incorrect.textContent = "Uh Oh!";
+
+                if (!images[0].includes('_')) {
+                    text.appendChild(correct);
+                } else {
+                    text.appendChild(incorrect);
+                }
+
+                imageBack.appendChild(text);
+                imageBack.classList.add('back-image');
+
+                cardInner.appendChild(imageFront);
+                cardInner.appendChild(imageBack);
+
+                card.appendChild(cardInner);
+
+                card.addEventListener('click', () => {
+                    card.classList.toggle('card-clicked');
+                });
+
+                row.appendChild(card);
                 images.shift();
                 count++;
             }
@@ -120,8 +159,15 @@ function VisualNovel(props) {
 
         document.getElementById('visual-novel-container').appendChild(cardContainer);
     }
-
-
+    
+    function clearCards() {
+        let cards = document.getElementsByClassName('card');
+        if (cards) {
+            while (cards[0]) {
+                cards[0].parentNode.removeChild(cards[0]);
+            }
+        }
+    }
 
     function createClickSpace() {
         const clickSpaces = document.createElement('div');
