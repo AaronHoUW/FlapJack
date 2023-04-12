@@ -218,13 +218,19 @@ function VisualNovel(props) {
                 if (base && baseFrame.length > 0) {
                     baseFrame.forEach((sprite) => {
                         // console.log(sprite);
-                        // const spriteContainer = document.createElement('div');
-                        // spriteContainer.setAttribute('class', 'sprite-container');
+                        const spriteContainer = document.createElement('div');
+                        spriteContainer.setAttribute('class', 'sprite-container');
+                        spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
+
+                        let spriteSize = sprite.size;
+                        if (sprite.image !== 'sally-the-salmon') {
+                            spriteSize = sprite.size - 5;
+                        }
 
                         const newSprite = document.createElement('img');
 
                         newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
-                        newSprite.setAttribute('width', `${sprite.size}%`);
+                        newSprite.setAttribute('width', `${spriteSize}%`);
                         newSprite.setAttribute('class', 'sprite');
 
                         if (sprite.image === 'pancake-flapjack-octopus') {
@@ -232,10 +238,10 @@ function VisualNovel(props) {
                         } else {
                             newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                         }
-                        // spriteContainer.appendChild(newSprite);
+                        spriteContainer.appendChild(newSprite);
 
                         let dialogue = document.getElementById('dialogue');
-                        dialogue.appendChild(newSprite);
+                        dialogue.appendChild(spriteContainer);
                     });
                 }
             });

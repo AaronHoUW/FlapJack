@@ -151,10 +151,6 @@ footer {
   background-size: contain;
 }
 
-.sprite {
-  animation: MoveUpDown 1.5s linear infinite;
-}
-
 .sprite-container {
   animation: MoveUpDown 1.5s linear infinite;
   width: 100%;
