@@ -328,9 +328,9 @@ const LEVEL2 = {
       },
       {
         "type": "sprite",
-        "image": "simon-salmon",
-        "x": "25",
-        "y": "20",
+        "image": "dead-salmon",
+        "x": "20",
+        "y": "10",
         "size": "15",
         "flipX": true
       },

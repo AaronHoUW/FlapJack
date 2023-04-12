@@ -218,6 +218,7 @@ function VisualNovel(props) {
                 if (base && baseFrame.length > 0) {
                     baseFrame.forEach((sprite, i) => {
                         const newSprite = document.createElement('img');
+                        console.log(base);
 
                         newSprite.setAttribute('src', `/sprites/sprite-${base.image}.png`);
                         newSprite.setAttribute('width', `${base.size}%`);
@@ -245,7 +246,6 @@ function VisualNovel(props) {
                     if (spriteContainer) {
                         frame.forEach((sprite) => {
                             const newSprite = document.createElement('img');
-                            console.log(sprite.flipX);
 
                             newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
                             newSprite.setAttribute('width', `${sprite.size}%`);
