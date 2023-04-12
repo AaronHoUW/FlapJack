@@ -220,11 +220,13 @@ function VisualNovel(props) {
                         // console.log(sprite);
                         const spriteContainer = document.createElement('div');
                         spriteContainer.setAttribute('class', 'sprite-container');
-                        spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
 
                         let spriteSize = sprite.size;
-                        if (sprite.image !== 'sally-the-salmon') {
+                        if (base.image !== 'sally-the-salmon') {
                             spriteSize = sprite.size - 5;
+                            spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
+                        } else {
+                            spriteContainer.setAttribute('style', `position: absolute;`);
                         }
 
                         const newSprite = document.createElement('img');
