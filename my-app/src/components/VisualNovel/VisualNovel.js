@@ -72,6 +72,8 @@ function VisualNovel(props) {
 
         if (scene === level['sallyCardGame']) {
             createCards();
+        } else {
+            clearCards();
         }
 
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
@@ -156,6 +158,15 @@ function VisualNovel(props) {
         }
 
         document.getElementById('visual-novel-container').appendChild(cardContainer);
+    }
+    
+    function clearCards() {
+        let cards = document.getElementsByClassName('card');
+        if (cards) {
+            while (cards[0]) {
+                cards[0].parentNode.removeChild(cards[0]);
+            }
+        }
     }
 
     function createClickSpace() {
