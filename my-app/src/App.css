@@ -17,6 +17,23 @@ body {
   min-height: 100px;
 }
 
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.row img {
+  flex: 1;
+  height: 291px;
+}
+
 .exit-play {
   border: none;
   color: black;
@@ -86,6 +103,19 @@ footer {
   height: 100vh;
   overflow: hidden;
   background-size: contain;
+}
+
+.sprite {
+  animation: MoveUpDown 1.5s linear infinite;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-15px);
+  }
 }
 
 .play-area::-webkit-scrollbar {

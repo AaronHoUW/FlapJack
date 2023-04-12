@@ -11,13 +11,11 @@ import VisualNovel from './components/VisualNovel/VisualNovel';
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/innerComp/minigames/data/games/NetMiniGame';
-<<<<<<< HEAD
 import Tutorial from './components/Tutorial/Tutorial.js';
 import Secretplayground from './components/secretplayground/Secretplayground.js';
 import QuizPage from './components/QuizPage/QuizPage.js'
-=======
-import Tutorial from './components/Tutorial/Tutorial';
->>>>>>> 0e6c070dda762d2b367aaf347c7e42046afe3dae
+import LEVEL1 from './components/innerComp/minigames/data/stories/Level1';
+import LEVEL2 from './components/innerComp/minigames/data/stories/Level2';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -69,7 +67,24 @@ function App() {
 				} />
 				<Route path='level1' element={
 					<>
-						<VisualNovel isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
+						<VisualNovel
+							level={LEVEL1}
+							isFlapGuide={isFlapGuide} 
+							setIsFlapGuide={setIsFlapGuide}
+							isGameComplete={isGameComplete}
+							setIsGameComplete={setIsGameComplete}
+						/>
+					</>
+				} />
+				<Route path='level2' element={
+					<>
+						<VisualNovel
+							level={LEVEL2}
+							isFlapGuide={isFlapGuide} 
+							setIsFlapGuide={setIsFlapGuide}
+							isGameComplete={isGameComplete}
+							setIsGameComplete={setIsGameComplete}
+						/>
 					</>
 				} />
 				<Route path="/tutorial" element={<Tutorial />} />

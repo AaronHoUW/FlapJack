@@ -1,0 +1,18 @@
+{
+    "What is 5 + 5?": {
+        "correct": "This is the correct responses",
+        "wrong": "How did you mess up simple math?",
+        "answers" :{
+            "10" : true,
+            "9" : false,
+            "11" : false,
+            "10.5" : false
+        }
+    },
+    "Is this a placeholder questions?": {
+        "Yes": true,
+        "Maybe" : false,
+        "No" : false,
+        "Number 25" : false
+    }
+}

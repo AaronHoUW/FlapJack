@@ -10,6 +10,7 @@ const IMAGES = {
         'beige',
         'dam',
         'elwha-estuary',
+        'elwha-news',
         'sea',
         'sea-mountains',
         'sea-mountains-left',
@@ -22,6 +23,7 @@ const IMAGES = {
         'space-test',
         'net',
         'north-america',
+        'north-america-blank',
         'washington-state',
     ],
     sprites: [
@@ -32,11 +34,14 @@ const IMAGES = {
         'seaweed',
         // Our sprites
         'sally-salmon',
+        'sally-sad',
         'simon-salmon',
+        'dead-salmon',
         'submarine',
         'user-placeholder',
         'wendy-whale',
         'pancake-flapjack-octopus',
+        'pancake-bowl',
         'net-rectangle',
     ],
 };
@@ -91,6 +96,8 @@ class EditorPage extends React.Component {
         const currentScene = this.getCurrentScene();
 
         let currentDialogue = null;
+        console.log(sceneFrame);
+        console.log(currentScene);
         if (sceneFrame !== -1 && 'dialogue' in currentScene) {
             currentDialogue = currentScene.dialogue[sceneFrame];
         }
@@ -645,6 +652,7 @@ class EditorPage extends React.Component {
 
     // Render dialogue editor
     renderDialogueEditor() {
+        console.log(this.getCurrentScene().type, "what type")
         if (this.getCurrentScene().type === 'minigame' || this.state.currentFrame === -1) {
             return <></>;
         }
@@ -742,6 +750,8 @@ class EditorPage extends React.Component {
         const currentFrameHasDialogue = currentFrameDialogue !== null;
         const currentFrameIsFinalFrame = this.state.currentFrame === this.getCurrentScene().frames.length - 1;
         const nextSceneIsDecision = typeof(this.getCurrentScene().nextScene) !== 'string';
+
+        console.log(currentFrameDialogue);
         return (
             <div className="dialogue-section attrs-section editor-section">
                 <h2>Dialogue</h2>
@@ -761,7 +771,7 @@ class EditorPage extends React.Component {
                 }
 
                 {
-                    currentFrameHasDialogue || currentFrameDecision !== null &&
+                    (currentFrameHasDialogue || currentFrameDecision !== null) &&
                         <>
                             <div className="attr">
                                 <label htmlFor="dialogue-speaker">Speaker</label>

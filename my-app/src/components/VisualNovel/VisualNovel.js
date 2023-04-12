@@ -11,13 +11,13 @@ import {
     BackButton,
     TermContainer,
 } from './styles.tsx';
-import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import TERMS from './Terms';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
-    let currentScene = LEVEL1['pancakeIntro'];
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
+    let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
     const navigate = useNavigate();
@@ -25,23 +25,23 @@ function VisualNovel(props) {
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
             clearSprites();
-            currentScene = LEVEL1['sallyTalking'];
+            currentScene = level['sallyTalking'];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
-            currentScene = LEVEL1['postGame'];
+            currentScene = level['postGame'];
             buildDialogue();
         } else {
-            currentScene = LEVEL1['pancakeIntro'];
+            currentScene = level['pancakeIntro'];
             document.getElementById('backBtn').disabled = true;
         }
-        if (currentScene === LEVEL1['pancakeIntro']
-            || currentScene === LEVEL1['sallyTalking']
-            || currentScene === LEVEL1['minigame']
-            || currentScene === LEVEL1['end']) {
+        if (currentScene === level['pancakeIntro']
+            || currentScene === level['sallyTalking']
+            || currentScene === level['minigame']
+            || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
-        document.getElementsByClassName('.nextBtn').disabled = false;
+        document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
 
     const TALK_SPEED = 10;
@@ -60,8 +60,19 @@ function VisualNovel(props) {
             document.getElementById('visual-novel-container').style.backgroundImage = `url(/sprites/bg-${scene.background}.png)`;
         }
 
+        if (scene.nextScene === 'clickMap') {
+            createClickSpace();
+        } else {
+            clearClickSpaces();
+            clearSprites();
+        }
+
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
+
+        if (scene === level['sallyCardGame']) {
+            createCards();
+        }
 
         document.querySelector('.message-container p').textContent = scene.dialogue[dialoguePosition].message;
         if (currentScene.dialogue[dialoguePosition].speaker.length > 0) {
@@ -83,6 +94,67 @@ function VisualNovel(props) {
                 scene.dialogue[dialoguePosition].keyword.map((keyword) => buildTerm(keyword));
             } else {
                 buildTerm(scene.dialogue[dialoguePosition].keyword);
+            }
+        }
+    }
+
+    function createCards() {
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('card-container');
+        let count = 0;
+
+        for (let i = 0; i < 2; i++) {
+            const row = document.createElement('div');
+            row.classList.add('row');
+            while (count < 3) {
+                const image = document.createElement('img');
+                image.setAttribute('src', `/imgs/cards/nets/${images[0]}.png`);
+                image.setAttribute('alt', `${images[0]}`);
+                row.appendChild(image);
+                images.shift();
+                count++;
+            }
+            count = 0;
+            cardContainer.append(row);
+        }
+
+        document.getElementById('visual-novel-container').appendChild(cardContainer);
+    }
+
+
+
+    function createClickSpace() {
+        const clickSpaces = document.createElement('div');
+        clickSpaces.classList.add('space');
+        clickSpaces.setAttribute('style', 'display: flex;');
+
+        const correctClickSpace = document.createElement('div');
+        correctClickSpace.setAttribute('style', 'width: 550px; height: 600px; margin: 0;');
+        correctClickSpace.addEventListener('click', () => {
+            document.getElementById('nextBtn').disabled = false;
+            currentScene = level['pacificOcean_correct'];
+            nextScene(currentScene);
+        });
+
+        const incorrectClickSpace = document.createElement('div');
+        incorrectClickSpace.setAttribute('style', 'width: 1500px; height: 600px; margin: 0');
+        incorrectClickSpace.addEventListener('click', () => {
+            document.getElementById('nextBtn').disabled = false;
+            currentScene = level['pacificOcean_incorrect'];
+            nextScene(currentScene);
+        });
+
+        let container = document.getElementById('visual-novel-container');
+        clickSpaces.appendChild(correctClickSpace);
+        clickSpaces.appendChild(incorrectClickSpace);
+        container.appendChild(clickSpaces);
+    }
+
+    function clearClickSpaces() {
+        let spaces = document.getElementsByClassName('space');
+        if (spaces) {
+            while (spaces[0]) {
+                spaces[0].parentNode.removeChild(spaces[0]);
             }
         }
     }
@@ -122,30 +194,49 @@ function VisualNovel(props) {
     function createImage(frames) {
         if (frames) {
             return frames.map((frame) => {
+                let spriteContainer = document.getElementById('dialogue');
                 if (frame && frame.length > 0) {
-                    return frame.map((sprite) => {
-                        return (
-                            <img
-                                src={`./sprites/sprite-${sprite.image}.png`}
-                                style={{
-                                    width: `${sprite.size}%`,
-                                    position: 'absolute',
-                                    top: `${sprite.y}%`,
-                                    left: `${sprite.x}%`,
-                                    transform: `scaleX(${sprite.flipX ? -1 : 1}`,
-                                    maxHeight: '100vh'
-                                }}
-                                className='sprite'
-                            />
-                        )
-                    });
+                    if (spriteContainer) {
+                        frame.forEach((sprite) => {
+                            const newSprite = document.createElement('img');
+
+                            newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
+                            newSprite.setAttribute('width', `${sprite.size}%`);
+                            newSprite.setAttribute('class', 'sprite');
+
+                            if (sprite.image === 'pancake-flapjack-octopus') {
+                                newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+                            } else {
+                                newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
+                            }
+
+                            spriteContainer.appendChild(newSprite);
+                        });
+                    } else {
+                        return frame.map((sprite) => {
+                            return (
+                                <img
+                                    src={`./sprites/sprite-${sprite.image}.png`}
+                                    style={{
+                                        width: `${sprite.size}%`,
+                                        position: 'absolute',
+                                        top: `${sprite.y}%`,
+                                        left: `${sprite.x}%`,
+                                        transform: `scaleX(${sprite.flipX ? -1 : 1}`,
+                                        maxHeight: '100vh'
+                                    }}
+                                    className='sprite'
+                                />
+                            )
+                        });
+                    }
                 }
             });
         }
     }
 
     // scenes.map((scene) => {
-    //     let current = LEVEL1[scene];
+    //     let current = level[scene];
     //     currentScene = current;
     // });
 
@@ -303,6 +394,7 @@ function VisualNovel(props) {
                     }
                 }>Exit</ExitButton>
                 <BackButton id='backBtn' onClick={(event) => {
+                    document.getElementById('nextBtn').disabled = false;
                     if (dialoguePosition > 0) {
                         dialoguePosition--;
                         if (currentScene.dialogue[dialoguePosition].keyword) {
@@ -327,27 +419,36 @@ function VisualNovel(props) {
                         if (currentScene.previousScene === 'sallyTalking2') {
                             dialoguePosition = 0;
                             event.target.disabled = false;
-                            currentScene = LEVEL1['sallyTalking2'];
+                            currentScene = level['sallyTalking2'];
                             buildDialogue();
                             nextScene(currentScene);
                         } else if (typeof currentScene.previousScene === 'object') {
                             dialoguePosition = 0;
-                            currentScene = LEVEL1['sallyTalking'];
+                            currentScene = level['sallyTalking'];
                             event.target.disabled = true;
                             buildDialogue();
                             nextScene(currentScene);
                         } else if (currentScene.previousScene === undefined && dialoguePosition === 0) {
                             event.target.disabled = true;
-                        } else if (currentScene.previousScene !== undefined) {
-                            currentScene = LEVEL1[currentScene.previousScene];
+                        } else if (currentScene.previousScene === 'pancakeNorthAmerica') {
+                            document.getElementById('nextBtn').disabled = true;
+                            currentScene = level[currentScene.previousScene];
                             dialoguePosition = currentScene.dialogue.length - 1;
+                            event.target.disabled = false;
+                            createImage(currentScene.frames);
+                            buildDialogue();
+                            nextScene(currentScene);
+                        } else if (currentScene.previousScene !== undefined) {
+                            currentScene = level[currentScene.previousScene];
+                            dialoguePosition = currentScene.dialogue.length - 1;
+                            event.target.disabled = false;
                             createImage(currentScene.frames);
                             buildDialogue();
                             nextScene(currentScene);
                         }
                     }
                 }}>Back</BackButton>
-                <NextButton className='nextBtn' onClick={(nextEvent) => {
+                <NextButton id='nextBtn' onClick={(nextEvent) => {
                     document.getElementById('backBtn').disabled = false;
                     if (dialoguePosition < currentScene.dialogue.length - 1) {
                         dialoguePosition++;
@@ -367,22 +468,34 @@ function VisualNovel(props) {
                             document.querySelectorAll('.choiceButton').forEach((button) => {
                                 button.addEventListener('click', (e) => {
                                     nextEvent.target.disabled = false;
-                                    currentScene = LEVEL1[e.target.getAttribute('key')];
-                                    buildDialogue();
-                                    nextScene(currentScene);
+                                    currentScene = level[e.target.getAttribute('key')];
+                                    if (e.target.getAttribute('key') === 'tutorial') {
+                                        navigate('/tutorial');
+                                    } else if (e.target.getAttribute('key') === 'end') {
+                                        setIsGameComplete(false);
+                                        navigate('/')
+                                    } else {
+                                        buildDialogue();
+                                        nextScene(currentScene);
+                                    }
                                 });
                             });
-                        } else if (currentScene.nextScene === 'pancakeGuide') {
-                            navigate('/tutorial');
                         } else if (currentScene.nextScene === 'minigame') {
                             navigate('/play');
                         } else if (currentScene.nextScene === 'end') {
                             setIsGameComplete(false);
                             navigate('/');
+                        } else if (currentScene.nextScene === 'quiz') {
+                            // Aaron - remove the code here once you have the quiz component ready
+                            currentScene = level['pancakeTalkToSalmon'];
+                            nextScene(currentScene);
                         } else {
                             // Display the next scene
                             clearSprites();
-                            currentScene = LEVEL1[currentScene.nextScene];
+                            currentScene = level[currentScene.nextScene];
+                            if (currentScene.nextScene === 'clickMap') {
+                                nextEvent.target.disabled = true;
+                            }
                             nextScene(currentScene);
                         }
                     }
