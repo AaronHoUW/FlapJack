@@ -10,9 +10,36 @@
         }
     },
     "Is this a placeholder questions?": {
-        "Yes": true,
-        "Maybe" : false,
-        "No" : false,
-        "Number 25" : false
+        "correct": "This is the correct responses",
+        "wrong": "Really? this is a simple question",
+        "answers" :{
+            "Yes": true,
+            "Maybe" : false,
+            "No" : false,
+            "Number 25" : false
+        }
+    },
+    "How many options this quiz question has?": {
+        "correct": "I believe this works",
+        "wrong": "No this doesn't",
+        "answers" :{
+            "3": true,
+            "1" : false,
+            "2" : false
+        }
+    },
+    "Which of these images doesn't correlates to their answers?": {
+        "correct": "I believe this works",
+        "wrong": "No this doesn't",
+        "answers" :{
+            "apple" : false,
+            "whale" : true,
+            "fish" : false
+        },
+        "images" :{
+            "apple": "https://www.applesfromny.com/wp-content/uploads/2020/05/20Ounce_NYAS-Apples2.png",
+            "whale": "https://media.discordapp.net/attachments/215359155328778261/1089447236821336064/IMG_4045.png?width=1114&height=936",
+            "fish": "https://th-thumbnailer.cdn-si-edu.com/TxKqdMnf-FL68qtQNLP92yUgPz8=/fit-in/1600x0/filters:focal(419x476:420x477)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/47/4d/474dd6a7-83bd-4808-a237-2a4a0af0d90e/sheepshead_fish.jpeg"
+        } 
     }
 }

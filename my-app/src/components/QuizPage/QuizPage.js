@@ -3,17 +3,20 @@ import {
 	Flapjack,
     ScreenModal,
 	ModalRowText,
-    ModalContent
+    ModalContent,
+	ChoiceButton,
+	ChoiceImages
 } from './styles.tsx';
 import importQuestions from './questions.json'
 
-function QuizPage() {
+function QuizPage(props) {
 	// UseState Questions
-	const [questionNumber, setQuestionNumber] = useState(0)
-	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: []})
+	const [questionNumber, setQuestionNumber] = useState(3)
+	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: [], Images: {}})
 	// Results
 	const [resultsText, setResultText] = useState()
 	const [correctAnswer, setCorrectAnswer] = useState()
+	const [userChoice, setUserChoice] = useState()
 	// Imported Questions from json
 	const questionList = importQuestions;
 
@@ -24,24 +27,55 @@ function QuizPage() {
 			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[questionNumber])].answers)),
 			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
 			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
-			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong
+			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong,
+			Images: questionList[(Object.keys(questionList)[questionNumber])].images
 		})
 	}, [questionNumber, shuffle]);
 
+	const letters = ["A", "B", "C", "D"];
 	const displayAnswer = displayQuestion["Choices"].map((answer, i) => {
+		let displayFormat = 6;
+		if (displayQuestion.Choices.length % 2 === 1) {
+			displayFormat = 4
+		}
 		const handleOnClick = () => {
+			setUserChoice(answer)
 			if(answer, displayQuestion.AnswersResults[answer]) {
-				setResultText(displayQuestion.Correct)
-				setCorrectAnswer(true)
+				setResultText(displayQuestion.Correct);
+				setCorrectAnswer(true);
 			} else {
 				setResultText(displayQuestion.Wrong)
 				setCorrectAnswer(false)
 			}
 		}
+		console.log(displayQuestion.Images === undefined)
 		return (
-			<div className="col-6 " key={i} onClick={handleOnClick}>{answer}</div>
+			<div className={`col-`+ displayFormat + ` d-flex flex-row py-2`} key={i} onClick={handleOnClick}>
+				<ChoiceButton className="text-light" id={answer}>{letters[i]}</ChoiceButton>
+				<div className='container my-auto'>
+					{(displayQuestion.Images !== undefined) && <ChoiceImages src={displayQuestion.Images[answer]} alt={answer} className="row"/>}		
+					<p className='my-auto ms-1 row'>{answer}</p>
+				</div>
+			</div>
 		)
 	})
+
+	displayQuestion["Choices"].forEach((answer) => {
+		let ChoiceDiv = document.getElementById(answer)
+		if(ChoiceDiv !== null) {
+			if(answer === userChoice) {
+				if(correctAnswer) {
+					ChoiceDiv.classList.add("bg-success")
+				} else {
+					ChoiceDiv.classList.add("bg-danger")
+				}
+			} else {
+				ChoiceDiv.classList.remove("bg-success")
+				ChoiceDiv.classList.remove("bg-danger")
+			}
+		}
+	});
+
 
     return (
         <div className='play-area'>
@@ -61,15 +95,17 @@ function QuizPage() {
                                         {displayAnswer}
                                     </div>
 									<div className="row justify-content-center pt-3">
-                                        {correctAnswer && <p className='text-success'>Correct!</p>} {resultsText} 
+                                        {(correctAnswer && 
+										<p><span className='text-success fw-bold'>Correct!</span> {resultsText}</p>) || (correctAnswer !== undefined && <p><span className='text-danger fw-bold'>Uh Oh!</span> {resultsText}</p>)} 
+										
                                     </div>
                                 </div>
 							</ModalRowText>
 
 							<div className='modal-buttons'>
-								<button className='modal-continue' type="button" onClick={() => console.log("This shouldn't work")}>
+								{/* <button className='modal-continue' type="button" onClick={() => console.log("This shouldn't work")}>
                                     hello
-								</button>
+								</button> */}
 							</div>
 						</div>
 					</ModalContent>
@@ -86,18 +122,8 @@ function QuizPage() {
     );
 }
 
-function DateNotes(props) {
-	console.log('testing')
-    return (
-        <li className="list-group-item">
-            {props.note}
-        </li>
-    );
-}
-
 function shuffle(array) {
-	const shuffleArray = array.sort(() => Math.random() - .5);
-	return shuffleArray;
+	return array.sort(() => Math.random() - .5);
 }
 
 export default QuizPage;

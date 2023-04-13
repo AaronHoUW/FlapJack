@@ -45,3 +45,32 @@ export const ModalRowText = styled.div`
     height: 0%;
     font-size: 25px
 `;
+
+export const ChoiceButton = styled.button`
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px 24px;
+    gap: 10px;
+
+    width: 73px;
+    height: 77px;
+
+    /* Dark Navy */
+
+    background: #134254;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+`;
+
+export const ChoiceImages = styled.img`
+    height: 100px !important
+`;
