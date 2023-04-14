@@ -13,24 +13,22 @@ const LEVEL2 = {
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "user-placeholder",
-          "x": "47.6",
-          "y": "-1",
-          "size": 50,
-          "flipX": false
-        },
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "18",
-          "y": "35",
-          "size": "15",
-          "flipX": false
-        }
-      ],
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-1",
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "18",
+        "y": "35",
+        "size": "15",
+        "flipX": false
+      },
     ],
     "dialogue": [
       {
@@ -68,12 +66,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -109,12 +102,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -147,11 +135,7 @@ const LEVEL2 = {
         "flipX": true
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -187,9 +171,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -213,9 +195,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -239,9 +219,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -258,7 +236,6 @@ const LEVEL2 = {
     "nextScene": "pancakeElwhaNews",
     "baseFrame": [],
     "frames": [
-      [
         {
           "type": "sprite",
           "image": "pancake-flapjack-octopus",
@@ -267,7 +244,6 @@ const LEVEL2 = {
           "size": "010",
           "flipX": false
         }
-      ]
     ],
     "dialogue": [
       {
@@ -285,16 +261,14 @@ const LEVEL2 = {
     "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -328,21 +302,26 @@ const LEVEL2 = {
       },
       {
         "type": "sprite",
-        "image": "simon-salmon",
-        "x": "25",
-        "y": "20",
+        "image": "thought-bubble",
+        "x": "12",
+        "y": "0",
+        "size": "30",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "dead-salmon",
+        "x": "20",
+        "y": "8",
         "size": "15",
         "flipX": true
       },
     ],
-    "frames": [
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
-        "message": "For example, my friend Simon got caught in a net a few weeks ago and lost one of his fins. This has made it hard for him to swim as fast as the rest of us.",
+        "message": "As you can tell, ghost nets are really dangerous for me and my friends. I lost my friend Simon a few weeks ago because he got swept away by a ghost net.",
         "type": "left"
       },
       {
@@ -359,16 +338,14 @@ const LEVEL2 = {
     "nextScene": "sallyCardGame",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "20",
-          "y": "50",
-          "size": "10",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "10",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -401,11 +378,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -437,11 +410,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -495,16 +464,14 @@ const LEVEL2 = {
     "nextScene": "pancakeWashingtonState",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -521,16 +488,14 @@ const LEVEL2 = {
     "nextScene": "pancakeWashingtonState",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "10",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "10",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -547,16 +512,14 @@ const LEVEL2 = {
     "nextScene": "quiz",
     "baseFrame": [],
     "frames": [
-      [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-      ]
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {
@@ -592,9 +555,7 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
