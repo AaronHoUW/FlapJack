@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import {
 	User,
 	Net,
-	Obstacle
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
 import continueButton from './images/ContinueButton.png';
 import locationButton from './images/LocationButton.png';
 import finishButton from './images/FinishButton.png';
-import sqaureImg from './square.png'
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -23,9 +21,6 @@ function NetMiniGame(props) {
 	const [netPlacement2, setNetPlacement2] = useState({});
 	const [netPlacement3, setNetPlacement3] = useState({});
 	const [netRemove, setNetRemove] = useState(0);
-	//Obstacle
-    const [squarePoints, setSquarePoints] = useState({}) 
-	const [hasObstacle, setHasObstacle] = useState(false) 
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -41,47 +36,21 @@ function NetMiniGame(props) {
 
 	// Player Controls
 	const handleKeyDown = event => {
-        const newPlayerCords = {xPosition: grabUserXPosition(),
-                                yPosition: grabUserYPosition(),
-                                width: user.current.width,
-                                height: user.current.height}
-        if(event.key === 'ArrowRight') {
-            newPlayerCords.xPosition+=100;
-            if(!checkObstacle(newPlayerCords) || !hasObstacle) {
-                setXAxis(xAxis + 50)
-            }
-        }
-        if(event.key === 'ArrowLeft') {
-            newPlayerCords.xPosition-=100;
-            if(!checkObstacle(newPlayerCords) || !hasObstacle) {
-                setXAxis(xAxis - 50)
-            }
-        }
-        if(event.key === 'ArrowDown') {
-            newPlayerCords.yPosition+=50;
-            if(!checkObstacle(newPlayerCords) || !hasObstacle) {
-                setYAxis(yAxis + 50)
-            }
-        }
-        if(event.key === 'ArrowUp') {
-            newPlayerCords.yPosition-=50;
-            if(!checkObstacle(newPlayerCords) || !hasObstacle) {
-                setYAxis(yAxis - 50)
-            }
-        }
-        // console.log(newPlayerCords.xPosition, newPlayerCords.yPosition, "Uuser Position")
-        checkObstacle(newPlayerCords);
-        checkWithinRange();
+		if (event.key === 'ArrowRight') {
+			setXAxis(xAxis + 50)
+		}
+		if (event.key === 'ArrowLeft') {
+			setXAxis(xAxis - 50)
+		}
+		if (event.key === 'ArrowDown') {
+			setYAxis(yAxis + 50)
+		}
+		if (event.key === 'ArrowUp') {
+			setYAxis(yAxis - 50)
+		}
+		console.log(user.current.x, user.current.y)
+		checkWithinRange();
 	};
-
-	// Create function to grab true XY positions
-	function grabUserXPosition() {
-		return  user.current.offsetLeft + (user.current.width / 2);
-	}
-
-	function grabUserYPosition() {
-		return user.current.offsetTop + (user.current.height / 2)
-	}
 
 	function randomPx() {
 		let px = Math.floor((Math.random() * 250) + 50);
@@ -93,7 +62,6 @@ function NetMiniGame(props) {
 	const net = useRef(null);
 	const net2 = useRef(null);
 	const net3 = useRef(null);
-	const sqaure = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
@@ -106,20 +74,6 @@ function NetMiniGame(props) {
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
-		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
-		
-		sqaure.current.focus();
-		document.getElementById('square').classList.add('hidden');
-		const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
-        const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
-        setSquarePoints({
-            x: squareX,
-            y: squareY,
-            leftEdge: squareX - (sqaure.current.width / 2),
-            rightEdge: squareX + (sqaure.current.width / 2),
-            topEdge: squareY - (sqaure.current.height / 2),
-            bottomEdge: squareY + (sqaure.current.height / 2)
-        })
 	}, []);
 
 	function checkWithinRange() {
@@ -142,18 +96,6 @@ function NetMiniGame(props) {
 		}
 	}
 
-	function checkObstacle(newPlayerCords) {
-        // Corners
-        const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
-            const newCorners = {x: newPlayerCords.xPosition + (75)*cords[0], y: newPlayerCords.yPosition- (75)*cords[1]}
-            // console.log(newCorners);
-            return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
-                newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
-        })
-        // console.log(playerCorners, "check")
-        return playerCorners.length >= 1;
-    }
-
 	const removeNet = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
 			event.target.classList.add('hidden');
@@ -169,9 +111,7 @@ function NetMiniGame(props) {
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
-			document.getElementById('square').classList.remove('hidden');
-			setHasObstacle(true)
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
 		} else if (level === 2) {
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-see-level.png)`;
 		}
@@ -294,10 +234,6 @@ function NetMiniGame(props) {
 					alt="Net3"
 					id='net3'
 				/>
-				<Obstacle 
-					src={sqaureImg}
-					id='square'
-					ref={sqaure}/>
 			</div>
 		</>
 	);

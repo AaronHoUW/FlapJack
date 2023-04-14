@@ -44,13 +44,6 @@ export const Net = styled.img<Props>`
     }
 `;
 
-export const Obstacle = styled.img<Props>`
-    position: absolute;
-    top: 40%;
-    right: 45%;
-    max-height: 300px
-`;
-
 // export const Modal = styled.div`
 //     position: fixed;
 //     z-index: 1;
