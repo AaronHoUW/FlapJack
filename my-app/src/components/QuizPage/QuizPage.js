@@ -11,7 +11,7 @@ import importQuestions from './questions.json'
 
 function QuizPage(props) {
 	// UseState Questions
-	const [questionNumber, setQuestionNumber] = useState(3)
+	const [questionNumber, setQuestionNumber] = useState(4)
 	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: [], Images: {}})
 	// Results
 	const [resultsText, setResultText] = useState()
