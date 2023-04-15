@@ -41,6 +41,8 @@ const IMAGES = {
         'wendy-whale',
         'pancake-flapjack-octopus',
         'pancake-bowl',
+        'shawn-seagull',
+        'shawn-sad',
         'net-rectangle',
         'thought-bubble',
     ],
