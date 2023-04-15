@@ -53,6 +53,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 50px;
+  text-align: left;
 }
 
 .card-container {
@@ -142,6 +144,10 @@ footer {
 
 .circle-text {
   margin: auto;
+}
+
+.explanation {
+  display: inline;
 }
 
 .play-area {
