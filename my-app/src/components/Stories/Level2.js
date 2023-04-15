@@ -273,7 +273,7 @@ const LEVEL2 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "Can you help to identify the images that have nets in them?",
+        "message": "Can you help to identify the images that have nets in them? Click on the images you think have nets in them!",
         "type": "nospeaker",
       }
     ]

@@ -15,7 +15,7 @@ import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
-import Secretplayground from './components/secretplayground/Secretplayground.js';
+import Secretplayground from './components/SecretPlayground/SecretPlayground.js';
 import QuizPage from './components/QuizPage/QuizPage.js'
 
 function App() {

@@ -103,6 +103,14 @@ function VisualNovel(props) {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add('card-container');
         let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
+        let explanations = [
+            'Nets can get stuck on coral and stay tangled there for a long time!',
+            "No nets here. That's just open ocean!",
+            'Some nets just float on top of the water and get tangled with other things.',
+            'Just rocks here!',
+            'Nets can also get tangled up in old shipwrecks or other large debris.',
+            'Sometimes, animals get tangled up in nets that are floating in the water.',
+        ]
         let count = 0;
 
         for (let i = 0; i < 2; i++) {
@@ -122,6 +130,7 @@ function VisualNovel(props) {
 
                 const imageBack = document.createElement('div');
                 const text = document.createElement('p');
+                const explanation = document.createElement('p');
                 const correct = document.createElement('span');
                 const incorrect = document.createElement('span');
 
@@ -136,6 +145,10 @@ function VisualNovel(props) {
                 } else {
                     text.appendChild(incorrect);
                 }
+                explanation.textContent = ' ' + explanations[0];
+                explanation.classList.add('explanation');
+
+                text.appendChild(explanation);
 
                 imageBack.appendChild(text);
                 imageBack.classList.add('back-image');
@@ -151,6 +164,7 @@ function VisualNovel(props) {
 
                 row.appendChild(card);
                 images.shift();
+                explanations.shift();
                 count++;
             }
             count = 0;
