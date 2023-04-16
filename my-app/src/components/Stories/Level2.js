@@ -294,7 +294,7 @@ const LEVEL2 = {
       },
       {
         "type": "sprite",
-        "image": "sally-salmon",
+        "image": "sally-sad",
         "x": "14",
         "y": "40",
         "size": "15",
