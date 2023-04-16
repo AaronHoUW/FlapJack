@@ -8,11 +8,9 @@ import {
     NextButton,
     Circle
 } from './styles.tsx';
-// import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import { useNavigate } from 'react-router-dom';
 import sqaureImg from './square.png'
 import arrowKeys from './tutorial-arrow-keys.png'
-// import ComicView from '../innerComp/ComicView';
 
 function Secretplayground() {
 	// Player Movement
@@ -67,7 +65,6 @@ function Secretplayground() {
                 setYAxis(yAxis - 50)
             }
         }
-        // console.log(newPlayerCords.xPosition, newPlayerCords.yPosition, "Uuser Position")
         checkObstacle(newPlayerCords);
         setMoveCount(moveCount + 1)
         checkWithinRange(newPlayerCords);
@@ -119,38 +116,12 @@ function Secretplayground() {
         // Corners
         const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
             const newCorners = {x: newPlayerCords.xPosition + (75)*cords[0], y: newPlayerCords.yPosition- (75)*cords[1]}
-            // console.log(newCorners);
             console.log(cords, newCorners)
             return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
                 newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
         })
-        // console.log(playerCorners, "check")
         console.log(playerCorners)
         return playerCorners.length >= 1;
-
-        // console.log(playerCorners)
-        
-        // console.log(netCords)
-        // console.log(playerCorners)
-        // console.log(" ")
-
-        // netCords.filter(netPoints => {
-        //     // console.log(playerCorners)
-        //     playerCorners.filter(playerPoints => {
-        //         console.log(playerPoints.x > netPoints.x && playerPoints.y > netPoints.y)
-        //     })
-        //     // console.log(
-        //     //     Math.sqrt((newPlayerCords.xPosition - points.x)**2 + (newPlayerCords.yPosition  - points.y)**2) <= 125
-        //     // )
-        // })
-
-        // console.log(net.current.x - (net.current.width / 2), net.current.y - (net.current.height / 2))        
-
-        // console.log("Player X: " + newPlayerCords.xPosition, "Player Y: " + newPlayerCords.yPosition, "Width: " + newPlayerCords.width, "Height: " + newPlayerCords.height)
-        // console.log("Player -+ X: " + (newPlayerCords.xPosition - (newPlayerCords.width / 2)), "Player -+ Y:" + (newPlayerCords.yPosition + (newPlayerCords.height / 2)))
-
-
-
         // Within A Circle Math.sqrt((newPlayerCords.xPosition - net.current.x)**2 + (newPlayerCords.yPosition - net.current.y)**2)
         // 
         // The Player is the circle, while the hitbox is the four corners: Math.sqrt((newPlayerCords.xPosition - [net.corner.position])**2 + (newPlayerCords.yPosition - [net.corner.position])**2)
@@ -165,12 +136,6 @@ function Secretplayground() {
         } else {
             document.getElementById('net').classList.remove('in-range');
         }
-
-        // if(Math.sqrt((newPlayerCords.xPosition  - sqaure.current.x)**2 + (newPlayerCords.yPosition  - sqaure.current.y)**2 ) <= 300) {
-        //     document.getElementById('square').classList.add('in-range');
-        // } else {
-        //     document.getElementById('square').classList.remove('in-range');
-        // }
 	}
 
 	const removeNet = (event) => {
@@ -184,24 +149,6 @@ function Secretplayground() {
 
     return (
         <div className='play-area' onClick={() => user.current.focus()}>
-            {/* {textPage === 2 &&<Circle 
-                src={circleImg}
-                ref={circle}/> }
-            <div>
-                <Speech className="speech" src='./imgs/text.png' />
-                <DialogueMessageContainer className="message-container" >
-                        {textPage === 1 && <img src={arrowKeys}/>}
-                        <p>{tutorialText[textPage]}</p>
-                </DialogueMessageContainer>
-                {displayButton  && <NextButton className='nextBtn' onClick={handleNextText}>{">"}</NextButton> }
-            </div>
-			<Flapjack
-				tabIndex={-1}
-				onKeyDown={handleKeyDown}
-				src={`/sprites/sprite-pancake-flapjack-octopus.png`}
-				className='img-size'
-				alt="Pancake the flapjack"
-				/> */}
             {/* User */}
             <User
 				style={userPlacement}

@@ -43,9 +43,6 @@ function VisualNovel(props) {
         document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
 
-    const TALK_SPEED = 10;
-    let speechTimer = 0;
-
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -284,7 +281,7 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
-                        } 
+                        }
 
                         const newSprite = document.createElement('img');
 
@@ -304,7 +301,7 @@ function VisualNovel(props) {
                 } else {
                     return frames.map((sprite) => {
                         return (
-                            <div className='sprite-container' style={{position: 'absolute', top: `${sprite.y}%`}}>
+                            <div className='sprite-container' style={{ position: 'absolute', top: `${sprite.y}%` }}>
                                 <img
                                     src={`./sprites/sprite-${sprite.image}.png`}
                                     style={{
@@ -323,67 +320,7 @@ function VisualNovel(props) {
                 }
             }
         }
-        // if (frames) {
-        //     return frames.map((frame) => {
-        //         let spriteContainer = document.getElementById('dialogue');
-        //         if (frame && frame.length > 0) {
-        //             if (spriteContainer) {
-        //                 frame.forEach((sprite) => {
-        //                     const newSprite = document.createElement('img');
-
-        //                     newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
-        //                     newSprite.setAttribute('width', `${sprite.size}%`);
-        //                     newSprite.setAttribute('class', 'sprite');
-
-        //                     if (sprite.image === 'pancake-flapjack-octopus') {
-        //                         newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-        //                     } else {
-        //                         newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-        //                     }
-
-        //                     spriteContainer.appendChild(newSprite);
-        //                 });
-        //             } else {
-        //                 return frame.map((sprite) => {
-        //                     return (
-        //                         <img
-        //                             src={`./sprites/sprite-${sprite.image}.png`}
-        //                             style={{
-        //                                 width: `${sprite.size}%`,
-        //                                 position: 'absolute',
-        //                                 top: `${sprite.y}%`,
-        //                                 left: `${sprite.x}%`,
-        //                                 transform: `scaleX(${sprite.flipX ? -1 : 1}`,
-        //                                 maxHeight: '100vh'
-        //                             }}
-        //                             className='sprite-normal'
-        //                         />
-        //                     )
-        //                 });
-        //             }
-        //         }
-        //     });
-        // }
     }
-
-    // scenes.map((scene) => {
-    //     let current = level[scene];
-    //     currentScene = current;
-    // });
-
-    // function conversation(dialogue) {
-    //     clearInterval(speechTimer);
-    //     let message = document.querySelector('.message-container p');
-    //     message.textContent = '';
-    //     speechTimer = setInterval(function() {
-    //         if (dialogue.length === 0) {
-    //           clearInterval(speechTimer);
-    //         } else {
-    //           message.textContent = message.textContent + dialogue[0];
-    //           dialogue = dialogue.slice(1, dialogue.length);
-    //         }
-    //       }, TALK_SPEED);
-    // }
 
     function buildMultipleTerms(keywords) {
         let dialogue = document.querySelector('.message-container p');

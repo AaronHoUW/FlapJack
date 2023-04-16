@@ -318,39 +318,13 @@ class EditorPage extends React.Component {
                     <button onClick={this.import.bind(this)} className='download-upload-btn'>
                         <span>Upload</span>
                     </button>
-                    
-                    {/* To be Removed */}
-
-                    {/* <button onClick={toggleInstructions.bind(this)}>
-                        <span className="material-icons-outlined">help_outline</span>
-                    </button> */}
                 </div>
-
-                {/* To be Removed */}
-
-                {/* {
-                    this.state.showInstructions && 
-                        <>
-                            <h2>Instructions</h2>
-                            <ul>
-                                <li>Use scenes and frames sections to navigate game</li>
-                                <li>Use attributes sections to edit attributes</li>
-                                <li>Click on a sprite to select it for editing</li>
-                                <li>Shift+click on a sprite to follow cursor, then click again to drop</li>
-                                <li>Don't forget to import/export</li>
-                            </ul>
-                        </>
-                } */}
             </div>
         )
     }
 
     // Render sprite spawner view
     renderSpriteSpawner() {
-        // if (this.getCurrentScene().type === 'minigame') {
-        //     return <div></div>;
-        // }
-
         // Update current sprite spawn search filter
         const updateFilter = event => {
             const newFilter = event.target.value;
