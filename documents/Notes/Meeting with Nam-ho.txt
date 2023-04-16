@@ -1,0 +1,65 @@
+Backlog
+- Priorities
+- Story points
+- Time estimation
+
+Spring project schedule
+- What's the assignment schedule?
+
+Resource summaries
+- Do we have to use all of the resource summary (ideation phase) or can we just use part of it and write about that?
+- Talking with the previous team and them giving us ideas about how we can make one user story as our MVP, does that count?
+
+MEETING NOTES:
+Backlog pre-clarification
+- Ask questions so that the user story is clearly articulated and there is a clear sense of acceptance criteria
+
+Multiple sprints!!!
+- Can be weekly mini sprint or a 2 week sprint
+
+Story points
+- Level of effort or level of complexity
+- Replacing text: 0
+- Can crank it out in an hour or so: 1
+- Pretty sure I know the solution and how to do it but it might take a little time: 2
+- Think I know the solution but requires a little bit of research: 3
+- Have no idea how to do this: 4
+
+Time estimation
+- Can be tied together to story points or not
+- 5 point story:
+	- Roughly 2 weeks of work
+- Point total is 20 points
+
+Seattle Aquarium Pass: Thursday Feb. 23rd
+https://www.eventkeeper.com/mars/tkflex.cfm
+
+Seattle Public Library Card: 10001833426-7
+
+- Insert into curriculum
+	- Talk to teachers who teach science and see how they're handling their curriculum
+		- They have a strict curriculum
+Winter
+- Validate project assumptions with teachers
+
+Spring project schedule
+- Establish technology that we're gonna build this on
+
+MVP: Create the first chapter
+- Winter
+	- Build out full storyboard for all the stories
+	- Essentially making a movie
+		- Needs to define how many levels are in the game
+		- Scenes
+	- Discover different fish/oysters
+	- First act: What are we preseving and getting to know it, appreciate it
+	- Second act: Pollution introduced
+		- What pollution it is and who creates the pollution
+		- Pollution meets marine wildlife
+	- Next chapter: What can the kid do about it?
+	- Conclusion:
+		- You can verify whether they understood the learning objective
+		- Trivia quiz, or we can embed it between the scenes
+			- How many wildlife did you meet?
+
+Spring: Create the second chapter and third chapter or the minigame

@@ -17,6 +17,71 @@ body {
   min-height: 100px;
 }
 
+.card {
+  perspective: 1000px;
+  flex: 1;
+  height: 291px;
+  width: 100%;
+  background-color: transparent;
+}
+
+.card-clicked .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-inner {
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+}
+
+.front-image, .back-image {
+  position: absolute;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  width: 100%;
+}
+
+.back-image {
+  transform: rotateY(180deg);
+  background-color: #F7EDE1;
+  height: 291px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  text-align: left;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.correct-text {
+  color: #185413;
+}
+
+.incorrect-text {
+  color: #6C1A1A;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.row img {
+  flex: 1;
+  height: 291px;
+}
+
 .exit-play {
   border: none;
   color: black;
@@ -81,11 +146,32 @@ footer {
   margin: auto;
 }
 
+.explanation {
+  display: inline;
+}
+
 .play-area {
   background-image: url('../public/sprites/bg-sea.png');
   height: 100vh;
   overflow: hidden;
   background-size: contain;
+}
+
+.sprite-container, .sprite-normal {
+  animation: MoveUpDown 1.5s linear infinite;
+}
+
+.sprite-container {
+  width: 100%;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-15px);
+  }
 }
 
 .play-area::-webkit-scrollbar {
@@ -417,17 +503,6 @@ left: 181px;
 top: 210px;
 z-index: 10;
 }
-
-.image-3 {
-  background-image: url("../public/imgs/text.png");
-  position: absolute;
-  width: 694px;
-  height: 159px;
-  left: 181px;
-  top: 210px;
-}
-
-
 
 .excel {
   display: flex;

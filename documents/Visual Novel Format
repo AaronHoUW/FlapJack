@@ -1,0 +1,39 @@
+# Storyteller Data
+
+Storyteller data includes the scenes of the visual novel.
+
+## Scene Data
+A scene object may look like this:
+```
+	{
+		"type": "comic",
+		"background": "dam",
+		"nextScene": "pancakeGuide",
+		"baseFrame": [],
+		"frames": [
+		  [
+			{
+			  "type": "sprite",
+			  "image": "pancake-flapjack-octopus",
+			  "x": "5",
+			  "y": "80",
+			  "size": "010",
+			  "flipX": false
+			}
+		  ]
+		],
+		"dialogue": [
+		  {
+			"speaker": "",
+			"message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
+			"type": "nospeaker",
+			"keyword": "dam",
+		  }
+		]
+	}
+```
+
+### Scene Terms
+- `type`: The scene type (`comic` or `minigame`)
+- `background`: Background that should be displayed during this specific scene. All backgrounds can be found in `my-app/public/sprites` with the `bg-` prefix
+
