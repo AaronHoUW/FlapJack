@@ -323,67 +323,7 @@ function VisualNovel(props) {
                 }
             }
         }
-        // if (frames) {
-        //     return frames.map((frame) => {
-        //         let spriteContainer = document.getElementById('dialogue');
-        //         if (frame && frame.length > 0) {
-        //             if (spriteContainer) {
-        //                 frame.forEach((sprite) => {
-        //                     const newSprite = document.createElement('img');
-
-        //                     newSprite.setAttribute('src', `/sprites/sprite-${sprite.image}.png`);
-        //                     newSprite.setAttribute('width', `${sprite.size}%`);
-        //                     newSprite.setAttribute('class', 'sprite');
-
-        //                     if (sprite.image === 'pancake-flapjack-octopus') {
-        //                         newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-        //                     } else {
-        //                         newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
-        //                     }
-
-        //                     spriteContainer.appendChild(newSprite);
-        //                 });
-        //             } else {
-        //                 return frame.map((sprite) => {
-        //                     return (
-        //                         <img
-        //                             src={`./sprites/sprite-${sprite.image}.png`}
-        //                             style={{
-        //                                 width: `${sprite.size}%`,
-        //                                 position: 'absolute',
-        //                                 top: `${sprite.y}%`,
-        //                                 left: `${sprite.x}%`,
-        //                                 transform: `scaleX(${sprite.flipX ? -1 : 1}`,
-        //                                 maxHeight: '100vh'
-        //                             }}
-        //                             className='sprite-normal'
-        //                         />
-        //                     )
-        //                 });
-        //             }
-        //         }
-        //     });
-        // }
     }
-
-    // scenes.map((scene) => {
-    //     let current = level[scene];
-    //     currentScene = current;
-    // });
-
-    // function conversation(dialogue) {
-    //     clearInterval(speechTimer);
-    //     let message = document.querySelector('.message-container p');
-    //     message.textContent = '';
-    //     speechTimer = setInterval(function() {
-    //         if (dialogue.length === 0) {
-    //           clearInterval(speechTimer);
-    //         } else {
-    //           message.textContent = message.textContent + dialogue[0];
-    //           dialogue = dialogue.slice(1, dialogue.length);
-    //         }
-    //       }, TALK_SPEED);
-    // }
 
     function buildMultipleTerms(keywords) {
         let dialogue = document.querySelector('.message-container p');

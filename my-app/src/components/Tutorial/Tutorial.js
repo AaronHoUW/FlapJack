@@ -9,12 +9,10 @@ import {
     DialogueMessageContainer
 } from './styles.tsx';
 import { NextButton } from '../VisualNovel/styles.tsx';
-// import LEVEL1 from '../innerComp/minigames/data/stories/Level1';
 import { useNavigate } from 'react-router-dom';
 import circleImg from './tutorial-circle.png'
 import arrowKeys from './tutorial-arrow-keys.png'
 import textBubble from './misc-textbubble-left.png';
-// import ComicView from '../innerComp/ComicView';
 
 function Tutorial() {
     // Player Movement
