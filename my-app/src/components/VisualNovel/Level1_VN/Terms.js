@@ -1,5 +1,5 @@
 const TERMS = {
-    'Chum Salmon': 'Chum salmon are one of the biggest Pacific salmon, and they are local to Washington.',
+    'ring billed seagull': 'A North American gull that, as an adult, is largely white with a gray mantle, dark wing tips, yellowish feet and legs, and a yellow bill with a black ring towards the tip.',
     'Elwha': 'Elwha is the Native American word for elk.',
     'estuary': 'An Estuary is the mouth of a river, where the river meets the sea.',
     'dam': 'A barrier constructed to hold back water.',
