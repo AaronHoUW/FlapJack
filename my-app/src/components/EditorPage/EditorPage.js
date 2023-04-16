@@ -20,6 +20,7 @@ const IMAGES = {
         'beach-wrack',
         'sc-earth-pod',
         'space-test',
+        'trash-island',
         'net',
         'north-america',
         'north-america-blank',
