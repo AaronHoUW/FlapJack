@@ -84,36 +84,11 @@ class ComicView extends React.Component {
         )
     }
 
-    // Render a journal entry
-    // renderJournal(element, idx) {
-    //     const id = !!element.id ? `assigned-${this.props.sceneName}-${element.id}` : null;
-    //     return (
-    //         <Journal
-    //             id={id}
-    //             style={{
-    //                 position: 'absolute',
-    //                 left: element.x,
-    //                 top: element.y,
-    //                 textAlign: 'left',
-    //             }}
-    //             data={JOURNAL_DATA}
-    //             view={JOURNAL_ENTRY_VIEW}
-    //             page={element.title} 
-    //             onNavigate={() => {}}
-    //             maxInfoBoxFacts={element.maxInfoBoxFacts}
-    //             maxFunFacts={element.maxFunFacts}
-    //             key={idx} />
-    //     );
-    // }
-
     // Render an element
     renderElement(element, idx) {
         if (element.type === ELEMENT_TYPE_SPRITE) {
             return this.renderSprite(element, idx);
         }
-        // if (element.type === ELEMENT_TYPE_JOURNAL) {
-        //     return this.renderJournal(element, idx);
-        // }
         return (<div></div>);
     }
 

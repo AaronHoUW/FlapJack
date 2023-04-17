@@ -15,7 +15,6 @@ import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
-import Secretplayground from './components/secretplayground/Secretplayground.js';
 import QuizPage from './components/QuizPage/QuizPage.js'
 
 function App() {
@@ -90,7 +89,6 @@ function App() {
 				} />
 				<Route path="/tutorial" element={<Tutorial />} />
 				<Route path='/quiz' element={<QuizPage />}/>
-				<Route path="/secretplayground" element={<Secretplayground />} />
 				<Route path='/storyteller/editor' element={<EditorPage />} />
 			</Routes>
 		</div>
