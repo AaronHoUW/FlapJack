@@ -43,9 +43,6 @@ function VisualNovel(props) {
         document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
 
-    const TALK_SPEED = 10;
-    let speechTimer = 0;
-
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }

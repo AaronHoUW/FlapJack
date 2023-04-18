@@ -1,11 +1,4 @@
 const LEVEL2 = {
-  "testScene": {
-    "type": "comic",
-    "background": "sea",
-    "nextScene": "testScene2",
-    "baseFrame": [],
-    "frames": []
-  },
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
