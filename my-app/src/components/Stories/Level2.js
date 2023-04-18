@@ -2,7 +2,6 @@ const LEVEL2 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
-    "previousScene": undefined,
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
     "frames": [
@@ -21,7 +20,7 @@ const LEVEL2 = {
         "y": "35",
         "size": "15",
         "flipX": false
-      },
+      }
     ],
     "dialogue": [
       {
@@ -33,119 +32,6 @@ const LEVEL2 = {
         "speaker": "",
         "message": " I will lead you around your adventure today and help you learn about the ocean, sea creatures and the impact humans have on the ocean.",
         "type": "left"
-      }
-    ]
-  },
-  "sallyTalking": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": undefined,
-    "nextScene": "sallyTalking2",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "18",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": 47.099999999999994,
-        "y": -3.1999999999999993,
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Hi! I’m Sally the Salmon! I’m a Chum Salmon.",
-        "type": "left",
-        "keyword": "Chum Salmon",
-      },
-    ]
-  },
-  "sallyTalking2": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyTalking",
-    "nextScene": {
-      "Where did you go?": "sallyTalkingA",
-      "How has the Elwha Dam affected you?": "sallyTalkingB"
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "18",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": 47.099999999999994,
-        "y": -3.1999999999999993,
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "I migrated to the ocean two years ago.",
-        "type": "left",
-        "keyword": "migrated",
-      }
-    ]
-  },
-  "sallyTalkingA": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyTalking2",
-    "nextScene": "sallyNetCutScene",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-3",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "14",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "I swam up the Elwha river where I was born and laid eggs! It is called spawning.",
-        "type": "left",
-        "keyword": "spawning",
-      },
-      {
-        "speaker": "",
-        "message": "My parents were not able to swim as far up the Elwha because the dam was in the way.",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
-        "type": "left",
-        "keyword": "spawning",
       }
     ]
   },
@@ -173,283 +59,6 @@ const LEVEL2 = {
       }
     ]
   },
-  "pancakeWashingtonState": {
-    "type": "comic",
-    "background": "washington-state",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeMap",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "This is Washington state. The area circled in red is where we will be exploring and meeting new friends!",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pancakeMap": {
-    "type": "comic",
-    "background": "elwha-estuary",
-    "previousScene": "pancakeWashingtonState",
-    "nextScene": "pancakeDam",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Right now we’re in the Elwha estuary, which is connected to the Elwha river in the Olympic National Park. ",
-        "type": "nospeaker",
-        "keyword": ["Elwha", "estuary"],
-      }
-    ]
-  },
-  "pancakeDam": {
-    "type": "comic",
-    "background": "dam",
-    "previousScene": "pancakeMap",
-    "nextScene": "pancakeElwhaNews",
-    "baseFrame": [],
-    "frames": [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "The Elwha river used to have a big dam in it, but that got taken down several years ago. The dam blocked a lot of salmon from returning to their homes to lay eggs. Let's go find a salmon to talk to! ",
-        "type": "nospeaker",
-        "keyword": "dam",
-      }
-    ]
-  },
-  "sallyCardGame": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyNetCutScene",
-    "nextScene": "sallyTalkingAContinued",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Can you help to identify the images that have nets in them? Click on the images you think have nets in them!",
-        "type": "nospeaker",
-      }
-    ]
-  },
-  "sallyTalkingAContinued": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyCardGame",
-    "nextScene": "minigame",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-1",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "sally-sad",
-        "x": "14",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      },
-      {
-        "type": "sprite",
-        "image": "thought-bubble",
-        "x": "12",
-        "y": "0",
-        "size": "30",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "dead-salmon",
-        "x": "20",
-        "y": "8",
-        "size": "15",
-        "flipX": true
-      },
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "As you can tell, ghost nets are really dangerous for me and my friends. I lost my friend Simon a few weeks ago because he got swept away by a ghost net.",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "Because of this, I am scared of getting caught by a net! I wonder if you could help clean up the nets?",
-        "type": "left"
-      }
-    ]
-  },
-  "sallyNetCutScene": {
-    "type": "comic",
-    "background": "net",
-    "previousScene": ["sallyTalkingA2", "sallyTalkingB2"],
-    "nextScene": "sallyCardGame",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "10",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "These nets that get left behind by fishing companies are called ghost nets. These can be dangerous for fish and other marine life that get caught in them.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "sallyTalkingB": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyTalking2",
-    "nextScene": "sallyTalkingB2",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "14",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-3",
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "My parents were not able to swim very far up the Elwha because the dam was in the way.",
-        "type": "left"
-      },
-    ]
-  },
-  "sallyTalkingB2": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": "sallyTalkingB",
-    "nextScene": "sallyNetCutScene",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "14",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-3",
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "But I was able to swim really far up the river on an adventure. I also laid eggs! It's called spawning.",
-        "type": "left",
-        "keyword": "spawning",
-      },
-      {
-        "speaker": "",
-        "message": "Now that I am back, I have noticed that things are changing in the ocean too. There are more nets floating around and  less of my friends have returned from spawning.",
-        "type": "left",
-        "keyword": "spawning",
-      }
-    ]
-  },
-  "postGame": {
-    "type": "comic",
-    "background": "sea",
-    "nextScene": "postGame2",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "sally-salmon",
-        "x": "15",
-        "y": "40",
-        "size": "15",
-        "flipX": true
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!",
-        "type": "left"
-      }
-    ]
-  },
   "pacificOcean_correct": {
     "type": "comic",
     "background": "north-america",
@@ -471,7 +80,7 @@ const LEVEL2 = {
         "speaker": "",
         "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
         "type": "nospeaker"
-      },
+      }
     ]
   },
   "pacificOcean_incorrect": {
@@ -498,13 +107,12 @@ const LEVEL2 = {
       }
     ]
   },
-  "pancakeElwhaNews": {
+  "pancakeWashingtonState": {
     "type": "comic",
-    "background": "elwha-news",
-    "previousScene": "pancakeDam",
-    "nextScene": "quiz",
-    "baseFrame": [],
-    "frames": [
+    "background": "washington-state",
+    "previousScene": "pancakeNorthAmerica",
+    "nextScene": "beginningScene",
+    "baseFrame": [
       {
         "type": "sprite",
         "image": "pancake-flapjack-octopus",
@@ -514,55 +122,29 @@ const LEVEL2 = {
         "flipX": false
       }
     ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Now, the dams have been removed. One species that was particularly impacted was Salmon because they couldn’t migrate all the way up the river to spawn. Now, the Elwha ecosystem is naturally repairing itself.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pancakeTalkToSalmon": {
-    "type": "comic",
-    "background": "sea",
-    "previousScene": undefined,
-    "nextScene": {
-      "Yes, I can help!": "tutorial",
-      "No, I'd like to exit the game.": "end",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-1",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "18",
-        "y": "35",
-        "size": "15",
-        "flipX": false
-      }
-    ],
     "frames": [],
     "dialogue": [
       {
         "speaker": "",
-        "message": "Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!",
-        "type": "left"
+        "message": "This is Washington state. The area circled in red is where we will be exploring and meeting new friends!",
+        "type": "nospeaker"
       }
     ]
   },
-  "postGame2": {
+  "beginningScene": {
     "type": "comic",
-    "background": "sea",
-    "previousScene": "postGame2",
-    "nextScene": "end",
+    "background": "beige",
+    "previousScene": "pancakeWashingtonState",
+    "nextScene": "shawnIntro",
     "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-bowl",
+        "x": "15",
+        "y": "30",
+        "size": "10",
+        "flipX": false
+      },
       {
         "type": "sprite",
         "image": "user-placeholder",
@@ -570,13 +152,44 @@ const LEVEL2 = {
         "y": 0,
         "size": 50,
         "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Today, we will be exploring several different ocean environments, starting with this beach! We’re on the beach of the Pacific Ocean, in Washington.",
+        "type": "right"
+      },
+      {
+        "speaker": "",
+        "message": "You can explore the beach by using the arrow keys to move around. When an exclamation point appears above a character when you’re near them, click on them to interact!",
+        "type": "right"
+      }
+    ]
+  },
+  "shawnIntro": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": {
+      "How is life on the beach?": "shawnBeach",
+      "What's that thing around your foot?": "shawnTrash"
+    },
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
       },
       {
         "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "20",
-        "y": "40",
-        "size": "10",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
         "flipX": false
       }
     ],
@@ -584,7 +197,380 @@ const LEVEL2 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "Great job today! You really helped make the ocean more safe for the animals living here.",
+        "message": "Hello! I’m Shawn the Seagull. I’m a ring billed seagull.",
+        "type": "left",
+        "keyword": "ring billed seagull"
+      }
+    ]
+  },
+  "shawnBeach": {
+    "type": "comic",
+    "background": "beige",
+    "previousScene": "shawnIntro",
+    "nextScene": "couldntWalk",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "The beach is okay. There are lots of different animals to meet, but I've noticed there's more and more litter on the beach. Nowadays, I prefer to fly over the open ocean.",
+        "type": "left"
+      }
+    ]
+  },
+  "shawnTrash": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "quiz",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Oh this? I don’t really know. I got caught in it a couple of days\nago and its making it hard for me to walk!",
+        "type": "left"
+      }
+    ]
+  },
+  "shawnQuestion": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": {
+      "How is life on the beach?": "shawnBeach",
+      "Would you like help removing the soda can rings from your leg?": "trashHelp"
+    },
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "It's gotten really tangled up that I can't get out of it easily.",
+        "type": "left"
+      }
+    ]
+  },
+  "trashHelp": {
+    "type": "comic",
+    "background": "beige",
+    "previousScene": "shawnQuestion",
+    "nextScene": "clickSodaCanRings",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Yes please!",
+        "type": "left"
+      }
+    ]
+  },
+  "trashHelpContinued": {
+    "type": "comic",
+    "background": "beige",
+    "previousScene": "trashHelp",
+    "nextScene": {
+      "How is life on the beach?": "shawnBeach",
+      "What were you doing when you couldn't walk as well?": "couldntWalk"
+    },
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "050",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "shawn-seagull",
+        "x": "15",
+        "y": "30",
+        "size": "13",
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Thank you so much! I kind finally walk around comfortably\nagain!",
+        "type": "left"
+      }
+    ]
+  },
+  "couldntWalk": {
+    "type": "comic",
+    "background": "beige",
+    "previousScene": [
+      "shawnBeach",
+      "trashHelpContinued"
+    ],
+    "nextScene": "trashisland",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-seagull",
+        "x": "15",
+        "y": "30",
+        "size": "13",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": "50",
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [],
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Since it was hard to walk, I would fly over the open ocean\ninstead!",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "When I fly over the ocean, I’ve been seeing big trash islands.\nIt is just lots and lots of trash, all floating together. ",
+        "type": "left"
+      },
+      null,
+      null
+    ]
+  },
+  "couldntWalkContinued": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "testScene2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": "0",
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "shawn-seagull",
+        "x": "15",
+        "y": "30",
+        "size": "13",
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Obviously, people are just throwing a lot of garbage in and\naround the ocean, and not thinking about how it impacts us\nanimals.",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "Do you think you could help me and my friends out by\ncleaning up some of the trash on our beach?",
+        "type": "left"
+      }
+    ]
+  },
+  "trashIsland": {
+    "type": "comic",
+    "background": "trash-island",
+    "nextScene": "testScene2",
+    "baseFrame": [],
+    "frames": [
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Trash islands are a collection of trash floating in the ocean. They exit because most of the trash is not biodegradable, they just break into smaller pieces.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "lifeOnBeach": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "trashisland",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [],
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "The beach is okay. There are lots of different animals to meet,\nbut I’ve noticed there’s more and more litter on the beach. \nNowadays, I prefer to fly over the open ocean.",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "When I fly over the ocean, I’ve been seeing big trash islands.\nIt is just lots and lots of trash, all floating together. ",
+        "type": "left"
+      }
+    ]
+  },
+  "animalImpact-trash": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "testScene2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": "50",
+        "flipX": false
+      }
+    ],
+    "frames": [
+      [],
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Obviously people are just throwing a lot of garbage in and\naround the ocean, and not thinking about how it impacts us\nanimals.",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "I’ve had this thing stuck around my foot for a couple of days\nnow and its making it hard to walk!",
+        "type": "left"
+      }
+    ]
+  },
+  "helpPickUpTrash": {
+    "type": "comic",
+    "background": "beige",
+    "nextScene": "testScene2",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "shawn-sad",
+        "x": "15",
+        "y": "30",
+        "size": "15",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      }
+    ],
+    "frames": [
+      []
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "It would really help if you could pick up the trash that’s\non the beach right now!",
         "type": "left"
       }
     ]
