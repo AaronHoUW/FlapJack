@@ -12,10 +12,11 @@ import {
 import importQuestions from './questions.json'
 import nextButton from './next-button.png'
 
+
 function QuizPage(props) {
 	// UseState Questions
-	const [questionNumber, setQuestionNumber] = useState(0)
-	const [AmountQuestionsTake, setAmountQuestionsTake] = useState(1)
+	// const [questionNumber, setquestionNumber] = useState(0)
+	// const [AmountQuestionsTake, setAmountQuestionsTake] = useState(1)
 	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: [], Images: {}})
 	// Results
 	const [resultsText, setResultText] = useState()
@@ -29,14 +30,14 @@ function QuizPage(props) {
 	// UseEffect
 	useEffect(() => {
 		setDisplayQuestion({
-			Question: (Object.keys(questionList)[questionNumber]),
-			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[questionNumber])].answers)),
-			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
-			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
-			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong,
-			Images: questionList[(Object.keys(questionList)[questionNumber])].images
+			Question: (Object.keys(questionList)[props.questionNumber]),
+			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[props.questionNumber])].answers)),
+			AnswersResults: questionList[(Object.keys(questionList)[props.questionNumber])].answers,
+			Correct: questionList[(Object.keys(questionList)[props.questionNumber])].correct,
+			Wrong: questionList[(Object.keys(questionList)[props.questionNumber])].wrong,
+			Images: questionList[(Object.keys(questionList)[props.questionNumber])].images
 		})
-	}, [questionNumber, shuffle]);
+	}, [props.questionNumber, shuffle]);
 
 	const letters = ["A", "B", "C", "D"];
 	const displayAnswer = displayQuestion["Choices"].map((answer, i) => {
@@ -82,17 +83,17 @@ function QuizPage(props) {
 	});
 
 	const handleNextQuestion = () => {
-		if (AmountQuestionsTake - 1 === 0) {
+		if (props.AmountQuestionsTake - 1 === 0) {
 			navigate(-1)
 		} else {
-			setQuestionNumber(questionNumber + 1)
+			props.setQuestionNumber(props.questionNumber + 1)
 			setCorrectAnswer()
 			setResultText()
 			setUserChoice()
-			setAmountQuestionsTake(AmountQuestionsTake-1)
+			props.setAmountQuestionsTake(props.AmountQuestionsTake-1)
 		}
 	}
-	console.log(AmountQuestionsTake)
+	console.log(props.AmountQuestionsTake)
 
     return (
         <div className='play-area'>

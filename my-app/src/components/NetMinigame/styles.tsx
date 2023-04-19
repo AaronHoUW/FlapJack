@@ -42,7 +42,6 @@ export const Net = styled.img<Props>`
     :nth-child(5) {
         animation-delay: 100ms;
     }
-<<<<<<< HEAD
 `;
 
 export const Obstacle = styled.img<Props>`
@@ -69,6 +68,3 @@ export const Obstacle = styled.img<Props>`
 //     padding: 20px;
 //     width: 100%;
 // `;
-=======
-`;
->>>>>>> c31f2b2aebb6894c9cd8ca9cb2404f4cdafdef27
