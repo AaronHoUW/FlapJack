@@ -464,7 +464,7 @@ footer {
   padding-top: 3rem;
   margin-bottom: 1rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .pancake-modal {

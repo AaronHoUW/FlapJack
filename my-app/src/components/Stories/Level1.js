@@ -160,12 +160,12 @@ const LEVEL1 = {
       {
         "speaker": "",
         "message": "Today, we will be exploring several different ocean environments, starting with this beach! We’re on the beach of the Pacific Ocean, in Washington.",
-        "type": "right"
+        "type": "left"
       },
       {
         "speaker": "",
         "message": "You can explore the beach by using the arrow keys to move around. When an exclamation point appears above a character when you’re near them, click on them to interact!",
-        "type": "right"
+        "type": "left"
       }
     ]
   },
@@ -174,8 +174,8 @@ const LEVEL1 = {
     "background": "beige",
     "previousScene": undefined,
     "nextScene": {
-      "How is life on the beach?": "shawnBeach1",
-      "What's that thing around your foot?": "shawnTrash1",
+      "How is life on the beach?": "shawnBeach1", // PATH 1
+      "What's that thing around your foot?": "shawnTrash1", // PATH
     },
     "baseFrame": [
       {
@@ -206,7 +206,7 @@ const LEVEL1 = {
     ]
   },
 
-  // First path
+  // PATH 1
   "shawnBeach1": {
     "type": "comic",
     "background": "beige",
@@ -334,7 +334,7 @@ const LEVEL1 = {
     "background": "beige",
     "previousScene": "animalImpactTrash1",
     "nextScene": {
-      "Would you like help removing the soda can rings from your leg?": "trashHelp1",
+      "Would you like help removing the soda can rings from your leg?": "trashHelp1", // PATH 1
     },
     "baseFrame": [
       {
@@ -538,11 +538,11 @@ const LEVEL1 = {
     ]
   },
 
-  // Second path
+  // PATH 2
   "shawnTrash1": {
     "type": "comic",
     "background": "beige",
-    "nextScene": "shawnQuestion2",
+    "nextScene": "shawnQuestion2", // quiz
     "baseFrame": [
       {
         "type": "sprite",
@@ -575,8 +575,8 @@ const LEVEL1 = {
     "background": "beige",
     "previousScene": "shawnTrash1",
     "nextScene": {
-      "How is life on the beach?": "shawnBeach3",
-      "Would you like help removing the soda can rings from your leg?": "trashHelp3",
+      "How is life on the beach?": "shawnBeach2", // PATH 2
+      "Would you like help removing the soda can rings from your leg?": "trashHelp3", // PATH 3
     },
     "baseFrame": [
       {
@@ -606,7 +606,7 @@ const LEVEL1 = {
     ]
   },
 
-  // Path 2 - How is life on the beach
+  // PATH 2
   "shawnBeach2": {
     "type": "comic",
     "background": "beige",
@@ -696,7 +696,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beige",
     "previousScene": "shawnCardGame2",
-    "nextScene": "shawnQuestion3", // quiz2
+    "nextScene": "shawnQuestion3", // quiz
     "baseFrame": [
       {
         "type": "sprite",
@@ -937,12 +937,12 @@ const LEVEL1 = {
     ]
   },
 
-  // Path 2 - Would you like help removing the soda rings from your leg?
+  // PATH 3
   "trashHelp3": {
     "type": "comic",
     "background": "beige",
     "previousScene": "shawnQuestion2",
-    "nextScene": "trashHelpContinued4", // clickSodaCanRings
+    "nextScene": "trashHelpContinued3", // clickSodaCanRings
     "baseFrame": [
       {
         "type": "sprite",
@@ -975,8 +975,8 @@ const LEVEL1 = {
     "background": "beige",
     "previousScene": "trashHelp2",
     "nextScene": {
-      "How is life on the beach?": "shawnBeach3", 
-      "What were you doing when you couldn't walk as well?": "couldntWalk2",
+      "How is life on the beach?": "shawnBeach3",
+      "What were you doing when you couldn't walk as well?": "couldntWalk4",
     },
     "baseFrame": [
       {
@@ -1013,7 +1013,7 @@ const LEVEL1 = {
     "baseFrame": [
       {
         "type": "sprite",
-        "image": "shawn-sad",
+        "image": "shawn-seagull",
         "x": "15",
         "y": "30",
         "size": "15",
@@ -1093,7 +1093,7 @@ const LEVEL1 = {
   "animalImpactTrash3": {
     "type": "comic",
     "background": "beige",
-    "previousScene": "couldntWalk3",
+    "previousScene": "shawnCardGame3",
     "nextScene": {
       "How can I help with all of the trash on the beach?": "howToHelp5",
     },
@@ -1152,338 +1152,29 @@ const LEVEL1 = {
         "flipX": false
       }
     ],
-  },
-  "shawnQuestion4": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "animalImpactTrash3",
-    "nextScene": {
-      "Would you like help removing the soda can rings from your leg?": "trashHelp3",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-sad",
-        "x": "15",
-        "y": "30",
-        "size": "15",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      }
-    ],
     "frames": [],
     "dialogue": [
       {
         "speaker": "",
-        "message": "It's gotten really tangled up that I can't get out of it easily.",
+        "message": "It would really help if you could pick up the trash that's on the beach right now!",
         "type": "left"
       }
     ]
   },
-  "trashHelp3": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "animalImpactTrash3",
-    "nextScene": "trashHelpContinued3", // clickSodaCanRings
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-sad",
-        "x": "15",
-        "y": "30",
-        "size": "15",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Yes please!",
-        "type": "left"
-      }
-    ]
-  },
-  "trashHelpContinued3": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "trashHelp2",
-    "nextScene": {
-      "What were you doing when you couldn't walk as well?": "couldntWalk3",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "050",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Thank you so much! I can finally walk around comfortably\nagain!",
-        "type": "left"
-      }
-    ]
-  },
-  "couldntWalk3": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "trashHelpContinued3",
-    "nextScene": "couldntWalkContinued3",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": "50",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Since it was hard to walk, I would fly over the open ocean\ninstead!",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "When I fly over the ocean, I’ve been seeing big trash islands.\nIt is just lots and lots of trash, all floating together. ",
-        "type": "left"
-      }
-    ]
-  },
-  "couldntWalkContinued3": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "couldntWalk3",
-    "nextScene": {
-      "How can I help with all of the trash on the beach?": "howToHelp3",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": "0",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Obviously, people are just throwing a lot of garbage in and\naround the ocean, and not thinking about how it impacts us\nanimals.",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "Do you think you could help me and my friends out by\ncleaning up some of the trash on our beach?",
-        "type": "left"
-      }
-    ]
-  },
-  "howToHelp3": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "couldntWalkContinued3",
-    "nextScene": "minigame",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "15",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "It would really help if you could pick up the trash that’s\non the beach right now!",
-        "type": "left"
-      }
-    ]
-  },
-  "couldntWalk2": {
+  
+  // PATH 4
+  "couldntWalk4": {
     "type": "comic",
     "background": "beige",
     "previousScene": "trashHelpContinued2",
-    "nextScene": "couldntWalkContinued2",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": "50",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Since it was hard to walk, I would fly over the open ocean\ninstead!",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "When I fly over the ocean, I’ve been seeing big trash islands.\nIt is just lots and lots of trash, all floating together. ",
-        "type": "left"
-      }
-    ]
-  },
-  "couldntWalkContinued2": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "couldntWalk2",
-    "nextScene": {
-      "How can I help with all of the trash on the beach?": "howToHelp2",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": "0",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Obviously, people are just throwing a lot of garbage in and\naround the ocean, and not thinking about how it impacts us\nanimals.",
-        "type": "left"
-      },
-      {
-        "speaker": "",
-        "message": "Do you think you could help me and my friends out by\ncleaning up some of the trash on our beach?",
-        "type": "left"
-      }
-    ]
-  },
-  "trashHelpContinued4": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "trashHelp3",
-    "nextScene": {
-      "How is life on the beach?": "shawnBeach4", 
-      "What were you doing when you couldn't walk as well?": "couldntWalk4",
-    },
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "050",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "13",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Thank you so much! I can finally walk around comfortably\nagain!",
-        "type": "left"
-      }
-    ]
-  },
-  "shawnBeach4": {
-    "type": "comic",
-    "background": "beige",
-    "previousScene": "trashHelpContinued4",
     "nextScene": "trashIsland4",
     "baseFrame": [
       {
         "type": "sprite",
-        "image": "shawn-sad",
+        "image": "shawn-seagull",
         "x": "15",
         "y": "30",
-        "size": "15",
+        "size": "13",
         "flipX": false
       },
       {
@@ -1491,7 +1182,7 @@ const LEVEL1 = {
         "image": "user-placeholder",
         "x": "50",
         "y": 0,
-        "size": 50,
+        "size": "50",
         "flipX": false
       }
     ],
@@ -1499,7 +1190,7 @@ const LEVEL1 = {
     "dialogue": [
       {
         "speaker": "",
-        "message": "The beach is okay. There are lots of different animals to meet,\nbut I’ve noticed there’s more and more litter on the beach. \nNowadays, I prefer to fly over the open ocean.",
+        "message": "Since it was hard to walk, I would fly over the open ocean\ninstead!",
         "type": "left"
       },
       {
@@ -1512,7 +1203,7 @@ const LEVEL1 = {
   "trashIsland4": {
     "type": "comic",
     "background": "trash-island",
-    "previousScene": "shawnBeach4",
+    "previousScene": "couldntWalk4",
     "nextScene": "shawnCardGame4",
     "baseFrame": [
       {
@@ -1537,7 +1228,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beige",
     "previousScene": "trashIsland4",
-    "nextScene": "animalImpactTrash4",
+    "nextScene": "couldntWalkContinued4",
     "baseFrame": [],
     "frames": [
       {
@@ -1557,7 +1248,7 @@ const LEVEL1 = {
       }
     ]
   },
-  "animalImpactTrash4": {
+  "couldntWalkContinued4": {
     "type": "comic",
     "background": "beige",
     "previousScene": "shawnCardGame4",
@@ -1628,38 +1319,6 @@ const LEVEL1 = {
       }
     ]
   },
-  "howToHelp2": {
-    "type": "comic",
-    "background": "beige",
-    "nextScene": "minigame",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "shawn-seagull",
-        "x": "15",
-        "y": "30",
-        "size": "15",
-        "flipX": false
-      },
-      {
-        "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "It would really help if you could pick up the trash that’s\non the beach right now!",
-        "type": "left"
-      }
-    ]
-  },
-  
 }
 
 export default LEVEL1;
