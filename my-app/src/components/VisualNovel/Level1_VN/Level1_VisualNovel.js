@@ -559,6 +559,7 @@ function VisualNovel(props) {
                             nextScene(currentScene);
                         } else {
                             // Display the next scene
+                            console.log(currentScene);
                             clearSprites();
                             currentScene = level[currentScene.nextScene];
                             if (currentScene.nextScene === 'clickMap') {
