@@ -73,8 +73,23 @@ export const ChoiceImages = styled.img`
     height: 100px !important
 `;
 
-export const NextButton = styled.img`
-    right: 10px;
-    bottom: 10px;
+export const NextButton = styled.button`
     position: absolute;
+    margin: 20px;
+    bottom: 0;
+    right: 0;
+    
+    padding: 12px 24px;
+    
+    border: none;
+    background: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
 `;
