@@ -30,8 +30,12 @@ function Home() {
                 <IntroText>
                     <IntroTitle>Welcome to Marine Rescue!</IntroTitle>
                     <IntroDescription>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Marine Rescue is a 2nd to 6th grade education project that highlights the various problems impacting marine life.
+                        These issues include ghost nets and pollution being left in the ocean that create hazardous environments for the animals.
+                        With a focus on gamification, Marine Rescue allows users to engage within major aspects of marine issues in a joyful way.
+                        Following the lives of many marine animals such as Seagulls, Chum Salmons, and Orca Whales, users are able to connect with
+                        characters in order to understand their experiences with pollution they encounter every day. Come play and learn about the
+                        characters’ lives, the impacts of pollution, and on ways that you can help!
                     </IntroDescription>
                     <IntroButton onClick={() => navigate('/preface')}>Play Now!</IntroButton>
                 </IntroText>
