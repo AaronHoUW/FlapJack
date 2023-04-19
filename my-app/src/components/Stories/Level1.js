@@ -1,7 +1,7 @@
 const LEVEL1 = {
   "pancakeIntro": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": undefined,
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
@@ -134,7 +134,7 @@ const LEVEL1 = {
   },
   "beginningScene": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "pancakeWashingtonState",
     "nextScene": "shawnIntro", // flapGuideShawn
     "baseFrame": [
@@ -171,7 +171,7 @@ const LEVEL1 = {
   },
   "shawnIntro": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": undefined,
     "nextScene": {
       "How is life on the beach?": "shawnBeach1", // PATH 1
@@ -209,7 +209,7 @@ const LEVEL1 = {
   // PATH 1
   "shawnBeach1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnIntro",
     "nextScene": "trashIsland1",
     "baseFrame": [
@@ -270,7 +270,7 @@ const LEVEL1 = {
   },
   "shawnCardGame1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashIsland1",
     "nextScene": "animalImpactTrash1",
     "baseFrame": [],
@@ -294,7 +294,7 @@ const LEVEL1 = {
   },
   "animalImpactTrash1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnCardGame1",
     "nextScene": "shawnQuestion1", // quiz1
     "baseFrame": [
@@ -331,7 +331,7 @@ const LEVEL1 = {
   },
   "shawnQuestion1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "animalImpactTrash1",
     "nextScene": {
       "Would you like help removing the soda can rings from your leg?": "trashHelp1", // PATH 1
@@ -365,7 +365,7 @@ const LEVEL1 = {
   },
   "trashHelp1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnQuestion1",
     "nextScene": "trashHelpContinued1", // clickSodaCanRings
     "baseFrame": [
@@ -397,7 +397,7 @@ const LEVEL1 = {
   },
   "trashHelpContinued1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelp1",
     "nextScene": {
       "What were you doing when you couldn't walk as well?": "couldntWalk1",
@@ -431,7 +431,7 @@ const LEVEL1 = {
   },
   "couldntWalk1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelpContinued1",
     "nextScene": "couldntWalkContinued1",
     "baseFrame": [
@@ -468,7 +468,7 @@ const LEVEL1 = {
   },
   "couldntWalkContinued1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "couldntWalk1",
     "nextScene": {
       "How can I help with all of the trash on the beach?": "howToHelp1",
@@ -507,7 +507,7 @@ const LEVEL1 = {
   },
   "howToHelp1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "couldntWalkContinued1",
     "nextScene": "minigame",
     "baseFrame": [
@@ -541,7 +541,7 @@ const LEVEL1 = {
   // PATH 2
   "shawnTrash1": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "nextScene": "shawnQuestion2", // quiz
     "baseFrame": [
       {
@@ -572,7 +572,7 @@ const LEVEL1 = {
   },
   "shawnQuestion2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnTrash1",
     "nextScene": {
       "How is life on the beach?": "shawnBeach2", // PATH 2
@@ -609,7 +609,7 @@ const LEVEL1 = {
   // PATH 2
   "shawnBeach2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnQuestion2",
     "nextScene": "trashIsland2",
     "baseFrame": [
@@ -670,7 +670,7 @@ const LEVEL1 = {
   },
   "shawnCardGame2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashIsland2",
     "nextScene": "animalImpactTrash2",
     "baseFrame": [],
@@ -694,7 +694,7 @@ const LEVEL1 = {
   },
   "animalImpactTrash2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnCardGame2",
     "nextScene": "shawnQuestion3", // quiz
     "baseFrame": [
@@ -731,7 +731,7 @@ const LEVEL1 = {
   },
   "shawnQuestion3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "animalImpactTrash2",
     "nextScene": {
       "Would you like help removing the soda can rings from your leg?": "trashHelp2",
@@ -765,7 +765,7 @@ const LEVEL1 = {
   },
   "trashHelp2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnQuestion3",
     "nextScene": "trashHelpContinued2", // clickSodaCanRings
     "baseFrame": [
@@ -797,7 +797,7 @@ const LEVEL1 = {
   },
   "trashHelpContinued2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelp2",
     "nextScene": {
       "What were you doing when you couldn't walk as well?": "couldntWalk2",
@@ -831,7 +831,7 @@ const LEVEL1 = {
   },
   "couldntWalk2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelpContinued2",
     "nextScene": "couldntWalkContinued2",
     "baseFrame": [
@@ -868,7 +868,7 @@ const LEVEL1 = {
   },
   "couldntWalkContinued2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "couldntWalk2",
     "nextScene": {
       "How can I help with all of the trash on the beach?": "howToHelp2",
@@ -907,7 +907,7 @@ const LEVEL1 = {
   },
   "howToHelp2": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "nextScene": "minigame",
     "baseFrame": [
       {
@@ -940,7 +940,7 @@ const LEVEL1 = {
   // PATH 3
   "trashHelp3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnQuestion2",
     "nextScene": "trashHelpContinued3", // clickSodaCanRings
     "baseFrame": [
@@ -972,7 +972,7 @@ const LEVEL1 = {
   },
   "trashHelpContinued3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelp2",
     "nextScene": {
       "How is life on the beach?": "shawnBeach3",
@@ -1007,7 +1007,7 @@ const LEVEL1 = {
   },
   "shawnBeach3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelpContinued3",
     "nextScene": "trashIsland3",
     "baseFrame": [
@@ -1068,7 +1068,7 @@ const LEVEL1 = {
   },
   "shawnCardGame3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashIsland3",
     "nextScene": "animalImpactTrash3",
     "baseFrame": [],
@@ -1092,7 +1092,7 @@ const LEVEL1 = {
   },
   "animalImpactTrash3": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnCardGame3",
     "nextScene": {
       "How can I help with all of the trash on the beach?": "howToHelp5",
@@ -1131,7 +1131,7 @@ const LEVEL1 = {
   },
   "howToHelp5": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "animalImpactTrash3",
     "nextScene": "minigame",
     "baseFrame": [
@@ -1165,7 +1165,7 @@ const LEVEL1 = {
   // PATH 4
   "couldntWalk4": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashHelpContinued2",
     "nextScene": "trashIsland4",
     "baseFrame": [
@@ -1226,7 +1226,7 @@ const LEVEL1 = {
   },
   "shawnCardGame4": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "trashIsland4",
     "nextScene": "couldntWalkContinued4",
     "baseFrame": [],
@@ -1250,7 +1250,7 @@ const LEVEL1 = {
   },
   "couldntWalkContinued4": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "shawnCardGame4",
     "nextScene": {
       "How can I help with all of the trash on the beach?": "howToHelp4",
@@ -1289,7 +1289,7 @@ const LEVEL1 = {
   },
   "howToHelp4": {
     "type": "comic",
-    "background": "beige",
+    "background": "beach-level",
     "previousScene": "animalImpactTrash4",
     "nextScene": "minigame",
     "baseFrame": [
