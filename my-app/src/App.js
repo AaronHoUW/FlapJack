@@ -20,6 +20,8 @@ import QuizPage from './components/QuizPage/QuizPage.js'
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
+	const [questionNumber, setQuestionNumber] = useState(0)
+	const [AmountQuestionsTake, setAmountQuestionsTake] = useState(1)
 
   return (
     <div className='page-container'>
@@ -84,11 +86,18 @@ function App() {
 							setIsFlapGuide={setIsFlapGuide}
 							isGameComplete={isGameComplete}
 							setIsGameComplete={setIsGameComplete}
+							setQuestionNumber={setQuestionNumber}
+							setAmountQuestionsTake={setAmountQuestionsTake}
 						/>
 					</>
 				} />
 				<Route path="/tutorial" element={<Tutorial />} />
-				<Route path='/quiz' element={<QuizPage />}/>
+				<Route path='/quiz' element={
+					<QuizPage questionNumber={questionNumber} 
+						setQuestionNumber={setQuestionNumber} 
+						AmountQuestionsTake={AmountQuestionsTake} 
+						setAmountQuestionsTake={setAmountQuestionsTake}/>}
+						/>
 				<Route path='/storyteller/editor' element={<EditorPage />} />
 			</Routes>
 		</div>

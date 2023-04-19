@@ -1,17 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	Flapjack,
     ScreenModal,
 	ModalRowText,
     ModalContent,
 	ChoiceButton,
-	ChoiceImages
+	ChoiceImages,
+	NextButton
 } from './styles.tsx';
 import importQuestions from './questions.json'
+import nextButton from './next-button.png'
+
 
 function QuizPage(props) {
 	// UseState Questions
-	const [questionNumber, setQuestionNumber] = useState(4)
+	// const [questionNumber, setquestionNumber] = useState(0)
+	// const [AmountQuestionsTake, setAmountQuestionsTake] = useState(1)
 	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: [], Images: {}})
 	// Results
 	const [resultsText, setResultText] = useState()
@@ -20,17 +25,19 @@ function QuizPage(props) {
 	// Imported Questions from json
 	const questionList = importQuestions;
 
+	const navigate = useNavigate();
+
 	// UseEffect
 	useEffect(() => {
 		setDisplayQuestion({
-			Question: (Object.keys(questionList)[questionNumber]),
-			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[questionNumber])].answers)),
-			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
-			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
-			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong,
-			Images: questionList[(Object.keys(questionList)[questionNumber])].images
+			Question: (Object.keys(questionList)[props.questionNumber]),
+			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[props.questionNumber])].answers)),
+			AnswersResults: questionList[(Object.keys(questionList)[props.questionNumber])].answers,
+			Correct: questionList[(Object.keys(questionList)[props.questionNumber])].correct,
+			Wrong: questionList[(Object.keys(questionList)[props.questionNumber])].wrong,
+			Images: questionList[(Object.keys(questionList)[props.questionNumber])].images
 		})
-	}, [questionNumber, shuffle]);
+	}, [props.questionNumber, shuffle]);
 
 	const letters = ["A", "B", "C", "D"];
 	const displayAnswer = displayQuestion["Choices"].map((answer, i) => {
@@ -48,7 +55,6 @@ function QuizPage(props) {
 				setCorrectAnswer(false)
 			}
 		}
-		console.log(displayQuestion.Images === undefined)
 		return (
 			<div className={`col-`+ displayFormat + ` d-flex flex-row py-2`} key={i} onClick={handleOnClick}>
 				<ChoiceButton className="text-light" id={answer}>{letters[i]}</ChoiceButton>
@@ -76,6 +82,18 @@ function QuizPage(props) {
 		}
 	});
 
+	const handleNextQuestion = () => {
+		if (props.AmountQuestionsTake - 1 === 0) {
+			navigate(-1)
+		} else {
+			props.setQuestionNumber(props.questionNumber + 1)
+			setCorrectAnswer()
+			setResultText()
+			setUserChoice()
+			props.setAmountQuestionsTake(props.AmountQuestionsTake-1)
+		}
+	}
+	console.log(props.AmountQuestionsTake)
 
     return (
         <div className='play-area'>
@@ -117,7 +135,11 @@ function QuizPage(props) {
 				className='img-size'
 				alt="Pancake the flapjack"
 				/>
-
+			{correctAnswer && <NextButton 
+				src={nextButton}
+				alt="Next Button"
+				onClick={handleNextQuestion}
+			/>}
         </div>
     );
 }

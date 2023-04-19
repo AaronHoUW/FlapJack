@@ -72,3 +72,9 @@ export const ChoiceButton = styled.button`
 export const ChoiceImages = styled.img`
     height: 100px !important
 `;
+
+export const NextButton = styled.img`
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+`;

@@ -555,6 +555,7 @@ function VisualNovel(props) {
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
                             // Aaron - remove the code here once you have the quiz component ready
+                            // navigate('/quiz')
                             currentScene = level['pancakeTalkToSalmon'];
                             nextScene(currentScene);
                         } else {
