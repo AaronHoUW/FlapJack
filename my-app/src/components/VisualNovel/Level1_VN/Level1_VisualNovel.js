@@ -24,7 +24,7 @@ function VisualNovel(props) {
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
             clearSprites();
-            currentScene = level['sallyTalking'];
+            currentScene = level['shawnIntro'];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -35,7 +35,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         if (currentScene === level['pancakeIntro']
-            || currentScene === level['sallyTalking']
+            || currentScene === level['shawnIntro']
             || currentScene === level['minigame']
             || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
@@ -404,7 +404,7 @@ function VisualNovel(props) {
 
         let message = currentScene.dialogue[dialoguePosition].message;
         if (isFlapGuide && !isGameComplete) {
-            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
+            message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         }
@@ -555,7 +555,7 @@ function VisualNovel(props) {
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
                             // Aaron - remove the code here once you have the quiz component ready
-                            currentScene = level['shawnQuestion'];
+                            currentScene = level['pancakeTalkToSeagull'];
                             nextScene(currentScene);
                         } else {
                             // Display the next scene
