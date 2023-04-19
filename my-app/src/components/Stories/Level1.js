@@ -136,7 +136,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beach-level",
     "previousScene": "pancakeWashingtonState",
-    "nextScene": "shawnIntro", // flapGuideShawn
+    "nextScene": "pancakeTalkToSeagull",
     "baseFrame": [
       {
         "type": "sprite",
@@ -161,10 +161,40 @@ const LEVEL1 = {
         "speaker": "",
         "message": "Today, we will be exploring several different ocean environments, starting with this beach! We’re on the beach of the Pacific Ocean, in Washington.",
         "type": "left"
+      }
+    ]
+  },
+  "pancakeTalkToSeagull": {
+    "type": "comic",
+    "background": "beach-level",
+    "previousScene": undefined,
+    "nextScene": {
+      "Yes, I can help!": "tutorial",
+      "No, I'd like to exit the game.": "end",
+    },
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-1",
+        "size": 50,
+        "flipX": false
       },
       {
+        "type": "sprite",
+        "image": "pancake-bowl",
+        "x": "18",
+        "y": "35",
+        "size": "15",
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
         "speaker": "",
-        "message": "You can explore the beach by using the arrow keys to move around. When an exclamation point appears above a character when you’re near them, click on them to interact!",
+        "message": "Do you think you could help find out more about the Seagull's experience of the Elwha? Maybe you can talk to a local Seagull!",
         "type": "left"
       }
     ]
