@@ -180,6 +180,11 @@ footer {
 
 #playable {
   position: relative;
+  width: 250px;
+}
+
+#net, #net2, #net3 {
+  width: 250px;
 }
 
 :focus {
@@ -464,7 +469,7 @@ footer {
   padding-top: 3rem;
   margin-bottom: 1rem;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .pancake-modal {
