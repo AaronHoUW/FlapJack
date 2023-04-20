@@ -15,12 +15,13 @@ import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
-import Quiz from './components/Quiz/Quiz.js'
+import Quiz from './components/Quiz/Quiz.js';
+import Secretplayground from './components/secretplayground/Secretplayground.js';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
-	const [questionNumber, setQuestionNumber] = useState(0);
+	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
 
@@ -106,6 +107,7 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
+					<Route path='/secretplayground' element={<Secretplayground />}/>
 				</Routes>
 			</div>
 			{/* <footer /> */}
