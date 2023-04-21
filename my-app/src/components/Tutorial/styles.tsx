@@ -97,3 +97,20 @@ export const Net = styled.img<Props>`
         }
     }
 `;
+
+export const Trash = styled.img<Props>`
+    top: 30%;
+    left: 0%;
+    position: relative;
+
+    animation: MoveUpDown 1s linear infinite;
+
+    @keyframes MoveUpDown {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+`;

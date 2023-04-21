@@ -1,24 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	Flapjack,
-    ScreenModal,
+	ScreenModal,
 	ModalRowText,
-    ModalContent,
+	ModalContent,
 	ChoiceButton,
-	ChoiceImages
+	ChoiceImages,
+	NextButton
 } from './styles.tsx';
 import importQuestions from './questions.json'
+import nextButton from './next-button.png'
 
-function QuizPage(props) {
+function Quiz(props) {
+	const {
+		questionNumber,
+		setQuestionNumber,
+		amountQuestionsTake,
+		setAmountQuestionsTake,
+		isQuiz,
+		setIsQuiz,
+	} = props;
 	// UseState Questions
-	const [questionNumber, setQuestionNumber] = useState(4)
-	const [displayQuestion, setDisplayQuestion] = useState({Question: "", Choices: [], Images: {}})
+	// const [questionNumber, setquestionNumber] = useState(0)
+	// const [AmountQuestionsTake, setAmountQuestionsTake] = useState(1)
+	const [displayQuestion, setDisplayQuestion] = useState({ Question: "", Choices: [], Images: {} })
 	// Results
 	const [resultsText, setResultText] = useState()
 	const [correctAnswer, setCorrectAnswer] = useState()
 	const [userChoice, setUserChoice] = useState()
 	// Imported Questions from json
 	const questionList = importQuestions;
+
+	const navigate = useNavigate();
 
 	// UseEffect
 	useEffect(() => {
@@ -40,7 +54,7 @@ function QuizPage(props) {
 		}
 		const handleOnClick = () => {
 			setUserChoice(answer)
-			if(answer, displayQuestion.AnswersResults[answer]) {
+			if (answer, displayQuestion.AnswersResults[answer]) {
 				setResultText(displayQuestion.Correct);
 				setCorrectAnswer(true);
 			} else {
@@ -48,12 +62,11 @@ function QuizPage(props) {
 				setCorrectAnswer(false)
 			}
 		}
-		console.log(displayQuestion.Images === undefined)
 		return (
-			<div className={`col-`+ displayFormat + ` d-flex flex-row py-2`} key={i} onClick={handleOnClick}>
+			<div className={`col-` + displayFormat + ` d-flex flex-row py-2`} key={i} onClick={handleOnClick}>
 				<ChoiceButton className="text-light" id={answer}>{letters[i]}</ChoiceButton>
 				<div className='container my-auto'>
-					{(displayQuestion.Images !== undefined) && <ChoiceImages src={displayQuestion.Images[answer]} alt={answer} className="row"/>}		
+					{(displayQuestion.Images !== undefined) && <ChoiceImages src={displayQuestion.Images[answer]} alt={answer} className="row" />}
 					<p className='my-auto ms-1 row'>{answer}</p>
 				</div>
 			</div>
@@ -62,9 +75,9 @@ function QuizPage(props) {
 
 	displayQuestion["Choices"].forEach((answer) => {
 		let ChoiceDiv = document.getElementById(answer)
-		if(ChoiceDiv !== null) {
-			if(answer === userChoice) {
-				if(correctAnswer) {
+		if (ChoiceDiv !== null) {
+			if (answer === userChoice) {
+				if (correctAnswer) {
 					ChoiceDiv.classList.add("bg-success")
 				} else {
 					ChoiceDiv.classList.add("bg-danger")
@@ -76,9 +89,21 @@ function QuizPage(props) {
 		}
 	});
 
+	const handleNextQuestion = () => {
+		if (amountQuestionsTake - 1 === 0) {
+			setIsQuiz(true);
+			navigate(-1);
+		} else {
+			setQuestionNumber(questionNumber + 1)
+			setCorrectAnswer()
+			setResultText()
+			setUserChoice()
+			setAmountQuestionsTake(amountQuestionsTake - 1)
+		}
+	}
 
-    return (
-        <div className='play-area'>
+	return (
+		<div className='play-area'>
 			<ScreenModal className="" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<div className="modal-dialog modal-lg modal-dialog-centered">
@@ -87,19 +112,19 @@ function QuizPage(props) {
 							<div className='row'>
 								<h1 className="modal-title fs-5 pb-2 text-black" id="staticBackdropLabel">Time to Test Your Scuba Knowledge!</h1>
 							</div>
-							
+
 							<ModalRowText className='row model-info modal-video-content mt-1'>
 								<p className='pt-1' >{displayQuestion.Question}</p>
-                                <div className="container text-center">
-                                    <div className="row justify-content-center">
-                                        {displayAnswer}
-                                    </div>
+								<div className="container text-center">
+									<div className="row justify-content-center">
+										{displayAnswer}
+									</div>
 									<div className="row justify-content-center pt-3">
-                                        {(correctAnswer && 
-										<p><span className='text-success fw-bold'>Correct!</span> {resultsText}</p>) || (correctAnswer !== undefined && <p><span className='text-danger fw-bold'>Uh Oh!</span> {resultsText}</p>)} 
-										
-                                    </div>
-                                </div>
+										{(correctAnswer &&
+											<p><span className='text-success fw-bold'>Correct!</span> {resultsText}</p>) || (correctAnswer !== undefined && <p><span className='text-danger fw-bold'>Uh Oh!</span> {resultsText}</p>)}
+
+									</div>
+								</div>
 							</ModalRowText>
 
 							<div className='modal-buttons'>
@@ -111,21 +136,21 @@ function QuizPage(props) {
 					</ModalContent>
 				</div>
 			</ScreenModal>
-            <Flapjack
+			<Flapjack
 				tabIndex={-1}
 				src={`/sprites/sprite-pancake-flapjack-octopus.png`}
 				className='img-size'
 				alt="Pancake the flapjack"
-				/>
-
-        </div>
-    );
+			/>
+			{correctAnswer && <NextButton onClick={handleNextQuestion}>Next</NextButton>}
+		</div>
+	);
 }
 
 function shuffle(array) {
 	return array.sort(() => Math.random() - .5);
 }
 
-export default QuizPage;
+export default Quiz;
 
 
