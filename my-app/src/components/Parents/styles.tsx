@@ -126,9 +126,10 @@ export const LearnContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 80vh;
+    height: 472px;
 
-    background-color: #85C9E3;
+    background: url('./imgs/learn-bg.png');
+    background-size: cover;
     font-family: 'Mulish';
 `;
 

@@ -137,6 +137,32 @@ export const MeetSprites = styled.div`
     }
 `;
 
+export const MeetAnimal = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
+    text-align: center;
+
+    width: 33%;
+
+    img {
+        width: 350px;
+    }
+
+    .sally {
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    h4 {
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 45px;
+        color: white;
+    }
+`;
+
 export const LearnContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -150,10 +176,6 @@ export const LearnContainer = styled.div`
     background: url('./imgs/learn-bg.png');
     background-size: cover;
     font-family: 'Mulish';
-`;
-
-export const Learn = styled.div`
-    
 `;
 
 export const LearnText = styled.div`
