@@ -6,7 +6,7 @@ interface Props {
     onKeyDown?: any;
     src: string;
     id?: string;
-    className: string;
+    className: string; 
     alt: string;
 }
 
@@ -16,3 +16,4 @@ export const User = styled.img<Props>`
 export const Background = styled.div`
     width: 100%;
 `;
+
