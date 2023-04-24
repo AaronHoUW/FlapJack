@@ -16,6 +16,7 @@ import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import Quiz from './components/Quiz/Quiz.js'
+import LevelsPage from './components/LevelsPage/levelsPage';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -106,6 +107,8 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
+					<Route path='/levelsPage' element={	<LevelsPage />} />
+
 				</Routes>
 			</div>
 			{/* <footer /> */}
