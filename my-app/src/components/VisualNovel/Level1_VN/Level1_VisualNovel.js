@@ -15,14 +15,19 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    const [sceneState, setSceneState] = useState("");
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
     let currentScene = level['pancakeIntro'];
-
     let dialoguePosition = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
+            clearSprites();
+            currentScene = level['shawnIntro'];
+            buildDialogue();
+        } else if (isQuiz) {
+            // console.log(sceneState);
             clearSprites();
             currentScene = level['shawnIntro'];
             buildDialogue();
@@ -554,13 +559,14 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
-                            // Aaron - remove the code here once you have the quiz component ready
-                            currentScene = level['pancakeTalkToSeagull'];
-                            nextScene(currentScene);
+                            setIsQuiz(true);
+                            navigate('/quiz');
                         } else {
                             // Display the next scene
-                            console.log(currentScene);
                             clearSprites();
+                            console.log(currentScene.nextScene)
+                            // setSceneState(currentScene.nextScene);
+
                             currentScene = level[currentScene.nextScene];
                             if (currentScene.nextScene === 'clickMap') {
                                 nextEvent.target.disabled = true;

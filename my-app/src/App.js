@@ -16,7 +16,6 @@ import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import Quiz from './components/Quiz/Quiz.js';
-import Secretplayground from './components/secretplayground/Secretplayground.js';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -77,6 +76,11 @@ function App() {
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
+								questionNumber={questionNumber}
+								setQuestionNumber={setQuestionNumber}
+								setAmountQuestionsTake={setAmountQuestionsTake}
+								isQuiz={isQuiz}
+								setIsQuiz={setIsQuiz}
 							/>
 						</>
 					} />
@@ -88,6 +92,7 @@ function App() {
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
+								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
 								isQuiz={isQuiz}
@@ -107,7 +112,6 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-					<Route path='/secretplayground' element={<Secretplayground />}/>
 				</Routes>
 			</div>
 			{/* <footer /> */}

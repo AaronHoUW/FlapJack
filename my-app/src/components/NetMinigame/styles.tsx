@@ -51,6 +51,13 @@ export const Obstacle = styled.img<Props>`
     max-height: 300px
 `;
 
+export const Whale = styled.img`
+    right: 0%;
+    top: 30%;
+    position: absolute;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
+
 // export const Modal = styled.div`
 //     position: fixed;
 //     z-index: 1;
