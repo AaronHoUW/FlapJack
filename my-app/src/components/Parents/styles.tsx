@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export const IntroContainer = styled.div`
-    background-color: #1E7FA4;
+    background: url('./imgs/intro-bg.png');
+    background-size: cover;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 80px 40px;
     width: 100%;
-    height: 60vh;
+    height: 91vh;
     font-family: 'Mulish';
     padding-bottom: 0;
 `;
@@ -18,24 +19,29 @@ export const IntroText = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-color: #F7EDE1;
+    padding: 24px;
+    border-radius: 20px;
     width: 40%;
     margin-left: 100px;
+    margin-bottom: 300px;
 `;
 
 export const IntroTitle = styled.h2`
     font-weight: 400;
-    font-size: 36px;
+    font-size: 40px;
     line-height: 45px;
-    color: white;
+    color: #134254;
     width: 100%;
     height: 60px;
+    margin-bottom: 10px;
 `;
 
 export const IntroDescription = styled.p`
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    color: white;
+    color: black;
 `;
 
 export const IntroSprites = styled.div`
@@ -58,17 +64,24 @@ export const IntroSprites = styled.div`
 
 export const HelpContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 80px 40px;
     padding-top: 0;
 
     width: 100%;
-    height: 80vh;
+    height: 1389px;
 
-    background-color: #1E7FA4;
+    background: url('./imgs/meet-bg.png');
     font-family: 'Mulish';
+`;
+
+export const Help = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const HelpText = styled.div`
@@ -78,19 +91,23 @@ export const HelpText = styled.div`
     align-items: flex-end;
     width: 40%;
     margin-right: 100px;
+    background-color: #F7EDE1;
+    padding: 24px;
+    border-radius: 20px;
 `;
 
 export const HelpDescription = styled.p`
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    color: white;
-    margin-top: 30px;
+    color: black;
+    margin: 0;
+    margin-top: 35px;
 `;
 
 export const HelpVideoContainer = styled.div`
     width: 60%;
-    height: 100%;
+    height: 120%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     margin-right: 100px;
     margin-left: 100px;
