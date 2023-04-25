@@ -261,7 +261,7 @@ function NetMiniGame(props) {
 					<div className="modal-content">
 						<div className='container modal-container'>
 							<div className='row'>
-								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-3'].title}</h1>
+								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
 							</div>
 							<div className='row model-info modal-video-content mt-1'>
 								<input type='textarea' height={5}/>
