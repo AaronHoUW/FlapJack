@@ -15,20 +15,24 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz } = props;
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
     let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete) {
+        if (isFlapGuide && !isGameComplete && questionNumber < 3) {
             clearSprites();
             currentScene = level['sallyTalking'];
             buildDialogue();
-        } else if (isQuiz) {
+        } else if (isQuiz && !isGameComplete) {
             clearSprites();
-            currentScene = level['pancakeTalkToSalmon'];
+            if(questionNumber === 2) {
+                currentScene = level['pancakeTalkToSalmon'];
+            } else if (questionNumber === 3) {
+                currentScene = level['sallyTalking2'];   
+            }
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -46,7 +50,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-    }, [isFlapGuide, isGameComplete, isQuiz]);
+    }, [isFlapGuide, isGameComplete, isQuiz, questionNumber]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -562,6 +566,7 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
+                            console.log(currentScene)
                             setIsQuiz(true);
                             navigate('/quiz');
                         } else {

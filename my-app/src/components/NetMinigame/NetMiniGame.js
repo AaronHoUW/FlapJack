@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import {
 	User,
 	Net,
-	Obstacle
+	Obstacle,
+	Whale
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
@@ -199,6 +200,8 @@ function NetMiniGame(props) {
 		}
 	}
 
+	console.log(level);
+
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
@@ -280,6 +283,10 @@ function NetMiniGame(props) {
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 				{/* User */}
+				{(level === 3) && <Whale
+					src={'/sprites/sprite-wendy-whale.png'}
+					/>}
+
 				<User
 					style={userPlacement}
 					ref={user}

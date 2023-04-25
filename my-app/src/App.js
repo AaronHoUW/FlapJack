@@ -15,12 +15,12 @@ import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
-import Quiz from './components/Quiz/Quiz.js'
+import Quiz from './components/Quiz/Quiz.js';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
-	const [questionNumber, setQuestionNumber] = useState(0);
+	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
 
@@ -76,6 +76,11 @@ function App() {
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
+								questionNumber={questionNumber}
+								setQuestionNumber={setQuestionNumber}
+								setAmountQuestionsTake={setAmountQuestionsTake}
+								isQuiz={isQuiz}
+								setIsQuiz={setIsQuiz}
 							/>
 						</>
 					} />
@@ -87,6 +92,7 @@ function App() {
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
+								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
 								isQuiz={isQuiz}

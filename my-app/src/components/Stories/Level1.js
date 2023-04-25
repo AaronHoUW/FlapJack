@@ -326,7 +326,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beach-level",
     "previousScene": "shawnCardGame1",
-    "nextScene": "shawnQuestion1", // quiz1
+    "nextScene": "quiz", // "shawnQuestion1", // quiz1
     "baseFrame": [
       {
         "type": "sprite",
