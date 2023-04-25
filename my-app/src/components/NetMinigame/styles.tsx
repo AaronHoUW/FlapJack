@@ -48,7 +48,7 @@ export const Obstacle = styled.img<Props>`
     position: absolute;
     top: 40%;
     right: 45%;
-    max-height: 300px
+    width: 300px;
 `;
 
 export const Whale = styled.img`
@@ -57,21 +57,3 @@ export const Whale = styled.img`
     position: absolute;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
-
-// export const Modal = styled.div`
-//     position: fixed;
-//     z-index: 1;
-//     padding-top: 100px;
-//     left: 0;
-//     top: 0;
-//     width: 100%;
-//     height: 100%;
-//     overflow: hidden;
-//     display: block;
-// `;
-
-// export const ModalContent = styled.div`
-//     margin: auto;
-//     padding: 20px;
-//     width: 100%;
-// `;
