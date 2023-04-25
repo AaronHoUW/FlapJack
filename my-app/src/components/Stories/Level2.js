@@ -40,7 +40,7 @@ const LEVEL2 = {
     "type": "comic",
     "background": "sea",
     "previousScene": undefined,
-    "nextScene": "sallyTalking2",
+    "nextScene": "quiz",
     "baseFrame": [
       {
         "type": "sprite",

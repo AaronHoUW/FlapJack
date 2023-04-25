@@ -3,14 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import {
 	User,
 	Net,
-	Obstacle
+	Obstacle,
+	Whale
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
 import continueButton from './images/ContinueButton.png';
 import locationButton from './images/LocationButton.png';
 import finishButton from './images/FinishButton.png';
-import sqaureImg from './square.png'
+import squareImg from './square.png'
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -95,7 +96,7 @@ function NetMiniGame(props) {
 	const net = useRef(null);
 	const net2 = useRef(null);
 	const net3 = useRef(null);
-	const sqaure = useRef(null);
+	const square = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
@@ -110,17 +111,17 @@ function NetMiniGame(props) {
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
 
-		sqaure.current.focus();
+		square.current.focus();
 		document.getElementById('square').classList.add('hidden');
-		const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
-		const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
+		const squareX = square.current.offsetLeft + (square.current.width / 2)
+		const squareY = square.current.offsetTop + (square.current.height / 2)
 		setSquarePoints({
 			x: squareX,
 			y: squareY,
-			leftEdge: squareX - (sqaure.current.width / 2),
-			rightEdge: squareX + (sqaure.current.width / 2),
-			topEdge: squareY - (sqaure.current.height / 2),
-			bottomEdge: squareY + (sqaure.current.height / 2)
+			leftEdge: squareX - (square.current.width / 2),
+			rightEdge: squareX + (square.current.width / 2),
+			topEdge: squareY - (square.current.height / 2),
+			bottomEdge: squareY + (square.current.height / 2)
 		})
 	}, []);
 
@@ -164,18 +165,19 @@ function NetMiniGame(props) {
 	}
 
 	const loadNextModal = () => {
-		setPage(2);
-		document.getElementById("load-modal-2").click();
+		let newPage = page + 1;
+		setPage(newPage);
+		document.getElementById("load-modal-3").click();
 	}
 
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
+			setHasObstacle(true);
 			document.getElementById('square').classList.remove('hidden');
-			setHasObstacle(true)
 		} else if (level === 2) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-see-level.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
 		}
 		if (level < 3) {
 			document.getElementById("play-area").click();
@@ -197,6 +199,8 @@ function NetMiniGame(props) {
 			props.setIsGameComplete(true);
 		}
 	}
+
+	console.log(level);
 
 	// Note: When finished watching video, it closes with next video
 	return (
@@ -241,9 +245,32 @@ function NetMiniGame(props) {
 							</div>
 
 							<div className='modal-buttons'>
+								<button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									<img src={continueButton} className='modal-button-img' />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a id="load-modal-3" data-bs-toggle="modal" data-bs-target="#modal-3-Backdrop" />
+			<div className="modal fade" id="modal-3-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				{/* Pancake Image */}
+				<img src={PancakeModal} className='pancake-modal' />
+				<div className="modal-dialog modal-lg modal-dialog-centered">
+					<div className="modal-content">
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-3'].title}</h1>
+							</div>
+							<div className='row model-info modal-video-content mt-1'>
+								<input type='textarea' height={5}/>
+							</div>
+
+							<div className='modal-buttons'>
 								<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal">
-									{(level < 3) && <img src={locationButton} className='modal-button-img' />}
-									{(level === 3) && <img src={finishButton} className='modal-button-img' onClick={() => {
+									{(level < 4) && <img src={locationButton} className='modal-button-img' />}
+									{(level === 4) && <img src={finishButton} className='modal-button-img' onClick={() => {
 										navigate('/level2');
 										setIsGameComplete(true);
 									}} />}
@@ -256,6 +283,10 @@ function NetMiniGame(props) {
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 				{/* User */}
+				{(level === 3) && <Whale
+					src={'/sprites/sprite-wendy-whale.png'}
+					/>}
+
 				<User
 					style={userPlacement}
 					ref={user}
@@ -297,9 +328,9 @@ function NetMiniGame(props) {
 					id='net3'
 				/>
 				<Obstacle
-					src={sqaureImg}
+					src={squareImg}
 					id='square'
-					ref={sqaure} />
+					ref={square} />
 			</div>
 		</>
 	);

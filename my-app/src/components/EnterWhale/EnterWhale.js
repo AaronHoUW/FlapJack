@@ -1,43 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
 	User,
-	Net,
-	Flapjack,
-    Speech,
-    DialogueMessageContainer,
-    NextButton,
     Whale,
-    Circle
 } from './styles.tsx';
 import { useNavigate } from 'react-router-dom';
-import sqaureImg from './square.png'
 
-function Secretplayground() {
+function EnterWhale() {
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(300);
-    const [canMove, setCanMove] = useState(true)
-    const [moveCount, setMoveCount] = useState(0)
 
 	// Nets
 	const [netRemove, setNetRemove] = useState(0);
-
-    //Square
-    const [squarePoints, setSquarePoints] = useState({}) 
 
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	const navigate = useNavigate();
 
     const handleKeyDown = event => {
-        if(event.key === "a") {
-            // console.log(sqaure.current.x, sqaure.current.y, "square.current")
-            console.log(user.current.offsetLeft, user.current.offsetTop, "user.offset")
-            console.log(whale.current.offsetLeft, whale.current.offsetTop, "Whale.offset")
-            console.log("X center", grabUserXPosition())
-            console.log("Y center", grabUserYPosition())
-            // console.log("sqaure center", squarePoints)
-        }
         const newPlayerCords = {xPosition: grabUserXPosition(),
                                 yPosition: grabUserYPosition(),
                                 width: user.current.width,
@@ -45,7 +25,7 @@ function Secretplayground() {
         if(event.key === 'ArrowRight') {
             newPlayerCords.xPosition+=100;
             if(!checkObstacle(newPlayerCords)) {
-                setXAxis(xAxis + 50)
+                setXAxis(xAxis + 50)    
             }
         }
         if(event.key === 'ArrowLeft') {
@@ -67,9 +47,6 @@ function Secretplayground() {
             }
         }
         checkWhaleRange();
-        // checkObstacle(newPlayerCords);
-        // setMoveCount(moveCount + 1)
-        // checkWithinRange(newPlayerCords);
 	};
 
     // Create function to grab true XY positions
@@ -87,28 +64,11 @@ function Secretplayground() {
 	}
 
 	const user = useRef(null);
-	// const sqaure = useRef(null);
-    // const net = useRef(null)
     const whale = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
-        // net.current.focus();
         whale.current.focus();
-
-        // sqaure.current.focus();
-        // Insert code to the set the usestate of thw square's location
-        console.log(whale.current.offsetLeft, whale.current.offsetTop)
-        // const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
-        // const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
-        // setSquarePoints({
-        //     x: squareX,
-        //     y: squareY,
-        //     leftEdge: squareX - (sqaure.current.width / 2),
-        //     rightEdge: squareX + (sqaure.current.width / 2),
-        //     topEdge: squareY - (sqaure.current.height / 2),
-        //     bottomEdge: squareY + (sqaure.current.height / 2)
-        // })
 	}, []);
 
 	const handleWithinRange = (event) => {
@@ -117,6 +77,7 @@ function Secretplayground() {
 		}
 	}
 
+    // Leaving this code here, in case we have obstacles
     function checkObstacle(newPlayerCords) {
         return false;
         // Corners
@@ -129,14 +90,6 @@ function Secretplayground() {
         // console.log(playerCorners)
         // return playerCorners.length >= 1;
     }
-
-	// function checkWithinRange(newPlayerCords) {
-    //     if(Math.sqrt((user.current.x - net.current.x)**2 + (user.current.y - net.current.y)**2 ) <= 500) {
-    //         document.getElementById('net').classList.add('in-range');
-    //     } else {
-    //         document.getElementById('net').classList.remove('in-range');
-    //     }
-	// }
 
 	const removeNet = (event) => {
 		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 500) {
@@ -202,6 +155,6 @@ function Secretplayground() {
 }
 
 
-export default Secretplayground;
+export default EnterWhale;
 
 
