@@ -113,7 +113,7 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-					<Route path='/levelsPage' element={	<LevelsPage />} />
+					<Route path='/levels' element={	<LevelsPage />} />
 
 				</Routes>
 			</div>

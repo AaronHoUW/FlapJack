@@ -154,7 +154,7 @@ footer {
   background-image: url('../public/sprites/bg-sea.png');
   height: 100vh;
   overflow: hidden;
-  background-size: contain;
+  background-size: cover;
 }
 
 .sprite-container, .sprite-normal {
