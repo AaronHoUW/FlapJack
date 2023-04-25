@@ -18,6 +18,7 @@ const IMAGES = {
         'beach-rocks',
         'beach-rocks-2',
         'beach-wrack',
+        'dark-blue',
         'sc-earth-pod',
         'space-test',
         'trash-island',
