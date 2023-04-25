@@ -53,6 +53,12 @@ function App() {
 							<Resources />
 						</>
 					} />
+					<Route path='/levels' element={
+						<>
+							<Navbar />
+							<LevelsPage />
+						</>
+					} />
 					<Route path='/play' element={
 						<>
 							<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
@@ -113,7 +119,6 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-					<Route path='/levels' element={	<LevelsPage />} />
 
 				</Routes>
 			</div>
