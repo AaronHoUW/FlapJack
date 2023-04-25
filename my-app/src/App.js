@@ -16,7 +16,7 @@ import Tutorial from './components/Tutorial/Tutorial';
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import Quiz from './components/Quiz/Quiz.js'
-import LevelsPage from './components/LevelsPage/levelsPage';
+import Levels from './components/Levels/Levels';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -56,7 +56,7 @@ function App() {
 					<Route path='/levels' element={
 						<>
 							<Navbar />
-							<LevelsPage />
+							<Levels />
 						</>
 					} />
 					<Route path='/play' element={
