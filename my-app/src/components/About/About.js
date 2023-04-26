@@ -20,6 +20,10 @@ import {
     AboutSection,
     WhoDetails,
     FeatureContainer,
+    StatusContainer,
+    StatusIcons,
+    MeetContainer,
+    RoleContainer,
     AcknowledgementsContainer,
 } from './styles.tsx';
 
@@ -109,7 +113,7 @@ const About = () => {
                                 </p>
                             </div>
                             <div>
-                                <img />
+                                <img src='./imgs/net-game.gif' alt='Net mini-game' />
                                 <img />
                                 <img />
                             </div>
@@ -135,14 +139,65 @@ const About = () => {
                         </Help>
                     </AboutSection>
                 </div>
+                <StatusContainer>
+                    <div>
+                        <IntroTitle>Project Status</IntroTitle>
+                        <p>Our project will remain open-source. To view our project in depth, feel free to explore our work:</p>
+                    </div>
+                    <StatusIcons>
+                        <a href='https://miro.com/app/board/uXjVP1qeP0I=/?moveToWidget=3458764542318464274&cot=14'>
+                            <img src='./imgs/miro.png' alt='Miro' />
+                            <p>Miro</p>
+                        </a>
+                        <a href='https://github.com/AaronHoUW/FlapJack'>
+                            <img src='./imgs/github-status.png' alt='Github' />
+                            <p>GitHub</p>
+                        </a>
+                        <a href='https://www.figma.com/file/GAwPYtxgu7cB9uYnB98nJI/Marine-Rescue%3A-The-Sea-quel?node-id=272-88&t=VKQrEEDcNK07fmBS-0'>
+                            <img src='./imgs/figma.png' alt='Figma' />
+                            <p>Figma</p>
+                        </a>
+                    </StatusIcons>
+                </StatusContainer>
                 <div>
-                    <FirstAboutSection>
-                        <WhoDetails>
-                            <h3>
-                                
-                            </h3>
-                        </WhoDetails>
-                    </FirstAboutSection>
+                    <IntroTitle>Meet the Team!</IntroTitle>
+                    <MeetContainer>
+                        <div><img src='./imgs/jun.png' alt='Jun Nguyen' /></div>
+                        <div className='about-text'>
+                            <h2>Meet Jun Nguyen!</h2>
+                            <RoleContainer>
+                                <div>Project Manager</div>
+                                <div>Software Engineer</div>
+                                <div>Character Artist</div>
+                            </RoleContainer>
+                            <p>
+                                Jun is a senior in Informatics and a software engineering intern at Pacific Northwest National Laboratory
+                                (PNNL). They created all of the visual novel components and paths, including the preface, map quiz, keywords,
+                                choice scenes, card game, and linking the navigation to other scenes. With no prior experience doing digital
+                                art nor project management, they started learning how to draw and do project manager tasks at the start of the
+                                project. They are a music cover hobbyist, which includes singing, mixing, and general music production. They
+                                also enjoy reading webtoons and manga, and they are an avid gacha gamer.
+                            </p>
+                        </div>
+                    </MeetContainer>
+                    <MeetContainer>
+                        <div><img src='./imgs/delaney.png' alt='Delaney Edwards' /></div>
+                        <div className='about-text'>
+                            <h2>Meet Delaney Edwards!</h2>
+                            <RoleContainer>
+                                <div>UX Designer</div>
+                                <div>Story Writer</div>
+                                <div>Environment Artist</div>
+                            </RoleContainer>
+                            <p>
+                                Delaney is a senior in Informatics, who aims to become a UX Designer. In this project, she brainstormed the features
+                                for the game, outlined and wrote the story, and went through several iterations of wireframes for the whole game and
+                                website. Outside of school, Delaney is a Student UX Designer at UW-IT where she helps to improve the student experience
+                                at UW. For fun, she enjoys drawing cute things to make into stickers, reading books of all genres, and playing video
+                                games like Valorant and Horizon Zero Dawn.
+                            </p>
+                        </div>
+                    </MeetContainer>
                 </div>
             </AboutContainer>
             <FooterContainer>
