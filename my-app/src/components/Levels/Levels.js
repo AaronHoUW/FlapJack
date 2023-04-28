@@ -49,7 +49,7 @@ function Levels() {
                 <FooterText>Marine Rescue: The Sea-quel</FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>
-                    <img src='./imgs/mdi_github.png' alt='Github logo' />
+                    <img src='./imgs/github.png' alt='Github logo' />
                 </FooterCopyright>
                 <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
             </FooterContainer>
