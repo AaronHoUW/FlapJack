@@ -167,7 +167,7 @@ function NetMiniGame(props) {
 	const loadNextModal = () => {
 		let newPage = page + 1;
 		setPage(newPage);
-		document.getElementById("load-modal-3").click();
+		document.getElementById(`load-modal-`+ (page + 1)).click();
 	}
 
 	const loadNextLevel = () => {
@@ -200,7 +200,7 @@ function NetMiniGame(props) {
 		}
 	}
 
-	console.log(level);
+	console.log(level, postGameDialogue[level]['page-2'].video);
 
 	// Note: When finished watching video, it closes with next video
 	return (
@@ -238,9 +238,9 @@ function NetMiniGame(props) {
 								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
 							</div>
 							<div className='row model-info modal-video-content mt-1'>
-								<div className='modal-video-content'>
+								{/* <div className='modal-video-content'> */}
 									<iframe width="100%" height="100%" src={postGameDialogue[level]['page-2'].video} />
-								</div>
+								{/* </div> */}
 								<p className='pt-1' >{postGameDialogue[level]['page-2'].body}</p>
 							</div>
 
@@ -255,7 +255,7 @@ function NetMiniGame(props) {
 			</div>
 			<a id="load-modal-3" data-bs-toggle="modal" data-bs-target="#modal-3-Backdrop" />
 			<div className="modal fade" id="modal-3-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				{/* Pancake Image */}
+				
 				<img src={PancakeModal} className='pancake-modal' />
 				<div className="modal-dialog modal-lg modal-dialog-centered">
 					<div className="modal-content">

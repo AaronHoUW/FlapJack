@@ -15,22 +15,28 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const [sceneState, setSceneState] = useState("");
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, setQuestionNumber, setLevelOnePath, levelOnePath} = props;
     let currentScene = level['pancakeIntro'];
     let dialoguePosition = 0;
     let correctCount = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete) {
+        console.log(isQuiz)
+        if (isFlapGuide && !isGameComplete && !isQuiz) {
             clearSprites();
             currentScene = level['shawnIntro'];
             buildDialogue();
         } else if (isQuiz) {
-            // console.log(sceneState);
+            console.log(levelOnePath)
             clearSprites();
-            currentScene = level['shawnIntro'];
+            if(levelOnePath === "animalImpactTrash1") {
+                currentScene = level['shawnQuestion1'];
+            } else if (levelOnePath === "shawnCardGame2") {
+                currentScene = level['shawnQuestion3'];
+            } else {
+                currentScene = level['shawnQuestion2'];
+            }
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -572,14 +578,13 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
+                            // setSceneState(currentScene.nextScene);
+                            setLevelOnePath(currentScene.previousScene)
+                            setQuestionNumber(3);
                             setIsQuiz(true);
                             navigate('/quiz');
                         } else {
-                            // Display the next scene
                             clearSprites();
-                            console.log(currentScene.nextScene)
-                            // setSceneState(currentScene.nextScene);
-
                             currentScene = level[currentScene.nextScene];
                             if (currentScene.nextScene === 'clickMap') {
                                 nextEvent.target.disabled = true;

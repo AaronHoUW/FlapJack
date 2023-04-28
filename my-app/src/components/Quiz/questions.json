@@ -43,6 +43,26 @@
             "Rope": "./imgs//quiz/rope-beach.jpg"
         } 
     },
+    "Which of these things do Killer Whales not eat?": {
+        "correct": "Killer whales are carnivorous, so they only eat meat, not plants!",
+        "wrong": "Not quite! Killer whales are carnivorous, so they only eat meat, not plants! If you want to go back and talk to Wendy again, you can find the right answer.",
+        "answers" :{
+            "Seaweed" : true,
+            "Fish" : false,
+            "Seal" : false,
+            "Squid" : false
+        }
+    },
+    "How much does Wendy weigh?": {
+        "correct": "Killer whales can weigh anywhere between 6,600 pounds to 8,800 pounds!",
+        "wrong": "Not quite! Whales actually weigh that much! If you want to go back and talk to Wendy again, you can find the right answer.",
+        "answers" :{
+            "7,000 pounds" : true,
+            "2,000 pounds" : false,
+            "400 pounds" : false,
+            "12,000 pounds" : false
+        }
+    },
     "Last Placeholder Question": {
         "correct": "This is the responses what happen if it's correct",
         "wrong": "This appears when it's wrong",

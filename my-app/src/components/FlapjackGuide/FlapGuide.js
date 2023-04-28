@@ -41,7 +41,7 @@ function FlapGuide(props) {
 
     	const handleWithinRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
-			navigate('/level2');
+			navigate('/level1');
 		}
 	}
 
@@ -69,8 +69,7 @@ function FlapGuide(props) {
       <img className="fish" id="transition" ref={fish} src='./imgs/sal.png' onClick={handleWithinRange} />
       <img className="flapjack-guide" src='./sprites/sprite-pancake-flapjack-octopus.png' />
     </Background>
-      {/* User */}
-      <User
+    <User
         style={userPlacement}
         ref={user}
         tabIndex={-1}
@@ -80,7 +79,9 @@ function FlapGuide(props) {
         className='img-size'
         alt="User's placeholder"
       />
-          </div>
+      {/* User */}
+
+    </div>
 );
 };
 
