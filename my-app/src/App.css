@@ -174,7 +174,6 @@ footer {
 }
 
 @keyframes MoveUpDown {
-
   0%,
   100% {
     transform: translateY(0);
@@ -569,13 +568,13 @@ footer {
 
 }
 
-.fish {
+.play-area #transition {
   position: absolute;
+  z-index: 1;
   width: 209px;
-  height: 124px;
   left: 250px;
   top: 513px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: scaleX(-1);
 }
 
 .about-parent {
