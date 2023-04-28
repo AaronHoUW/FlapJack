@@ -133,14 +133,6 @@ function Tutorial() {
             {textPage === 2 && <Circle
                 src={circleImg}
                 ref={circle} />}
-            {/* <div>
-                <Speech className="speech" src='./imgs/text.png' />
-                <DialogueMessageContainer className="message-container" >
-                    {textPage === 1 && <img src={arrowKeys} />}
-                    <p>{tutorialText[textPage]}</p>
-                </DialogueMessageContainer>
-                {displayButton && <NextButton className='nextBtn' onClick={handleNextText}>Next</NextButton>}
-            </div> */}
             <div>
                 <DialogueImg src={textBubble} alt="Text bubble background" className='textBox' id="dialogueBox" />
                 <DialogueMessageContainer className="message-container">
