@@ -1,17 +1,9 @@
 const LEVEL3 = 
 {
-  "testScene": {
-    "type": "comic",
-    "background": "dark-blue",
-    "nextScene": "testScene2",
-    "baseFrame": [],
-    "frames": [
-      []
-    ]
-  },
   "pancakeIntro": {
     "type": "comic",
     "background": "dark-blue",
+    "previousScene": undefined,
     "nextScene": "testScene2",
     "baseFrame": [
       {
@@ -31,9 +23,7 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -42,9 +32,106 @@ const LEVEL3 =
       }
     ]
   },
+  "pancakeNorthAmerica": {
+    "type": "comic",
+    "background": "north-america-blank",
+    "previousScene": "pancakeIntro",
+    "nextScene": "clickMap",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "This is a map of North America. Do you know where the Pacific Ocean is? Click on where you think the Pacific Ocean is.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "pacificOcean_correct": {
+    "type": "comic",
+    "background": "north-america",
+    "previousScene": "pancakeNorthAmerica",
+    "nextScene": "pancakeWashingtonState",
+    "baseFrame": [],
+    "frames": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
+        "type": "nospeaker"
+      },
+    ]
+  },
+  "pacificOcean_incorrect": {
+    "type": "comic",
+    "background": "north-america",
+    "previousScene": "pancakeNorthAmerica",
+    "nextScene": "pancakeWashingtonState",
+    "baseFrame": [],
+    "frames": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "10",
+        "flipX": false
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Uh Oh! Looks like you weren’t sure where the Pacific Ocean is. Its on the west side of the United States, near Washington, Oregon and California.",
+        "type": "nospeaker"
+      }
+    ]
+  },
+  "pancakeWashingtonState": {
+    "type": "comic",
+    "background": "washington-state",
+    "previousScene": "pancakeNorthAmerica",
+    "nextScene": "pancakeAfterMap",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "This is Washington state. The area circled in red is where we will be exploring and meeting new friends!",
+        "type": "nospeaker"
+      }
+    ]
+  },
   "pancakeAfterMap": {
     "type": "comic",
     "background": "dark-blue",
+    "previousScene": "pancakeWashingtonState",
     "nextScene": "testScene2",
     "baseFrame": [
       {
