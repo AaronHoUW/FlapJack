@@ -1,11 +1,4 @@
 const LEVEL2 = {
-  "testScene": {
-    "type": "comic",
-    "background": "sea",
-    "nextScene": "testScene2",
-    "baseFrame": [],
-    "frames": []
-  },
   "pancakeIntro": {
     "type": "comic",
     "background": "sea",
@@ -47,7 +40,7 @@ const LEVEL2 = {
     "type": "comic",
     "background": "sea",
     "previousScene": undefined,
-    "nextScene": "sallyTalking2",
+    "nextScene": "quiz",
     "baseFrame": [
       {
         "type": "sprite",
@@ -236,14 +229,14 @@ const LEVEL2 = {
     "nextScene": "pancakeElwhaNews",
     "baseFrame": [],
     "frames": [
-        {
-          "type": "sprite",
-          "image": "pancake-flapjack-octopus",
-          "x": "5",
-          "y": "80",
-          "size": "010",
-          "flipX": false
-        }
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "5",
+        "y": "80",
+        "size": "010",
+        "flipX": false
+      }
     ],
     "dialogue": [
       {

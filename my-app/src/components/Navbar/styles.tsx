@@ -42,7 +42,7 @@ export const Link = styled(NavLink)`
 `;
 
 export const PlayButton = styled(NavLink)`
-    background-color: rgb(19, 66, 84);
+    background-color: #284775;
     border-radius: 20px;
     color: white;
     font-family: Mulish;

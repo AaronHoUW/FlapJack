@@ -1,0 +1,56 @@
+{
+    "Insert Question Here": {
+        "correct": "This is the responses what happen if it's correct",
+        "wrong": "This appears when it's wrong",
+        "answers" :{
+            "Correct Choice" : true,
+            "Wrong Choice 1" : false,
+            "Wrong Choice 2" : false,
+            "Wrong Choice 3" : false
+        }
+    },
+    "How many dams does the Elwha river currently have in it?": {
+        "correct": "There used to be two dams in the Elwha river, but they were both removed in 2011, so there are no longer any dams.",
+        "wrong": "There used to be two dams in the Elwha river, but they were both removed in 2011, so there are no longer any dams.",
+        "answers" : {
+            "0" : true,
+            "1" : false,
+            "2" : false,
+            "3" : false
+        }
+    },
+    "What kind of fish is Sally?": {
+        "correct": "Great job. Lets keep chatting more with Sally.",
+        "wrong": "Looks like you’re not sure what kind of fish Sally is. If you want to go back and talk to her again, you can find the right answer.",
+        "answers" :{
+            "Chum Salmon" : true,
+            "Rainbow Trout" : false,
+            "Chinook Salmon" : false,
+            "Pacific Cod" : false
+        }
+    },
+    "What do you think is stuck on Shawn’s leg?": {
+        "correct": "Shawn stepped into a soda can ring awhile back and his foot got tangled up in all of the plastic.",
+        "wrong": "All of these are common types of litter that can be dangerous to animals that live on the beach, however, Shawn got tangled up in some soda can rings.",
+        "answers" :{
+            "Soda Can Rings" : true,
+            "Plastic Bag" : false,
+            "Rope" : false
+        },
+        "images" :{
+            "Soda Can Rings": "./imgs/quiz/soda-rings.JPG",
+            "Plastic Bag": "./imgs/quiz/plastic-bag-on-beach.png",
+            "Rope": "./imgs//quiz/rope-beach.jpg"
+        } 
+    },
+    "Last Placeholder Question": {
+        "correct": "This is the responses what happen if it's correct",
+        "wrong": "This appears when it's wrong",
+        "answers" :{
+            "Correct Choice" : true,
+            "Wrong Choice 1" : false,
+            "Wrong Choice 2" : false,
+            "Wrong Choice 3" : false
+        }
+    }
+}

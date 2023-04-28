@@ -6,7 +6,9 @@ import {
     IntroText,
     IntroTitle,
     IntroDescription,
+    MoreInfo,
     IntroButton,
+    ParentButton,
     IntroSprites,
     MeetContainer,
     MeetTitle,
@@ -30,36 +32,28 @@ function Home() {
                 <IntroText>
                     <IntroTitle>Welcome to Marine Rescue!</IntroTitle>
                     <IntroDescription>
-                        Marine Rescue is a 2nd to 6th grade education project that highlights the various problems impacting marine life.
-                        These issues include ghost nets and pollution being left in the ocean that create hazardous environments for the animals.
-                        With a focus on gamification, Marine Rescue allows users to engage within major aspects of marine issues in a joyful way.
-                        Following the lives of many marine animals such as Seagulls, Chum Salmons, and Orca Whales, users are able to connect with
-                        characters in order to understand their experiences with pollution they encounter every day. Come play and learn about the
-                        characters’ lives, the impacts of pollution, and on ways that you can help!
+                        Marine Rescue is a fun way to learn about problems that hurt marine animals like pollution and ghost nets.
+                        You get to play as a scuba diver and explore the underwater world while learning about the animals who live
+                        there and the dangers they face. You can help make a difference by learning about the problems and ways to
+                        solve them. Join in and have fun while helping to protect our oceans!
                     </IntroDescription>
-                    <IntroButton onClick={() => navigate('/preface')}>Play Now!</IntroButton>
+                    <MoreInfo>
+                        <IntroButton onClick={() => navigate('/preface')}>Play Now!</IntroButton>
+                        <ParentButton onClick={() => navigate('/parents')}>
+                            <div>
+                                <p>Are you a Parent?</p>
+                                <p>Learn More About the Game</p>
+                            </div>
+                            <img src='./imgs/arrow_forward_ios.png' />
+                        </ParentButton>
+                    </MoreInfo>
                 </IntroText>
-                <IntroSprites>
-                    <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' className='pancake' />
-                    <img src='./sprites/sprite-user-placeholder.png' alt='sprite of the user' className='user' />
-                </IntroSprites>
             </IntroContainer>
 
             <MeetContainer>
                 <MeetTitle>Meet New Friends!</MeetTitle>
                 <MeetSprites>
-                    <MeetAnimal>
-                        <img src='./sprites/sprite-sally-salmon.png' alt='sprite of Sally, the salmon' className='sally' />
-                        <h4>Sally the Salmon</h4>
-                    </MeetAnimal>
-                    <MeetAnimal>
-                        <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' />
-                        <h4>Pancake the Flapjack Octopus</h4>
-                    </MeetAnimal>
-                    <MeetAnimal>
-                        <img src='./sprites/sprite-wendy-whale.png' alt='sprite of Wendy, the whale' />
-                        <h4>Wendy the Whale</h4>
-                    </MeetAnimal>
+                    <img src='./imgs/animals.svg' />
                 </MeetSprites>
             </MeetContainer>
 
@@ -78,10 +72,13 @@ function Home() {
             </LearnContainer>
 
             <FooterContainer>
-                <FooterText>Marine Rescue: The Sea-quel</FooterText>
+                <FooterText>
+                    <p>Marine Rescue: The Sea-quel</p>
+                    <span>Powered by fruit snacks</span>
+                </FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>
-                    <img src='./imgs/mdi_github.png' alt='Github logo' />
+                    <img src='./imgs/github.png' alt='Github logo' />
                 </FooterCopyright>
                 <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
             </FooterContainer>

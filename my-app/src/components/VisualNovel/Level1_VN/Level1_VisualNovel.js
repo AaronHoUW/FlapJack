@@ -15,16 +15,22 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    const [sceneState, setSceneState] = useState("");
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
     let currentScene = level['pancakeIntro'];
-
     let dialoguePosition = 0;
+    let correctCount = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isFlapGuide && !isGameComplete) {
             clearSprites();
-            currentScene = level['sallyTalking'];
+            currentScene = level['shawnIntro'];
+            buildDialogue();
+        } else if (isQuiz) {
+            // console.log(sceneState);
+            clearSprites();
+            currentScene = level['shawnIntro'];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -35,16 +41,13 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         if (currentScene === level['pancakeIntro']
-            || currentScene === level['sallyTalking']
+            || currentScene === level['shawnIntro']
             || currentScene === level['minigame']
             || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete]);
-
-    const TALK_SPEED = 10;
-    let speechTimer = 0;
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -69,8 +72,9 @@ function VisualNovel(props) {
         createBaseFrame(scene.baseFrame);
         createImage(scene.frames);
 
-        if (scene === level['sallyCardGame']) {
+        if (scene === level['shawnCardGame1'] || scene === level['shawnCardGame2'] || scene === level['shawnCardGame3'] || scene === level['shawnCardGame4']) {
             createCards();
+            document.getElementById('nextBtn').disabled = true;
         } else {
             clearCards();
         }
@@ -102,14 +106,14 @@ function VisualNovel(props) {
     function createCards() {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add('card-container');
-        let images = ['net1', 'no_net1', 'net2', 'no_net2', 'net3', 'net4'];
+        let images = ['trash1', 'no_trash1', 'trash2', 'no_trash2', 'trash3', 'no_trash3'];
         let explanations = [
-            'Nets can get stuck on coral and stay tangled there for a long time!',
-            "No nets here. That's just open ocean!",
-            'Some nets just float on top of the water and get tangled with other things.',
+            'Trash islands can clutter up and form a platform of trash on the ocean.',
+            "No trash islands here, those are just fish.",
+            'Trash islands can contain nets that pull other trash in the ocean together.',
             'Just rocks here!',
-            'Nets can also get tangled up in old shipwrecks or other large debris.',
-            'Sometimes, animals get tangled up in nets that are floating in the water.',
+            'Trash islands can have a lot of plastic bottles, food containers, and plastic bags.',
+            'No trash islands here, those are just fish.',
         ]
         let count = 0;
 
@@ -124,7 +128,7 @@ function VisualNovel(props) {
                 cardInner.classList.add('card-inner');
 
                 const imageFront = document.createElement('img');
-                imageFront.setAttribute('src', `/imgs/cards/nets/${images[0]}.png`);
+                imageFront.setAttribute('src', `/imgs/cards/trashIslands/${images[0]}.png`);
                 imageFront.setAttribute('alt', `${images[0]}`);
                 imageFront.classList.add('front-image');
 
@@ -142,13 +146,17 @@ function VisualNovel(props) {
 
                 if (!images[0].includes('_')) {
                     text.appendChild(correct);
+                    text.classList.add('correct-text');
                 } else {
                     text.appendChild(incorrect);
+                    text.classList.add('incorrect-text');
                 }
                 explanation.textContent = ' ' + explanations[0];
                 explanation.classList.add('explanation');
 
                 text.appendChild(explanation);
+                // if text includes the word true, update count
+                // if count correct === 3, then enable the next button
 
                 imageBack.appendChild(text);
                 imageBack.classList.add('back-image');
@@ -158,7 +166,14 @@ function VisualNovel(props) {
 
                 card.appendChild(cardInner);
 
-                card.addEventListener('click', () => {
+                card.addEventListener('click', (event) => {
+                    console.log(event);
+                    if (!images[0].includes('_')) {
+                        correctCount++;
+                    }
+                    if (correctCount < 4) {
+                        document.getElementById('nextBtn').disabled = false;
+                    }
                     card.classList.toggle('card-clicked');
                 });
 
@@ -407,7 +422,7 @@ function VisualNovel(props) {
 
         let message = currentScene.dialogue[dialoguePosition].message;
         if (isFlapGuide && !isGameComplete) {
-            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
+            message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         }
@@ -557,12 +572,14 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
-                            // Aaron - remove the code here once you have the quiz component ready
-                            currentScene = level['shawnQuestion'];
-                            nextScene(currentScene);
+                            setIsQuiz(true);
+                            navigate('/quiz');
                         } else {
                             // Display the next scene
                             clearSprites();
+                            console.log(currentScene.nextScene)
+                            // setSceneState(currentScene.nextScene);
+
                             currentScene = level[currentScene.nextScene];
                             if (currentScene.nextScene === 'clickMap') {
                                 nextEvent.target.disabled = true;

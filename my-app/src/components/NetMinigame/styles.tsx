@@ -43,3 +43,17 @@ export const Net = styled.img<Props>`
         animation-delay: 100ms;
     }
 `;
+
+export const Obstacle = styled.img<Props>`
+    position: absolute;
+    top: 40%;
+    right: 45%;
+    width: 300px;
+`;
+
+export const Whale = styled.img`
+    right: 0%;
+    top: 30%;
+    position: absolute;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;

@@ -15,16 +15,24 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete } = props;
+    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
     let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete) {
+        if (isFlapGuide && !isGameComplete && questionNumber < 3) {
             clearSprites();
             currentScene = level['sallyTalking'];
+            buildDialogue();
+        } else if (isQuiz && !isGameComplete) {
+            clearSprites();
+            if(questionNumber === 2) {
+                currentScene = level['pancakeTalkToSalmon'];
+            } else if (questionNumber === 3) {
+                currentScene = level['sallyTalking2'];   
+            }
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -36,12 +44,13 @@ function VisualNovel(props) {
         }
         if (currentScene === level['pancakeIntro']
             || currentScene === level['sallyTalking']
+            || currentScene === level['pancakeTalkToSalmon']
             || currentScene === level['minigame']
             || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-    }, [isFlapGuide, isGameComplete]);
+    }, [isFlapGuide, isGameComplete, isQuiz, questionNumber]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -407,6 +416,8 @@ function VisualNovel(props) {
             message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
+        } else if (isQuiz) {
+            message = 'Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!'
         }
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
@@ -458,6 +469,7 @@ function VisualNovel(props) {
                     () => {
                         setIsFlapGuide(false);
                         setIsGameComplete(false);
+                        setIsQuiz(false);
                         navigate('/');
                     }
                 }>Exit</ExitButton>
@@ -554,9 +566,9 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
-                            // Aaron - remove the code here once you have the quiz component ready
-                            currentScene = level['pancakeTalkToSalmon'];
-                            nextScene(currentScene);
+                            console.log(currentScene)
+                            setIsQuiz(true);
+                            navigate('/quiz');
                         } else {
                             // Display the next scene
                             clearSprites();

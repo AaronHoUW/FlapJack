@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import {
 	User,
 	Net,
+	Obstacle,
+	Whale
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
 import continueButton from './images/ContinueButton.png';
 import locationButton from './images/LocationButton.png';
 import finishButton from './images/FinishButton.png';
+import squareImg from './square.png'
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -21,6 +24,9 @@ function NetMiniGame(props) {
 	const [netPlacement2, setNetPlacement2] = useState({});
 	const [netPlacement3, setNetPlacement3] = useState({});
 	const [netRemove, setNetRemove] = useState(0);
+	//Obstacle
+	const [squarePoints, setSquarePoints] = useState({})
+	const [hasObstacle, setHasObstacle] = useState(false)
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -36,21 +42,49 @@ function NetMiniGame(props) {
 
 	// Player Controls
 	const handleKeyDown = event => {
+		const newPlayerCords = {
+			xPosition: grabUserXPosition(),
+			yPosition: grabUserYPosition(),
+			width: user.current.width,
+			height: user.current.height
+		}
 		if (event.key === 'ArrowRight') {
-			setXAxis(xAxis + 50)
+			newPlayerCords.xPosition += 100;
+			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
+				setXAxis(xAxis + 50)
+			}
 		}
 		if (event.key === 'ArrowLeft') {
-			setXAxis(xAxis - 50)
+			newPlayerCords.xPosition -= 100;
+			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
+				setXAxis(xAxis - 50)
+			}
 		}
 		if (event.key === 'ArrowDown') {
-			setYAxis(yAxis + 50)
+			newPlayerCords.yPosition += 50;
+			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
+				setYAxis(yAxis + 50)
+			}
 		}
 		if (event.key === 'ArrowUp') {
-			setYAxis(yAxis - 50)
+			newPlayerCords.yPosition -= 50;
+			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
+				setYAxis(yAxis - 50)
+			}
 		}
-		console.log(user.current.x, user.current.y)
+		// console.log(newPlayerCords.xPosition, newPlayerCords.yPosition, "Uuser Position")
+		checkObstacle(newPlayerCords);
 		checkWithinRange();
 	};
+
+	// Create function to grab true XY positions
+	function grabUserXPosition() {
+		return user.current.offsetLeft + (user.current.width / 2);
+	}
+
+	function grabUserYPosition() {
+		return user.current.offsetTop + (user.current.height / 2)
+	}
 
 	function randomPx() {
 		let px = Math.floor((Math.random() * 250) + 50);
@@ -62,6 +96,7 @@ function NetMiniGame(props) {
 	const net = useRef(null);
 	const net2 = useRef(null);
 	const net3 = useRef(null);
+	const square = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
@@ -74,6 +109,20 @@ function NetMiniGame(props) {
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
+		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
+
+		square.current.focus();
+		document.getElementById('square').classList.add('hidden');
+		const squareX = square.current.offsetLeft + (square.current.width / 2)
+		const squareY = square.current.offsetTop + (square.current.height / 2)
+		setSquarePoints({
+			x: squareX,
+			y: squareY,
+			leftEdge: squareX - (square.current.width / 2),
+			rightEdge: squareX + (square.current.width / 2),
+			topEdge: squareY - (square.current.height / 2),
+			bottomEdge: squareY + (square.current.height / 2)
+		})
 	}, []);
 
 	function checkWithinRange() {
@@ -96,6 +145,18 @@ function NetMiniGame(props) {
 		}
 	}
 
+	function checkObstacle(newPlayerCords) {
+		// Corners
+		const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
+			const newCorners = { x: newPlayerCords.xPosition + (75) * cords[0], y: newPlayerCords.yPosition - (75) * cords[1] }
+			// console.log(newCorners);
+			return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
+				newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
+		})
+		// console.log(playerCorners, "check")
+		return playerCorners.length >= 1;
+	}
+
 	const removeNet = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
 			event.target.classList.add('hidden');
@@ -104,16 +165,19 @@ function NetMiniGame(props) {
 	}
 
 	const loadNextModal = () => {
-		setPage(2);
-		document.getElementById("load-modal-2").click();
+		let newPage = page + 1;
+		setPage(newPage);
+		document.getElementById("load-modal-3").click();
 	}
 
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
+			setHasObstacle(true);
+			document.getElementById('square').classList.remove('hidden');
 		} else if (level === 2) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-see-level.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
 		}
 		if (level < 3) {
 			document.getElementById("play-area").click();
@@ -136,13 +200,15 @@ function NetMiniGame(props) {
 		}
 	}
 
+	console.log(level);
+
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
 			<a id="load-modal-1" data-bs-toggle="modal" data-bs-target="#modal-1-Backdrop" />
 			<div className="modal fade" id="modal-1-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
-				<img src={PancakeModal} className='pancake-modal'/>
+				<img src={PancakeModal} className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
@@ -164,7 +230,7 @@ function NetMiniGame(props) {
 			<a id="load-modal-2" data-bs-toggle="modal" data-bs-target="#modal-2-Backdrop" />
 			<div className="modal fade" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
-				<img src={PancakeModal} className='pancake-modal'/>
+				<img src={PancakeModal} className='pancake-modal' />
 				<div className="modal-dialog modal-lg modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
@@ -179,12 +245,35 @@ function NetMiniGame(props) {
 							</div>
 
 							<div className='modal-buttons'>
+								<button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									<img src={continueButton} className='modal-button-img' />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a id="load-modal-3" data-bs-toggle="modal" data-bs-target="#modal-3-Backdrop" />
+			<div className="modal fade" id="modal-3-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				{/* Pancake Image */}
+				<img src={PancakeModal} className='pancake-modal' />
+				<div className="modal-dialog modal-lg modal-dialog-centered">
+					<div className="modal-content">
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
+							</div>
+							<div className='row model-info modal-video-content mt-1'>
+								<input type='textarea' height={5}/>
+							</div>
+
+							<div className='modal-buttons'>
 								<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal">
-									{(level < 3) && <img src={locationButton} className='modal-button-img' />}
-									{(level === 3) && <img src={finishButton} className='modal-button-img' onClick={() => {
+									{(level < 4) && <img src={locationButton} className='modal-button-img' />}
+									{(level === 4) && <img src={finishButton} className='modal-button-img' onClick={() => {
 										navigate('/level2');
 										setIsGameComplete(true);
-									}}/>}
+									}} />}
 								</button>
 							</div>
 						</div>
@@ -194,6 +283,10 @@ function NetMiniGame(props) {
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
 				{/* User */}
+				{(level === 3) && <Whale
+					src={'/sprites/sprite-wendy-whale.png'}
+					/>}
+
 				<User
 					style={userPlacement}
 					ref={user}
@@ -234,6 +327,10 @@ function NetMiniGame(props) {
 					alt="Net3"
 					id='net3'
 				/>
+				<Obstacle
+					src={squareImg}
+					id='square'
+					ref={square} />
 			</div>
 		</>
 	);
