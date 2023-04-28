@@ -31,9 +31,10 @@ function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isSeaGuide, setIsSeaGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
-	const [questionNumber, setQuestionNumber] = useState(1);
+	const [questionNumber, setQuestionNumber] = useState(3);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
+	const [levelOnePath, setLevelOnePath] = useState()
 
 	return (
 		<div className='page-container'>
@@ -103,6 +104,8 @@ function App() {
 								setAmountQuestionsTake={setAmountQuestionsTake}
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
+								levelOnePath={levelOnePath}
+								setLevelOnePath={setLevelOnePath}
 								setCurrentLevel={setCurrentLevel}
 							/>
 						</>
