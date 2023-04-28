@@ -25,6 +25,9 @@ function VisualNovel(props) {
         isQuiz,
         setIsQuiz,
         questionNumber,
+        setQuestionNumber,
+        levelOnePath,
+        setLevelOnePath,
         setCurrentLevel
     } = props;
     let currentScene = level['pancakeIntro'];
@@ -42,6 +45,8 @@ function VisualNovel(props) {
             clearSprites();
             if(levelOnePath === "animalImpactTrash1") {
                 currentScene = level['shawnQuestion1'];
+            } else if (levelOnePath === 'shawnIntro') {
+                currentScene = level['shawnQuestion2'];
             } else if (levelOnePath === "shawnCardGame2") {
                 currentScene = level['shawnQuestion3'];
             } else {
@@ -313,7 +318,7 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
-                        } 
+                        }
 
                         const newSprite = document.createElement('img');
 
@@ -439,6 +444,8 @@ function VisualNovel(props) {
             message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
+        } else if (levelOnePath === 'animalImpactTrash1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
+            message = "It's gotten really tangled up that I can't get out of it easily.";
         }
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
@@ -588,9 +595,11 @@ function VisualNovel(props) {
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
                             // setSceneState(currentScene.nextScene);
-                            setLevelOnePath(currentScene.previousScene)
+                            console.log(currentScene);
+                            setLevelOnePath(currentScene.previousScene);
                             setQuestionNumber(3);
                             setIsQuiz(true);
+                            setIsSeaGuide(false);
                             navigate('/quiz');
                         } else {
                             clearSprites();

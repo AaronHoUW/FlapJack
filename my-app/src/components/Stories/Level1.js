@@ -572,6 +572,7 @@ const LEVEL1 = {
   "shawnTrash1": {
     "type": "comic",
     "background": "beach-level",
+    "previousScene": "shawnIntro",
     "nextScene": "quiz", // quiz: shawnQuestion2
     "baseFrame": [
       {
