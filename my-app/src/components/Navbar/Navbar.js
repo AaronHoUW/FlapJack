@@ -35,7 +35,7 @@ function Navbar() {
                         </Link>
                     </ListItem>
                     <ListItem>
-                        <PlayButton to='/levels'>
+                        <PlayButton to='/preface'>
                             Play Now
                         </PlayButton>
                     </ListItem>
