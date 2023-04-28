@@ -18,8 +18,8 @@ function VisualNovel(props) {
     const [sceneState, setSceneState] = useState("");
     const {
         level,
-        isFlapGuide,
-        setIsFlapGuide,
+        isSeaGuide,
+        setIsSeaGuide,
         isGameComplete,
         setIsGameComplete,
         isQuiz,
@@ -33,7 +33,7 @@ function VisualNovel(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete) {
+        if (isSeaGuide && !isGameComplete) {
             clearSprites();
             currentScene = level['shawnIntro'];
             buildDialogue();
@@ -57,7 +57,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-    }, [isFlapGuide, isGameComplete]);
+    }, [isSeaGuide, isGameComplete]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -126,6 +126,7 @@ function VisualNovel(props) {
             'No trash islands here, those are just fish.',
         ]
         let count = 0;
+        let correctCount = 0;
 
         for (let i = 0; i < 2; i++) {
             const row = document.createElement('div');
@@ -165,8 +166,6 @@ function VisualNovel(props) {
                 explanation.classList.add('explanation');
 
                 text.appendChild(explanation);
-                // if text includes the word true, update count
-                // if count correct === 3, then enable the next button
 
                 imageBack.appendChild(text);
                 imageBack.classList.add('back-image');
@@ -177,14 +176,13 @@ function VisualNovel(props) {
                 card.appendChild(cardInner);
 
                 card.addEventListener('click', (event) => {
-                    console.log(event);
-                    if (!images[0].includes('_')) {
+                    card.classList.toggle('card-clicked');
+                    if (!event.target.alt.includes('_')) {
                         correctCount++;
                     }
-                    if (correctCount < 4) {
+                    if (correctCount === 3) {
                         document.getElementById('nextBtn').disabled = false;
                     }
-                    card.classList.toggle('card-clicked');
                 });
 
                 row.appendChild(card);
@@ -431,7 +429,7 @@ function VisualNovel(props) {
         }
 
         let message = currentScene.dialogue[dialoguePosition].message;
-        if (isFlapGuide && !isGameComplete) {
+        if (isSeaGuide && !isGameComplete) {
             message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
@@ -484,7 +482,7 @@ function VisualNovel(props) {
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
                 <ExitButton onClick={
                     () => {
-                        setIsFlapGuide(false);
+                        setIsSeaGuide(false);
                         setIsGameComplete(false);
                         navigate('/');
                     }

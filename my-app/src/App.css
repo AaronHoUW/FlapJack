@@ -172,6 +172,10 @@ footer {
   background-size: cover;
 }
 
+.seagull-area {
+  background: none;
+}
+
 .sprite-container,
 .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
