@@ -157,6 +157,14 @@ footer {
   display: inline;
 }
 
+.beach-area {
+  background-image: url('../public/sprites/bg-beach.png');
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+}
+
+
 .play-area {
   background-image: url('../public/sprites/bg-sea.png');
   height: 100vh;
@@ -184,6 +192,10 @@ footer {
   }
 }
 
+.beach-area::-webkit-scrollbar {
+  display: none;
+}
+
 .play-area::-webkit-scrollbar {
   display: none;
 }
@@ -191,6 +203,11 @@ footer {
 #playable {
   position: relative;
   width: 250px;
+}
+
+#one-playable {
+  position: relative;
+  width: 350px;
 }
 
 #net,
@@ -894,7 +911,72 @@ footer {
   height: 285px;
 }
 
-
 .level-three {
-  background-image: url("../public/imgs/thirdlevel.png");
+background-image: url("../public/imgs/thirdlevel.png");
+}
+
+.shawn-seagull {
+  position: absolute;
+  width: 200px;
+  height: 160px;
+  right: 395px;
+  top: 745px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+
+.shawn-two {
+  position: absolute;
+  width: 200px;
+  height: 160px;
+  right: 210px;
+  top: 990px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.excel-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 6px;
+  position: absolute;
+  width: 17px;
+  height: 84.52px;
+ right: 540px;
+  top: 640px;
+}
+
+
+.secondflap-guide {
+  position: absolute;
+  width: 190px;
+  height: 170px;
+  left: 530px;
+  top: 670px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.speech-two {
+  position: absolute;
+  width: 694px;
+  height: 159px;
+  left: 30px;
+  top: 494px;
+  z-index: 10;
+}
+
+.talk-two {
+  position: absolute;
+  width: 609px;
+  height: 94px;
+  left: 81px;
+  top: 528px;
+  z-index: 10;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+  color: #000000;
 }

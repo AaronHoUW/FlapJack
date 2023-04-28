@@ -77,7 +77,7 @@ function FlapGuide(props) {
         tabIndex={-1}
         onKeyDown={handleKeyDown}
         src={`/sprites/sprite-user-placeholder.png`}
-        id='playable'
+        id='one-playable'
         className='img-size'
         alt="User's placeholder"
       />
