@@ -52,13 +52,17 @@ export const AboutContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 4928.68px;
+    height: 5100px;
 
     background: url('./imgs/about-bg.png');
     font-family: 'Mulish';
 
     .presentation {
         margin-top: 75px;
+        
+        h2 {
+            height: 115px;
+        }
     }
 
 `;
@@ -164,6 +168,16 @@ export const StatusIcons = styled.div`
     }
 `;
 
+export const TeamContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h2 {
+        color: white;
+    }
+`;
+
 export const MeetContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -195,6 +209,32 @@ export const MeetContainer = styled.div`
         div, p {
             font-size: 20px;
         }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            height: 38.39px;
+
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 22%;
+            }
+    
+            a {
+                color: white;
+                font-size: 20px;
+                text-decoration: none;
+            }
+    
+            img {
+                width: 32px;
+            }
+        }
     }
 `;
 
@@ -213,17 +253,38 @@ export const RoleContainer = styled.div`
     }
 `;
 
-export const AcknowledgementsContainer = styled.div`
+export const AquariumContainer = styled.div`
+    color: white;
+    margin-top: 60px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 40px;
+    flex-direction: column;
+    gap: 20px;
 
-    width: 100%;
-    height: 70vh;
+    h2 {
+        color: white;
+    }
 
+    p {
+        font-size: 20px;
+    }
+`;
+
+export const AcknowledgementsContainer = styled.div`
     background: url('./imgs/acknowledgements-bg.png');
+    height: 500px;
     background-size: cover;
     font-family: 'Mulish';
+    padding: 80px 40px;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    h2 {
+        color: white;
+    }
+
+    p {
+        font-size: 20px;
+        color: white;
+    }
 `;

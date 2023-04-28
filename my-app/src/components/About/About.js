@@ -1,4 +1,5 @@
 import * as React from "react";
+import './About.css';
 import {
     IntroTitle,
     IntroDescription,
@@ -22,8 +23,10 @@ import {
     FeatureContainer,
     StatusContainer,
     StatusIcons,
+    TeamContainer,
     MeetContainer,
     RoleContainer,
+    AquariumContainer,
     AcknowledgementsContainer,
 } from './styles.tsx';
 
@@ -159,31 +162,42 @@ const About = () => {
                         </a>
                     </StatusIcons>
                 </StatusContainer>
-                <div>
+                <TeamContainer>
                     <IntroTitle>Meet the Team!</IntroTitle>
                     <MeetContainer>
-                        <div><img src='./imgs/jun.png' alt='Jun Nguyen' /></div>
+                        <div><img src='./imgs/jun.svg' alt='Jun Nguyen' /></div>
                         <div className='about-text'>
-                            <h2>Meet Jun Nguyen!</h2>
+                            <div className="links">
+                                <h2>Meet Jun Nguyen!</h2>
+                                <div>
+                                    <a href='mailto:s.jun.nguyen@gmail.com'>s.jun.nguyen@gmail.com</a>
+                                    <a href='https://www.linkedin.com/in/stephanie-nguyen-4910411aa/' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Jun Nguyen LinkedIn' /></a>
+                                </div>
+                            </div>
                             <RoleContainer>
                                 <div>Project Manager</div>
                                 <div>Software Engineer</div>
                                 <div>Character Artist</div>
                             </RoleContainer>
                             <p>
-                                Jun is a senior in Informatics and a software engineering intern at Pacific Northwest National Laboratory
-                                (PNNL). They created all of the visual novel components and paths, including the preface, map quiz, keywords,
+                                Jun is a senior in Informatics and a software engineer at the Pacific Northwest National Laboratory
+                                (PNNL). They created the visual novel components and paths, including the preface, map quiz, keywords,
                                 choice scenes, card game, and linking the navigation to other scenes. With no prior experience doing digital
                                 art nor project management, they started learning how to draw and do project manager tasks at the start of the
-                                project. They are a music cover hobbyist, which includes singing, mixing, and general music production. They
-                                also enjoy reading webtoons and manga, and they are an avid gacha gamer.
+                                project. They enjoy music production, reading webtoons and manga, and playing a variety of gacha games.
                             </p>
                         </div>
                     </MeetContainer>
                     <MeetContainer>
-                        <div><img src='./imgs/delaney.png' alt='Delaney Edwards' /></div>
+                        <div><img src='./imgs/delaney.svg' alt='Delaney Edwards' /></div>
                         <div className='about-text'>
-                            <h2>Meet Delaney Edwards!</h2>
+                            <div className="links">
+                                <h2>Meet Delaney Edwards!</h2>
+                                <div>
+                                    <a href='mailto:delaney.l.edwards@gmail.com'>delaney.l.edwards@gmail.com</a>
+                                    <a href='https://www.linkedin.com/in/delaneyledwards/' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Delaney Edwards LinkedIn' /></a>
+                                </div>
+                            </div>
                             <RoleContainer>
                                 <div>UX Designer</div>
                                 <div>Story Writer</div>
@@ -198,8 +212,109 @@ const About = () => {
                             </p>
                         </div>
                     </MeetContainer>
-                </div>
+                    <MeetContainer>
+                        <div><img src='./imgs/aaron.svg' alt='Aaron Ho' /></div>
+                        <div className='about-text'>
+                            <div className="links">
+                                <h2>Meet Aaron Ho!</h2>
+                                <div>
+                                    <a href='mailto:aaronho1919@gmail.com'>aaronho1919@gmail.com</a>
+                                    <a href='https://www.linkedin.com/in/aaron-ho-ba00a1196' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Aaron Ho LinkedIn' /></a>
+                                </div>
+                            </div>
+                            <RoleContainer>
+                                <div>Software Engineer</div>
+                            </RoleContainer>
+                            <p>
+                                Aaron is a senior in Informatics, who wants to be a software developer. In this project, Aaron was in charge of
+                                working on creating the tutorial page and game page, as well as the main components of the editor page. Aaron
+                                worked on game features such as movement, collecting nets, obstacles, and quizzes. Some of his hobbies includes
+                                playing Nintendo games, League of Legends, and dancing games.
+                            </p>
+                        </div>
+                    </MeetContainer>
+                    <MeetContainer>
+                        <div><img src='./imgs/brian.svg' alt='Brian Ho' /></div>
+                        <div className='about-text'>
+                            <div className="links">
+                                <h2>Meet Brian Ho!</h2>
+                                <div>
+                                    <a href='mailto:21briantho@gmail.com'>21briantho@gmail.com</a>
+                                    <a href='https://www.linkedin.com/in/brian-ho-967a0923b' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Brian Ho LinkedIn' /></a>
+                                </div>
+                            </div>
+                            <RoleContainer>
+                                <div>Researcher</div>
+                                <div>Story Writer</div>
+                                <div>Software Engineer</div>
+                            </RoleContainer>
+                            <p>
+                                Brian is currently a senior in Informatics, who wants to become a UI/UX Researcher. In this project, he worked
+                                primarily on the research which included, conducting user interviews, working on market research and literature
+                                reviews, and engaging in usability testing. He also worked as a software engineer, helping create certain pages and
+                                scenes within the game and website. Some of his hobbies include listening to 21 Savage, playing basketball, and trying
+                                to lift the heaviest weight. Additionally, his gaming life revolves around League of Legends, NBA 2k, and Madden!
+                            </p>
+                        </div>
+                    </MeetContainer>
+                </TeamContainer>
+                <AquariumContainer>
+                    <IntroTitle>Seattle Aquarium Adventure!</IntroTitle>
+                    <p>
+                        As part of our project, our team visited the Seattle Aquarium to learn more about local marine life, and do observation research
+                        about how kids interact with marine science. Below are photos of some of the cool stuff we saw!
+                    </p>
+                    <div id="pSlider">
+                        <ol id="slider-container" dir="ltr">
+                            <li id="slide_1" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_7"> </a>
+                                <a class="next_slide" href="#slide_2"> </a>
+                            </li>
+                            <li id="slide_2" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_1"> </a>
+                                <a class="next_slide" href="#slide_3"> </a>
+                            </li>
+                            <li id="slide_3" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_2"> </a>
+                                <a class="next_slide" href="#slide_4"> </a>
+                            </li>
+                            <li id="slide_4" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_3"> </a>
+                                <a class="next_slide" href="#slide_5"> </a>
+                            </li>
+                            <li id="slide_5" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_4"> </a>
+                                <a class="next_slide" href="#slide_6"> </a>
+                            </li>
+                            <li id="slide_6" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_5"> </a>
+                                <a class="next_slide" href="#slide_7"> </a>
+                            </li>
+                            <li id="slide_7" class="li_slide">
+                                <div class="slide-snapper"></div>
+                                <a class="prev_slide" href="#slide_6"> </a>
+                                <a class="next_slide" href="#slide_1"> </a>
+                            </li>
+                        </ol>
+                    </div>
+                </AquariumContainer>
             </AboutContainer>
+            <AcknowledgementsContainer>
+                <IntroTitle>Acknowledgements</IntroTitle>
+                <p>
+                    Our team is grateful for the support from our mentors and peers at the University of Washington’s Information
+                    School for their advice through each iteration of our project. Throughout this project, we were supported by
+                    Andrey Butenko, the software engineer from the team that worked on the first iteration of Marine Rescue. He provided
+                    invaluable feedback and advice throughout our project. We were also greatly supported by two professors, Nam-Ho Park
+                    and Marlina Hales. They both provided valuable feedback and support throughout our capstone project.
+                </p>
+            </AcknowledgementsContainer>
             <FooterContainer>
                 <FooterText>Marine Rescue: The Sea-quel</FooterText>
                 <FooterCopyright>
