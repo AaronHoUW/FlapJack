@@ -1,11 +1,11 @@
-const LEVEL3 = 
-{
+const LEVEL3 = {
   "pancakeIntro": {
     "type": "comic",
     "background": "dark-blue",
     "previousScene": undefined,
-    "nextScene": "testScene2",
-    "baseFrame": [
+    "nextScene": "pancakeSanJuan",
+    "baseFrame": [],
+    "frames": [
       {
         "type": "sprite",
         "image": "user-placeholder",
@@ -23,7 +23,6 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -32,82 +31,10 @@ const LEVEL3 =
       }
     ]
   },
-  "pancakeNorthAmerica": {
+  "pancakeSanJuan": {
     "type": "comic",
-    "background": "north-america-blank",
+    "background": "san-juan",
     "previousScene": "pancakeIntro",
-    "nextScene": "clickMap",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "This is a map of North America. Do you know where the Pacific Ocean is? Click on where you think the Pacific Ocean is.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pacificOcean_correct": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      },
-    ]
-  },
-  "pacificOcean_incorrect": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "10",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Uh Oh! Looks like you weren’t sure where the Pacific Ocean is. Its on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      }
-    ]
-  },
-  "pancakeWashingtonState": {
-    "type": "comic",
-    "background": "washington-state",
-    "previousScene": "pancakeNorthAmerica",
     "nextScene": "pancakeAfterMap",
     "baseFrame": [
       {
@@ -123,7 +50,7 @@ const LEVEL3 =
     "dialogue": [
       {
         "speaker": "",
-        "message": "This is Washington state. The area circled in red is where we will be exploring and meeting new friends!",
+        "message": "We've moved a little bit north to the San Juan Islands in Washington.",
         "type": "nospeaker"
       }
     ]
@@ -131,8 +58,8 @@ const LEVEL3 =
   "pancakeAfterMap": {
     "type": "comic",
     "background": "dark-blue",
-    "previousScene": "pancakeWashingtonState",
-    "nextScene": "testScene2",
+    "previousScene": "pancakeSanJuan",
+    "nextScene": "wendyIntro", // tutorial --> flapguide Wendy
     "baseFrame": [
       {
         "type": "sprite",
@@ -163,7 +90,11 @@ const LEVEL3 =
   "wendyIntro": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "previousScene": "pancakeAfterMap",
+    "nextScene": {
+      "I sure have learned a lot along the way. Is there any way I can help you?": "wendyAPath",
+      "I'm curious, what is it like to be a whale?": "wendyBPath",
+    },
     "baseFrame": [
       {
         "type": "sprite",
@@ -182,9 +113,7 @@ const LEVEL3 =
         "flipX": true
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -193,10 +122,12 @@ const LEVEL3 =
       }
     ]
   },
+
+  // A Path
   "wendyAPath": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": "wendyAPathAfterQuiz", // quizAPath
     "baseFrame": [
       {
         "type": "sprite",
@@ -215,14 +146,11 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
-        "message": "Yes actually! Since I’m so big, it takes a lot of food to fuel me so that I can swim and have energy. Sometimes it’s hard to find enough food!",
+        "message": "Yes, actually! Because I’m so big, it takes a lot of food to fuel me so that I can swim and have energy. Sometimes, it’s hard to find enough food!",
         "type": "left"
       },
       {
@@ -235,7 +163,7 @@ const LEVEL3 =
   "wendyAPathAfterQuiz": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": "wendyEnd",
     "baseFrame": [
       {
         "type": "sprite",
@@ -254,10 +182,7 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -293,11 +218,7 @@ const LEVEL3 =
         "flipX": true
       }
     ],
-    "frames": [
-      [],
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -338,10 +259,7 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      [],
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -377,9 +295,7 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
@@ -391,7 +307,10 @@ const LEVEL3 =
   "wendyEnd": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": {
+      "Sure! I'm happy to help!": "minigame",
+      "Ew no.": "end",
+    },
     "baseFrame": [
       {
         "type": "sprite",
@@ -410,9 +329,7 @@ const LEVEL3 =
         "flipX": false
       }
     ],
-    "frames": [
-      []
-    ],
+    "frames": [],
     "dialogue": [
       {
         "speaker": "",
