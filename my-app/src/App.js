@@ -69,7 +69,7 @@ function App() {
 							<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 						</>
 					} />
-					<Route path='/preface' element={
+					<Route path='preface' element={
 						<>
 							<Intro />
 							<NavLink className='exit-play' to='/'>Exit</NavLink>

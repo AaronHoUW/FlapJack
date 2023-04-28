@@ -18,7 +18,7 @@ function Intro() {
                         You are going to be playing as a scuba diver and exploring the ocean! You will get to talk to different animals and learn about how debris in the ocean impact them.
                     </h4>
                 </IntroText>
-                <IntroButton onClick={() => navigate('/levels')}><h3>Start Playing!</h3></IntroButton>
+                <IntroButton onClick={() => navigate('/level2')}><h3>Start Playing!</h3></IntroButton>
             </IntroBox>
         </IntroContainer>
     );
