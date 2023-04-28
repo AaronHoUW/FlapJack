@@ -14,7 +14,8 @@ import circleImg from './tutorial-circle.png'
 import arrowKeys from './tutorial-arrow-keys.png'
 import textBubble from './misc-textbubble-left.png';
 
-function Tutorial() {
+function Tutorial(props) {
+    const { currentLevel } = props;
     // Player Movement
     const [xAxis, setXAxis] = useState(200);
     const [yAxis, setYAxis] = useState(300);
@@ -121,7 +122,11 @@ function Tutorial() {
         }
         if (textPage === tutorialText.length - 1) {
             console.log("redirect to next page");
-            navigate('/flapguide');
+            if (currentLevel === 1) {
+                navigate('/seaguide');
+            } else if (currentLevel === 2) {
+                navigate('/flapguide');
+            }
             setDisplayButton(false);
         }
     }
@@ -133,14 +138,6 @@ function Tutorial() {
             {textPage === 2 && <Circle
                 src={circleImg}
                 ref={circle} />}
-            {/* <div>
-                <Speech className="speech" src='./imgs/text.png' />
-                <DialogueMessageContainer className="message-container" >
-                    {textPage === 1 && <img src={arrowKeys} />}
-                    <p>{tutorialText[textPage]}</p>
-                </DialogueMessageContainer>
-                {displayButton && <NextButton className='nextBtn' onClick={handleNextText}>Next</NextButton>}
-            </div> */}
             <div>
                 <DialogueImg src={textBubble} alt="Text bubble background" className='textBox' id="dialogueBox" />
                 <DialogueMessageContainer className="message-container">

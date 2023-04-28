@@ -16,7 +16,17 @@ import TERMS from './Terms.js';
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
     const [sceneState, setSceneState] = useState("");
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
+    const {
+        level,
+        isFlapGuide,
+        setIsFlapGuide,
+        isGameComplete,
+        setIsGameComplete,
+        isQuiz,
+        setIsQuiz,
+        questionNumber,
+        setCurrentLevel
+    } = props;
     let currentScene = level['pancakeIntro'];
     let dialoguePosition = 0;
     let correctCount = 0;
@@ -556,6 +566,7 @@ function VisualNovel(props) {
                                     nextEvent.target.disabled = false;
                                     currentScene = level[e.target.getAttribute('key')];
                                     if (e.target.getAttribute('key') === 'tutorial') {
+                                        setCurrentLevel(1);
                                         navigate('/tutorial');
                                     } else if (e.target.getAttribute('key') === 'end') {
                                         setIsGameComplete(false);
