@@ -222,7 +222,7 @@ export const MeetContainer = styled.div`
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                width: 22%;
+                gap: 20px;
             }
     
             a {
