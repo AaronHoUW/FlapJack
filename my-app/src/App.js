@@ -10,6 +10,7 @@ import EditorPage from './components/EditorPage/EditorPage';
 import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
 import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
+import SeaGuide from './components/SeagullGuide/SeaGuide';
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
@@ -20,6 +21,7 @@ import Levels from './components/Levels/Levels';
 
 function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
+	const [isSeaGuide, setIsSeaGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
 	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
@@ -69,6 +71,11 @@ function App() {
 							<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 						</>
 					} />
+					<Route path='/seaguide' element={
+						<>
+							<SeaGuide isSeaGuide={isSeaGuide} setIsSeaGuide={setIsSeaGuide} />
+						</>
+					} />
 					<Route path='preface' element={
 						<>
 							<Intro />
@@ -79,6 +86,8 @@ function App() {
 						<>
 							<Level1_VisualNovel
 								level={LEVEL1}
+								isSeaGuide={isSeaGuide}
+								setIsSeaGuide={setIsSeaGuide}
 								isFlapGuide={isFlapGuide}
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
@@ -95,6 +104,8 @@ function App() {
 						<>
 							<Level2_VisualNovel
 								level={LEVEL2}
+								isSeaGuide={isSeaGuide}
+								setIsSeaGuide={setIsSeaGuide}
 								isFlapGuide={isFlapGuide}
 								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}

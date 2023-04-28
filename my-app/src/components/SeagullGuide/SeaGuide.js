@@ -7,18 +7,18 @@ import {
 } from './styles.tsx';
 import { Background } from "./styles.tsx";
 
-function FlapGuide(props) {
-  const { isFlapGuide, setIsFlapGuide } = props;
+function SeaGuide(props) {
+  const { isSeaGuide, setIsSeaGuide } = props;
   
     // Player Movement
     const [xAxis, setXAxis] = useState(60);
     const [yAxis, setYAxis] = useState(100);
 
     // Change Player's Position
-    const userPlacement = { top: yAxis + -500 +'px', left: xAxis + 960 + 'px' };
+    const userPlacement = { top: yAxis + -450 +'px', left: xAxis + 150 + 'px' };
     const navigate = useNavigate();
     const user = useRef(null);
-    const fish = useRef(null);
+    const seagull = useRef(null);
 
 
 
@@ -41,12 +41,12 @@ function FlapGuide(props) {
 
     	const handleWithinRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
-			navigate('/level2');
+			navigate('/level1');
 		}
 	}
 
     function checkWithinRange() {
-      if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 400) {
+      if (Math.sqrt((user.current.x - seagull.current.x) ** 2 + (user.current.y - seagull.current.y) ** 2) <= 400) {
         document.getElementById('transition').classList.add('in-range');
       } else {
         document.getElementById('transition').classList.remove('in-range');
@@ -55,19 +55,19 @@ function FlapGuide(props) {
 
   useEffect(() => {
     user.current.focus();
-    fish.current.focus();
-    setIsFlapGuide(true);
-  }, [isFlapGuide]);
+    seagull.current.focus();
+    setIsSeaGuide(true);
+  }, [isSeaGuide]);
 
   return (
-    <div className='play-area' onClick={() => user.current.focus()}>
-    <Background className="play-area">
-      <img className="speech" src='./imgs/text.png' />
-      <img className="talk" src='./imgs/interaction.png' />
-      <img className="excel" src='./imgs/excel.png' />
-      <img className="bubble" src='./imgs/bubbles.png' />
-      <img className="fish" id="transition" ref={fish} src='./imgs/sal.png' onClick={handleWithinRange} />
-      <img className="flapjack-guide" src='./sprites/sprite-pancake-flapjack-octopus.png' />
+    <div className='beach-area' onClick={() => user.current.focus()}>
+    <Background className="beach-area">
+    <img className="speech-two" src='./imgs/text.png' />
+      <img className="talk-two" src='./imgs/speech-two.png' />
+  <img className="shawn-two" src='./sprites/sprite-shawn-seagull.png' />
+    <img className="excel-two" src='./imgs/excel.png' />
+    <img className="shawn-seagull" id="transition" ref={seagull} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
+    <img className="secondflap-guide" src='./sprites/sprite-pancake-bowl.png' />
     </Background>
       {/* User */}
       <User
@@ -84,5 +84,5 @@ function FlapGuide(props) {
 );
 };
 
-export default FlapGuide;
+export default SeaGuide;
 
