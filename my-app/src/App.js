@@ -95,8 +95,8 @@ function App() {
 						<>
 							<Level1_VisualNovel
 								level={LEVEL1}
-								isFlapGuide={isFlapGuide}
-								setIsFlapGuide={setIsFlapGuide}
+								isSeaGuide={isSeaGuide}
+								setIsSeaGuide={setIsSeaGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
 								questionNumber={questionNumber}
