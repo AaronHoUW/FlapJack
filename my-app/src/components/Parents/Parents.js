@@ -17,10 +17,13 @@ import {
     LearnDescription,
     CardsContainer,
     CardContainer,
+} from './styles.tsx';
+
+import {
     FooterContainer,
     FooterText,
     FooterCopyright,
-} from './styles.tsx';
+} from '../Home/styles.tsx';
 
 function Parents() {
     return (
@@ -147,10 +150,13 @@ function Parents() {
                 </div>
             </div> */}
             <FooterContainer>
-                <FooterText>Marine Rescue: The Sea-quel</FooterText>
+                <FooterText>
+                    <p>Marine Rescue: The Sea-quel</p>
+                    <span>Powered by fruit snacks</span>
+                </FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>
-                    <img src='./imgs/mdi_github.png' alt='Github logo' />
+                    <img src='./imgs/github.png' alt='Github logo' />
                 </FooterCopyright>
                 <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
             </FooterContainer>

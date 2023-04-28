@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import './App.css';
+
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Parents from './components/Parents/Parents';
 import Resources from './components/Resources/Resources';
 import EditorPage from './components/EditorPage/EditorPage';
-import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
-import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
-import FlapGuide from './components/FlapjackGuide/FlapGuide';
+import Levels from './components/Levels/Levels';
+
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import Tutorial from './components/Tutorial/Tutorial';
+import Quiz from './components/Quiz/Quiz.js'
+
+import FlapGuide from './components/FlapjackGuide/FlapGuide';
+import SeaGuide from './components/SeagullGuide/SeaGuide';
+
+import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
+import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
+import Level3_VisualNovel from './components/VisualNovel/Level3_VN/Level3_VisualNovel';
+
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
-import Quiz from './components/Quiz/Quiz.js'
-import Levels from './components/Levels/Levels';
+import LEVEL3 from './components/Stories/Level3';
 
 function App() {
+	const [currentLevel, setCurrentLevel] = useState(1);
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
+	const [isSeaGuide, setIsSeaGuide] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
 	const [questionNumber, setQuestionNumber] = useState(3);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
@@ -70,7 +80,12 @@ function App() {
 							<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
 						</>
 					} />
-					<Route path='preface' element={
+					<Route path='/seaguide' element={
+						<>
+							<SeaGuide isSeaGuide={isSeaGuide} setIsSeaGuide={setIsSeaGuide} />
+						</>
+					} />
+					<Route path='/preface' element={
 						<>
 							<Intro />
 							<NavLink className='exit-play' to='/'>Exit</NavLink>
@@ -91,6 +106,7 @@ function App() {
 								setIsQuiz={setIsQuiz}
 								levelOnePath={levelOnePath}
 								setLevelOnePath={setLevelOnePath}
+								setCurrentLevel={setCurrentLevel}
 							/>
 						</>
 					} />
@@ -107,10 +123,28 @@ function App() {
 								setAmountQuestionsTake={setAmountQuestionsTake}
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
+								setCurrentLevel={setCurrentLevel}
 							/>
 						</>
 					} />
-					<Route path="/tutorial" element={<Tutorial />} />
+					<Route path='level3' element={
+						<>
+							<Level3_VisualNovel
+								level={LEVEL3}
+								isFlapGuide={isFlapGuide}
+								setIsFlapGuide={setIsFlapGuide}
+								isGameComplete={isGameComplete}
+								setIsGameComplete={setIsGameComplete}
+								questionNumber={questionNumber}
+								setQuestionNumber={setQuestionNumber}
+								setAmountQuestionsTake={setAmountQuestionsTake}
+								isQuiz={isQuiz}
+								setIsQuiz={setIsQuiz}
+								setCurrentLevel={setCurrentLevel}
+							/>
+						</>
+					} />
+					<Route path="/tutorial" element={<Tutorial currentLevel={currentLevel} />} />
 					<Route path='/quiz' element={
 						<Quiz
 							questionNumber={questionNumber}
