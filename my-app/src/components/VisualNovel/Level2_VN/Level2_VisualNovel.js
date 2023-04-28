@@ -132,6 +132,9 @@ function VisualNovel(props) {
         for (let i = 0; i < 2; i++) {
             const row = document.createElement('div');
             row.classList.add('row');
+            if (i === 1) {
+                row.classList.add('bottom-cards');
+            }
             while (count < 3) {
                 const card = document.createElement('div');
                 card.classList.add('card');
