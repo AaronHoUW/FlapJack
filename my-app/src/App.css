@@ -176,6 +176,10 @@ footer {
   background: none;
 }
 
+#whale-area {
+  background-image: url('../public/sprites/bg-deep-sea-level.png');
+}
+
 .sprite-container,
 .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
