@@ -12,14 +12,11 @@ import Levels from './components/Levels/Levels';
 
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
-import WhaleMinigame from './components/WhaleMinigame/WhaleMinigame';
 import Tutorial from './components/Tutorial/Tutorial';
-import Quiz from './components/Quiz/Quiz.js';
+import Quiz from './components/Quiz/Quiz.js'
 
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import SeaGuide from './components/SeagullGuide/SeaGuide';
-
-import EnterWhale from './components/EnterWhale/EnterWhale';
 
 import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
 import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
@@ -28,17 +25,17 @@ import Level3_VisualNovel from './components/VisualNovel/Level3_VN/Level3_Visual
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import LEVEL3 from './components/Stories/Level3';
+import RemoveActivity from './components/Remove/RemoveActivity';
 
 function App() {
 	const [currentLevel, setCurrentLevel] = useState(1);
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isSeaGuide, setIsSeaGuide] = useState(false);
-	const [isEnterWhale, setIsEnterWhale] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
-	const [questionNumber, setQuestionNumber] = useState(3);
+	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
-	const [levelOnePath, setLevelOnePath] = useState()
+	const [isRemove, setIsRemove] = useState(false)
 
 	return (
 		<div className='page-container'>
@@ -79,12 +76,6 @@ function App() {
 							<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 						</>
 					} />
-					<Route path='/play-whale' element={
-						<>
-							<WhaleMinigame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
-						</>
-					} />
-					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
 					<Route path='/flapguide' element={
 						<>
 							<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
@@ -105,17 +96,17 @@ function App() {
 						<>
 							<Level1_VisualNovel
 								level={LEVEL1}
-								isSeaGuide={isSeaGuide}
-								setIsSeaGuide={setIsSeaGuide}
+								isFlapGuide={isFlapGuide}
+								setIsFlapGuide={setIsFlapGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
 								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
+								isRemove={isRemove}
+								setIsRemove={setIsRemove}
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
-								levelOnePath={levelOnePath}
-								setLevelOnePath={setLevelOnePath}
 								setCurrentLevel={setCurrentLevel}
 							/>
 						</>
@@ -151,8 +142,6 @@ function App() {
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
 								setCurrentLevel={setCurrentLevel}
-								isEnterWhale={isEnterWhale}
-								setIsEnterWhale={setIsEnterWhale}
 							/>
 						</>
 					} />
@@ -168,7 +157,7 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-
+					<Route path='/secretactivity' element={<RemoveActivity />} />
 				</Routes>
 			</div>
 			{/* <footer /> */}
