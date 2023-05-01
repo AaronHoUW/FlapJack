@@ -766,9 +766,12 @@ footer {
   width: 250px;
 }
 
-.sally-level,
+.sally-level {
+  width: 300px;
+}
+
 .wendy-level {
-  width: 250px;
+  width: 500px;
 }
 
 .link-buttons {
