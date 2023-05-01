@@ -157,6 +157,34 @@ export const MeetSprites = styled.div`
         opacity: 1;
         transform: translateX(0);
     }
+
+    .sprite-container {
+        :nth-child(1) {
+            animation-delay: 300ms;
+        }
+    
+        :nth-child(2) {
+            animation-delay: 500ms;
+        }
+    
+        :nth-child(3) {
+            animation-delay: 100ms;
+        }
+    }
+
+    .right-fish {
+        animation-delay: 700ms;
+    }
+
+    .left-fish {
+        animation-delay: 1200ms;
+    }
+
+    .sprite-normal {
+        :nth-child(2) {
+            animation-delay: 900ms;
+        }
+    }
 `;
 
 export const TextBubble = styled.div`
