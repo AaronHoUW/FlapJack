@@ -172,6 +172,14 @@ footer {
   background-size: cover;
 }
 
+.seagull-area {
+  background: none;
+}
+
+#whale-area {
+  background-image: url('../public/sprites/bg-deep-sea-level.png');
+}
+
 .sprite-container,
 .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
@@ -243,6 +251,17 @@ footer {
 .net-counter {
   position: absolute;
   right: 0px;
+  width: 175px;
+  height: 50px;
+  font-size: 1.2em;
+  /* text-align: center; */
+  display: inline-flex;
+  align-items: center;
+}
+
+.net-counter:nth-child(2) {
+  position: absolute;
+  right: 200px;
   width: 175px;
   height: 50px;
   font-size: 1.2em;
@@ -747,9 +766,12 @@ footer {
   width: 250px;
 }
 
-.sally-level,
+.sally-level {
+  width: 300px;
+}
+
 .wendy-level {
-  width: 250px;
+  width: 500px;
 }
 
 .link-buttons {
@@ -761,20 +783,6 @@ footer {
   padding-right: 25px;
   padding-top: 5px;
   padding-bottom: 5px;
-  position: absolute;
-  left: 1660px;
-  top: 645px;
-}
-
-.link-buttons {
-  color: #000000;
-  background-color: #85C9E3;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-top:5px;
-  padding-bottom:5px;
   position: absolute;
   left: 1660px;
   top: 645px;
@@ -995,152 +1003,57 @@ background-image: url("../public/imgs/thirdlevel.png");
   color: #000000;
 }
 
-.first-title {
-  width: 1270px;
-height: 80px;
-font-family: 'Mulish';
-font-style: normal;
-font-weight: 400;
-font-size: 60px;
-color: #FFFFFF;
+.removebtn {
+  display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 16px 24px;
+gap: 10px;
+width: 290px;
+height: 73px;
+background: #6C1A1A;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 40px;
 flex: none;
 order: 0;
 flex-grow: 0;
 }
 
-.first-info {
- width: 880px;
-height: 50px;
-font-size: 20px;
-font-family: 'Mulish';
-font-style: normal;
-color: #FFFFFF;
-}
-
-.seagull {
+.ignorebtn {
   display: flex;
 flex-direction: row;
-align-items: center;
-padding: 40px;
-gap: 74px;
-height: 380px;
-width: 2560px;
-background-image: url("../public/imgs/firstlvl.png");
+align-items: flex-start;
+padding: 16px 24px;
+gap: 10px;
+width: 135px;
+height: 73px;
+background: #134254;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 40px;
 flex: none;
 order: 1;
 flex-grow: 0;
 }
 
-.salmon {
+.modal-containers {
+box-sizing: border-box;
 display: flex;
 flex-direction: row;
-justify-content: flex-end;
+justify-content: center;
 align-items: center;
 padding: 40px;
-gap: 194px;
-height: 380px;
-width: 2560px;
-background-image: url("../public/imgs/secondlevel.png");
-flex: none;
-order: 2;
-flex-grow: 0;
-}
-.whale {
-  display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 40px;
-gap: 194px;
-height: 380px;
+gap: 36px;
 
-width: 2560px;
-flex: none;
-order: 3;
-flex-grow: 0;
-}
-
-.sal-level {
-  height: 124px;
-  left: 328px;
-  position: absolute;
-  top: 525px;
-  -webkit-transform: matrix(-1,0,0,1,0,0);
-  transform: matrix(-1,0,0,1,0,0);
-  width: 209px;
-
-flex: none;
-order: 0;
-flex-grow: 0;
-}
-
-.second-title {
-width: 1270px;
-height: 80px;
-font-family: 'Mulish';
-font-style: normal;
-font-weight: 400;
-font-size: 60px;
-line-height: 60px;
-color: #FFFFFF;
-flex: none;
-order: 0;
-flex-grow: 0;
 position: absolute;
-left: 1645px;
-top:485px;
+width: 951px;
+height: 485px;
+left: 147px;
+top: 202px;
+background: #F7EDE1;
+border: 10px solid #000000;
 }
 
-.second-info {
-  width: 880px;
-  height: 50px;
-  font-size: 20px;
-  font-family: 'Mulish';
-  font-style: normal;
-  color: white; 
-  position: absolute;
-  left: 1650px;
-  top: 575px; 
+.color {
+  background-color: white;
 }
 
-.third-title {
-  width: 2000px;
-  height: 85px;
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 60px;
-  line-height: 60px;
-  color: #FFFFFF;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.third-info {
-  width: 880px;
-  height: 50px;
-  font-size: 20px;
-  font-family: 'Mulish';
-  font-style: normal;
-  color: white;  
-}
-
-.shaw-level {
-position: absolute;
-top: 115px;
-right: 405px;
-}
-
-.wen-level {
-position: absolute;
-    top: 797px;
-    left: 1550px;
-    width: 600px;
-    height: 285px;
-}
-
-
-.level-three {
-background-image: url("../public/imgs/thirdlevel.png");
-}

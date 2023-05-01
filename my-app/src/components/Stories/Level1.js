@@ -278,7 +278,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "lifeOnBeach1",
-    "nextScene": "shawnCardGame1",
+    "nextScene": "animalImpactTrash1",
     "baseFrame": [
       {
         "type": "sprite",
@@ -325,8 +325,8 @@ const LEVEL1 = {
   "animalImpactTrash1": {
     "type": "comic",
     "background": "beach-level",
-    "previousScene": "shawnCardGame1",
-    "nextScene": "quiz", // "shawnQuestion1", // quiz1
+    "previousScene": "animalImpactTrash1",
+    "nextScene": "quiz", // quiz1: shawnQuestion1
     "baseFrame": [
       {
         "type": "sprite",
@@ -572,7 +572,8 @@ const LEVEL1 = {
   "shawnTrash1": {
     "type": "comic",
     "background": "beach-level",
-    "nextScene": "shawnQuestion2", // quiz
+    "previousScene": "shawnIntro",
+    "nextScene": "quiz", // quiz: shawnQuestion2
     "baseFrame": [
       {
         "type": "sprite",
@@ -678,7 +679,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "shawnBeach2",
-    "nextScene": "shawnCardGame2",
+    "nextScene": "animalImpactTrash2",
     "baseFrame": [
       {
         "type": "sprite",
@@ -726,7 +727,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beach-level",
     "previousScene": "shawnCardGame2",
-    "nextScene": "shawnQuestion3", // quiz
+    "nextScene": "quiz", // quiz: shawnQuestion3
     "baseFrame": [
       {
         "type": "sprite",
@@ -1076,7 +1077,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "shawnBeach3",
-    "nextScene": "shawnCardGame3",
+    "nextScene": "animalImpactTrash3",
     "baseFrame": [
       {
         "type": "sprite",
@@ -1234,7 +1235,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "couldntWalk4",
-    "nextScene": "shawnCardGame4",
+    "nextScene": "couldntWalkContinued4",
     "baseFrame": [
       {
         "type": "sprite",

@@ -54,16 +54,16 @@ function ModalCards(props) {
 			<ScreenModal className="modal" id={"modal-remove-" + int}  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div className="modal-dialog modal-lg modal-dialog-centered">
 			<ModalContent className="modal-content">
-				<div className='container modal-container'>
+				<div className='container modal-containers'>
 					<div className='row'>
 						<h1 className="modal-title fs-5 pb-2 text-black" id="staticBackdropLabel">{object}</h1>
 					</div>
 
 					<ModalRowText className='row model-info modal-video-content mt-1'>
-						{ (textResult === undefined)&&<btn onClick={onClickRemove}>Remove from Beach</btn>}
-						{ (textResult === undefined)&&<btn onClick={onClickIgnore}>Ignore</btn>}
+						{ (textResult === undefined)&&<btn className="removebtn"  onClick={onClickRemove}>Remove from Beach</btn>}
+						{ (textResult === undefined)&&<btn className="ignorebtn" onClick={onClickIgnore}>Ignore</btn>}
 						<div className="container text-center">
-							<p>
+							<p >
 								{textResult}
 							</p>
 						</div>

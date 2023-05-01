@@ -2,23 +2,23 @@
     "2" : {
         "page-1": {
             "title": "Great job removing the nets!",
-            "body" : "Good job collecting all of the ghost nets and saving many marine animals from getting caught! Let's watch a video on what would happen if these ghost nets were not removed and the danger it can put many animals in."
-        },
-        "page-2": {
-            "title": "Watch this video to learn about a whale that was caught in a ghost net!",
-            "video" : "https://www.youtube.com/embed/hC_isxflaVA",
-            "body" : "Whale Tangled in Ghost Net Saved | Dodo Kids"
-        }
-    },
-    "1" : {
-        "page-1": {
-            "title": "Great job removing the nets!",
             "body" : "Those nets were dangerous to animals on the beach, such as Seagulls and crabs. Their feet or wings can get caught in the nets, making it difficult to fly or walk."
         },
         "page-2": {
             "title": "Watch this video to see how you can help clean up trash in the ocean!",
             "video" : "https://www.youtube.com/embed/xFPoIU5iiYQ",
             "body" : "Ghost Net Art as Environmental Activism"
+        }
+    },
+    "2" : {
+        "page-1": {
+            "title": "Great job removing the nets!",
+            "body" : "Good job collecting all of the ghost nets and saving many marine animals from getting caught! Let's watch a video on what would happen if these ghost nets were not removed and the danger it can put many animals in."
+        },
+        "page-2": {
+            "title": "Watch this video to learn about a whale that was caught in a ghost net!",
+            "video" : "https://www.youtube.com/embed/hC_isxflaVA",
+            "body" : "Whale Tangled in Ghost Net Saved | Dodo Kids"
         }
     },
     "3" : {

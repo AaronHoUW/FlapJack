@@ -18,13 +18,16 @@ function VisualNovel(props) {
     const [sceneState, setSceneState] = useState("");
     const {
         level,
-        isFlapGuide,
-        setIsFlapGuide,
+        isSeaGuide,
+        setIsSeaGuide,
         isGameComplete,
         setIsGameComplete,
         isQuiz,
         setIsQuiz,
         questionNumber,
+        setQuestionNumber,
+        levelOnePath,
+        setLevelOnePath,
         setCurrentLevel
     } = props;
     let currentScene = level['pancakeIntro'];
@@ -33,14 +36,22 @@ function VisualNovel(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete) {
+        if (isSeaGuide && !isGameComplete && !isQuiz) {
             clearSprites();
             currentScene = level['shawnIntro'];
             buildDialogue();
         } else if (isQuiz) {
-            // console.log(sceneState);
+            console.log(levelOnePath)
             clearSprites();
-            currentScene = level['shawnIntro'];
+            if(levelOnePath === "animalImpactTrash1") {
+                currentScene = level['shawnQuestion1'];
+            } else if (levelOnePath === 'shawnIntro') {
+                currentScene = level['shawnQuestion2'];
+            } else if (levelOnePath === "shawnCardGame2") {
+                currentScene = level['shawnQuestion3'];
+            } else {
+                currentScene = level['shawnQuestion2'];
+            }
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -57,7 +68,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-    }, [isFlapGuide, isGameComplete]);
+    }, [isSeaGuide, isGameComplete]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -126,6 +137,7 @@ function VisualNovel(props) {
             'No trash islands here, those are just fish.',
         ]
         let count = 0;
+        let correctCount = 0;
 
         for (let i = 0; i < 2; i++) {
             const row = document.createElement('div');
@@ -177,14 +189,13 @@ function VisualNovel(props) {
                 card.appendChild(cardInner);
 
                 card.addEventListener('click', (event) => {
-                    console.log(event);
-                    if (!images[0].includes('_')) {
+                    card.classList.toggle('card-clicked');
+                    if (!event.target.alt.includes('_')) {
                         correctCount++;
                     }
-                    if (correctCount < 4) {
+                    if (correctCount === 3) {
                         document.getElementById('nextBtn').disabled = false;
                     }
-                    card.classList.toggle('card-clicked');
                 });
 
                 row.appendChild(card);
@@ -309,7 +320,7 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
-                        } 
+                        }
 
                         const newSprite = document.createElement('img');
 
@@ -431,10 +442,12 @@ function VisualNovel(props) {
         }
 
         let message = currentScene.dialogue[dialoguePosition].message;
-        if (isFlapGuide && !isGameComplete) {
+        if (isSeaGuide && !isGameComplete) {
             message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
+        } else if (levelOnePath === 'animalImpactTrash1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
+            message = "It's gotten really tangled up that I can't get out of it easily.";
         }
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
@@ -484,7 +497,7 @@ function VisualNovel(props) {
             <VisualNovelContainer id='visual-novel-container' backgroundImage={`url(/sprites/bg-${currentScene.background}.png)`}>
                 <ExitButton onClick={
                     () => {
-                        setIsFlapGuide(false);
+                        setIsSeaGuide(false);
                         setIsGameComplete(false);
                         navigate('/');
                     }
@@ -583,10 +596,14 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
+                            // setSceneState(currentScene.nextScene);
+                            console.log(currentScene);
+                            setLevelOnePath(currentScene.previousScene);
+                            setQuestionNumber(3);
                             setIsQuiz(true);
+                            setIsSeaGuide(false);
                             navigate('/quiz');
                         } else {
-                            // Display the next scene
                             clearSprites();
                             console.log(currentScene.nextScene)
                             // setSceneState(currentScene.nextScene);
