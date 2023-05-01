@@ -586,12 +586,11 @@ function VisualNovel(props) {
                                 });
                             });
                         } else if (currentScene.nextScene === 'playWhale') {
-                            navigate('/play');
+                            navigate('/play-whale');
                         } else if (currentScene.nextScene === 'end') {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
-                            console.log(currentScene)
                             setIsQuiz(true);
                             navigate('/quiz');
                         } else {

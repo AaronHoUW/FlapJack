@@ -12,6 +12,7 @@ import Levels from './components/Levels/Levels';
 
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
+import WhaleMinigame from './components/WhaleMinigame/WhaleMinigame';
 import Tutorial from './components/Tutorial/Tutorial';
 import Quiz from './components/Quiz/Quiz.js';
 
@@ -76,6 +77,11 @@ function App() {
 					<Route path='/play' element={
 						<>
 							<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
+						</>
+					} />
+					<Route path='/play-whale' element={
+						<>
+							<WhaleMinigame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 						</>
 					} />
 					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
