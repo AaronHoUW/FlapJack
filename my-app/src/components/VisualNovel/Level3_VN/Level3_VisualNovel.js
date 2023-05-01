@@ -15,7 +15,22 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const { level, isFlapGuide, setIsFlapGuide, isGameComplete, setIsGameComplete, isQuiz, setIsQuiz, questionNumber} = props;
+    const {
+        level,
+        isFlapGuide,
+        setIsFlapGuide,
+        isGameComplete,
+        setIsGameComplete,
+        isQuiz,
+        setIsQuiz,
+        questionNumber,
+        setQuestionNumber,
+        levelOnePath,
+        setLevelOnePath,
+        setCurrentLevel,
+        isEnterWhale,
+        setIsEnterWhale,
+    } = props;
     let currentScene = level['pancakeIntro'];
 
     let dialoguePosition = 0;
@@ -38,6 +53,11 @@ function VisualNovel(props) {
             clearSprites();
             currentScene = level['postGame'];
             buildDialogue();
+        } else if (isEnterWhale) {
+            clearSprites();
+            currentScene = level['wendyEntered'];
+            document.getElementById('visual-novel-container').style.backgroundImage = 'url("./sprites/bg-whale-stomach.png")';
+            buildDialogue();
         } else {
             currentScene = level['pancakeIntro'];
             document.getElementById('backBtn').disabled = true;
@@ -50,7 +70,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-    }, [isFlapGuide, isGameComplete, isQuiz, questionNumber]);
+    }, [isFlapGuide, isGameComplete, isEnterWhale, isQuiz, questionNumber]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -249,8 +269,8 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
-                        } else if (sprite.image === 'dead-salmon' || sprite.image === 'thought-bubble') {
-                            spriteContainer.setAttribute('style', `position: absolute; top: ${sprite.y}%;`);
+                        } else if (sprite.image === 'wendy-whale') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: 10%;`);
                         } else {
                             spriteContainer.setAttribute('style', `position: absolute; top: 40%;`);
                         }
@@ -418,6 +438,8 @@ function VisualNovel(props) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         } else if (isQuiz) {
             message = 'Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!'
+        } else if (isEnterWhale) {
+            message = "Woah! There's a lot of debris and nets in here that Wendy swallowed.";
         }
 
         if (currentScene.dialogue[dialoguePosition].keyword) {
@@ -550,17 +572,20 @@ function VisualNovel(props) {
                                     nextEvent.target.disabled = false;
                                     currentScene = level[e.target.getAttribute('key')];
                                     if (e.target.getAttribute('key') === 'tutorial') {
+                                        setCurrentLevel(3);
                                         navigate('/tutorial');
                                     } else if (e.target.getAttribute('key') === 'end') {
                                         setIsGameComplete(false);
                                         navigate('/')
+                                    } else if (e.target.getAttribute('key') === 'minigame') {
+                                        navigate('/enter-wendy');
                                     } else {
                                         buildDialogue();
                                         nextScene(currentScene);
                                     }
                                 });
                             });
-                        } else if (currentScene.nextScene === 'minigame') {
+                        } else if (currentScene.nextScene === 'playWhale') {
                             navigate('/play');
                         } else if (currentScene.nextScene === 'end') {
                             setIsGameComplete(false);
