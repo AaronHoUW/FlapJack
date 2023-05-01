@@ -172,6 +172,14 @@ footer {
   background-size: cover;
 }
 
+.seagull-area {
+  background: none;
+}
+
+#whale-area {
+  background-image: url('../public/sprites/bg-deep-sea-level.png');
+}
+
 .sprite-container,
 .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
@@ -243,6 +251,17 @@ footer {
 .net-counter {
   position: absolute;
   right: 0px;
+  width: 175px;
+  height: 50px;
+  font-size: 1.2em;
+  /* text-align: center; */
+  display: inline-flex;
+  align-items: center;
+}
+
+.net-counter:nth-child(2) {
+  position: absolute;
+  right: 200px;
   width: 175px;
   height: 50px;
   font-size: 1.2em;

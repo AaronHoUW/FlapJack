@@ -24,6 +24,7 @@ import {
     FooterText,
     FooterCopyright,
 } from '../Home/styles.tsx';
+import { AboutSection } from '../About/styles.tsx';
 
 function Parents() {
     return (
@@ -39,19 +40,21 @@ function Parents() {
             </IntroContainer>
 
             <HelpContainer>
-                <Help>
-                    <HelpVideoContainer>
-                        <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='100%' />
-                    </HelpVideoContainer>
-                    <HelpText>
-                        <IntroTitle>How can I help my child play Marine Rescue?</IntroTitle>
-                        <HelpDescription>
-                            Kids will get to chat with multiple different sea animals, play mini games to help them learn the material, and watch short
-                            videos to reinforce the content. You can support them as little or as much as you please. Pancake, the narrator, will help your
-                            child through the game, functioning as a guide and an adventure buddy.
-                        </HelpDescription>
-                    </HelpText>
-                </Help>
+                <AboutSection className='presentation'>
+                    <Help>
+                        <HelpVideoContainer>
+                            <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='500px' />
+                        </HelpVideoContainer>
+                        <HelpText>
+                            <IntroTitle>How can I help my child play Marine Rescue?</IntroTitle>
+                            <HelpDescription>
+                                Kids will get to chat with multiple different sea animals, play mini games to help them learn the material, and watch short
+                                videos to reinforce the content. You can support them as little or as much as you please. Pancake, the narrator, will help your
+                                child through the game, functioning as a guide and an adventure buddy.
+                            </HelpDescription>
+                        </HelpText>
+                    </Help>
+                </AboutSection>
                 <LearnText>
                     <LearnTitle>What will my child learn using Marine Rescue?</LearnTitle>
                     <LearnDescription>
@@ -62,33 +65,49 @@ function Parents() {
 
                 <CardsContainer>
                     <CardContainer>
-                        <img src='./imgs/profile-border.png' />
-                        <h4>Marine Life</h4>
-                        <p>
-                            Your child will learn about local PNW marine life such as salmon, whales, and crabs. They will learn fun facts about the animals,
-                            and about their experiences.
-                        </p>
+                        <img src='./imgs/marine-life.png' />
+                        <div>
+                            <h4>Marine Life</h4>
+                            <p>
+                                Your child will learn about local PNW marine life such as salmon, whales, and crabs. They will learn fun facts about the animals,
+                                and about their experiences.
+                            </p>
+                        </div>
                     </CardContainer>
                     <CardContainer>
                         <img src='./imgs/profile-border.png' />
-                        <h4>Marine Pollution</h4>
-                        <p>
-                            Your child will learn about how marine pollution such as ghost nets and trash impacts marine life. They will also learn how they
-                            can help to clean up marine debris.
-                        </p>
+                        <div>
+                            <h4>Marine Pollution</h4>
+                            <p>
+                                Your child will learn about how marine pollution such as ghost nets and trash impacts marine life. They will also learn how they
+                                can help to clean up marine debris.
+                            </p>
+                        </div>
                     </CardContainer>
                     <CardContainer>
-                        <img src='./imgs/profile-border.png' />
-                        <h4>Vocabulary</h4>
-                        <p>
-                            Your child will learn vocabulary words related to marine life and marine debris to help support their learning. They will also learn how
-                            to pronounce the words.
-                        </p>
+                        <img src='./imgs/vocabulary.png' />
+                        <div>
+                            <h4>Vocabulary</h4>
+                            <p>
+                                Your child will learn vocabulary words related to marine life and marine debris to help support their learning. They will also learn how
+                                to pronounce the words.
+                            </p>
+                        </div>
                     </CardContainer>
                 </CardsContainer>
             </HelpContainer>
 
-            <LearnContainer></LearnContainer>
+            <LearnContainer>
+                <CardContainer>
+                    <img src='./imgs/real-world-application.png' />
+                    <div>
+                        <h4>Real World Application</h4>
+                        <p>
+                            Your child will watch videos that connect what they are learning about regarding marine life and pollution to real life.
+                        </p>
+                    </div>
+                </CardContainer>
+            </LearnContainer>
             {/* <div className='parent-what-is-section'>
                 <div className=''>
                     <div className='row what-content-height'>

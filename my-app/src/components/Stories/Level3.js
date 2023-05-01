@@ -99,9 +99,9 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "020",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
       },
       {
@@ -140,11 +140,11 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "20",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -176,11 +176,11 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "20",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -199,14 +199,14 @@ const LEVEL3 = {
   "wendyBPath": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": "WendyBPathAfterQuiz1", // quiz 1
     "baseFrame": [
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "020",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
       },
       {
@@ -240,7 +240,7 @@ const LEVEL3 = {
   "WendyBPathAfterQuiz1": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": "WendyBPathAfterQuiz2", // quiz 2
     "baseFrame": [
       {
         "type": "sprite",
@@ -253,11 +253,11 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "30",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -276,7 +276,7 @@ const LEVEL3 = {
   "WendyBPathAfterQuiz2": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "testScene2",
+    "nextScene": "wendyEnd",
     "baseFrame": [
       {
         "type": "sprite",
@@ -289,11 +289,11 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "20",
-        "size": "30",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -323,11 +323,11 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "60",
-        "y": "20",
-        "size": "030",
+        "x": "50",
+        "y": -50,
+        "size": 50,
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -336,6 +336,44 @@ const LEVEL3 = {
         "message": "Do you think you could help me? Maybe you can swim into my stomach and help to remove all the bad stuff that I ate!",
         "type": "left"
       }
+    ]
+  },
+
+  // Entered whale
+  "wendyEntered": {
+    "type": "comic",
+    "background": "whale-stomach",
+    "nextScene": 'playWhale',
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "pancake-flapjack-octopus",
+        "x": "15",
+        "y": "40",
+        "size": "10",
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": -50,
+        "size": 50,
+        "flipX": false
+      },
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Woah! There's a lot of debris and nets in here that Wendy swallowed.",
+        "type": "left"
+      },
+      {
+        "speaker": "",
+        "message": "Hopefully, you can use what you've learned along your journey to help get rid of all of the bad stuff!",
+        "type": "left"
+      },
     ]
   }
 }
