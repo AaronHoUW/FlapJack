@@ -291,7 +291,7 @@ function WhaleMinigame(props) {
 				{/* Trash 1 */}
 				<Trash 
 					style={trashPlacement}
-					src={`/sprites/sprite-trash-placeholder.png`}
+					src={`/sprites/sprite-trash.png`}
 					ref={trash}
 					onClick={removeTrash}
 					className='img-size'
@@ -301,7 +301,7 @@ function WhaleMinigame(props) {
 				{/* Trash 2 */}
 				<Trash 
 					style={trashPlacement2}
-					src={`/sprites/sprite-trash-placeholder.png`}
+					src={`/sprites/sprite-trash.png`}
 					ref={trash2}
 					onClick={removeTrash}
 					className='img-size'
@@ -311,7 +311,7 @@ function WhaleMinigame(props) {
 				{/* Trash 3 */}
 				<Trash 
 					style={trashPlacement3}
-					src={`/sprites/sprite-trash-placeholder.png`}
+					src={`/sprites/sprite-trash.png`}
 					ref={trash3}
 					onClick={removeTrash}
 					className='img-size'

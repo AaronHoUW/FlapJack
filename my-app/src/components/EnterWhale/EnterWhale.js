@@ -108,8 +108,7 @@ function EnterWhale(props) {
             document.getElementById('whale').classList.remove('in-range');
         }
 
-        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 100) {
-            // Switch to scene to go into whale
+        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 150) {
             navigate('/level3');
         } 
     }

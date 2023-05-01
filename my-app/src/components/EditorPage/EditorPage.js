@@ -28,11 +28,6 @@ const IMAGES = {
         'washington-state',
     ],
     sprites: [
-        'exclaim',
-        'net',
-        'waves',
-        'question',
-        'seaweed',
         // Our sprites
         'sally-salmon',
         'sally-sad',
