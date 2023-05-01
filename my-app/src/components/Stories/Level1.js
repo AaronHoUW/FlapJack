@@ -212,7 +212,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -247,7 +247,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -332,7 +332,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -371,7 +371,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -403,7 +403,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -445,7 +445,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -469,7 +469,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       },
@@ -516,7 +516,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -553,7 +553,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -579,7 +579,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -614,7 +614,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -648,7 +648,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -733,7 +733,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -772,7 +772,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -804,7 +804,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -846,7 +846,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -870,7 +870,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       },
@@ -917,7 +917,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -945,7 +945,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -979,7 +979,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-sad",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -1022,7 +1022,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -1046,7 +1046,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -1141,7 +1141,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -1170,7 +1170,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
@@ -1204,7 +1204,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       },
@@ -1299,7 +1299,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "13",
         "flipX": false
       }
@@ -1328,7 +1328,7 @@ const LEVEL1 = {
         "type": "sprite",
         "image": "shawn-seagull",
         "x": "15",
-        "y": "30",
+        "y": "20",
         "size": "15",
         "flipX": false
       },
