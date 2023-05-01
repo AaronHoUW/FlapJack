@@ -126,19 +126,19 @@ function NetMiniGame(props) {
 	}, []);
 
 	function checkWithinRange() {
-		if (Math.sqrt((user.current.x - net.current.x) ** 2 + (user.current.y - net.current.y) ** 2) <= 400) {
+		if (Math.sqrt((user.current.x - net.current.x) ** 2 + (user.current.y - net.current.y) ** 2) <= 250) {
 			document.getElementById('net').classList.add('in-range');
 		} else {
 			document.getElementById('net').classList.remove('in-range');
 		}
 
-		if (Math.sqrt((user.current.x - net2.current.x) ** 2 + (user.current.y - net2.current.y) ** 2) <= 400) {
+		if (Math.sqrt((user.current.x - net2.current.x) ** 2 + (user.current.y - net2.current.y) ** 2) <= 250) {
 			document.getElementById('net2').classList.add('in-range');
 		} else {
 			document.getElementById('net2').classList.remove('in-range');
 		}
 
-		if (Math.sqrt((user.current.x - net3.current.x) ** 2 + (user.current.y - net3.current.y) ** 2) <= 400) {
+		if (Math.sqrt((user.current.x - net3.current.x) ** 2 + (user.current.y - net3.current.y) ** 2) <= 250) {
 			document.getElementById('net3').classList.add('in-range');
 		} else {
 			document.getElementById('net3').classList.remove('in-range');
@@ -196,7 +196,7 @@ function NetMiniGame(props) {
 			setLevel(level + 1);
 			setPage(1);
 		} else {
-			props.setIsGameComplete(true);
+			setIsGameComplete(true);
 		}
 	}
 
@@ -292,8 +292,7 @@ function NetMiniGame(props) {
 					ref={user}
 					tabIndex={-1}
 					onKeyDown={handleKeyDown}
-					src={`/sprites/sprite-user-placeholder.png`}
-					id='playable'
+					src={`/sprites/sprite-user.png`}
 					className='img-size'
 					alt="User's character"
 				/>

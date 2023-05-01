@@ -16,6 +16,8 @@ export const Fish = styled.img<Props>`
 `;
 
 export const User = styled.img<Props>`
+    position: relative;
+    width: 150px;
 `;
 
 export const Net = styled.img<Props>`
