@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 `;
 
 export const IntroContainer = styled.div`
@@ -134,6 +137,204 @@ export const MeetSprites = styled.div`
 
     img {
         width: 100%;
+    }
+
+    .animation-left {
+        opacity: 0;
+        transform: translateX(-300px);
+        transition: all 0.7s ease-out;
+        transition-delay: 0.4s;
+    }
+
+    .animation-right {
+        opacity: 0;
+        transform: translateX(200px);
+        transition: all 0.7s ease-out;
+        transition-delay: 0.2s;
+    }
+
+    .scroll-animation {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
+export const TextBubble = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 40px;
+    isolation: isolate;
+    width: 337px;
+    height: 215.35px;
+
+    img {
+        width: 337px;
+        height: 175.35px;
+    }
+
+    h4 {
+        position: absolute;
+        font-family: 'Mulish';
+        width: 261px;
+        height: 92px;
+        left: 21px;
+        top: 25px;
+        font-size: 36px;
+        line-height: 41px;
+        text-align: center;
+        color: black;
+        order: 1;
+        z-index: 1;
+    }
+`;
+
+export const ShawnSprite = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0;
+    gap: 4px;
+
+    position: absolute;
+    width: 505px;
+    height: 215.35px;
+    left: 60%;
+    top: 15px;
+
+    .sprite-image {
+        width: 164px;
+        height: 141px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+`;
+
+export const SallySprite = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0;
+    gap: 4px;
+
+    position: absolute;
+    width: 540px;
+    height: 195.35px;
+    left: 10%;
+    top: 343px;
+
+    .sprite-image {
+        width: 199px;
+        height: 119.53px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    .text-bubble {
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    h4 {
+        position: absolute;
+        font-family: 'Mulish';
+        width: 261px;
+        height: 92px;
+        left: 53px;
+        top: 45px;
+        font-size: 36px;
+        line-height: 41px;
+        text-align: center;
+        color: black;
+        order: 1;
+        z-index: 1;
+    }
+`;
+
+export const PancakeSprite = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0;
+    gap: 4px;
+
+    position: absolute;
+    width: 471.75px;
+    height: 200px;
+    left: 70%;
+    top: 616px;
+
+    .sprite-image {
+        width: 130.75px;
+        height: 80px;
+    }
+
+    h4 {
+        position: absolute;
+        font-family: 'Mulish';
+        width: 261px;
+        height: 92px;
+        left: 25px;
+        top: 32px;
+        font-size: 36px;
+        line-height: 41px;
+        text-align: center;
+        color: black;
+        order: 1;
+        z-index: 1;
+    }
+`;
+
+export const WendySprite = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 4px;
+
+    position: absolute;
+    width: 1500px;
+    top: 949px;
+
+    .sprite-image {
+        width: 1200px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    .text-bubble {
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    h4 {
+        position: absolute;
+        font-family: 'Mulish';
+        width: 261px;
+        height: 92px;
+        left: 50px;
+        top: 30px;
+        font-size: 36px;
+        line-height: 41px;
+        text-align: center;
+        color: black;
+        order: 1;
+        z-index: 1;
+    }
+`;
+
+export const NormalSprite = styled.div`
+    .right-fish {
+        position: absolute;
+        width: 153px;
+        height: 64px;
+        left: 1072px;
+        top: 474px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+    
+    .left-fish {
+        position: absolute;
+        width: 149px;
+        height: 84px;
+        left: 500px;
+        top: 791px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
     }
 `;
 
