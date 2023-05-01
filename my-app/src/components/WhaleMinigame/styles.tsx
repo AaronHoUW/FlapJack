@@ -47,6 +47,7 @@ export const Net = styled.img<Props>`
 export const Trash = styled.img<Props>`
     position: relative;
     animation: MoveUpDown 1s linear infinite;
+    width: 150px;
 
     @keyframes MoveUpDown {
         0%, 100% {
