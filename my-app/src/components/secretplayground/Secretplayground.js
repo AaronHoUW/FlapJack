@@ -6,11 +6,11 @@ import {
     Speech,
     DialogueMessageContainer,
     NextButton,
+    Whale,
     Circle
 } from './styles.tsx';
 import { useNavigate } from 'react-router-dom';
 import sqaureImg from './square.png'
-import arrowKeys from './tutorial-arrow-keys.png'
 
 function Secretplayground() {
 	// Player Movement
@@ -31,11 +31,12 @@ function Secretplayground() {
 
     const handleKeyDown = event => {
         if(event.key === "a") {
-            console.log(sqaure.current.x, sqaure.current.y, "square.current")
+            // console.log(sqaure.current.x, sqaure.current.y, "square.current")
             console.log(user.current.offsetLeft, user.current.offsetTop, "user.offset")
+            console.log(whale.current.offsetLeft, whale.current.offsetTop, "Whale.offset")
             console.log("X center", grabUserXPosition())
             console.log("Y center", grabUserYPosition())
-            console.log("sqaure center", squarePoints)
+            // console.log("sqaure center", squarePoints)
         }
         const newPlayerCords = {xPosition: grabUserXPosition(),
                                 yPosition: grabUserYPosition(),
@@ -65,9 +66,10 @@ function Secretplayground() {
                 setYAxis(yAxis - 50)
             }
         }
-        checkObstacle(newPlayerCords);
-        setMoveCount(moveCount + 1)
-        checkWithinRange(newPlayerCords);
+        checkWhaleRange();
+        // checkObstacle(newPlayerCords);
+        // setMoveCount(moveCount + 1)
+        // checkWithinRange(newPlayerCords);
 	};
 
     // Create function to grab true XY positions
@@ -85,25 +87,28 @@ function Secretplayground() {
 	}
 
 	const user = useRef(null);
-	const sqaure = useRef(null);
-    const net = useRef(null)
+	// const sqaure = useRef(null);
+    // const net = useRef(null)
+    const whale = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
-        net.current.focus();
+        // net.current.focus();
+        whale.current.focus();
 
-        sqaure.current.focus();
+        // sqaure.current.focus();
         // Insert code to the set the usestate of thw square's location
-        const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
-        const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
-        setSquarePoints({
-            x: squareX,
-            y: squareY,
-            leftEdge: squareX - (sqaure.current.width / 2),
-            rightEdge: squareX + (sqaure.current.width / 2),
-            topEdge: squareY - (sqaure.current.height / 2),
-            bottomEdge: squareY + (sqaure.current.height / 2)
-        })
+        console.log(whale.current.offsetLeft, whale.current.offsetTop)
+        // const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
+        // const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
+        // setSquarePoints({
+        //     x: squareX,
+        //     y: squareY,
+        //     leftEdge: squareX - (sqaure.current.width / 2),
+        //     rightEdge: squareX + (sqaure.current.width / 2),
+        //     topEdge: squareY - (sqaure.current.height / 2),
+        //     bottomEdge: squareY + (sqaure.current.height / 2)
+        // })
 	}, []);
 
 	const handleWithinRange = (event) => {
@@ -113,30 +118,25 @@ function Secretplayground() {
 	}
 
     function checkObstacle(newPlayerCords) {
+        return false;
         // Corners
-        const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
-            const newCorners = {x: newPlayerCords.xPosition + (75)*cords[0], y: newPlayerCords.yPosition- (75)*cords[1]}
-            console.log(cords, newCorners)
-            return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
-                newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
-        })
-        console.log(playerCorners)
-        return playerCorners.length >= 1;
-        // Within A Circle Math.sqrt((newPlayerCords.xPosition - net.current.x)**2 + (newPlayerCords.yPosition - net.current.y)**2)
-        // 
-        // The Player is the circle, while the hitbox is the four corners: Math.sqrt((newPlayerCords.xPosition - [net.corner.position])**2 + (newPlayerCords.yPosition - [net.corner.position])**2)
-        // 
-        // This is the radius, intead of using the net's center XY (net.current.x), could do a for loop of each corner's position and set the range of the player's to be small
+        // const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
+        //     const newCorners = {x: newPlayerCords.xPosition + (75)*cords[0], y: newPlayerCords.yPosition- (75)*cords[1]}
+        //     console.log(cords, newCorners)
+        //     return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
+        //         newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
+        // })
+        // console.log(playerCorners)
+        // return playerCorners.length >= 1;
     }
 
-	function checkWithinRange(newPlayerCords) {
-        // Net
-        if(Math.sqrt((user.current.x - net.current.x)**2 + (user.current.y - net.current.y)**2 ) <= 500) {
-            document.getElementById('net').classList.add('in-range');
-        } else {
-            document.getElementById('net').classList.remove('in-range');
-        }
-	}
+	// function checkWithinRange(newPlayerCords) {
+    //     if(Math.sqrt((user.current.x - net.current.x)**2 + (user.current.y - net.current.y)**2 ) <= 500) {
+    //         document.getElementById('net').classList.add('in-range');
+    //     } else {
+    //         document.getElementById('net').classList.remove('in-range');
+    //     }
+	// }
 
 	const removeNet = (event) => {
 		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 500) {
@@ -146,35 +146,57 @@ function Secretplayground() {
 		}
 	}
 
+    function checkWhaleRange() {
+        console.log(Math.sqrt((grabUserXPosition()- whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2 ));
+        if(Math.sqrt((grabUserXPosition() - whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2) <= 100) {
+            document.getElementById('playable').classList.add('in-range');
+        } else {
+            document.getElementById('playable').classList.remove('in-range');
+        }
+    }
+
+    const onClickWhate = () => {
+        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 100) {
+            // Switch to scene to go into whale
+            console.log("Next Phrase")
+        } 
+    }
+
 
     return (
         <div className='play-area' onClick={() => user.current.focus()}>
             {/* User */}
+            <Whale
+                src={'/sprites/sprite-wendy-whale.png'}
+                id={"Whale"}
+                ref={whale}
+                onClick={onClickWhate}
+            />
             <User
 				style={userPlacement}
 				ref={user}
 				tabIndex={0}
 				onKeyDown={handleKeyDown}
+                onClick={onClickWhate}
 				src={`/sprites/sprite-user-placeholder.png`}
 				id='playable'
 				className='img-size'
 				alt="User's character"
 			/>
 			{/* Net 1 */}
-			{<Net
+			{/* {<Net
 				src={`/sprites/sprite-fishing-net.png`}
 				ref={net}
 				onClick={removeNet}
 				className='img-size'
 				alt="Net"
 				id='net'
-			/>}
+			/>} */}
 
-            <Circle 
+            {/* <Circle 
                 src={sqaureImg}
                 id='square'
-                ref={sqaure}/>
-
+                ref={sqaure}/> */}
         </div>
     );
 }

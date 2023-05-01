@@ -21,8 +21,6 @@ function FlapGuide(props) {
     const fish = useRef(null);
 
 
-
-  
     const handleKeyDown = event => {
       if (event.key === 'ArrowRight') {
         setXAxis(xAxis + 50)

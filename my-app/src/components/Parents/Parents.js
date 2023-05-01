@@ -5,8 +5,8 @@ import {
     IntroText,
     IntroTitle,
     IntroDescription,
-    IntroSprites,
     HelpContainer,
+    Help,
     HelpText,
     HelpDescription,
     HelpVideoContainer,
@@ -17,10 +17,13 @@ import {
     LearnDescription,
     CardsContainer,
     CardContainer,
+} from './styles.tsx';
+
+import {
     FooterContainer,
     FooterText,
     FooterCopyright,
-} from './styles.tsx';
+} from '../Home/styles.tsx';
 
 function Parents() {
     return (
@@ -33,27 +36,22 @@ function Parents() {
                         wildlife through interactive stories and activities. Its a great way to get your child excited about science and nature!
                     </IntroDescription>
                 </IntroText>
-                <IntroSprites>
-                    <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' className='pancake' />
-                    <img src='./sprites/sprite-user-placeholder.png' alt='sprite of the user' className='user' />
-                </IntroSprites>
             </IntroContainer>
 
             <HelpContainer>
-                <HelpVideoContainer>
-                    <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='80%' />
-                </HelpVideoContainer>
-                <HelpText>
-                    <IntroTitle>How can I help my child play Marine Rescue?</IntroTitle>
-                    <HelpDescription>
-                        Kids will get to chat with multiple different sea animals, play mini games to help them learn the material, and watch short
-                        videos to reinforce the content. You can support them as little or as much as you please. Pancake, the narrator, will help your
-                        child through the game, functioning as a guide and an adventure buddy.
-                    </HelpDescription>
-                </HelpText>
-            </HelpContainer>
-
-            <LearnContainer>
+                <Help>
+                    <HelpVideoContainer>
+                        <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='100%' />
+                    </HelpVideoContainer>
+                    <HelpText>
+                        <IntroTitle>How can I help my child play Marine Rescue?</IntroTitle>
+                        <HelpDescription>
+                            Kids will get to chat with multiple different sea animals, play mini games to help them learn the material, and watch short
+                            videos to reinforce the content. You can support them as little or as much as you please. Pancake, the narrator, will help your
+                            child through the game, functioning as a guide and an adventure buddy.
+                        </HelpDescription>
+                    </HelpText>
+                </Help>
                 <LearnText>
                     <LearnTitle>What will my child learn using Marine Rescue?</LearnTitle>
                     <LearnDescription>
@@ -88,7 +86,9 @@ function Parents() {
                         </p>
                     </CardContainer>
                 </CardsContainer>
-            </LearnContainer>
+            </HelpContainer>
+
+            <LearnContainer></LearnContainer>
             {/* <div className='parent-what-is-section'>
                 <div className=''>
                     <div className='row what-content-height'>
@@ -150,10 +150,13 @@ function Parents() {
                 </div>
             </div> */}
             <FooterContainer>
-                <FooterText>Marine Rescue: The Sea-quel</FooterText>
+                <FooterText>
+                    <p>Marine Rescue: The Sea-quel</p>
+                    <span>Powered by fruit snacks</span>
+                </FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>
-                    <img src='./imgs/mdi_github.png' alt='Github logo' />
+                    <img src='./imgs/github.png' alt='Github logo' />
                 </FooterCopyright>
                 <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
             </FooterContainer>

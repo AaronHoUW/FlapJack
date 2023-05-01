@@ -92,6 +92,7 @@ function Quiz(props) {
 	const handleNextQuestion = () => {
 		if (amountQuestionsTake - 1 === 0) {
 			setIsQuiz(true);
+			setQuestionNumber(questionNumber + 1)
 			navigate(-1);
 		} else {
 			setQuestionNumber(questionNumber + 1)
