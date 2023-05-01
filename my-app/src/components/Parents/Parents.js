@@ -75,7 +75,7 @@ function Parents() {
                         </div>
                     </CardContainer>
                     <CardContainer>
-                        <img src='./imgs/profile-border.png' />
+                        <img src='./imgs/trash.png' />
                         <div>
                             <h4>Marine Pollution</h4>
                             <p>
