@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { useRef } from "react";
 import { NextButton } from '../VisualNovel/styles.tsx';
+import nextButton from './next-button.png'
 import {
   User,
 	ScreenModal,
@@ -42,6 +43,7 @@ function RemoveActivity(props) {
 	  checkWithinRange();
 	};
   
+	
   
 	function checkWithinRange() {
 	  if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 400) {
@@ -87,6 +89,8 @@ function ModalCards(props) {
 	const user = useRef(null);
 	const fish = useRef(null);
 	const [displayButton, setDisplayButton] = useState(true);
+	const [level, setLevel] = useState(1)
+	const [page, setPage] = useState(1);
 
 	const handleWithinRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
@@ -107,6 +111,13 @@ function ModalCards(props) {
 		setXPosition(Math.random() * 10000)
 		setYPosition(Math.random() * 700)
 	}
+
+	const loadNextModal = () => {
+		let newPage = page + 1;
+		setPage(newPage);
+		document.getElementById(`load-modal-`+ (page + 1)).click();
+	}
+
 	console.log(objectData)
 	const onClickRemove = () => {
 		setImageResult(objectData.image)
@@ -157,16 +168,14 @@ function ModalCards(props) {
 							</p>
 						</div>
 					</ModalRowText>
-
-					<div className='modal-buttons'>
-					</div>
-					<NextButton onClick={ModalCards}>Next</NextButton>
+					<button className='next' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									<img src={nextButton} className='modal-button-img' />
+								</button>
 				</div>
 			</ModalContent>
 		</div>
+	
 	</ScreenModal>
-			  {/* <img className="fish sprite-container" id="transition" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} /> */}
-			
 		  </div>
 		);
 	  };
