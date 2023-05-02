@@ -5,7 +5,8 @@ import {
 } from './styles.tsx';
 import { useNavigate } from 'react-router-dom';
 
-function EnterWhale() {
+function EnterWhale(props) {
+    const { isEnterWhale, setIsEnterWhale } = props;
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(300);
@@ -69,7 +70,8 @@ function EnterWhale() {
 	useEffect(() => {
 		user.current.focus();
         whale.current.focus();
-	}, []);
+        setIsEnterWhale(true)
+	}, [isEnterWhale]);
 
 	const handleWithinRange = (event) => {
 		if(Math.sqrt((user.current.x - event.target.x)**2 + (user.current.y - event.target.y)**2 ) <= 400) {
@@ -100,60 +102,38 @@ function EnterWhale() {
 	}
 
     function checkWhaleRange() {
-        console.log(Math.sqrt((grabUserXPosition()- whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2 ));
         if(Math.sqrt((grabUserXPosition() - whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2) <= 100) {
-            document.getElementById('playable').classList.add('in-range');
+            document.getElementById('whale').classList.add('in-range');
         } else {
-            document.getElementById('playable').classList.remove('in-range');
+            document.getElementById('whale').classList.remove('in-range');
         }
-    }
 
-    const onClickWhate = () => {
-        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 100) {
-            // Switch to scene to go into whale
-            console.log("Next Phrase")
+        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 150) {
+            navigate('/level3');
         } 
     }
 
-
     return (
-        <div className='play-area' onClick={() => user.current.focus()}>
+        <div id='whale-area' className='play-area' onClick={() => user.current.focus()}>
             {/* User */}
             <Whale
                 src={'/sprites/sprite-wendy-whale.png'}
-                id={"Whale"}
+                id={"whale"}
                 ref={whale}
-                onClick={onClickWhate}
             />
             <User
 				style={userPlacement}
 				ref={user}
 				tabIndex={0}
 				onKeyDown={handleKeyDown}
-                onClick={onClickWhate}
 				src={`/sprites/sprite-user-placeholder.png`}
 				id='playable'
 				className='img-size'
 				alt="User's character"
 			/>
-			{/* Net 1 */}
-			{/* {<Net
-				src={`/sprites/sprite-fishing-net.png`}
-				ref={net}
-				onClick={removeNet}
-				className='img-size'
-				alt="Net"
-				id='net'
-			/>} */}
-
-            {/* <Circle 
-                src={sqaureImg}
-                id='square'
-                ref={sqaure}/> */}
         </div>
     );
 }
-
 
 export default EnterWhale;
 

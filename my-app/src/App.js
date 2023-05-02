@@ -12,11 +12,14 @@ import Levels from './components/Levels/Levels';
 
 import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
+import WhaleMinigame from './components/WhaleMinigame/WhaleMinigame';
 import Tutorial from './components/Tutorial/Tutorial';
-import Quiz from './components/Quiz/Quiz.js'
+import Quiz from './components/Quiz/Quiz.js';
 
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import SeaGuide from './components/SeagullGuide/SeaGuide';
+
+import EnterWhale from './components/EnterWhale/EnterWhale';
 
 import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
 import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
@@ -30,6 +33,7 @@ function App() {
 	const [currentLevel, setCurrentLevel] = useState(1);
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isSeaGuide, setIsSeaGuide] = useState(false);
+	const [isEnterWhale, setIsEnterWhale] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
 	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
@@ -75,6 +79,12 @@ function App() {
 							<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 						</>
 					} />
+					<Route path='/play-whale' element={
+						<>
+							<WhaleMinigame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
+						</>
+					} />
+					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
 					<Route path='/flapguide' element={
 						<>
 							<FlapGuide isFlapGuide={isFlapGuide} setIsFlapGuide={setIsFlapGuide} />
@@ -95,8 +105,8 @@ function App() {
 						<>
 							<Level1_VisualNovel
 								level={LEVEL1}
-								isFlapGuide={isFlapGuide}
-								setIsFlapGuide={setIsFlapGuide}
+								isSeaGuide={isSeaGuide}
+								setIsSeaGuide={setIsSeaGuide}
 								isGameComplete={isGameComplete}
 								setIsGameComplete={setIsGameComplete}
 								questionNumber={questionNumber}
@@ -141,6 +151,8 @@ function App() {
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
 								setCurrentLevel={setCurrentLevel}
+								isEnterWhale={isEnterWhale}
+								setIsEnterWhale={setIsEnterWhale}
 							/>
 						</>
 					} />

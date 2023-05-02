@@ -69,11 +69,12 @@ export const HelpContainer = styled.div`
     align-items: center;
     padding: 80px 40px;
     padding-top: 0;
+    padding-bottom: 36px;
 
     width: 100%;
     height: 1389px;
 
-    background: url('./imgs/meet-bg.png');
+    background: url('./imgs/parent-meet-bg.png');
     font-family: 'Mulish';
 `;
 
@@ -123,55 +124,58 @@ export const LearnContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 40px;
+    padding-top: 0;
     gap: 46px;
 
     width: 100%;
     height: 472px;
 
-    background: url('./imgs/learn-bg.png');
+    background: url('./imgs/parent-learn-bg.png');
     background-size: cover;
     font-family: 'Mulish';
 `;
 
 export const LearnText = styled.div`
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 74px;
 `;
 
 export const LearnTitle = styled.h2`
     font-weight: 400;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 60px;
-    color: black;
+    color: white;
     width: 100%;
     height: 60px;
+    margin: 0;
 `;
 
 export const LearnDescription = styled.p`
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
-    color: black;
-    margin-top: 30px;
+    color: white;
 `;
 
 export const CardsContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     padding: 0;
-
+    gap: 36px;
     width: 100%;
+    margin-top: 24px;
 `;
 
 export const CardContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 0;
-    text-align: center;
-
-    width: 33%;
+    width: 100%;
+    gap: 20px;
 
     img {
         width: 150px;
@@ -181,7 +185,15 @@ export const CardContainer = styled.div`
         font-weight: 400;
         font-size: 36px;
         line-height: 45px;
-        color: black;
+        color: white;
+        margin: 20px;
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        color: white;
         margin: 20px;
     }
 `;

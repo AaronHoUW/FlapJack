@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     HomeContainer,
@@ -13,7 +13,6 @@ import {
     MeetContainer,
     MeetTitle,
     MeetSprites,
-    MeetAnimal,
     LearnContainer,
     LearnText,
     LearnTitle,
@@ -22,10 +21,39 @@ import {
     FooterContainer,
     FooterText,
     FooterCopyright,
+    ShawnSprite,
+    TextBubble,
+    SallySprite,
+    PancakeSprite,
+    WendySprite,
+    NormalSprite,
 } from './styles.tsx';
 
 function Home() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const animation = document.querySelectorAll('.animation');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animation');
+                }
+                else {
+                    entry.target.classList.remove('scroll-animation');
+                }
+            })
+        },
+            {
+                threshold: 0.5
+            });
+        for (let i = 0; i < animation.length; i++) {
+            const elements = animation[i];
+
+            observer.observe(elements);
+        }
+    }, []);
+
     return (
         <HomeContainer>
             <IntroContainer>
@@ -53,7 +81,46 @@ function Home() {
             <MeetContainer>
                 <MeetTitle>Meet New Friends!</MeetTitle>
                 <MeetSprites>
-                    <img src='./imgs/animals.svg' />
+                    <ShawnSprite>
+                        <TextBubble className='animation-right animation'>
+                            <img src='./sprites/sprite-text-bubble.png' alt='text bubble' />
+                            <h4>Hey! I'm Shawn the Seagull</h4>
+                        </TextBubble>
+                        <div className='sprite-container'>
+                            <img src='./sprites/sprite-shawn-seagull.png' alt='Shawn the Seagull' className='sprite-image' />
+                        </div>
+                    </ShawnSprite>
+                    <SallySprite>
+                        <div className='sprite-container'>
+                            <img src='./sprites/sprite-sally-salmon.png' alt='Sally the Salmon' className='sprite-image' />
+                        </div>
+                        <TextBubble className='animation-left animation'>
+                            <img src='./sprites/sprite-text-bubble.png' alt='text bubble' className='text-bubble' />
+                            <h4>Hello! I'm Sally the Salmon</h4>
+                        </TextBubble>
+                    </SallySprite>
+                    <NormalSprite>
+                        <img src='./sprites/sprite-fish-extra1.png' alt='Extra fish 1' className='right-fish sprite-normal' />
+                    </NormalSprite>
+                    <PancakeSprite>
+                        <TextBubble className='animation-right animation'>
+                            <img src='./sprites/sprite-text-bubble.png' alt='text bubble' />
+                            <h4>Hi! I'm Pancake the Flapjack Octopus</h4>
+                        </TextBubble>
+                        <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='Pancake the Flapjack Octopus' className='sprite-image sprite-normal' />
+                    </PancakeSprite>
+                    <NormalSprite>
+                        <img src='./sprites/sprite-fish-extra2.png' alt='Extra fish 1' className='left-fish sprite-normal' />
+                    </NormalSprite>
+                    <WendySprite>
+                        <div className='sprite-container'>
+                            <img src='./sprites/sprite-wendy-whale.png' alt='Wendy the Whale' className='sprite-image' />
+                        </div>
+                        <TextBubble className='animation-left animation'>
+                            <img src='./sprites/sprite-text-bubble.png' alt='text bubble' className='text-bubble' />
+                            <h4>Heya! I'm Wendy the Whale</h4>
+                        </TextBubble>
+                    </WendySprite>
                 </MeetSprites>
             </MeetContainer>
 
