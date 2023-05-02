@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     HomeContainer,
@@ -31,29 +31,28 @@ import {
 
 function Home() {
     const navigate = useNavigate();
-    const animation = document.querySelectorAll('.animation');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('scroll-animation');
-            }
-            else {
-                entry.target.classList.remove('scroll-animation');
-            }
+    useEffect(() => {
+        const animation = document.querySelectorAll('.animation');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animation');
+                }
+                else {
+                    entry.target.classList.remove('scroll-animation');
+                }
+            })
+        },
+            {
+                threshold: 0.5
+            });
+        for (let i = 0; i < animation.length; i++) {
+            const elements = animation[i];
 
-        })
-    },
-        {
-            threshold: 0.5
-        });
-
-    for (let i = 0; i < animation.length; i++) {
-        const elements = animation[i];
-
-        observer.observe(elements);
-    }
-
+            observer.observe(elements);
+        }
+    }, []);
 
     return (
         <HomeContainer>
