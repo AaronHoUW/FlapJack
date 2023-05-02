@@ -5,6 +5,7 @@ import {
 	Net,
 	Obstacle,
 	Whale,
+	PointsContainer,
 	Trash,
 } from './styles.tsx';
 import squareImg from './square.png';
@@ -27,6 +28,7 @@ function WhaleMinigame(props) {
 	const [trashPlacement, setTrashPlacement] = useState({});
 	const [trashPlacement2, setTrashPlacement2] = useState({});
 	const [trashPlacement3, setTrashPlacement3] = useState({});
+	const [trashPlacement4, setTrashPlacement4] = useState({});
 	const [trashRemove, setTrashRemove] = useState(0);
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
@@ -88,7 +90,7 @@ function WhaleMinigame(props) {
 	}
 
 	function randomPx() {
-		let px = Math.floor((Math.random() * 250) + 50);
+		let px = Math.floor((Math.random() * 350));
 		return px;
 	}
 
@@ -100,6 +102,7 @@ function WhaleMinigame(props) {
 	const trash = useRef(null);
 	const trash2 = useRef(null);
 	const trash3 = useRef(null);
+	const trash4 = useRef(null);
 	const square = useRef(null);
 
 	useEffect(() => {
@@ -112,6 +115,7 @@ function WhaleMinigame(props) {
 		trash.current.focus();
 		trash2.current.focus();
 		trash3.current.focus();
+		trash4.current.focus();
 
 		// Hard Code
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
@@ -121,6 +125,7 @@ function WhaleMinigame(props) {
 		setTrashPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setTrashPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		setTrashPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' });
+		setTrashPlacement4({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-whale-stomach.png)`;
 
 		square.current.focus();
@@ -173,6 +178,12 @@ function WhaleMinigame(props) {
 		} else {
 			document.getElementById('trash3').classList.remove('in-range');
 		}
+
+		if (Math.sqrt((user.current.x - trash4.current.x) ** 2 + (user.current.y - trash4.current.y) ** 2) <= 400) {
+			document.getElementById('trash4').classList.add('in-range');
+		} else {
+			document.getElementById('trash4').classList.remove('in-range');
+		}
 	}
 
 	function checkObstacle(newPlayerCords) {
@@ -197,14 +208,14 @@ function WhaleMinigame(props) {
 	const removeTrash = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
 			event.target.classList.add('hidden');
-			setNetRemove(trashRemove + 1);
+			setTrashRemove(trashRemove + 1);
 		}
 	}
 
 	const loadNextModal = () => {
 		let newPage = page + 1;
 		setPage(newPage);
-		document.getElementById(`load-modal-`+ (page + 1)).click();
+		document.getElementById(`load-modal-` + (page + 1)).click();
 	}
 
 	const loadNextLevel = () => {
@@ -241,12 +252,14 @@ function WhaleMinigame(props) {
 	return (
 		<>
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
-				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
-				<span className="badge text-bg-secondary net-counter">Trash Removed: {trashRemove}</span>
-				{/* User */}
+				<PointsContainer>
+					<div><p>Net Removed: {netRemove}</p></div>
+					<div><p>Trash Removed: {trashRemove}</p></div>
+				</PointsContainer>
+
 				{(level === 3) && <Whale
 					src={'/sprites/sprite-wendy-whale.png'}
-					/>}
+				/>}
 
 				<User
 					style={userPlacement}
@@ -289,7 +302,7 @@ function WhaleMinigame(props) {
 					id='net3'
 				/>
 				{/* Trash 1 */}
-				<Trash 
+				<Trash
 					style={trashPlacement}
 					src={`/sprites/sprite-trash.png`}
 					ref={trash}
@@ -299,7 +312,7 @@ function WhaleMinigame(props) {
 					id='trash'
 				/>
 				{/* Trash 2 */}
-				<Trash 
+				<Trash
 					style={trashPlacement2}
 					src={`/sprites/sprite-trash.png`}
 					ref={trash2}
@@ -309,7 +322,7 @@ function WhaleMinigame(props) {
 					id='trash2'
 				/>
 				{/* Trash 3 */}
-				<Trash 
+				<Trash
 					style={trashPlacement3}
 					src={`/sprites/sprite-trash.png`}
 					ref={trash3}
@@ -317,6 +330,16 @@ function WhaleMinigame(props) {
 					className='img-size'
 					alt="Trash3"
 					id='trash3'
+				/>
+				{/* Trash 4 */}
+				<Trash
+					style={trashPlacement4}
+					src={`/sprites/sprite-trash.png`}
+					ref={trash4}
+					onClick={removeTrash}
+					className='img-size'
+					alt="Trash4"
+					id='trash4'
 				/>
 				<Obstacle
 					src={squareImg}

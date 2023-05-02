@@ -35,7 +35,7 @@ function App() {
 	const [isSeaGuide, setIsSeaGuide] = useState(false);
 	const [isEnterWhale, setIsEnterWhale] = useState(false);
 	const [isGameComplete, setIsGameComplete] = useState(false);
-	const [questionNumber, setQuestionNumber] = useState(3);
+	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
 	const [levelOnePath, setLevelOnePath] = useState()
@@ -71,7 +71,7 @@ function App() {
 					<Route path='/levels' element={
 						<>
 							<Navbar />
-							<Levels />
+							<Levels setQuestionNumber={setQuestionNumber}/>
 						</>
 					} />
 					<Route path='/play' element={

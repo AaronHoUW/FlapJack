@@ -46,7 +46,7 @@ function VisualNovel(props) {
             if(questionNumber === 2) {
                 currentScene = level['pancakeTalkToSalmon'];
             } else if (questionNumber === 3) {
-                currentScene = level['sallyTalking2'];   
+                currentScene = level['sallyTalking2'];
             }
             buildDialogue();
         } else if (isGameComplete) {
