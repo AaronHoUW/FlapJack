@@ -76,8 +76,8 @@ export const ChoiceImages = styled.img`
 export const NextButton = styled.button`
     position: absolute;
     margin: 20px;
-    bottom: 0;
-    right: 0;
+    bottom: -134px;
+    right: -285S;
     
     padding: 12px 24px;
     
@@ -93,3 +93,14 @@ export const NextButton = styled.button`
     font-weight: 400;
     font-size: 30px;
 `;
+export const Background = styled.div`
+    width: 100%;
+    background-image: url('./sprites/bg-beach-level.png');
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+`;
+
+export const User = styled.img<Props>`
+`;
+

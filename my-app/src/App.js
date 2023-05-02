@@ -35,7 +35,7 @@ function App() {
 	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
-	const [isRemove, setIsRemove] = useState(false)
+	const [isRemoveActivity, setIsRemoveActivity] = useState(false)
 
 	return (
 		<div className='page-container'>
@@ -103,8 +103,8 @@ function App() {
 								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
-								isRemove={isRemove}
-								setIsRemove={setIsRemove}
+								isRemoveActivity={isRemoveActivity}
+								setIsRemoveActivity={setIsRemoveActivity}
 								isQuiz={isQuiz}
 								setIsQuiz={setIsQuiz}
 								setCurrentLevel={setCurrentLevel}
