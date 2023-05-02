@@ -63,6 +63,10 @@ export const AboutContainer = styled.div`
         h2 {
             height: 115px;
         }
+
+        #learn-more {
+            height: 60px;
+        }
     }
 
 `;

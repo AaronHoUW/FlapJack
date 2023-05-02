@@ -46,7 +46,7 @@ export const Net = styled.img<Props>`
 
 export const Trash = styled.img<Props>`
     position: relative;
-    animation: MoveUpDown 1s linear infinite;
+    animation: MoveUpDown 1.5s linear infinite;
     width: 150px;
 
     @keyframes MoveUpDown {
@@ -58,16 +58,20 @@ export const Trash = styled.img<Props>`
         }
     }
 
-    :nth-child(3) {
+    :nth-child(7) {
+        animation-delay: 200ms;
+    }
+
+    :nth-child(8) {
+        animation-delay: 600ms;
+    }
+
+    :nth-child(6) {
+        animation-delay: 900ms;
+    }
+
+    :nth-child(9) {
         animation-delay: 400ms;
-    }
-
-    :nth-child(4) {
-        animation-delay: 100ms;
-    }
-
-    :nth-child(5) {
-        animation-delay: 800ms;
     }
 `;
 
@@ -83,4 +87,29 @@ export const Whale = styled.img`
     top: 30%;
     position: absolute;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`;
+
+export const PointsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+
+    div {
+        background-color: lightgrey;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Mulish';
+        border-radius: 4px;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+
+        P {
+            margin: 0;
+        }
+    }
 `;
