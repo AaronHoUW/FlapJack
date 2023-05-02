@@ -25,6 +25,14 @@ body {
   background-color: transparent;
 }
 
+.bottom-cards .card {
+  z-index: 0;
+}
+
+.bottom-cards .card:hover {
+  z-index: 1;
+}
+
 .card-clicked .card-inner {
   transform: rotateY(180deg);
 }

@@ -111,6 +111,7 @@ export const DialogueMessageContainer = styled.div`
     line-height: 45px;
 
     color: #000000;
+    z-index: 1;
 `;
 
 export const SpeakerContainer = styled.div`
