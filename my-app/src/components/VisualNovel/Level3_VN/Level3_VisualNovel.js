@@ -55,10 +55,13 @@ function VisualNovel(props) {
             buildDialogue();
         } else if (isEnterWhale) {
             clearSprites();
+            currentScene = level['wendyEntered'];
+            document.getElementById('visual-novel-container').style.backgroundImage = 'url("./sprites/bg-whale-stomach.png")';
             buildDialogue();
         } else {
             currentScene = level['pancakeIntro'];
             document.getElementById('backBtn').disabled = true;
+        }
         if (currentScene === level['pancakeIntro']
             || currentScene === level['sallyTalking']
             || currentScene === level['pancakeTalkToSalmon']
@@ -67,7 +70,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         }
         document.getElementById('nextBtn').disabled = false;
-}, [isFlapGuide, isGameComplete, isEnterWhale, isQuiz, questionNumber]);
+    }, [isFlapGuide, isGameComplete, isEnterWhale, isQuiz, questionNumber]);
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -618,5 +621,3 @@ function VisualNovel(props) {
 }
 
 export default VisualNovel;
-
-

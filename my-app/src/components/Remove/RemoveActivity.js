@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useFetcher, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { useRef } from "react";
 import { NextButton } from '../VisualNovel/styles.tsx';
@@ -47,13 +47,16 @@ function RemoveActivity(props) {
 		checkWithinRange();
 	};
 
+	useEffect(() => {
+		user.current.focus()
+	}, [])
 
 	function checkWithinRange() {
-		if (Math.sqrt((user.current.xAxis - fish.current.xAxis) ** 2 + (user.current.yAxis - fish.current.yAxis) ** 2) <= 400) {
-			document.getElementById('transition').classList.add('in-range');
-		} else {
-			document.getElementById('transition').classList.remove('in-range');
-		}
+		// if (Math.sqrt((user.current.xAxis - fish.current.xAxis) ** 2 + (user.current.yAxis - fish.current.yAxis) ** 2) <= 400) {
+		// 	document.getElementById('transition').classList.add('in-range');
+		// } else {
+		// 	document.getElementById('transition').classList.remove('in-range');
+		// }
 	}
 	const objectList = (Object.keys(importData)).map((object, i) => <ModalCards int={i} key={i} object={object} user={user}>
 
@@ -61,7 +64,7 @@ function RemoveActivity(props) {
 
 	return (
 		<div>
-			<Background className='remove-area'>
+			<Background className='remove-area' onClick={() => user.current.focus()}>
 				{/* User */}
 				<User
 					style={userPlacement}
@@ -86,7 +89,7 @@ function ModalCards(props) {
 	const [xPosition, setXPosition] = useState()
 	const [yPosition, setYPosition] = useState()
 	const [reponseResult, setResponeResult] = useState()
-	const [correctText, setCorretText] = useState()
+	const [correctAnswer, setCorrectAnswer] = useState()
 	const { object, int, user } = props;
 	const objectData = importData[object]
 	const navigate = useNavigate();
@@ -111,16 +114,22 @@ function ModalCards(props) {
 	}
 
 	const removeTrash = (event, targetID) => {
-		console.log("THIS IS CLICK")
-		console.log(targetID)
-		console.log(user)
-		console.log(event)
+		// console.log("THIS IS CLICK")
+		// console.log(targetID)
+		// console.log(user)
+		// console.log(event)
 		if (isInRange(event)) {
-				event.target.classList.add('hidden');
-				setTrashRemove(trashRemove + 1);
-			console.log(document.getElementById(targetID))
-			document.getElementById(targetID).style.visibility = "visable";
+			// console.log(targetID, event)
+			loadModal();
+			// event.target.classList.add('hidden');
+			// setTrashRemove(trashRemove + 1);
+			// console.log(document.getElementById(targetID))
+			// document.getElementById(targetID).style.visibility = "visable";
 		} 
+	}
+
+	const loadModal = () => {
+		document.getElementById("load-modal-" + int).click();
 	}
 
 	const onLoad = () => {
@@ -129,17 +138,16 @@ function ModalCards(props) {
 		setYPosition(Math.random() * 100)
 	}
 
-
-	console.log(objectData)
 	const onClickRemove = () => {
 		setImageResult(objectData.image)
 		if (objectData.remove) {
 			setTextResult(objectData.correct)
-
+			document.getElementById("trash-image-" + int).classList.add('hidden');
+			setCorrectAnswer(true)
 		}
 		else {
 			setTextResult(objectData.incorrect)
-
+			setCorrectAnswer(false)
 		}
 
 
@@ -147,43 +155,46 @@ function ModalCards(props) {
 	const onClickIgnore = () => {
 		if (!objectData.remove) {
 			setTextResult(objectData.correct)
-
+			setCorrectAnswer(true)
 		}
 		else {
 			setTextResult(objectData.incorrect)
-
+			setCorrectAnswer(false)
 		}
 	}
+	// onMouseEnter={(event)=>enableRemoveTrash(event, "modal-remove-" + int)}
 	return (
+		<>
+			{/* <a  /> */}
+			<img className='trash' onClick={(event)=> removeTrash(event, "modal-remove-" + int)}  style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={fish} src='./sprites/sprite-trash.png'></img>
+			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-`+int+`-Backdrop`} >
+				<ScreenModal className="modal" id={`modal-`+int+`-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div className="modal-dialog modal-lg modal-dialog-centered">
+						<img className='pancake' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
+						<ModalContent className="modal-content">
+							<div className='container modal-containers'>
+								<img className='picture' src={imageResult} />
 
-
-		<div onClick={(event)=>removeTrash(event, "modal-remove-" + int)} onLoad={onLoad} onMouseEnter={(event)=>enableRemoveTrash(event, "modal-remove-" + int)}>
-			<img className='trash' style={{ top: yPosition, left: xPosition }} id="transition" ref={fish} src='./sprites/sprite-trash.png'></img>
-			<ScreenModal className="modal" id={"modal-remove-" + int} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div className="modal-dialog modal-lg modal-dialog-centered">
-					<img className='pancake' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
-					<ModalContent className="modal-content">
-						<div className='container modal-containers'>
-							<img className='picture' src={imageResult} />
-
-							<ModalRowText className='row model-info modal-video-content mt-1'>
-								<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
-								{(textResult === undefined) && <btn className="removebtn" onClick={onClickRemove}>Remove from Beach</btn>}
-								{(textResult === undefined) && <btn className="ignorebtn" onClick={onClickIgnore}>Ignore</btn>}
-								<div />
-								<div className="container text-container">
-									<p className="post">
-										{textResult}
-									</p>
-								</div>
-							</ModalRowText>
-							<button className='next' type="button" data-bs-dismiss="modal">Next</button>
-						</div>
-					</ModalContent>
-				</div>
-
-			</ScreenModal>
-		</div>
+								<ModalRowText className='row model-info modal-video-content mt-1'>
+									<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
+									{(textResult === undefined) && <btn className="removebtn" onClick={onClickRemove}>Remove from Beach</btn>}
+									{(textResult === undefined) && <btn className="ignorebtn" onClick={onClickIgnore}>Ignore</btn>}
+									<div />
+									<div className="container text-container">
+										<p className="post">
+											{/* {textResult} */}
+											{(correctAnswer &&
+												<p><span className='text-success fw-bold'>Correct!</span> {textResult}</p>) || (correctAnswer !== undefined && <p><span className='text-danger fw-bold'>Uh Oh!</span> {textResult}</p>)}
+										</p>
+									</div>
+								</ModalRowText>
+								<button className='next' type="button" data-bs-dismiss="modal" onClick={() => {setTextResult(); setCorrectAnswer()}}>Next</button>
+							</div>
+						</ModalContent>
+					</div>
+				</ScreenModal>
+			</a>
+		</>
 	);
 };
 
@@ -191,5 +202,3 @@ function ModalCards(props) {
 
 
 export default RemoveActivity;
-
-
