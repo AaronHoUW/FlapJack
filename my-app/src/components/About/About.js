@@ -130,7 +130,7 @@ const About = () => {
                                 <HelpVideo src="https://www.youtube.com/embed/hnN8uOE6nTk" width='100%' height='450px' />
                             </HelpVideoContainer>
                             <IntroPopUp>
-                                <IntroTitle>Learn more about this project!</IntroTitle>
+                                <IntroTitle id="learn-more">Learn more about this project!</IntroTitle>
                                 <IntroDescription>
                                     Marine Rescue was created as a capstone project for the University of Washington Information School, in Winter & Spring quarter of 2023.
                                     This is the second iteration of Marine Rescue based off of a previous groups project, which can be visited here.
@@ -178,6 +178,7 @@ const About = () => {
                                 <div>Project Manager</div>
                                 <div>Software Engineer</div>
                                 <div>Character Artist</div>
+                                <div>Graphic Designer</div>
                             </RoleContainer>
                             <p>
                                 Jun is a senior in Informatics and a software engineer at the Pacific Northwest National Laboratory
