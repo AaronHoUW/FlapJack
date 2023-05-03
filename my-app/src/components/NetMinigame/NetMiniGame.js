@@ -327,7 +327,7 @@ function NetMiniGame(props) {
 					id='net3'
 				/>
 				<Obstacle
-					src={squareImg}
+					src={'/sprites/sprite-obstacle-log.png'}
 					id='square'
 					ref={square} />
 			</div>
