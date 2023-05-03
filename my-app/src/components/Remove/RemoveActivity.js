@@ -89,8 +89,7 @@ function ModalCards(props) {
 	const user = useRef(null);
 	const fish = useRef(null);
 	const [displayButton, setDisplayButton] = useState(true);
-	const [level, setLevel] = useState(1)
-	const [page, setPage] = useState(1);
+	const [trash, setTrash] = useState(1);
 
 	const handleWithinRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
@@ -112,12 +111,16 @@ function ModalCards(props) {
 		setYPosition(Math.random() * 700)
 	}
 
-	const loadNextModal = () => {
-		let newPage = page + 1;
-		setPage(newPage);
-		document.getElementById(`load-modal-`+ (page + 1)).click();
+	const nextTrash = () => {
+		let newTrash = trash - 1;
+		setTrash(newTrash);
+		document.getElementById(`load-modal-`+ (trash - 1)).click();
 	}
 
+	function removeTitle(staticBackdropLabel){
+		staticBackdropLabel.parentNode.removeChild(staticBackdropLabel);
+	  }
+	
 	console.log(objectData)
 	const onClickRemove = () => {
 		setImageResult(objectData.image)
@@ -160,17 +163,16 @@ function ModalCards(props) {
 
 					<ModalRowText className='row model-info modal-video-content mt-1'>
 						<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
-						{ (textResult === undefined)&&<btn className="removebtn"  onClick={onClickRemove}>Remove from Beach</btn>}
+						{ (textResult === undefined)&&<btn className="removebtn"  onClick={onClickRemove && removeTitle}>Remove from Beach</btn>}
 						{ (textResult === undefined)&&<btn className="ignorebtn" onClick={onClickIgnore}>Ignore</btn>}
+						<div/>
 						<div className="container text-container">
 							<p className="post">
 								{textResult}
 							</p>
 						</div>
 					</ModalRowText>
-					<button className='next' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
-									<img src={nextButton} className='modal-button-img' />
-								</button>
+					<button className='next' type="button" onClick={nextTrash} data-bs-dismiss="modal">Next</button>
 				</div>
 			</ModalContent>
 		</div>
