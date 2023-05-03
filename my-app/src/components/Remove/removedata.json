@@ -36,25 +36,25 @@
         "image": "./imgs/cards/nets/cigarette.png"
     },
     "You’ve found some kelp.": {
-        "remove": true,
+        "remove": false,
         "correct": "Correct! This kelp is part of the ocean & beach ecosystem. Some animals eat it. It should be left alone.",
         "incorrect": "Uh Oh! This kelp should be ignored because it is part of the ocean & beach ecosystem. Some animals eat it. It should be left alone.",
         "image": "./imgs/cards/nets/kelp.png"
     },
     "You’ve found a shell": {
-        "remove": true,
+        "remove": false,
         "correct": "Correct! This shell can be used by small critters like crabs as a home. It should be left alone.",
         "incorrect": "Uh Oh! This shell should be ignored because it can be used by small critters like crabs as a home. It should be left alone.",
         "image": "./imgs/cards/nets/shell.png"
     },
     "You’ve found a rock.": {
-        "remove": true,
+        "remove": false,
         "correct": "Correct! This rock can provide protection and nutrients for animals. It should be left alone.",
         "incorrect": "Uh Oh! This rock should be ignored because it can provide protection and nutrients for animals. It should be left alone.",
         "image": "./imgs/cards/nets/rock.png"
     },
     "You’ve found some seaweed.": {
-        "remove": true,
+        "remove": false,
         "correct": "Correct! This seaweed can be eaten by some of the animals on the beach. It should be left alone.",
         "incorrect": "Uh Oh! This seaweed should be ignored because it can be eaten by some of the animals on the beach. It should be left alone.",
         "image": "./imgs/cards/nets/seaweed.png"

@@ -1031,23 +1031,23 @@ border-radius: 40px;
 flex: none;
 order: 0;
 flex-grow: 0;
-color: #FFFFFF;
+color: #000000;
 }
 
 .ignorebtn {
   display: flex;
 flex-direction: row;
 align-items: flex-start;
-padding: 16px 24px;
+padding: 7px 26px;
 gap: 10px;
-width: 130px;
-height: 73px;
-background: #134254;
+width: 125px;
+height: 52px;
+background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 40px;
 flex: none;
 order: 1;
-color: #FFFFFF;
+color: #000000;
 flex-grow: 0;
 }
 
@@ -1061,17 +1061,17 @@ padding: 40px;
 gap: 36px;
 
 position: absolute;
-width: 951px;
+width: 1220px;
 height: 485px;
-left: -20px;
+left: -230px;
 top: -285px;
 background: #F7EDE1;
 border: 10px solid #000000;
 }
 
 .removeTitle {
-  width: 429px;
-  height: 105px;
+  width: 555px;
+  height: 125px;
   color: black;
   flex: none;
   order: 0;
@@ -1088,8 +1088,8 @@ border: 10px solid #000000;
   position: absolute;
 width: 185px;
 height: 112.59px;
-left: -77px;
-top: 185px;
+right: 905px;
+top: 80px;
 z-index: 2;
 
 } .post {
@@ -1098,4 +1098,25 @@ font-style: normal;
 font-weight: 400;
 font-size: 36px;
 line-height: 41px;
+}
+
+.next {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-color: #f8f9fa00;  
+  position: relative;
+  width: 100px;
+  height: 50px;
+  mix-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  top: 195px;
+  left: 25px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-size: 25px;
+
 }

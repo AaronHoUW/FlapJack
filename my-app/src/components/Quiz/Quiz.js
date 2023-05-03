@@ -59,6 +59,9 @@ function Quiz(props) {
 				setCorrectAnswer(true);
 			} else {
 				setResultText(displayQuestion.Wrong)
+				if (answer === "12,000 pounds") {
+					setResultText("Not quite! Whales don’t weigh quite that much. If you want to go back and talk to Wendy again, you can find the right answer.")
+				}
 				setCorrectAnswer(false)
 			}
 		}

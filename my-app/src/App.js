@@ -68,7 +68,7 @@ function App() {
 					<Route path='/levels' element={
 						<>
 							<Navbar />
-							<Levels />
+							<Levels setQuestionNumber={setQuestionNumber}/>
 						</>
 					} />
 					<Route path='/play' element={

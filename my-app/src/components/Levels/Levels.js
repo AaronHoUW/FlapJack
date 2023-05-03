@@ -8,7 +8,8 @@ import {
 } from '../Home/styles.tsx';
 
 
-function Levels() {
+function Levels(props) {
+    const { setQuestionNumber } = props
     const navigate = useNavigate();
     return (
         <>
@@ -18,7 +19,10 @@ function Levels() {
                         <h2 className='first-title'>Level 1: Meet Shawn the Seagull</h2>
                         <p className='first-info'> Meet Shawn and learn about what Trash Islands are. Maybe you can even help clean up trash on the beach!
                         </p>
-                        <LearnButton className="link-button" onClick={() => navigate('/level1')}>Play</LearnButton>
+                        <LearnButton className="link-button" onClick={() => {
+                            setQuestionNumber(3);
+                            navigate('/level1');
+                        }}>Play</LearnButton>
                     </div>
                     <img src='./sprites/sprite-shawn-seagull.png' alt='Shawn the seagull' className='shawn-level' />
                 </div>
@@ -28,7 +32,10 @@ function Levels() {
                             <h2 className='first-title'>Level 2: Meet Sally the Salmon</h2>
                             <p className='first-info'> Meet Sally and learn about Salmon’s experience of the Elwha. Maybe you can even help clean up ghosts nets and help out fish and other animals in the sea!
                             </p>
-                            <LearnButton className="link-button" onClick={() => navigate('/level2')}>Play</LearnButton>
+                            <LearnButton className="link-button" onClick={() => {
+                                setQuestionNumber(1);
+                                navigate('/level2')
+                            }}>Play</LearnButton>
                         </div>
                         <img className='sally-level' src='./sprites/sprite-sally-salmon.png' alt="Sally the Salmon"></img>
                     </div>
