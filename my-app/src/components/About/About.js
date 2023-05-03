@@ -177,7 +177,7 @@ const About = () => {
                             <RoleContainer>
                                 <div>Project Manager</div>
                                 <div>Software Engineer</div>
-                                <div>Character Artist</div>
+                                <div>Character & Assets Artist</div>
                                 <div>Graphic Designer</div>
                             </RoleContainer>
                             <p>
@@ -319,7 +319,7 @@ const About = () => {
             <FooterContainer>
                 <FooterText>
                     <p>Marine Rescue: The Sea-quel</p>
-                    <span>Powered by fruit snacks</span>
+                    <span>Powered by Marlina's fruit snacks</span>
                 </FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>

@@ -27,6 +27,7 @@ import {
     PancakeSprite,
     WendySprite,
     NormalSprite,
+    Notification,
 } from './styles.tsx';
 
 function Home() {
@@ -57,6 +58,10 @@ function Home() {
     return (
         <HomeContainer>
             <IntroContainer>
+                <Notification>
+                    <h4>Notice</h4>
+                    <p>This project will be transitioned to open source, effective Jun. 10th, 2023.</p>
+                </Notification>
                 <IntroText>
                     <IntroTitle>Welcome to Marine Rescue!</IntroTitle>
                     <IntroDescription>
@@ -141,7 +146,7 @@ function Home() {
             <FooterContainer>
                 <FooterText>
                     <p>Marine Rescue: The Sea-quel</p>
-                    <span>Powered by fruit snacks</span>
+                    <span>Powered by Marlina's fruit snacks</span>
                 </FooterText>
                 <FooterCopyright>
                     <p>Copyright &copy; FlapJack</p>
