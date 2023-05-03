@@ -19,6 +19,24 @@ export const IntroContainer = styled.div`
     font-family: 'Mulish';
 `;
 
+export const Notification = styled.div`
+    background-color: white;
+    border-radius: 20px;
+    width: 300px;
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    padding: 24px;
+
+    h4 {
+        font-weight: 600;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+`;
+
 export const IntroText = styled.div`
     display: flex;
     flex-direction: column;
