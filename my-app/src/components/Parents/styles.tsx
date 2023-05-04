@@ -72,7 +72,7 @@ export const HelpContainer = styled.div`
     padding-bottom: 36px;
 
     width: 100%;
-    height: 1389px;
+    height: 1600px;
 
     background: url('./imgs/parent-meet-bg.png');
     font-family: 'Mulish';
@@ -123,6 +123,7 @@ export const LearnContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-items: center;
     padding: 40px;
     padding-top: 0;
     gap: 46px;
@@ -166,7 +167,6 @@ export const CardsContainer = styled.div`
     padding: 0;
     gap: 36px;
     width: 100%;
-    margin-top: 24px;
 `;
 
 export const CardContainer = styled.div`
@@ -235,5 +235,36 @@ export const FooterCopyright = styled.div`
     p {
         margin: 0;
         margin-right: 10px;
+    }
+`;
+
+export const ResourceText = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    gap: 24px;
+    background-color: #F7EDE1;
+    padding: 24px;
+    border-radius: 20px;
+
+    h2 {
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 45px;
+        color: rgb(19, 66, 84);
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 16px 24px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+        background-color: #85c9e3;
+
+        font-size: 36px;
+        color: #134254;
+        border: none;
     }
 `;
