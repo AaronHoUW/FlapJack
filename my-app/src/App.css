@@ -172,6 +172,22 @@ footer {
   background-size: cover;
 }
 
+.preface {
+  background-color: #F2E0AA;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.preface div {
+  width: 70%;
+}
+
+.preface p {
+  margin: 0;
+  font-size: 20px;
+}
 
 .play-area {
   background-image: url('../public/sprites/bg-sea.png');
@@ -930,7 +946,7 @@ line-height: 41px;
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
-  color: #FFFFFF;
+  color: black;
   margin: 0;
 }
 
@@ -940,7 +956,7 @@ line-height: 41px;
   font-size: 20px;
   font-family: 'Mulish';
   font-style: normal;
-  color: #FFFFFF;
+  color: black;
 }
 
 .seagull {
@@ -949,7 +965,7 @@ line-height: 41px;
   align-items: center;
   padding: 40px;
   gap: 74px;
-  height: 500px;
+  height: 434px;
   width: 100%;
   background-image: url("../public/imgs/firstlvl.png");
   background-size: cover;
@@ -961,9 +977,13 @@ line-height: 41px;
   align-items: center;
   padding: 40px;
   gap: 74px;
-  height: 500px;
+  height: 417px;
   width: 100%;
   background-image: url("../public/imgs/secondlevel.png");
+}
+
+#last-title, #last-info {
+  color: white;
 }
 
 .whale {

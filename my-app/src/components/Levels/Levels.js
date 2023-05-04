@@ -7,12 +7,20 @@ import {
     FooterCopyright,
 } from '../Home/styles.tsx';
 
-
 function Levels(props) {
     const { setQuestionNumber } = props
     const navigate = useNavigate();
     return (
         <>
+            <div className='preface'>
+                <img src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
+                <div>
+                    <p>
+                        You’ll be playing as a scuba diver and exploring the ocean! As you explore different parts of the ocean,
+                        you will get to talk to different animals and learn about how debris in the ocean impact them.
+                    </p>
+                </div>
+            </div>
             <div className='level-one'>
                 <div className='seagull'>
                     <div className='level-div col my-auto'>
@@ -43,8 +51,8 @@ function Levels(props) {
                 <div className='level-three'>
                     <div className='whale'>
                         <div className='level-div col my-auto'>
-                            <h2 className='first-title'>Level 3: Meet Wendy the Whale</h2>
-                            <p className='first-info'> Meet Wendy and learn about the whale and the plastic that they eat. Maybe you can even help get rid of plastic inside the whale’s body!
+                            <h2 id='last-title' className='first-title'>Level 3: Meet Wendy the Whale</h2>
+                            <p id='last-info' className='first-info'> Meet Wendy and learn about the whale and the plastic that they eat. Maybe you can even help get rid of plastic inside the whale’s body!
                             </p>
                             <LearnButton className="link-button" onClick={() => navigate('/level3')}>Play</LearnButton>
                         </div>
