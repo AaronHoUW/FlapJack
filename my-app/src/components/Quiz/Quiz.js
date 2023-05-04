@@ -107,7 +107,7 @@ function Quiz(props) {
 	}
 
 	return (
-		<div className='play-area'>
+		<div className='play-area' style={{backgroundImage: "url('./sprites/bg-beach-flipped.png')"}}>
 			<ScreenModal className="" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<div className="modal-dialog modal-lg modal-dialog-centered">
