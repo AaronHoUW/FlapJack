@@ -20,6 +20,7 @@ import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import SeaGuide from './components/SeagullGuide/SeaGuide';
 
 import EnterWhale from './components/EnterWhale/EnterWhale';
+import RemoveActivity from './components/RemoveActivity/RemoveActivity';
 
 import Level1_VisualNovel from './components/VisualNovel/Level1_VN/Level1_VisualNovel';
 import Level2_VisualNovel from './components/VisualNovel/Level2_VN/Level2_VisualNovel';
@@ -28,6 +29,7 @@ import Level3_VisualNovel from './components/VisualNovel/Level3_VN/Level3_Visual
 import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import LEVEL3 from './components/Stories/Level3';
+
 
 function App() {
 	const [currentLevel, setCurrentLevel] = useState(1);
@@ -84,6 +86,7 @@ function App() {
 							<WhaleMinigame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
 						</>
 					} />
+					<Route path='/play-seagull' element={<RemoveActivity />}/>
 					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
 					<Route path='/flapguide' element={
 						<>
