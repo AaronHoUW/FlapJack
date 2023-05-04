@@ -1,0 +1,62 @@
+{
+    "You've found a rope.": {
+        "remove": true,
+        "correct": "This rope can be dangerous if an animal gets tangled in it. It can make it hard to walk, fly or swim.",
+        "incorrect": "This rope should be removed because it can be dangerous if an animal gets tangled in it. It can make it hard to walk, fly or swim.",
+        "image": "./imgs/cards/nets/rope.png"
+    },
+    "You’ve found plastic.": {
+        "remove": true,
+        "correct": "This plastic can be dangerous if animals swallow it.",
+        "incorrect": "This plastic should be removed because it can be dangerous if animals swallow it.",
+        "image": "./imgs/cards/nets/plastic.png"
+    },
+    "You’ve found a plastic cup with a straw.": {
+        "remove": true,
+        "correct": "This cup can be dangerous if small critters get stuck in it.",
+        "incorrect": "This cup should be removed because it can be dangerous if small critters get stuck in it.",
+        "image": "./imgs/cards/nets/cup.png"
+    },
+    "You’ve found a plastic snack bag.": {
+        "remove": true,
+        "correct": "This plastic bag can be dangerous if animals swallow it.",
+        "incorrect": "This plastic bag should be removed because it can be dangerous if animals swallow it.",
+        "image": "./imgs/cards/nets/bag.png"
+    },
+    "You’ve found a sharp piece of plastic.": {
+        "remove": true,
+        "correct": "This sharp object can be dangerous if it cuts an animal or if they swallow it.",
+        "incorrect": "This sharp object should be removed because it can be dangerous if it cuts an animal or if they swallow it.",
+        "image": "./imgs/cards/nets/sharp.png"
+    },
+    "You’ve found a cigarette butt.": {
+        "remove": true,
+        "correct": "This cigarette butt is toxic to animals and can be dangerous if they eat it.",
+        "incorrect": "This cigarette butt should be removed because it is toxic to animals and can be dangerous if they eat it.",
+        "image": "./imgs/cards/nets/cigarette.png"
+    },
+    "You’ve found some kelp.": {
+        "remove": false,
+        "correct": "This kelp is part of the ocean & beach ecosystem. Some animals eat it. It should be left alone.",
+        "incorrect": "This kelp should be ignored because it is part of the ocean & beach ecosystem. Some animals eat it. It should be left alone.",
+        "image": "./imgs/cards/nets/kelp.png"
+    },
+    "You’ve found a shell": {
+        "remove": false,
+        "correct": "This shell can be used by small critters like crabs as a home. It should be left alone.",
+        "incorrect": "This shell should be ignored because it can be used by small critters like crabs as a home. It should be left alone.",
+        "image": "./imgs/cards/nets/shell.png"
+    },
+    "You’ve found a rock.": {
+        "remove": false,
+        "correct": "This rock can provide protection and nutrients for animals. It should be left alone.",
+        "incorrect": "This rock should be ignored because it can provide protection and nutrients for animals. It should be left alone.",
+        "image": "./imgs/cards/nets/rock.png"
+    },
+    "You’ve found some seaweed.": {
+        "remove": false,
+        "correct": "This seaweed can be eaten by some of the animals on the beach. It should be left alone.",
+        "incorrect":"This seaweed should be ignored because it can be eaten by some of the animals on the beach. It should be left alone.",
+        "image": "./imgs/cards/nets/seaweed.png"
+    }
+}
