@@ -10,7 +10,7 @@ import {
 	Background
 
 } from './styles.tsx';
-import removeIgnoreData from 'components/Stories/RemoveIgnore.json';
+import removeIgnoreData from '../Stories/RemoveIgnore.json';
 
 
 function RemoveActivity(props) {
@@ -54,6 +54,7 @@ function RemoveActivity(props) {
 		// 	document.getElementById('transition').classList.remove('in-range');
 		// }
 	}
+	
 	const objectList = (Object.keys(removeIgnoreData)).map((object, i) => <ModalCards int={i} key={i} object={object} user={user}>
 
 	</ModalCards>)
@@ -89,6 +90,15 @@ function ModalCards(props) {
 	const objectData = removeIgnoreData[object]
 	const trash = useRef(null);
 
+	useEffect(() => {
+		trash.current.focus();
+	});
+
+	function randomPx() {
+		let px = Math.floor((Math.random() * 250) + 50);
+		return px;
+	}
+
 	const isInRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
 			return true
@@ -108,8 +118,8 @@ function ModalCards(props) {
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
-		setXPosition(Math.random() * 2000)
-		setYPosition(Math.random() * 100)
+		setXPosition(randomPx())
+		setYPosition(randomPx())
 	}
 
 	const onClickRemove = () => {
@@ -149,14 +159,14 @@ function ModalCards(props) {
 
 								<ModalRowText className='row model-info modal-video-content mt-1'>
 									<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
-									{(textResult === undefined) && <btn className="removebtn" onClick={onClickRemove}>Remove from Beach</btn>}
-									{(textResult === undefined) && <btn className="ignorebtn" onClick={onClickIgnore}>Ignore</btn>}
+									{(textResult === undefined) && <button className="removebtn" onClick={onClickRemove}>Remove from Beach</button>}
+									{(textResult === undefined) && <button className="ignorebtn" onClick={onClickIgnore}>Ignore</button>}
 									<div />
 									<div className="container text-container">
 										<p className="post">
 											{/* {textResult} */}
 											{(correctAnswer &&
-												<p><span className='text-success fw-bold'>Correct!</span> {textResult}</p>) || (correctAnswer !== undefined && <p><span className='text-danger fw-bold'>Uh Oh!</span> {textResult}</p>)}
+												<span className='text-success fw-bold'>Correct! {textResult}</span>) || (correctAnswer !== undefined && <span className='text-danger fw-bold'>Uh Oh! {textResult}</span>)}
 										</p>
 									</div>
 								</ModalRowText>
