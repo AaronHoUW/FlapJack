@@ -71,7 +71,7 @@ function Home() {
                         solve them. Join in and have fun while helping to protect our oceans!
                     </IntroDescription>
                     <MoreInfo>
-                        <IntroButton onClick={() => navigate('/preface')}>Play Now!</IntroButton>
+                        <IntroButton onClick={() => navigate('/levels')}>Play Now!</IntroButton>
                         <ParentButton onClick={() => navigate('/parents')}>
                             <div>
                                 <p>Are you a Parent?</p>

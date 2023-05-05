@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
     IntroContainer,
@@ -17,6 +18,7 @@ import {
     LearnDescription,
     CardsContainer,
     CardContainer,
+    ResourceText,
 } from './styles.tsx';
 
 import {
@@ -27,6 +29,7 @@ import {
 import { AboutSection } from '../About/styles.tsx';
 
 function Parents() {
+    const navigate = useNavigate();
     return (
         <>
             <IntroContainer>
@@ -55,6 +58,7 @@ function Parents() {
                         </HelpText>
                     </Help>
                 </AboutSection>
+                <div></div>
                 <LearnText>
                     <LearnTitle>What will my child learn using Marine Rescue?</LearnTitle>
                     <LearnDescription>
@@ -94,19 +98,23 @@ function Parents() {
                             </p>
                         </div>
                     </CardContainer>
+                    <CardContainer>
+                        <img src='./imgs/real-world-application.png' />
+                        <div>
+                            <h4>Real World Application</h4>
+                            <p>
+                                Your child will watch videos that connect what they are learning about regarding marine life and pollution to real life.
+                            </p>
+                        </div>
+                    </CardContainer>
                 </CardsContainer>
             </HelpContainer>
 
             <LearnContainer>
-                <CardContainer>
-                    <img src='./imgs/real-world-application.png' />
-                    <div>
-                        <h4>Real World Application</h4>
-                        <p>
-                            Your child will watch videos that connect what they are learning about regarding marine life and pollution to real life.
-                        </p>
-                    </div>
-                </CardContainer>
+                <ResourceText>
+                    <h2>Want to see information resources that helped us write the content for this game?</h2>
+                    <button onClick={() => navigate('/resources')}>Visit the Resources Page</button>
+                </ResourceText>
             </LearnContainer>
             <FooterContainer>
                 <FooterText>

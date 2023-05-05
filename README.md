@@ -2,6 +2,8 @@
 
 FlapJack is designing and developing a web app to assist in the education of children ages 8 to 11. We want to develop curiosity and awareness in children at a young age about marine life and human impacts, as well as help them learn in a fun and meaningful way. FlapJack will utilize research, game development, and game design to provide an educational resource for students, teachers, and parents. This project is part of the University of Washington's Informatics Capstone for Winter and Spring 2023.
 
+![Marine Rescue: The Sea-quel](/my-app/public/imgs/Marine_Rescue_The_Sea-quel_Logo.png)
+
 ## Contact Information
 - Jun Nguyen - Project Manager, Software Engineer, Character & Assets Artist, Graphic Designer ([GitHub](https://github.com/soshikun), [LinkedIn](https://www.linkedin.com/in/stephanie-nguyen-4910411aa/))
 - Delaney Edwards - UX Designer, Writer, Environment Artist ([GitHub](https://github.com/delaneyedwards), [LinkedIn](https://www.linkedin.com/in/delaneyledwards/))
