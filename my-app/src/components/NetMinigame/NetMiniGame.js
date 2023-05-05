@@ -148,6 +148,19 @@ function NetMiniGame(props) {
 		return playerCorners.length >= 1;
 	}
 
+	function grabObstaclePoistion() {
+		const squareX = square.current.offsetLeft + (square.current.width / 2)
+		const squareY = square.current.offsetTop + (square.current.height / 2)
+		return ({
+			x: squareX,
+			y: squareY,
+			leftEdge: squareX - (square.current.width / 2),
+			rightEdge: squareX + (square.current.width / 2),
+			topEdge: squareY - (square.current.height / 2),
+			bottomEdge: squareY + (square.current.height / 2)
+		})
+	}
+
 	const removeNet = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
 			event.target.classList.add('hidden');
@@ -173,6 +186,7 @@ function NetMiniGame(props) {
 
 			square.current.focus();
 			document.getElementById('square').classList.remove('hidden');
+
 			const squareX = square.current.offsetLeft + (square.current.width / 2)
 			const squareY = square.current.offsetTop + (square.current.height / 2)
 			setSquarePoints({
@@ -270,6 +284,8 @@ function NetMiniGame(props) {
 		</>
 	);
 }
+
+
 
 export function ModalCards(props) {
 	const {pageInfo, page, loadNextModal, setIsGameComplete} = props
