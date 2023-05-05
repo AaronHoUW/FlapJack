@@ -134,6 +134,16 @@ export const FeatureContainer = styled.div`
         justify-content: center;
         gap: 20px;
     }
+
+    .gifs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        img {
+            width: 30%;
+        }
+    }
 `;
 
 export const StatusContainer = styled.div`
