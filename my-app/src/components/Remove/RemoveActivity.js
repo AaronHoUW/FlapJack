@@ -16,11 +16,13 @@ import importData from './removedata.json'
 
 
 function RemoveActivity(props) {
-
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
 	const [trashRemove, setTrashRemove] = useState(0);
+	const [correctCount, setCorrectCount] = useState(0)
+	const [randomizeTtash, setReandomizeTrash] = useState(Object.keys(importData))
+
 	const trash = useRef(null);
 
 
@@ -49,7 +51,12 @@ function RemoveActivity(props) {
 
 	useEffect(() => {
 		user.current.focus()
-	}, [])
+		setReandomizeTrash(shuffle(Object.keys(importData)))
+	}, [shuffle])
+
+	if(correctCount === 1) {
+		document.getElementById("load-modal-complete").click();
+	}
 
 	function checkWithinRange() {
 		// if (Math.sqrt((user.current.xAxis - fish.current.xAxis) ** 2 + (user.current.yAxis - fish.current.yAxis) ** 2) <= 400) {
@@ -58,13 +65,36 @@ function RemoveActivity(props) {
 		// 	document.getElementById('transition').classList.remove('in-range');
 		// }
 	}
-	const objectList = (Object.keys(importData)).map((object, i) => <ModalCards int={i} key={i} object={object} user={user}>
+	const objectList = randomizeTtash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setCorrectCount} correctCount={correctCount}>
 
 	</ModalCards>)
 
 	return (
 		<div>
+			<a id="load-modal-complete" data-bs-toggle="modal" data-bs-target="#modal-99-Backdrop" />
+			<div className="modal fade" id="modal-99-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				{/* Pancake Image */}
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5" id="staticBackdropLabel">{"INSERT TITLE HERE"}</h1>
+							</div>
+							<div className='row model-info'>
+								<p className='modal-body'>{"INSERT STUFF IN HERE"}</p>
+							</div>
+							<div className='modal-buttons'>
+								{/* <button className='modal-continue' type="button" data-bs-dismiss="modal">
+									<img className='modal-button-img' />
+								</button> */}
+								<button className='next' type="button" data-bs-dismiss="modal">Next</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<Background className='remove-area' onClick={() => user.current.focus()}>
+				<span className="badge text-bg-secondary net-counter">Object Counter: {correctCount}</span>
 				{/* User */}
 				<User
 					style={userPlacement}
@@ -96,7 +126,10 @@ function ModalCards(props) {
 	const fish = useRef(null);
 	const [displayButton, setDisplayButton] = useState(true);
 	const [trashRemove, setTrashRemove] = useState(0);
+	
+	const [solved, setSolved] = useState(false)
 
+	const {setCorrectCount, correctCount} = props;
 
 	const isInRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
@@ -114,17 +147,8 @@ function ModalCards(props) {
 	}
 
 	const removeTrash = (event, targetID) => {
-		// console.log("THIS IS CLICK")
-		// console.log(targetID)
-		// console.log(user)
-		// console.log(event)
-		if (isInRange(event)) {
-			// console.log(targetID, event)
+		if (isInRange(event), !solved) {
 			loadModal();
-			// event.target.classList.add('hidden');
-			// setTrashRemove(trashRemove + 1);
-			// console.log(document.getElementById(targetID))
-			// document.getElementById(targetID).style.visibility = "visable";
 		} 
 	}
 
@@ -134,16 +158,19 @@ function ModalCards(props) {
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
-		setXPosition(Math.random() * 2000)
-		setYPosition(Math.random() * 100)
+		setXPosition((Math.random() * 250) + 50)
+		setYPosition((Math.random() * 250) + 50)
 	}
 
 	const onClickRemove = () => {
 		setImageResult(objectData.image)
 		if (objectData.remove) {
+			setCorrectCount(correctCount + 1)
 			setTextResult(objectData.correct)
 			document.getElementById("trash-image-" + int).classList.add('hidden');
 			setCorrectAnswer(true)
+			setSolved(true)
+			
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -156,6 +183,8 @@ function ModalCards(props) {
 		if (!objectData.remove) {
 			setTextResult(objectData.correct)
 			setCorrectAnswer(true)
+			setCorrectCount(correctCount + 1)
+			setSolved(true)
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -198,7 +227,8 @@ function ModalCards(props) {
 	);
 };
 
-
-
+function shuffle(array) {
+	return array.sort(() => Math.random() - .5);
+}
 
 export default RemoveActivity;
