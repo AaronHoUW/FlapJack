@@ -135,10 +135,11 @@ function NetMiniGame(props) {
 
 	function checkObstacle(newPlayerCords) {
 		// Corners
+
 		const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
+			console.log(grabObstaclePoistion(square))
 			const newCorners = { x: newPlayerCords.xPosition + (75 * cords[0]), y: newPlayerCords.yPosition - (75 * cords[1]) }
 			// console.log(newCorners);
-			console.log((squarePoints.leftEdge <= newCorners.x))			
 			return (
 				(squarePoints.leftEdge <= newCorners.x && 
 				newCorners.x <= squarePoints.rightEdge) &&
@@ -148,16 +149,16 @@ function NetMiniGame(props) {
 		return playerCorners.length >= 1;
 	}
 
-	function grabObstaclePoistion() {
-		const squareX = square.current.offsetLeft + (square.current.width / 2)
-		const squareY = square.current.offsetTop + (square.current.height / 2)
+	function grabObstaclePoistion(refObject) {
+		const objectX = refObject.current.offsetLeft + (refObject.current.width / 2)
+		const objectY = refObject.current.offsetTop + (refObject.current.height / 2)
 		return ({
-			x: squareX,
-			y: squareY,
-			leftEdge: squareX - (square.current.width / 2),
-			rightEdge: squareX + (square.current.width / 2),
-			topEdge: squareY - (square.current.height / 2),
-			bottomEdge: squareY + (square.current.height / 2)
+			x: objectX,
+			y: objectY,
+			leftEdge: objectX - (refObject.current.width / 2),
+			rightEdge: objectX + (refObject.current.width / 2),
+			topEdge: objectY - (refObject.current.height / 2),
+			bottomEdge: objectY + (refObject.current.height / 2)
 		})
 	}
 
