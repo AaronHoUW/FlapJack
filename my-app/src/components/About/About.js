@@ -226,6 +226,7 @@ const About = () => {
                             </div>
                             <RoleContainer>
                                 <div>Software Engineer</div>
+                                <div>Main Game Developer</div>
                             </RoleContainer>
                             <p>
                                 Aaron is a senior in Informatics, who wants to be a software developer. In this project, Aaron was in charge of
