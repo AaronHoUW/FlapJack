@@ -679,7 +679,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "shawnBeach2",
-    "nextScene": "animalImpactTrash2",
+    "nextScene": "shawnCardGame2",
     "baseFrame": [
       {
         "type": "sprite",
@@ -727,7 +727,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "beach-level",
     "previousScene": "shawnCardGame2",
-    "nextScene": "quiz", // quiz: shawnQuestion3
+    "nextScene": "shawnQuestion3",
     "baseFrame": [
       {
         "type": "sprite",
