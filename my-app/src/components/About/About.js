@@ -183,9 +183,10 @@ const About = () => {
                             <p>
                                 Jun is a senior in Informatics and a software engineer at the Pacific Northwest National Laboratory
                                 (PNNL). They created the visual novel components and paths, including the preface, map quiz, keywords,
-                                choice scenes, card game, and linking the navigation to other scenes. With no prior experience doing digital
-                                art nor project management, they started learning how to draw and do project manager tasks at the start of the
-                                project. They enjoy music production, reading webtoons and manga, and playing a variety of gacha games.
+                                choice scenes, card game, and linking the navigation to other scenes. They also handled the styling and
+                                animation of the website. With no prior experience doing digital art nor project management, they started
+                                learning how to draw and do project manager tasks at the start of the project. They enjoy music production,
+                                reading webtoons and manga, and playing a variety of gacha games.
                             </p>
                         </div>
                     </MeetContainer>
