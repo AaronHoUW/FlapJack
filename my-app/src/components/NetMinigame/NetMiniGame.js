@@ -300,7 +300,7 @@ export function ModalCards(props) {
 							</div>}
 
 							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
-								<input type='textarea' height={5}/>
+								<textarea name="paragraph_text" cols="50" rows="10"></textarea>
 							</div>}
 							<div className='modal-buttons'>
 								{pageInfo.type !== "last" && <button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
