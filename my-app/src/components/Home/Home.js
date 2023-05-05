@@ -71,7 +71,7 @@ function Home() {
                         solve them. Join in and have fun while helping to protect our oceans!
                     </IntroDescription>
                     <MoreInfo>
-                        <IntroButton onClick={() => navigate('/preface')}>Play Now!</IntroButton>
+                        <IntroButton onClick={() => navigate('/levels')}>Play Now!</IntroButton>
                         <ParentButton onClick={() => navigate('/parents')}>
                             <div>
                                 <p>Are you a Parent?</p>
@@ -138,8 +138,8 @@ function Home() {
                     <LearnButton onClick={() => navigate('/parents')}>Learn More</LearnButton>
                 </LearnText>
                 <IntroSprites>
-                    <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' className='pancake' />
-                    <img src='./sprites/sprite-user-placeholder.png' alt='sprite of the user' className='user' />
+                    <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' className='pancake-home sprite-normal' />
+                    <img src='./sprites/sprite-user-placeholder.png' alt='sprite of the user' className='user sprite-normal' />
                 </IntroSprites>
             </LearnContainer>
 

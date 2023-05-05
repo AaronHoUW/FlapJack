@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
@@ -10,7 +10,6 @@ import Resources from './components/Resources/Resources';
 import EditorPage from './components/EditorPage/EditorPage';
 import Levels from './components/Levels/Levels';
 
-import Intro from './components/VisualNovel/Intro';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import WhaleMinigame from './components/WhaleMinigame/WhaleMinigame';
 import Tutorial from './components/Tutorial/Tutorial';
@@ -30,7 +29,6 @@ import LEVEL1 from './components/Stories/Level1';
 import LEVEL2 from './components/Stories/Level2';
 import LEVEL3 from './components/Stories/Level3';
 
-
 function App() {
 	const [currentLevel, setCurrentLevel] = useState(1);
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
@@ -40,7 +38,7 @@ function App() {
 	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
-	const [levelOnePath, setLevelOnePath] = useState()
+	const [levelOnePath, setLevelOnePath] = useState();
 
 	return (
 		<div className='page-container'>
@@ -96,12 +94,6 @@ function App() {
 					<Route path='/seaguide' element={
 						<>
 							<SeaGuide isSeaGuide={isSeaGuide} setIsSeaGuide={setIsSeaGuide} />
-						</>
-					} />
-					<Route path='/preface' element={
-						<>
-							<Intro />
-							<NavLink className='exit-play' to='/'>Exit</NavLink>
 						</>
 					} />
 					<Route path='level1' element={
