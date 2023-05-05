@@ -15,7 +15,11 @@ function Navbar() {
             <NavContainer>
                 <LogoContainer>
                     <Link to='/'>
-                        <img src='./imgs/MRSQ_Logo.svg' height={75} />
+                        <img src='./imgs/Marine_Rescue_The_Sea-quel.svg' height={75} />
+                        <div>
+                            <h1>Marine Rescue</h1>
+                            <h3>The Sea-quel</h3>
+                        </div>
                     </Link>
                 </LogoContainer>
                 <ListContainer>
