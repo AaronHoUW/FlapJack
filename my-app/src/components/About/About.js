@@ -115,10 +115,10 @@ const About = () => {
                                     the debris that the whale has eaten.
                                 </p>
                             </div>
-                            <div>
+                            <div className="gifs">
                                 <img src='./imgs/net-game.gif' alt='Net mini-game' />
-                                <img />
-                                <img />
+                                <img src='./imgs/trash-game.gif' alt='Trash mini game' />
+                                <img src='./imgs/whale-game.gif' aalt='Whale mini game' />
                             </div>
                         </FeatureContainer>
                     </AboutSection>
