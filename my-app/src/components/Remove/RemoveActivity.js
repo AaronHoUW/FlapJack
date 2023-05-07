@@ -63,7 +63,7 @@ function RemoveActivity(props) {
 		setReandomizeTrash(shuffle(Object.keys(RemoveIgnore)))
 	}, [shuffle])
 
-	if(lastResult&&correctCount === 3) {
+	if(lastResult&&correctCount === 10) {
 		document.getElementById("load-modal-100").click();
 	}
 
@@ -182,7 +182,7 @@ function ModalCards(props) {
 	const closeModal = () => {
 		setTextResult(); 
 		setCorrectAnswer();
-		if (correctCount === 3) {
+		if (correctCount === 10) {
 			setLastResult(true)
 		}
 		
