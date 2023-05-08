@@ -11,6 +11,33 @@ interface Props {
     alt: string;
 }
 
+export const PointsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+
+    div {
+        background-color: lightgrey;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Mulish';
+        border-radius: 4px;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+
+        P {
+            margin: 0;
+        }
+    }
+`;
+
 export const Trash = styled.img<Props>`
     position: relative;
     animation: MoveUpDown 1s linear infinite;
@@ -95,13 +122,7 @@ export const ChoiceImages = styled.img`
 `;
 
 export const NextButton = styled.button`
-    position: absolute;
-    margin: 20px;
-    bottom: -134px;
-    right: -285S;
-    
     padding: 12px 24px;
-    
     border: none;
     background: #FFFFFF;
     border-radius: 20px;
@@ -113,6 +134,7 @@ export const NextButton = styled.button`
     font-weight: 400;
     font-size: 30px;
 `;
+
 export const Background = styled.div`
     width: 100%;
     background-image: url('./sprites/bg-beach-level.png');
