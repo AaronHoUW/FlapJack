@@ -15,7 +15,6 @@ import TERMS from './Terms.js';
 
 function VisualNovel(props) {
     const [loadGame, setLoadGame] = useState(false);
-    const [sceneState, setSceneState] = useState("");
     const {
         level,
         isSeaGuide,
@@ -24,7 +23,6 @@ function VisualNovel(props) {
         setIsGameComplete,
         isQuiz,
         setIsQuiz,
-        questionNumber,
         setQuestionNumber,
         levelOnePath,
         setLevelOnePath,
@@ -32,7 +30,6 @@ function VisualNovel(props) {
     } = props;
     let currentScene = level['pancakeIntro'];
     let dialoguePosition = 0;
-    let correctCount = 0;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,7 +38,6 @@ function VisualNovel(props) {
             currentScene = level['shawnIntro'];
             buildDialogue();
         } else if (isQuiz) {
-            console.log(levelOnePath)
             clearSprites();
             if(levelOnePath === "animalImpactTrash1") {
                 currentScene = level['shawnQuestion1'];
@@ -589,13 +585,11 @@ function VisualNovel(props) {
                                 });
                             });
                         } else if (currentScene.nextScene === 'minigame') {
-                            navigate('/play');
+                            navigate('/play-seagull');
                         } else if (currentScene.nextScene === 'end') {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
-                            // setSceneState(currentScene.nextScene);
-                            console.log(currentScene);
                             setLevelOnePath(currentScene.previousScene);
                             setQuestionNumber(3);
                             setIsQuiz(true);

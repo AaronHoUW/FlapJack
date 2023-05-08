@@ -1,23 +1,34 @@
 import { useEffect } from "react";
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { useRef } from "react";
+
 import {
 	User,
 	ScreenModal,
 	ModalRowText,
 	ModalContent,
-	Background
-
+	Background,
+	NextButton,
+	PointsContainer
 } from './styles.tsx';
-import removeIgnoreData from '../Stories/RemoveIgnore.json';
-
+import RemoveIgnore from '../Stories/RemoveIgnore.json';
+import postRemoveDialogue from '../Stories/postRemoveDialogue.json';
 
 function RemoveActivity(props) {
-
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
 	const [yAxis, setYAxis] = useState(100);
+	//correct count of trash picked up
+	const [correctCount, setCorrectCount] = useState(0);
+	// randomize trash placement from json file
+	const [randomizeTtash, setReandomizeTrash] = useState(Object.keys(RemoveIgnore))
+	// loads and allows for next page video modal to appear
+	const [page, setPage] = useState(100);
+	// allows for last trash text result explanation to appear before loading video page modals
+	const [lastResult, setLastResult] = useState(false);
+
+
 	const trash = useRef(null);
 
 
@@ -45,23 +56,33 @@ function RemoveActivity(props) {
 
 	useEffect(() => {
 		user.current.focus()
-	}, []);
+		setReandomizeTrash(shuffle(Object.keys(RemoveIgnore)))
+	}, [shuffle])
+
+	if (lastResult && correctCount === 10) {
+		document.getElementById("load-modal-100").click();
+	}
 
 	function checkWithinRange() {
-		// if (Math.sqrt((user.current.xAxis - fish.current.xAxis) ** 2 + (user.current.yAxis - fish.current.yAxis) ** 2) <= 400) {
-		// 	document.getElementById('transition').classList.add('in-range');
-		// } else {
-		// 	document.getElementById('transition').classList.remove('in-range');
-		// }
+
 	}
-	
-	const objectList = (Object.keys(removeIgnoreData)).map((object, i) => <ModalCards int={i} key={i} object={object} user={user}>
-
+	const objectList = randomizeTtash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setCorrectCount} correctCount={correctCount} setLastResult={setLastResult}>
 	</ModalCards>)
+	const loadNextPage = () => {
+		let newPage = page - 1;
+		setPage(newPage);
+		document.getElementById("load-modal-" + (page - 1)).click()
+	}
+	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage}>
 
+	</VidCards>)
 	return (
 		<div>
+			{pageList}
 			<Background className='remove-area' onClick={() => user.current.focus()}>
+				<PointsContainer>
+					<div><p>Correct: {correctCount}</p></div>
+				</PointsContainer>
 				{/* User */}
 				<User
 					style={userPlacement}
@@ -81,23 +102,25 @@ function RemoveActivity(props) {
 }
 
 function ModalCards(props) {
+	// text result is the explanation of the remove/ignore
 	const [textResult, setTextResult] = useState()
+	// Image result is the image of the trash
 	const [imageResult, setImageResult] = useState()
+	// xPostion of the randomized trash placement
 	const [xPosition, setXPosition] = useState()
+	// yPostion of the randomized trash placement
 	const [yPosition, setYPosition] = useState()
+	// correct answer of choosing remove or ignore, based on json data choices
 	const [correctAnswer, setCorrectAnswer] = useState()
+
+
 	const { object, int, user } = props;
-	const objectData = removeIgnoreData[object]
-	const trash = useRef(null);
+	const objectData = RemoveIgnore[object]
+	const item = useRef(null);
 
-	useEffect(() => {
-		trash.current.focus();
-	});
+	const [solved, setSolved] = useState(false)
 
-	function randomPx() {
-		let px = Math.floor((Math.random() * 250) + 50);
-		return px;
-	}
+	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
 		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
@@ -106,8 +129,10 @@ function ModalCards(props) {
 		return false
 	}
 
-	const removeTrash = (event) => {
-		if (isInRange(event)) {
+
+
+	const removeTrash = (event, targetID) => {
+		if (isInRange(event), !solved) {
 			loadModal();
 		}
 	}
@@ -118,16 +143,19 @@ function ModalCards(props) {
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
-		setXPosition(randomPx())
-		setYPosition(randomPx())
+		setXPosition((Math.random() * 250) + 50)
+		setYPosition((Math.random() * 250) + 50)
 	}
 
 	const onClickRemove = () => {
 		setImageResult(objectData.image)
 		if (objectData.remove) {
+			setCorrectCount(correctCount + 1)
 			setTextResult(objectData.correct)
 			document.getElementById("trash-image-" + int).classList.add('hidden');
 			setCorrectAnswer(true)
+			setSolved(true)
+
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -140,17 +168,28 @@ function ModalCards(props) {
 		if (!objectData.remove) {
 			setTextResult(objectData.correct)
 			setCorrectAnswer(true)
+			setCorrectCount(correctCount + 1)
+			setSolved(true)
 		}
 		else {
 			setTextResult(objectData.incorrect)
 			setCorrectAnswer(false)
 		}
 	}
+	const closeModal = () => {
+		setTextResult();
+		setCorrectAnswer();
+		if (correctCount === 10) {
+			setLastResult(true)
+		}
+
+	}
 	return (
 		<>
-			<img className='trash' onClick={(event)=> removeTrash(event, "modal-remove-" + int)}  style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={trash} src='./sprites/sprite-trash.png'></img>
-			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-`+int+`-Backdrop`} >
-				<ScreenModal className="modal" id={`modal-`+int+`-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			{/* <a  /> */}
+			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
+			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
+				<ScreenModal className="modal" id={`modal-` + int + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div className="modal-dialog modal-lg modal-dialog-centered">
 						<img className='pancake' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
 						<ModalContent className="modal-content">
@@ -166,11 +205,11 @@ function ModalCards(props) {
 										<p className="post">
 											{/* {textResult} */}
 											{(correctAnswer &&
-												<span className='text-success fw-bold'>Correct! {textResult}</span>) || (correctAnswer !== undefined && <span className='text-danger fw-bold'>Uh Oh! {textResult}</span>)}
+												<p><span className='text-success fw-bold'>Correct!</span> {textResult}</p>) || (correctAnswer !== undefined && <p><span className='text-danger'>Uh Oh!</span> {textResult}</p>)}
 										</p>
 									</div>
 								</ModalRowText>
-								<button className='next' type="button" data-bs-dismiss="modal" onClick={() => {setTextResult(); setCorrectAnswer()}}>Next</button>
+								<button className='next' type="button" data-bs-dismiss="modal" onClick={closeModal}>Next</button>
 							</div>
 						</ModalContent>
 					</div>
@@ -180,7 +219,59 @@ function ModalCards(props) {
 	);
 };
 
+function shuffle(array) {
+	return array.sort(() => Math.random() - .5);
+}
 
+export function VidCards(props) {
+	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
+	const navigate = useNavigate();
+	return (
+		<>
+			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img src='./sprites/sprite-pancake-flapjack-octopus.png' className='pancake-modal' />
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5" id="staticBackdropLabel">{pageInfo.title}</h1>
+							</div>
 
+							{(pageInfo.type === "text" || pageInfo.type === "last") && <div className='row model-info'>
+								<p className='modal-body'>{pageInfo.body}</p>
+							</div>}
+
+							{pageInfo.type === "text-list" && <div className='row model-info'>
+								<p className='modal-body'>{pageInfo.body}</p>
+								<p className='modal-body'>{pageInfo["body-2"]}</p>
+							</div>}
+
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+								<iframe width="100%" height="100%" src={pageInfo.video} />
+							</div>}
+
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+								<textarea rows={3} placeholder="Type your answer here..." />
+							</div>}
+							<div className='modal-buttons'>
+								{pageInfo.type !== "last" && <NextButton className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									Continue
+								</NextButton>}
+
+								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
+									navigate('/levels');
+									setIsGameComplete(true);
+								}}>
+									Finish
+								</NextButton>}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	)
+}
 
 export default RemoveActivity;
