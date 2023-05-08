@@ -73,3 +73,28 @@ export const NextButton = styled.button`
     font-weight: 400;
     font-size: 30px;
 `;
+
+export const PointsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+
+    div {
+        background-color: lightgrey;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Mulish';
+        border-radius: 4px;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+
+        P {
+            margin: 0;
+        }
+    }
+`;

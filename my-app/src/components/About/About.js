@@ -39,7 +39,7 @@ const About = () => {
                     <p>Empowering the next generation to save our oceans through fun and educational games!</p>
                 </IntroHeader>
                 <IntroPopUp>
-                    <IntroTitle>What is the point of Marine Rescue?</IntroTitle>
+                    <IntroTitle>What is Marine Rescue for?</IntroTitle>
                     <IntroDescription>
                         Our research showed that there is not enough emphasis on learning about the ocean in
                         and outside the classroom. This, combined with rising concerns about climate change,
@@ -85,10 +85,9 @@ const About = () => {
                             <div>
                                 <h3>Meet Marine Animals</h3>
                                 <p>
-                                    Users will learn about local PNW marine life by talking to characters such as salmon, whales, and seagulls.
-                                    Through these interactions, the user will build empathy for the problems that these animals are facing. For example,
-                                    users will meet Shawn the Seagull, who’s feet are caught in some soda can rings, making it difficult for him to walk
-                                    around the beach. Through their conversation, users will learn about Shawn’s concerns about debris on the beach.
+                                    Users learn about PNW marine life by interacting with characters like salmon, whales, and seagulls, building
+                                    empathy for their issues. For example, they meet Shawn the Seagull with feet caught in soda can rings, discussing
+                                    concerns about debris on the beach.
                                 </p>
                             </div>
                         </FeatureContainer>
@@ -96,9 +95,8 @@ const About = () => {
                             <div>
                                 <h3>Test Your Scuba Knowledge</h3>
                                 <p>
-                                    Throughout the visual novel, where users talk to different marine animals, they will also be tested on how well
-                                    they pay attention to the conversations. This encourages the users to be engaged while they read, and also presents
-                                    an interactive challenge between long reading segments, which can get boring for the younger audience.
+                                    The visual novel quizzes users on their attention to conversations with marine animals, promoting engagement
+                                    during long reading segments and adding an interactive challenge for younger audiences.
                                 </p>
                             </div>
                             <img src='./imgs/feature2.png' alt='Test your knowledge feature' />
@@ -107,12 +105,8 @@ const About = () => {
                             <div>
                                 <h3>Play Mini-Games to Solve Marine Problems</h3>
                                 <p>
-                                    After talking to each of the marine animals, the user will be able to play mini-games that address some of the
-                                    issues that were brought up in the conversation. In the first level, the user will find objects on the beach and
-                                    identifying whether they are trash to be removed, or parts of the marine ecosystem, to be left alone. In the second
-                                    level, the user will swim around obstacles in order to pick up ghost nets that are trapping fishing. In the third
-                                    level, both of these game modes will be combined as the user swims into the belly of a whale, to empty out all of
-                                    the debris that the whale has eaten.
+                                    After talking to marine animals, users play mini-games addressing raised issues. Levels include identifying
+                                    beach trash, swimming through obstacles to collect ghost nets, and removing debris from a whale's stomach.
                                 </p>
                             </div>
                             <div className="gifs">
@@ -133,7 +127,7 @@ const About = () => {
                                 <IntroTitle id="learn-more">Learn more about this project!</IntroTitle>
                                 <IntroDescription>
                                     Marine Rescue was created as a capstone project for the University of Washington Information School, in Winter & Spring quarter of 2023.
-                                    This is the second iteration of Marine Rescue based off of a previous groups project, which can be visited here.
+                                    This is the second iteration of Marine Rescue based off of a previous groups project, which can be <a href='https://marinerescue.app/'>visited here</a>.
                                     <br></br>
                                     <br></br>
                                     The presentation gives an overview of our process of creating Marine Rescue.

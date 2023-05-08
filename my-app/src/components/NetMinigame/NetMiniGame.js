@@ -5,7 +5,8 @@ import {
 	Net,
 	Obstacle,
 	Whale,
-	NextButton
+	NextButton,
+	PointsContainer,
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
@@ -211,7 +212,9 @@ function NetMiniGame(props) {
 		<>
 			{DisplayModalCards}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
-				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
+				<PointsContainer>
+					<div><p>Net Removed: {netRemove}</p></div>
+				</PointsContainer>
 				{/* User */}
 				{(level === 3) && <Whale
 					src={'/sprites/sprite-wendy-whale.png'}
