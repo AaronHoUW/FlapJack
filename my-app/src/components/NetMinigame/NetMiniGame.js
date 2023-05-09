@@ -25,6 +25,7 @@ function NetMiniGame(props) {
 	const [netRemove, setNetRemove] = useState(0);
 	//Obstacle
 	const [squarePoints, setSquarePoints] = useState({})
+	const [obstacleList, setObstacleList] = useState([])
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -134,18 +135,24 @@ function NetMiniGame(props) {
 	}
 
 	function checkObstacle(newPlayerCords) {
+		if (obstacleList.length === 0) {
+			return false
+		}
 		// Corners
-
 		const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
-			console.log(grabObstaclePoistion(square))
-			const newCorners = { x: newPlayerCords.xPosition + (75 * cords[0]), y: newPlayerCords.yPosition - (75 * cords[1]) }
-			// console.log(newCorners);
-			return (
-				(squarePoints.leftEdge <= newCorners.x && 
-				newCorners.x <= squarePoints.rightEdge) &&
-				(newCorners.y <= squarePoints.bottomEdge) && 
-				(squarePoints.topEdge <= newCorners.y))
+			return obstacleList.filter((object) => {
+				console.log(grabObstaclePoistion(object))
+				const newCorners = { x: newPlayerCords.xPosition + (75 * cords[0]), y: newPlayerCords.yPosition - (75 * cords[1]) }
+				// console.log(newCorners);
+				return (
+					(squarePoints.leftEdge <= newCorners.x && 
+					newCorners.x <= squarePoints.rightEdge) &&
+					(newCorners.y <= squarePoints.bottomEdge) && 
+					(squarePoints.topEdge <= newCorners.y)
+				)
+			})
 		})
+		console.log(playerCorners.length)
 		return playerCorners.length >= 1;
 	}
 
@@ -188,6 +195,7 @@ function NetMiniGame(props) {
 			square.current.focus();
 			document.getElementById('square').classList.remove('hidden');
 
+			setObstacleList([square]);
 			const squareX = square.current.offsetLeft + (square.current.width / 2)
 			const squareY = square.current.offsetTop + (square.current.height / 2)
 			setSquarePoints({
