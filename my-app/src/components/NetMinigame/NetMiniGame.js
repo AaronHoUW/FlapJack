@@ -51,25 +51,25 @@ function NetMiniGame(props) {
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.xPosition += 100;
 			if (!checkObstacle(newPlayerCords)) {
-				setXAxis(xAxis + 50)
+				setXAxis(xAxis + 50);
 			}
 		}
 		if (event.key === 'ArrowLeft') {
 			newPlayerCords.xPosition -= 100;
 			if (!checkObstacle(newPlayerCords)) {
-				setXAxis(xAxis - 50)
+				setXAxis(xAxis - 50);
 			}
 		}
 		if (event.key === 'ArrowDown') {
 			newPlayerCords.yPosition += 50;
 			if (!checkObstacle(newPlayerCords)) {
-				setYAxis(yAxis + 50)
+				setYAxis(yAxis + 50);
 			}
 		}
 		if (event.key === 'ArrowUp') {
 			newPlayerCords.yPosition -= 50;
 			if (!checkObstacle(newPlayerCords)) {
-				setYAxis(yAxis - 50)
+				setYAxis(yAxis - 50);
 			}
 		}
 		checkWithinRange();
