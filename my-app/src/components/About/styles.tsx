@@ -108,6 +108,9 @@ export const WhoDetails = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 36px;
+    background: #F7EDE1;
+    border-radius: 20px;
+    padding: 24px;
 `;
 
 export const FeatureContainer = styled.div`
@@ -133,6 +136,22 @@ export const FeatureContainer = styled.div`
         flex-direction: column;
         justify-content: center;
         gap: 20px;
+        background: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+    }
+
+    .gifs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        
+        img {
+            width: 30%;
+        }
     }
 `;
 
@@ -145,6 +164,17 @@ export const StatusContainer = styled.div`
     color: white;
     margin-top: 60px;
     margin-bottom: 60px;
+    
+    div:first-child {
+        background: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+        color: black;
+
+        h2 {
+            color: black;
+        }
+    }
 
     h2 {
         color: white;

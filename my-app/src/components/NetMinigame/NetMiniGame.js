@@ -4,13 +4,12 @@ import {
 	User,
 	Net,
 	Obstacle,
-	Whale
+	Whale,
+	NextButton,
+	PointsContainer,
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
-import continueButton from './images/ContinueButton.png';
-import locationButton from './images/LocationButton.png';
-import finishButton from './images/FinishButton.png';
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -47,9 +46,9 @@ function NetMiniGame(props) {
 			width: user.current.width,
 			height: user.current.height
 		}
-		if(event.key === 'a') {
-			console.log(squarePoints)
-		}
+		// if (event.key === 'a') {
+		// 	console.log(squarePoints)
+		// }
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.xPosition += 100;
 			if (!checkObstacle(newPlayerCords)) {
@@ -70,7 +69,7 @@ function NetMiniGame(props) {
 		}
 		if (event.key === 'ArrowUp') {
 			newPlayerCords.yPosition -= 50;
-			if (!checkObstacle(newPlayerCords) ) {
+			if (!checkObstacle(newPlayerCords)) {
 				setYAxis(yAxis - 50)
 			}
 		}
@@ -180,7 +179,7 @@ function NetMiniGame(props) {
 		if (level === 3) {
 			let newPage = page + 1;
 			setPage(newPage);
-			document.getElementById(`load-modal-`+ (page + 1)).click();
+			document.getElementById(`load-modal-` + (page + 1)).click();
 		} else {
 			loadNextLevel();
 		}
@@ -189,7 +188,6 @@ function NetMiniGame(props) {
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
-			console.log("pass through level 1")
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
 
 			square.current.focus();
@@ -231,20 +229,20 @@ function NetMiniGame(props) {
 		}
 	}
 
-	// console.log(postGameDialogue[level], 'testing');
-
-	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i}/>)
+	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i} />)
 
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
 			{DisplayModalCards}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
-				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
+				<PointsContainer>
+					<div><p>Net Removed: {netRemove}</p></div>
+				</PointsContainer>
 				{/* User */}
 				{(level === 3) && <Whale
 					src={'/sprites/sprite-wendy-whale.png'}
-					/>}
+				/>}
 
 				<User
 					style={userPlacement}
@@ -297,7 +295,7 @@ function NetMiniGame(props) {
 
 
 export function ModalCards(props) {
-	const {pageInfo, page, loadNextModal, setIsGameComplete} = props
+	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
 	const navigate = useNavigate();
 	return (
 		<>
@@ -325,19 +323,19 @@ export function ModalCards(props) {
 							</div>}
 
 							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
-								<textarea name="paragraph_text" cols="50" rows="10"></textarea>
+								<textarea rows={3} placeholder='Type your answer here...' />
 							</div>}
 							<div className='modal-buttons'>
-								{pageInfo.type !== "last" && <button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
-									<img src={continueButton} className='modal-button-img' />
-								</button>}
+								{pageInfo.type !== "last" && <NextButton className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									Continue
+								</NextButton>}
 
-								{pageInfo.type === "last" && <button className='modal-continue' type="button" data-bs-dismiss="modal">
-									{<img src={finishButton} className='modal-button-img' onClick={() => {
-										navigate('/levels');
-										setIsGameComplete(true);
-									}} />}
-								</button>}
+								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
+									navigate('/levels');
+									setIsGameComplete(true);
+								}}>
+									Finish
+								</NextButton>}
 							</div>
 						</div>
 					</div>

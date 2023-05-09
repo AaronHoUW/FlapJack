@@ -13,7 +13,7 @@ import Levels from './components/Levels/Levels';
 import NetMiniGame from './components/NetMinigame/NetMiniGame';
 import WhaleMinigame from './components/WhaleMinigame/WhaleMinigame';
 import Tutorial from './components/Tutorial/Tutorial';
-import Quiz from './components/Quiz/Quiz.js';
+import Quiz from './components/Quiz/Quiz';
 
 import FlapGuide from './components/FlapjackGuide/FlapGuide';
 import SeaGuide from './components/SeagullGuide/SeaGuide';

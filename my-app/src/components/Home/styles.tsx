@@ -63,6 +63,11 @@ export const IntroDescription = styled.p`
     line-height: 25px;
     color: black;
     margin-bottom: 30px;
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
 `;
 
 export const MoreInfo = styled.div`

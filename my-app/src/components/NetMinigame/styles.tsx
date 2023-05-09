@@ -59,3 +59,42 @@ export const Whale = styled.img`
     position: absolute;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 `;
+
+export const NextButton = styled.button`
+    padding: 12px 24px;
+    border: none;
+    background: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
+export const PointsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+
+    div {
+        background-color: lightgrey;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Mulish';
+        border-radius: 4px;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+
+        P {
+            margin: 0;
+        }
+    }
+`;

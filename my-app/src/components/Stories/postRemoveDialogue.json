@@ -1,0 +1,43 @@
+{
+    "1" : {
+        "page-1": {
+            "type": "text",
+            "title": "Great job removing the dangerous debris!",
+            "body" : "That trash is dangerous for animals if they get caught in it or eat it. Its important to leave natural parts of the beach alone, because they are an important part of the ecosystem."
+        },
+        "page-2": {
+            "type": "video",
+            "title": "Watch this video clip to see how animals are impacted by litter that gets thrown into the ocean.",
+            "video" : "https://www.youtube.com/embed/xFPoIU5iiYQ"
+        },
+        "page-3": {
+            "type": "input",
+            "title": "How do you think the trash got into the ocean?"
+        },
+        "page-4": {
+            "type": "input",
+            "title": "What are some ways that the nets and trash were impacting the animals in the ocean?"
+        },
+        "page-5": {
+            "type": "video",
+            "title": "Now that you know the impact trash has on the ocean, there are many things you can do in order to help the animals! Lets see what happens in the video:",
+            "video" : "https://www.youtube.com/embed/xFPoIU5iiYQ"
+        },
+
+        "page-6": {
+            "type": "input",
+            "title": "Although it can be hard to save a whale from a net by yourself, what do you think you can do to prevent ghost nets from hurting marine animals?"
+        },
+        "page-7": {
+            "type": "text-list",
+            "title": "Although it is a big job to clean the entire ocean, you can definitely help keep the animals safe!",
+            "body" : "1. When you visit the beach, pick up trash!",
+            "body-2" : "2. Educate your friends and family about the importance of removing trash from marine environments."
+        },
+        "page-8": {
+            "type": "last",
+            "title": "Great job learning about ghost nets and how you can make an impact on helping many of these marine animals!",
+            "body" : "Lets go explore another marine environment!"
+        }
+    }
+}
