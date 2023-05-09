@@ -25,8 +25,8 @@ function VisualNovel(props) {
         setIsQuiz,
         questionNumber,
         setQuestionNumber,
-        levelOnePath,
-        setLevelOnePath,
+        levelThreePath,
+        setLevelThreePath,
         setCurrentLevel,
         isEnterWhale,
         setIsEnterWhale,
@@ -42,12 +42,9 @@ function VisualNovel(props) {
             currentScene = level['sallyTalking'];
             buildDialogue();
         } else if (isQuiz && !isGameComplete) {
+            // Enter Quiz Here
             clearSprites();
-            if(questionNumber === 2) {
-                currentScene = level['pancakeTalkToSalmon'];
-            } else if (questionNumber === 3) {
-                currentScene = level['sallyTalking2'];
-            }
+            currentScene = level[levelThreePath];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -591,6 +588,14 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
+                            // Enter Quiz Here
+                            setLevelThreePath(currentScene.quizNextScene);
+                            if (currentScene.quizNextScene === "WendyBPathAfterQuiz1") {
+                                setQuestionNumber(5);
+                            } else {
+                                setQuestionNumber(4);
+                            }
+                            // if statement depending on question
                             setIsQuiz(true);
                             navigate('/quiz');
                         } else {

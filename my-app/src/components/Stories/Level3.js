@@ -127,7 +127,8 @@ const LEVEL3 = {
   "wendyAPath": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "wendyAPathAfterQuiz", // quizAPath
+    "quizNextScene": "wendyAPathAfterQuiz",
+    "nextScene": "quiz",
     "baseFrame": [
       {
         "type": "sprite",
@@ -199,7 +200,8 @@ const LEVEL3 = {
   "wendyBPath": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "WendyBPathAfterQuiz1", // quiz 1
+    "quizNextScene": "WendyBPathAfterQuiz1",
+    "nextScene": "quiz",
     "baseFrame": [
       {
         "type": "sprite",
@@ -240,7 +242,8 @@ const LEVEL3 = {
   "WendyBPathAfterQuiz1": {
     "type": "comic",
     "background": "dark-blue",
-    "nextScene": "WendyBPathAfterQuiz2", // quiz 2
+    "quizNextScene": "WendyBPathAfterQuiz2",
+    "nextScene": "quiz", 
     "baseFrame": [
       {
         "type": "sprite",

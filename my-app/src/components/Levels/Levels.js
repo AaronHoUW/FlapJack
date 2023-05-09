@@ -54,7 +54,10 @@ function Levels(props) {
                             <h2 id='last-title' className='first-title'>Level 3: Meet Wendy the Whale</h2>
                             <p id='last-info' className='first-info'> Meet Wendy and learn about the whale and the plastic that they eat. Maybe you can even help get rid of plastic inside the whale’s body!
                             </p>
-                            <LearnButton className="link-button" onClick={() => navigate('/level3')}>Play</LearnButton>
+                            <LearnButton className="link-button" onClick={() => {
+                                setQuestionNumber(4);
+                                navigate('/level3')
+                            }}>Play</LearnButton>
                         </div>
                         <img className='wendy-level' src='./sprites/sprite-wendy-whale.png' alt="Wendy the Whale"></img>
                     </div>

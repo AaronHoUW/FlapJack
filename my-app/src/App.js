@@ -39,6 +39,9 @@ function App() {
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
 	const [levelOnePath, setLevelOnePath] = useState();
+	const [levelThreePath, setLevelThreePath] = useState();
+
+	console.log(levelThreePath, "apps");
 
 	return (
 		<div className='page-container'>
@@ -148,6 +151,8 @@ function App() {
 								setCurrentLevel={setCurrentLevel}
 								isEnterWhale={isEnterWhale}
 								setIsEnterWhale={setIsEnterWhale}
+								levelThreePath={levelThreePath}
+								setLevelThreePath={setLevelThreePath}
 							/>
 						</>
 					} />

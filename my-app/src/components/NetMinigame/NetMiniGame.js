@@ -23,8 +23,9 @@ function NetMiniGame(props) {
 	const [netPlacement3, setNetPlacement3] = useState({});
 	const [netRemove, setNetRemove] = useState(0);
 	//Obstacle
-	const [squarePoints, setSquarePoints] = useState({})
 	const [obstacleList, setObstacleList] = useState([])
+	const [obstaclePosition, setObstaclePosition] = useState({})
+	const [obstaclePosition2, setObstaclePosition2] = useState({})
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -86,7 +87,7 @@ function NetMiniGame(props) {
 	}
 
 	function randomPx() {
-		let px = Math.floor((Math.random() * 250) + 50);
+		let px = Math.floor((Math.random() * 300) + 100);
 		return px;
 	}
 
@@ -96,6 +97,7 @@ function NetMiniGame(props) {
 	const net2 = useRef(null);
 	const net3 = useRef(null);
 	const square = useRef(null);
+	const square1 = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
@@ -111,6 +113,7 @@ function NetMiniGame(props) {
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
 
 		document.getElementById('square').classList.add('hidden');
+		document.getElementById('square1').classList.add('hidden');
 	}, []);
 
 	function checkWithinRange() {
@@ -139,19 +142,19 @@ function NetMiniGame(props) {
 		}
 		// Corners
 		const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
-			return obstacleList.filter((object) => {
-				console.log(grabObstaclePoistion(object))
-				const newCorners = { x: newPlayerCords.xPosition + (75 * cords[0]), y: newPlayerCords.yPosition - (75 * cords[1]) }
+			const matchPoints = obstacleList.filter((object) => {
+				const obstacle = grabObstaclePoistion(object);
+				const newCorners = { x: newPlayerCords.xPosition + (20 * cords[0]), y: newPlayerCords.yPosition - (40 * cords[1]) }
 				// console.log(newCorners);
 				return (
-					(squarePoints.leftEdge <= newCorners.x && 
-					newCorners.x <= squarePoints.rightEdge) &&
-					(newCorners.y <= squarePoints.bottomEdge) && 
-					(squarePoints.topEdge <= newCorners.y)
+					(obstacle.leftEdge <= newCorners.x && 
+					newCorners.x <= obstacle.rightEdge) &&
+					(newCorners.y <= obstacle.bottomEdge) && 
+					(obstacle.topEdge <= newCorners.y)
 				)
 			})
+			return matchPoints.length >= 1;
 		})
-		console.log(playerCorners.length)
 		return playerCorners.length >= 1;
 	}
 
@@ -192,21 +195,18 @@ function NetMiniGame(props) {
 
 			square.current.focus();
 			document.getElementById('square').classList.remove('hidden');
-
 			setObstacleList([square]);
-			const squareX = square.current.offsetLeft + (square.current.width / 2)
-			const squareY = square.current.offsetTop + (square.current.height / 2)
-			setSquarePoints({
-				x: squareX,
-				y: squareY,
-				leftEdge: squareX - (square.current.width / 2),
-				rightEdge: squareX + (square.current.width / 2),
-				topEdge: squareY - (square.current.height / 2),
-				bottomEdge: squareY + (square.current.height / 2)
-			})
 
 		} else if (level === 2) {
+			setNetPlacement({ top: randomPx() + 'px', left: (randomPx() * 3) + 'px' });
+			setNetPlacement2({ top: randomPx() + 'px', left: (randomPx() * 3) + 'px' })
+			setNetPlacement3({ top: randomPx() + 'px', left: (randomPx() * 3)+ 'px' })
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
+			square1.current.focus();
+			document.getElementById('square1').classList.remove('hidden');
+			setObstacleList([square, square1]);
+			setObstaclePosition({ top: randomPx() + 'px', left: randomPx() + 'px' });
+			setObstaclePosition2({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		}
 		if (level < 3) {
 			document.getElementById("play-area").click();
@@ -284,9 +284,15 @@ function NetMiniGame(props) {
 					id='net3'
 				/>
 				<Obstacle
+					style={obstaclePosition}
 					src={'/sprites/sprite-obstacle-log.png'}
 					id='square'
 					ref={square} />
+				<Obstacle
+					style={obstaclePosition2}
+					src={'/sprites/sprite-obstacle-log.png'}
+					id='square1'
+					ref={square1} />
 			</div>
 		</>
 	);
