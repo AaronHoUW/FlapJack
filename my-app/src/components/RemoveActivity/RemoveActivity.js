@@ -33,7 +33,7 @@ function RemoveActivity(props) {
 
 
 	// Change Player's Position
-	const userPlacement = { top: yAxis + 500 + 'px', left: xAxis + 10 + 'px' };
+	const userPlacement = { top: yAxis + 'px', left: xAxis + 10 + 'px' };
 	const navigate = useNavigate();
 	const user = useRef(null);
 
