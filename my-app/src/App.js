@@ -39,6 +39,7 @@ function App() {
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
 	const [levelOnePath, setLevelOnePath] = useState();
+	const [levelThreePath, setLevelThreePath] = useState();
 	const { history } = useLocation();
 
 	const ScrollToTop = () => {
@@ -156,6 +157,8 @@ function App() {
 								setCurrentLevel={setCurrentLevel}
 								isEnterWhale={isEnterWhale}
 								setIsEnterWhale={setIsEnterWhale}
+								levelThreePath={levelThreePath}
+								setLevelThreePath={setLevelThreePath}
 							/>
 						</>
 					} />
