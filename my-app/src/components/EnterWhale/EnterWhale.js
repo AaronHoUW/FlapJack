@@ -70,7 +70,7 @@ function EnterWhale(props) {
 	useEffect(() => {
 		user.current.focus();
         whale.current.focus();
-        setIsEnterWhale(true)
+        setIsEnterWhale(true);
 	}, [isEnterWhale]);
 
 	const handleWithinRange = (event) => {
@@ -109,6 +109,7 @@ function EnterWhale(props) {
         }
 
         if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 150) {
+            setIsEnterWhale(true);
             navigate('/level3');
         } 
     }

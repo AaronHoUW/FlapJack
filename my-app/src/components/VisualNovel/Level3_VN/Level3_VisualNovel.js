@@ -25,8 +25,8 @@ function VisualNovel(props) {
         setIsQuiz,
         questionNumber,
         setQuestionNumber,
-        levelOnePath,
-        setLevelOnePath,
+        levelThreePath,
+        setLevelThreePath,
         setCurrentLevel,
         isEnterWhale,
         setIsEnterWhale,
@@ -43,11 +43,7 @@ function VisualNovel(props) {
             buildDialogue();
         } else if (isQuiz && !isGameComplete) {
             clearSprites();
-            if(questionNumber === 2) {
-                currentScene = level['pancakeTalkToSalmon'];
-            } else if (questionNumber === 3) {
-                currentScene = level['sallyTalking2'];
-            }
+            currentScene = level[levelThreePath];
             buildDialogue();
         } else if (isGameComplete) {
             clearSprites();
@@ -436,8 +432,12 @@ function VisualNovel(props) {
             message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
-        } else if (isQuiz) {
-            message = 'Do you think you could help find out more about the Salmon’s experience of the Elwha? Maybe you can talk to a local Salmon!'
+        } else if (isQuiz && levelThreePath === 'wendyAPathAfterQuiz') {
+            message = 'Some of my other friends in our pod have been doing the same thing and I think it might be what has been making us all feel sick.';
+        } else if (isQuiz && levelThreePath === 'WendyBPathAfterQuiz1') {
+            message = "Since I’m so big, it takes a lot of food to fuel me so that I can swim and have energy. Sometimes it’s hard to find enough food!";
+        } else if (isQuiz && levelThreePath === 'WendyBPathAfterQuiz2') {
+            message = "It’s really starting to weigh me down... And my stomach hurts!";
         } else if (isEnterWhale) {
             message = "Woah! There's a lot of debris and nets in here that Wendy swallowed.";
         }
@@ -578,6 +578,7 @@ function VisualNovel(props) {
                                         setIsGameComplete(false);
                                         navigate('/')
                                     } else if (e.target.getAttribute('key') === 'minigame') {
+                                        setIsQuiz(false);
                                         navigate('/enter-wendy');
                                     } else {
                                         buildDialogue();
@@ -591,6 +592,12 @@ function VisualNovel(props) {
                             setIsGameComplete(false);
                             navigate('/');
                         } else if (currentScene.nextScene === 'quiz') {
+                            setLevelThreePath(currentScene.quizNextScene);
+                            if (currentScene.quizNextScene === "WendyBPathAfterQuiz1") {
+                                setQuestionNumber(5);
+                            } else {
+                                setQuestionNumber(4);
+                            }
                             setIsQuiz(true);
                             navigate('/quiz');
                         } else {
