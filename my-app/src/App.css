@@ -682,6 +682,10 @@ footer {
   height: 300px;
 }
 
+.modal-video-content iframe {
+  height: 500px;
+}
+
 .modal-buttons {
   margin-bottom: 1.3rem;
   margin-top: 1.3rem;

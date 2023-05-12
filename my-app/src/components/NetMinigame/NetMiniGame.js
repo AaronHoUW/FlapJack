@@ -24,8 +24,7 @@ function NetMiniGame(props) {
 	const [netRemove, setNetRemove] = useState(0);
 	//Obstacle
 	const [obstacleList, setObstacleList] = useState([])
-	const [obstaclePosition, setObstaclePosition] = useState({})
-	const [obstaclePosition2, setObstaclePosition2] = useState({})
+	const [obstaclePosition, setObstaclePosition] = useState([])
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -47,34 +46,34 @@ function NetMiniGame(props) {
 			width: user.current.width,
 			height: user.current.height
 		}
-		// if (event.key === 'a') {
-		// 	console.log(squarePoints)
-		// }
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.xPosition += 100;
 			if (!checkObstacle(newPlayerCords)) {
 				setXAxis(xAxis + 50)
+				checkWithinRange(newPlayerCords);
 			}
 		}
 		if (event.key === 'ArrowLeft') {
 			newPlayerCords.xPosition -= 100;
 			if (!checkObstacle(newPlayerCords)) {
 				setXAxis(xAxis - 50)
+				checkWithinRange(newPlayerCords);
 			}
 		}
 		if (event.key === 'ArrowDown') {
 			newPlayerCords.yPosition += 50;
 			if (!checkObstacle(newPlayerCords)) {
 				setYAxis(yAxis + 50)
+				checkWithinRange(newPlayerCords);
 			}
 		}
 		if (event.key === 'ArrowUp') {
 			newPlayerCords.yPosition -= 50;
 			if (!checkObstacle(newPlayerCords)) {
 				setYAxis(yAxis - 50)
+				checkWithinRange(newPlayerCords);
 			}
 		}
-		checkWithinRange();
 	};
 
 	// Create function to grab true XY positions
@@ -96,8 +95,13 @@ function NetMiniGame(props) {
 	const net = useRef(null);
 	const net2 = useRef(null);
 	const net3 = useRef(null);
+	// Obstacle List
 	const square = useRef(null);
 	const square1 = useRef(null);
+	const square2 = useRef(null);
+	const square3 = useRef(null);
+	const square4 = useRef(null);
+	const square5 = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
@@ -106,34 +110,36 @@ function NetMiniGame(props) {
 		net2.current.focus();
 		net3.current.focus();
 
+		setObstacleList([square, square1]);
+
+		const newPositions = [square, square1].map(() => {
+			return {
+				x: randomPx(), 
+				y: randomPx()
+			}
+		
+		})
+		setObstaclePosition(newPositions)
+
+		// setObstaclePosition
+
 		// Hard Code
-		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
-		setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
-		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
+		changeNetPositions()
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
 
-		document.getElementById('square').classList.add('hidden');
-		document.getElementById('square1').classList.add('hidden');
-	}, []);
+		// document.getElementById('square').classList.add('hidden');
+		// document.getElementById('square1').classList.add('hidden');
+	}, [setObstacleList, setObstaclePosition]);
 
-	function checkWithinRange() {
-		if (Math.sqrt((user.current.x - net.current.x) ** 2 + (user.current.y - net.current.y) ** 2) <= 250) {
-			document.getElementById('net').classList.add('in-range');
-		} else {
-			document.getElementById('net').classList.remove('in-range');
-		}
-
-		if (Math.sqrt((user.current.x - net2.current.x) ** 2 + (user.current.y - net2.current.y) ** 2) <= 250) {
-			document.getElementById('net2').classList.add('in-range');
-		} else {
-			document.getElementById('net2').classList.remove('in-range');
-		}
-
-		if (Math.sqrt((user.current.x - net3.current.x) ** 2 + (user.current.y - net3.current.y) ** 2) <= 250) {
-			document.getElementById('net3').classList.add('in-range');
-		} else {
-			document.getElementById('net3').classList.remove('in-range');
-		}
+	function checkWithinRange(newPlayerCords) {
+		[net, net2, net3].forEach((netObjects) => {
+			const netPositions = grabObstaclePoistion(netObjects);
+			if (Math.sqrt((newPlayerCords.xPosition - netPositions.x) ** 2 + (newPlayerCords.yPosition - netPositions.y) ** 2) <= 250) {
+				netObjects.current.classList.add('in-range');
+			} else {
+				netObjects.current.classList.remove('in-range');
+			}
+		})
 	}
 
 	function checkObstacle(newPlayerCords) {
@@ -172,10 +178,18 @@ function NetMiniGame(props) {
 	}
 
 	const removeNet = (event) => {
-		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
+		const netX = event.target.offsetLeft + (event.target.width / 2)
+		const netY = event.target.offsetTop + (event.target.height / 2)
+		if (Math.sqrt((grabUserXPosition() - netX) ** 2 + (grabUserYPosition() - netY) ** 2) <= 300) {
 			event.target.classList.add('hidden');
 			setNetRemove(netRemove + 1);
 		}
+	}
+
+	function changeNetPositions() {
+		setNetPlacement({ top: randomPx() + 'px', left: (randomPx() * (Math.floor(Math.random() * 2) + 1)) + 'px' });
+		setNetPlacement2({ top: randomPx() + 'px', left: (randomPx() * (Math.floor(Math.random() * 2) + 1)) + 'px' })
+		setNetPlacement3({ top: randomPx() + 'px', left: (randomPx() * (Math.floor(Math.random() * 2) + 1)) + 'px' })
 	}
 
 	const loadNextModal = () => {
@@ -192,36 +206,37 @@ function NetMiniGame(props) {
 		// Load Beach Level
 		if (level === 1) {
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
-
-			square.current.focus();
-			document.getElementById('square').classList.remove('hidden');
-			setObstacleList([square]);
+			setObstacleList([...obstacleList, square2, square3]);
+			const newPositions = [...obstacleList, square2, square3].map(() => {
+				return {
+					x: randomPx(), 
+					y: randomPx()
+				}
+			})
+			setObstaclePosition(newPositions)
 
 		} else if (level === 2) {
-			setNetPlacement({ top: randomPx() + 'px', left: (randomPx() * 3) + 'px' });
-			setNetPlacement2({ top: randomPx() + 'px', left: (randomPx() * 3) + 'px' })
-			setNetPlacement3({ top: randomPx() + 'px', left: (randomPx() * 3)+ 'px' })
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
-			square1.current.focus();
-			document.getElementById('square1').classList.remove('hidden');
-			setObstacleList([square, square1]);
-			setObstaclePosition({ top: randomPx() + 'px', left: randomPx() + 'px' });
-			setObstaclePosition2({ top: randomPx() + 'px', left: randomPx() + 'px' });
+			setObstacleList([...obstacleList, square4, square5]);
+			const newPositions = [...obstacleList, square4, square5].map(() => {
+				return {
+					x: randomPx(), 
+					y: randomPx()
+				}
+			})
+			setObstaclePosition(newPositions)
 		}
 		if (level < 3) {
 			document.getElementById("play-area").click();
 			// Reset Level
 			setXAxis(60);
 			setYAxis(100)
-			setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
-			setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
-			setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
+			changeNetPositions()
 			document.getElementById('net').classList.remove('hidden');
 			document.getElementById('net2').classList.remove('hidden');
 			document.getElementById('net3').classList.remove('hidden');
 			// Reset Values
 			setNetRemove(0);
-			checkWithinRange();
 			setLevel(level + 1);
 			setPage(1);
 		} else {
@@ -230,6 +245,8 @@ function NetMiniGame(props) {
 	}
 
 	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i} />)
+
+	const DisplayObstacles = obstacleList.map((obstacle, i) => <ObstacleImages obstacleRef={obstacle} int={i} key={i} obstaclePosition={obstaclePosition} level={level}/>)
 
 	// Note: When finished watching video, it closes with next video
 	return (
@@ -283,22 +300,38 @@ function NetMiniGame(props) {
 					alt="Net3"
 					id='net3'
 				/>
-				<Obstacle
-					style={obstaclePosition}
-					src={'/sprites/sprite-obstacle-log.png'}
-					id='square'
-					ref={square} />
-				<Obstacle
-					style={obstaclePosition2}
-					src={'/sprites/sprite-obstacle-log.png'}
-					id='square1'
-					ref={square1} />
+				{DisplayObstacles}
 			</div>
 		</>
 	);
 }
 
+export function ObstacleImages(props) {
+	const {obstacleRef, int, obstaclePosition, level} = props
+	const [randomImage, setRandomImage] = useState(['/sprites/sprite-obstacle-log.png'])
+	let imageSource = ['sprite-obstacle-log', 'sprite-obstacle-hook', 'sprite-obstacle-jellyfish']
 
+	useState(() => {
+		const images = [...Array(2)].map(() => {
+			return `/sprites/`+imageSource[Math.floor(Math.random() * 3)]+`.png`;
+		})
+		setRandomImage(randomImage.concat(images))
+	}, [])
+	let obstacleSize = 300;
+	if(randomImage[level - 1] === '/sprites/sprite-obstacle-hook.png') {
+		obstacleSize = 75;
+	} else if (randomImage[level - 1] === '/sprites/sprite-obstacle-jellyfish.png') {
+		obstacleSize = 200;
+	}
+
+	return (
+		<Obstacle
+			style={{ top: (obstaclePosition[int].y * 1.5) + 'px', left: (obstaclePosition[int].x) * 1.5 + 'px', width: obstacleSize + `px` }}
+			src={randomImage[level - 1]}
+			id={'square'+int}
+			ref={obstacleRef}/>
+	) 
+}
 
 export function ModalCards(props) {
 	const { pageInfo, page, loadNextModal, setIsGameComplete } = props

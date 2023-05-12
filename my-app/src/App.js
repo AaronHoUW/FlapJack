@@ -41,8 +41,6 @@ function App() {
 	const [levelOnePath, setLevelOnePath] = useState();
 	const [levelThreePath, setLevelThreePath] = useState();
 
-	console.log(levelThreePath, "apps");
-
 	return (
 		<div className='page-container'>
 			<div className='fill-content'>
