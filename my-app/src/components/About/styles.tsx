@@ -74,6 +74,25 @@ export const IntroTitleContainer = styled.div`
     .text-bubble-who {
         top: 1250px;
     }
+
+    .intro-title-how {
+        left: 70px;
+    }
+
+    .text-bubble-how {
+        top: 3590px;
+    }
+
+    .intro-title-meet {
+        top: 5010px;
+        left: 480px;
+    }
+
+    .text-bubble-meet {
+        top: 4980px;
+        left: 435px;
+        transform: scaleX(-1);
+    }
 `;
 
 export const IntroHeader = styled.div`
@@ -119,7 +138,6 @@ export const IntroDescription = styled.p`
     }
 `;
 
-
 export const AboutContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -128,14 +146,13 @@ export const AboutContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 5100px;
+    height: 6134.55px;
 
     background: url('./imgs/about-bg.png');
     font-family: 'Mulish';
+    background-size: 100% 100%;
 
-    .presentation {
-        margin-top: 75px;
-        
+    .presentation {        
         h2 {
             height: 115px;
         }
@@ -145,6 +162,14 @@ export const AboutContainer = styled.div`
         }
     }
 
+    .intro-how {
+        margin-bottom: -50px;
+    }
+
+    .about-fish {
+        background-size: 100% 100%;
+        width: 100%;
+    }
 `;
 
 export const FirstAboutSection = styled.div`
@@ -176,6 +201,15 @@ export const AboutSection = styled.div`
         align-items: center;
         justify-content: center;
         gap: 100px;
+    }
+
+    .video-popup {
+        width: 40%;
+    }
+
+    #features-3 {
+        width: 85%;
+        height: 500px;
     }
 
     h3 {
@@ -282,7 +316,6 @@ export const StatusContainer = styled.div`
     justify-content: space-between;
     color: white;
     margin-top: 60px;
-    margin-bottom: 60px;
     
     div:first-child {
         background: #F7EDE1;
@@ -290,8 +323,10 @@ export const StatusContainer = styled.div`
         padding: 24px;
         color: black;
 
-        h2 {
-            color: black;
+        h3 {
+            color: #134254;
+            font-weight: 700;
+            font-size: 50px;        
         }
     }
 
@@ -327,32 +362,87 @@ export const TeamContainer = styled.div`
     gap: 20px;
 
     h2 {
-        color: white;
+        color: #134254;
     }
+
+    .intro-meet {
+        text-align: left;
+        margin-bottom: -80px;
+    }
+`;
+
+export const FirstRowBios = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
 `;
 
 export const MeetContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    color: white;
+    color: black;
     gap: 24px;
-    margin-top: 24px;
+    background: #F7EDE1;
+    width: 40%;
+    padding: 36px;
+    border-radius: 20px;
+    height: 638.38px;
 
-    img {
+    .profile-pic {
         height: 240px;
     }
 
     .about-text {
-        width: 88%;
         display: flex;
         flex-direction: column;
-        color: white;
+        color: black;
         gap: 20px;
 
         h2 {
+            color: #134254;
+            font-size: 36px;
             margin: 0;
+        }
+    
+        p {
+            margin-bottom: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #meet-delaney-text {
+            -webkit-line-clamp: 4;
+        }
+
+        #meet-brian-text {
+            -webkit-line-clamp: 6;
+        }
+
+        #meet-aaron-text {
+            overflow: initial;
+            display: block;
+        }
+    
+        .read-more-button {
+            align-self: flex-end;
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+    
+            img {
+                width: 20px;
+                border: none;
+                pointer-events: none;
+            }
+        }
+    
+        .show-less-arrow {
+            transform: translateY(-1);
         }
 
         p {
@@ -379,9 +469,8 @@ export const MeetContainer = styled.div`
             }
     
             a {
-                color: white;
+                color: black;
                 font-size: 20px;
-                text-decoration: none;
             }
     
             img {
@@ -412,6 +501,7 @@ export const AquariumContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-top: 0;
 
     h2 {
         color: white;
@@ -422,22 +512,51 @@ export const AquariumContainer = styled.div`
     }
 `;
 
+export const AdventureText = styled.div`
+    background-color: #F7EDE1;
+    padding: 36px;
+    gap: 20px;
+    border-radius: 20px;
+
+    h2 {
+        color: #134254;
+        font-weight: 700;
+        font-size: 50px;
+    }
+
+    p {
+        color: black;
+        margin: 0;
+    }
+`;
+
 export const AcknowledgementsContainer = styled.div`
     background: url('./imgs/acknowledgements-bg.png');
-    height: 500px;
-    background-size: cover;
+    height: 599px;
+    background-size: 100% 100%;
     font-family: 'Mulish';
     padding: 80px 40px;
     border-top: none;
     display: flex;
     flex-direction: column;
     gap: 36px;
+
+    div {
+        background-color: #F7EDE1;
+        border-radius: 20px;
+        padding: 36px;
+        gap: 20px;
+    }
+
     h2 {
-        color: white;
+        color: #134254;
+        font-weight: 700;
+        font-size: 50px;
     }
 
     p {
+        color: black;
+        margin: 0;
         font-size: 20px;
-        color: white;
     }
 `;
