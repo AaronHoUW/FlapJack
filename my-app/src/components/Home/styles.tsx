@@ -8,7 +8,7 @@ export const HomeContainer = styled.div`
 
 export const IntroContainer = styled.div`
     background: url('./imgs/intro-bg.png');
-    background-size: cover;
+    background-size: 100% 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -426,7 +426,7 @@ export const LearnContainer = styled.div`
     height: 70vh;
 
     background: url('./imgs/learn-bg.png');
-    background-size: cover;
+    background-size: 100% 100%;
     font-family: 'Mulish';
 `;
 

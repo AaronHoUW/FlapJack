@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
 	Flapjack,
@@ -10,7 +10,6 @@ import {
 	NextButton
 } from './styles.tsx';
 import importQuestions from './questions.json'
-import nextButton from './next-button.png'
 
 function Quiz(props) {
 	const {

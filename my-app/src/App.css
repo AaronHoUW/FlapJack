@@ -169,7 +169,7 @@ footer {
   background-image: url('../public/sprites/bg-beach.png');
   height: 100vh;
   overflow: hidden;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .preface {
@@ -190,10 +190,10 @@ footer {
 }
 
 .play-area {
-  background-image: url('../public/sprites/bg-sea.png');
+  background-image: url('../public/sprites/bg-mid-sea.png');
   height: 100vh;
   overflow: hidden;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .seagull-area {
@@ -337,7 +337,7 @@ footer {
   height: 162px;
   object-fit: cover;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
   margin-bottom: 4px;
   margin-left: 23px;
 }
@@ -436,7 +436,7 @@ footer {
   background-image: url('../public/sprites/bg-beach-level.png');
   height: 100vh;
   overflow: hidden;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .modal-content2 {
@@ -620,7 +620,7 @@ footer {
   height: 45px;
   object-fit: cover;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 100%;
   margin-bottom: 2px;
 }
 
@@ -990,7 +990,7 @@ footer {
   height: 434px;
   width: 100%;
   background-image: url("../public/imgs/firstlvl.png");
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .salmon {

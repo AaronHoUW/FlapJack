@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const IntroContainer = styled.div`
     background: url('./imgs/intro-bg.png');
-    background-size: cover;
+    background-size: 100% 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -129,10 +129,10 @@ export const LearnContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 472px;
+    height: 510px;
 
     background: url('./imgs/parent-learn-bg.png');
-    background-size: cover;
+    background-size: 100% 100%;
     font-family: 'Mulish';
 `;
 

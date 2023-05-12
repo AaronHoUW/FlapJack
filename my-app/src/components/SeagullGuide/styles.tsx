@@ -16,7 +16,7 @@ export const User = styled.img<Props>`
 export const Background = styled.div`
     width: 100%;
     background-image: url('./sprites/bg-beach-flipped.png');
-    background-size: cover;
+    background-size: 100% 100%;
     overflow: hidden;
     height: 100vh;
 `;
