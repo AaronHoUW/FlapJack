@@ -138,7 +138,7 @@ export const NextButton = styled.button`
 export const Background = styled.div`
     width: 100%;
     background-image: url('./sprites/bg-beach-level.png');
-    background-size: cover;
+    background-size: 100% 100%;
     overflow: hidden;
     height: 100vh;
 `;
