@@ -166,7 +166,7 @@ function NetMiniGame(props) {
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-mid-sea.png)`;
 
 			square.current.focus();
 			document.getElementById('square').classList.remove('hidden');

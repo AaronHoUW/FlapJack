@@ -34,7 +34,7 @@ export const ParagraphText = styled.p`
 export const VideosContainer = styled.div`
     padding: 40px;
     background: url('./imgs/video-bg.png');
-    background-size: contain;
+    background-size: 100% 100%;
 `;
 
 export const VideoContent = styled.div`
@@ -146,7 +146,7 @@ export const GameCards = styled.div`
 `;
 
 export const DeepSea = styled.div`
-    height: 275px;
+    height: 350px;
     background: url('./imgs/deep-sea.png');
-    background-size: cover;
+    background-size: 100% 100%;
 `;
