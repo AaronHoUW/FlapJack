@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
@@ -40,10 +40,18 @@ function App() {
 	const [isQuiz, setIsQuiz] = useState(false);
 	const [levelOnePath, setLevelOnePath] = useState();
 	const [levelThreePath, setLevelThreePath] = useState();
+	const { history } = useLocation();
+
+	const ScrollToTop = () => {
+		window.scrollTo({left: 0, top: 0, behavior: 'instant'});
+		  return (null);
+	}
+
 
 	return (
 		<div className='page-container'>
 			<div className='fill-content'>
+			<ScrollToTop history={history} />
 				<Routes>
 					<Route path='/' element={
 						<>
@@ -166,7 +174,6 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-
 				</Routes>
 			</div>
 			{/* <footer /> */}

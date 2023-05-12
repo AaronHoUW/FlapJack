@@ -205,7 +205,7 @@ function NetMiniGame(props) {
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
+			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-dark-blue.png)`;
 			setObstacleList([...obstacleList, square2, square3]);
 			const newPositions = [...obstacleList, square2, square3].map(() => {
 				return {
@@ -290,6 +290,7 @@ function NetMiniGame(props) {
 					alt="Net2"
 					id='net2'
 				/>
+				{DisplayObstacles}
 				{/* Net 3 */}
 				<Net
 					style={netPlacement3}
@@ -300,7 +301,6 @@ function NetMiniGame(props) {
 					alt="Net3"
 					id='net3'
 				/>
-				{DisplayObstacles}
 			</div>
 		</>
 	);
@@ -309,6 +309,7 @@ function NetMiniGame(props) {
 export function ObstacleImages(props) {
 	const {obstacleRef, int, obstaclePosition, level} = props
 	const [randomImage, setRandomImage] = useState(['/sprites/sprite-obstacle-log.png'])
+	const [randomLocation, setRandomLocation] = useState([]);
 	let imageSource = ['sprite-obstacle-log', 'sprite-obstacle-hook', 'sprite-obstacle-jellyfish']
 
 	useState(() => {
@@ -316,17 +317,28 @@ export function ObstacleImages(props) {
 			return `/sprites/`+imageSource[Math.floor(Math.random() * 3)]+`.png`;
 		})
 		setRandomImage(randomImage.concat(images))
+		const location = [...Array(3)].map(() => {
+			return randomNumber()
+		})
+		setRandomLocation(location)
 	}, [])
+	function randomNumber() {
+		return Math.random() + (Math.floor(Math.random() * 2.5)) + 1;
+	}
+
+
 	let obstacleSize = 300;
 	if(randomImage[level - 1] === '/sprites/sprite-obstacle-hook.png') {
 		obstacleSize = 75;
 	} else if (randomImage[level - 1] === '/sprites/sprite-obstacle-jellyfish.png') {
-		obstacleSize = 200;
+		obstacleSize = 100;
 	}
+
+	
 
 	return (
 		<Obstacle
-			style={{ top: (obstaclePosition[int].y * 1.5) + 'px', left: (obstaclePosition[int].x) * 1.5 + 'px', width: obstacleSize + `px` }}
+			style={{ top: (obstaclePosition[int].y * 1.2) + 'px', left: (obstaclePosition[int].x * randomLocation[level - 1]) + 'px', width: obstacleSize + `px` }}
 			src={randomImage[level - 1]}
 			id={'square'+int}
 			ref={obstacleRef}/>

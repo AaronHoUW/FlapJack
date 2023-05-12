@@ -56,7 +56,7 @@ function Levels(props) {
                             </p>
                             <LearnButton className="link-button" onClick={() => {
                                 setQuestionNumber(4);
-                                navigate('/level3')
+                                navigate('/level3');
                             }}>Play</LearnButton>
                         </div>
                         <img className='wendy-level' src='./sprites/sprite-wendy-whale.png' alt="Wendy the Whale"></img>

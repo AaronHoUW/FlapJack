@@ -9,7 +9,7 @@ export const VisualNovelContainer = styled.div<ContainerProps>`
     background-size: contain;
     overflow: hidden;
     background-image: ${(props) => props.backgroundImage};
-    background-size: cover;
+    background-size: 100% 100%;
 
     .dialogue-left .textBox {
         transform: scaleX(-1);
@@ -135,7 +135,7 @@ export const SpeakerContainer = styled.div`
 `;
 
 export const IntroContainer = styled.div`
-    background: url('/sprites/bg-sea.png');
+    background: url('/sprites/bg-mid-sea.png');
     height: 100vh;
     overflow: hidden;
 `;
