@@ -245,13 +245,13 @@ const About = () => {
                             </div>
                             <RoleContainer>
                                 <div>Software Engineer</div>
-                                <div>Main Game Developer</div>
+                                <div>Lead Game Developer</div>
                             </RoleContainer>
                             <p>
                                 Aaron is a senior in Informatics, who wants to be a software developer. In this project, Aaron was in charge of
                                 working on creating the tutorial page and game page, as well as the main components of the editor page. Aaron
-                                worked on game features such as movement, collecting nets, obstacles, and quizzes. Some of his hobbies includes
-                                playing Nintendo games, League of Legends, and dancing games.
+                                worked on game features such as movement, collecting nets, obstacles, quizzes, and general bug fixes.
+                                Some of his hobbies includes playing Nintendo games, League of Legends, and dancing games.
                             </p>
                         </div>
                     </MeetContainer>
