@@ -1,32 +1,94 @@
 import styled from 'styled-components';
 
 export const IntroContainer = styled.div`
-    background: url('./imgs/intro-bg.png');
-    background-size: cover;
+    background: url('./imgs/about-intro-bg.png');
+    background-size: 100% 100%;;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: flex-start;
     padding: 80px 40px;
     width: 100%;
-    height: 91vh;
+    height: 1086px;
     font-family: 'Mulish';
+    gap: 100px;
+`;
+
+export const IntroItems = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: center;
+
+    .text-bubble-intro {
+        position: absolute;
+        top: 340px;
+        width: 75%;
+        left: 37px;
+        height: 300px;
+    }
+
+    h2 {
+        position: absolute;
+        top: 430px;
+        left: 70px;
+        color: #134254;
+        font-weight: 700;
+        font-size: 64px;
+        z-index: 1;
+    }
+
+    .intro-bubble {
+        margin-top: 160px;
+        width: 100%;
+    }
+
+    .shawn-intro {
+        transform: scaleX(-1);
+        max-width: 170px;
+    }
+`;
+
+export const IntroTitle = styled.h2`
+    position: absolute;
+    color: #134254;
+    font-weight: 700;
+    font-size: 64px;
+    z-index: 1;
+`;
+
+export const IntroTitleBubble = styled.img`
+    position: absolute;
+    top: 340px;
+    width: 75%;
+    left: 37px;
+`;
+
+export const IntroTitleContainer = styled.div`
+    text-align: right;
+
+    .intro-title-who {
+        top: 1280px;
+        left: 70px;
+    }
+
+    .text-bubble-who {
+        top: 1250px;
+    }
 `;
 
 export const IntroHeader = styled.div`
     display: flex;
     flex-direction: column;
     color: black;
-    width: 50%;
 
     h1 {
-        color: black;
-        font-weight: 600;
-        font-size: 48px;
+        color: #134254;
+        font-weight: 700;
+        font-size: 78px;
     }
 
     p {
-        font-size: 20px;
+        font-size: 32px;
     }
 `;
 
@@ -36,13 +98,27 @@ export const IntroPopUp = styled.div`
     background-color: #F7EDE1;
     flex-direction: column;
     justify-content: center;
-    padding: 24px;
+    padding: 35px;
     border-radius: 20px;
 
     :nth-child(2) {
-        width: 60%;
+        width: 100%;
     }
 `;
+
+export const IntroDescription = styled.p`
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 25px;
+    color: black;
+    margin: 0;
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+`;
+
 
 export const AboutContainer = styled.div`
     display: flex;
@@ -94,6 +170,14 @@ export const AboutSection = styled.div`
     justify-content: space-evenly;
     gap: 36px;
 
+    .features-two {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+    }
+
     h3 {
         font-size: 36px;
     }
@@ -115,12 +199,45 @@ export const WhoDetails = styled.div`
 
 export const FeatureContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    width: 40%;
+    height: 650px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px;
     gap: 36px;
+    background-color: #F7EDE1;
+    border-radius: 20px;
 
-    :first-child {
-        margin-top: 56px;
+    h3 {
+        color: #134254;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    p {
+        margin-bottom: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .read-more-button {
+        align-self: flex-end;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+
+        img {
+            width: 20px;
+            border: none;
+            pointer-events: none;
+        }
+    }
+
+    .show-less-arrow {
+        transform: translateY(-1);
     }
 
     :nth-child(3) {
@@ -128,7 +245,9 @@ export const FeatureContainer = styled.div`
     }
 
     img {
-        width: 40%;
+        border: 10px solid black;
+        width: 650px;
+        border-radius: 10px;
     }
 
     div {

@@ -1,8 +1,6 @@
 import * as React from "react";
 import './About.css';
 import {
-    IntroTitle,
-    IntroDescription,
     FooterContainer,
     FooterText,
     FooterCopyright,
@@ -14,8 +12,13 @@ import {
 } from '../Parents/styles.tsx';
 import {
     IntroContainer,
+    IntroTitle,
+    IntroTitleBubble,
+    IntroItems,
     IntroHeader,
     IntroPopUp,
+    IntroDescription,
+    IntroTitleContainer,
     AboutContainer,
     FirstAboutSection,
     AboutSection,
@@ -34,73 +37,95 @@ const About = () => {
     return (
         <>
             <IntroContainer>
-                <IntroHeader>
-                    <h1>Marine Rescue: The Sea-quel</h1>
-                    <p>Empowering the next generation to save our oceans through fun and educational games!</p>
-                </IntroHeader>
-                <IntroPopUp>
-                    <IntroTitle>What is Marine Rescue for?</IntroTitle>
-                    <IntroDescription>
-                        Our research showed that there is not enough emphasis on learning about the ocean in
-                        and outside the classroom. This, combined with rising concerns about climate change,
-                        inspired us to continue developing Marine Rescue.
-                        <br></br>
-                        <br></br>
-                        Marine Rescue is a game for elementary students to learn about debris' impacts on marine wildlife in
-                        the Pacific Northwest. Through interactive educational stories and short games, students build empathy for
-                        the problems that native species such as salmon and seagulls are facing, and help solve the problems
-                        through fun, educational games. We hope that this will inspire the next generation to take action to fight
-                        ocean pollution, and help solve climate change.
-                    </IntroDescription>
-                </IntroPopUp>
+                <IntroItems>
+                    <IntroHeader>
+                        <h1>Marine Rescue: The Sea-quel</h1>
+                        <p>Empowering the next generation to save our oceans through fun and educational games!</p>
+                    </IntroHeader>
+                    <h2>How does Marine Rescue help the ocean?</h2>
+                    <img src='./imgs/about-text-bubble.svg' alt='Text bubble' className="text-bubble-intro" />
+                    <IntroPopUp className="intro-bubble">
+                        <IntroDescription>
+                            Our research showed that there is not enough emphasis on learning about the ocean in
+                            and outside the classroom. This, combined with rising concerns about climate change,
+                            inspired us to continue developing Marine Rescue.
+                            <br></br>
+                            <br></br>
+                            Marine Rescue is a game for elementary students to learn about debris' impacts on marine wildlife in
+                            the Pacific Northwest. Through interactive educational stories and short games, students build empathy for
+                            the problems that native species such as salmon and seagulls are facing, and help solve the problems
+                            through fun, educational games. We hope that this will inspire the next generation to take action to fight
+                            ocean pollution, and help solve climate change.
+                        </IntroDescription>
+                    </IntroPopUp>
+                </IntroItems>
+                <IntroItems>
+                    <img src='./sprites/sprite-shawn-seagull.png' alt='Shawn the Seagull' className="shawn-intro" />
+                    <img src='./sprites/sprite-user-placeholder.png' alt='User' />
+                </IntroItems>
             </IntroContainer>
             <AboutContainer>
                 <div>
-                    <IntroTitle>Who will use Marine Rescue?</IntroTitle>
-                    <FirstAboutSection>
+                    <IntroTitleContainer>
+                        <IntroTitle className="intro-title-who">What can you do in Marine Rescue?</IntroTitle>
+                        <IntroTitleBubble src='./imgs/about-text-bubble.svg' alt='Text bubble' className="text-bubble-who" />
                         <img src='./sprites/sprite-user-placeholder.png' alt='User' />
-                        <WhoDetails>
-                            <div>
-                                <h3>Kids</h3>
-                                <p>
-                                    Your child will learn about local PNW marine life such as salmon, whales, and seagulls. They
-                                    will learn how humans’ actions are negatively impacting these animals, and how, even as a kid, they can help to fight pollution.
-                                </p>
-                            </div>
-                            <div>
-                                <h3>Parents</h3>
-                                <p>
-                                    Marine Rescue can also serve as a way for parents to connect with their kids. We included a Parents page so
-                                    parents can feel confident that this game is fun, safe, and educational for their kids.
-                                </p>
-                            </div>
-                        </WhoDetails>
-                    </FirstAboutSection>
-                </div>
-                <div>
-                    <IntroTitle>What can you do in Marine Rescue?</IntroTitle>
+                    </IntroTitleContainer>
                     <AboutSection>
-                        <FeatureContainer>
-                            <img src='./imgs/feature1.png' alt='Meet seagull feature' />
-                            <div>
+                        <div className="features-two">
+                            <FeatureContainer id='features-1'>
                                 <h3>Meet Marine Animals</h3>
-                                <p>
+                                <img src='./imgs/feature1.png' alt='Meet seagull feature' />
+                                <p id='meet-1-text'>
                                     Users learn about PNW marine life by interacting with characters like salmon, whales, and seagulls, building
                                     empathy for their issues. For example, they meet Shawn the Seagull with feet caught in soda can rings, discussing
                                     concerns about debris on the beach.
                                 </p>
-                            </div>
-                        </FeatureContainer>
-                        <FeatureContainer>
-                            <div>
+                                <button className="read-more-button" onClick={(event) => {
+                                    if (event.target.className !== 'read-more-button clicked') {
+                                        document.getElementById('meet-1-text').style.overflow = 'initial';
+                                        document.getElementById('meet-1-text').style.display = 'block';
+                                        event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
+                                        event.target.classList.add('clicked');
+                                        document.getElementById('features-1').style.height = '700px';
+                                    } else {
+                                        document.getElementById('meet-1-text').style.overflow = 'hidden';
+                                        document.getElementById('meet-1-text').style.display = '-webkit-box';
+                                        event.target.innerHTML = `Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        event.target.classList.remove('clicked');
+                                        document.getElementById('features-1').style.height = '650px';
+                                    }
+                                }}>
+                                    Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                </button>
+                            </FeatureContainer>
+                            <FeatureContainer id='features-2'>
                                 <h3>Test Your Scuba Knowledge</h3>
-                                <p>
+                                <img src='./imgs/feature2.png' alt='Test your knowledge feature' className="test-knowledge-img" />
+                                <p id="meet-2-text">
                                     The visual novel quizzes users on their attention to conversations with marine animals, promoting engagement
                                     during long reading segments and adding an interactive challenge for younger audiences.
                                 </p>
-                            </div>
-                            <img src='./imgs/feature2.png' alt='Test your knowledge feature' />
-                        </FeatureContainer>
+                                <button className="read-more-button" onClick={(event) => {
+                                    if (event.target.className !== 'read-more-button clicked') {
+                                        document.getElementById('meet-2-text').style.overflow = 'initial';
+                                        document.getElementById('meet-2-text').style.display = 'block';
+                                        event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
+                                        event.target.classList.add('clicked');
+                                        document.getElementById('features-2').style.height = '670px';
+                                    } else {
+                                        console.log(event);
+                                        document.getElementById('meet-2-text').style.overflow = 'hidden';
+                                        document.getElementById('meet-2-text').style.display = '-webkit-box';
+                                        event.target.innerHTML = `Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        event.target.classList.remove('clicked');
+                                        document.getElementById('features-2').style.height = '650px';
+                                    }
+                                }}>
+                                    Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                </button>
+                            </FeatureContainer>
+                        </div>
                         <FeatureContainer>
                             <div>
                                 <h3>Play Mini-Games to Solve Marine Problems</h3>
