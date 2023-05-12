@@ -1,35 +1,65 @@
 {
     "1" : {
         "page-1": {
+            "type": "text",
             "title": "Great job removing the nets!",
             "body" : "Those nets were dangerous to animals on the beach, such as Seagulls and crabs. Their feet or wings can get caught in the nets, making it difficult to fly or walk."
-        },
-        "page-2": {
-            "title": "Watch this video to see how you can help clean up trash in the ocean!",
-            "video" : "https://www.youtube.com/embed/xFPoIU5iiYQ",
-            "body" : "Ghost Net Art as Environmental Activism"
         }
     },
     "2" : {
         "page-1": {
+            "type": "text",
             "title": "Great job removing the nets!",
             "body" : "Good job collecting all of the ghost nets and saving many marine animals from getting caught! Let's watch a video on what would happen if these ghost nets were not removed and the danger it can put many animals in."
-        },
-        "page-2": {
-            "title": "Watch this video to learn about a whale that was caught in a ghost net!",
-            "video" : "https://www.youtube.com/embed/hC_isxflaVA",
-            "body" : "Whale Tangled in Ghost Net Saved | Dodo Kids"
         }
     },
     "3" : {
         "page-1": {
+            "type": "text",
             "title": "Great job removing the nets!",
             "body" : "Those nets were dangerous to animals because they can get caught in them, making it difficult to swim."
         },
         "page-2": {
-            "title": "Watch this video to learn about how ghost nets are cleaned up!",
-            "video" : "https://www.youtube.com/embed/xCKPsVi3vBo",
-            "body" : "Protecting our Oceans from Ghost Traps"
+            "type": "video",
+            "title": "Watch this video to learn about a whale that was caught in a ghost net!",
+            "video" : "https://www.youtube.com/embed/xCKPsVi3vBo"
+        },
+        "page-3": {
+            "type": "input",
+            "title": "Wow it took a while to save the whale didn’t it? After watching the video, what do you think about ghost nets?"
+        },
+        "page-4": {
+            "type": "input",
+            "title": "How did the nets impact the whale?"
+        },
+        "page-5": {
+            "type": "text",
+            "title": "That's right!",
+            "body" : "The whale had a hard time swimming with the net all tangled around it. That must be scary for the whale!"
+        },
+        "page-6": {
+            "type": "input",
+            "title": "How difficult was it for the professionals to save the whale?"
+        },
+        "page-7": {
+            "type": "text",
+            "title": "Even trained professionals can be challenged by ghost nets.", 
+            "body": "Ghost nets are challenging to remove, especially when they get tangled and twisted."
+        },
+        "page-8": {
+            "type": "input",
+            "title": "Although it can be hard to save a whale from a net by yourself, what do you think you can do to prevent ghost nets from hurting marine animals?"
+        },
+        "page-9": {
+            "type": "text-list",
+            "title": "Even though ghost nets seems like a big issue, you can do a lot to help!",
+            "body" : "1. When you visit the beach, pick up trash!",
+            "body-2" : "2. Educate your friends and family about the importance of removing trash from marine environments."
+        },
+        "page-10": {
+            "type": "last",
+            "title": "Great job learning about ghost nets and how you can make an impact on helping many of these marine animals!",
+            "body" : "Lets go explore another marine environment!"
         }
     }
 }

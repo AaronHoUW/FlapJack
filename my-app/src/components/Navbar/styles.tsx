@@ -15,7 +15,26 @@ export const LogoContainer = styled.div`
     a {
         text-decoration: none;
         padding: 14px 16px;
-        text-align: center;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1 {
+        color: black;
+        font-weight: 700;
+        font-size: 30px;
+        margin: 0;
+    }
+
+    h3 {
+        color: #284775;
+        font-size: 20px;
+        margin: 0;
+        font-weight: 400;
     }
 `;
 

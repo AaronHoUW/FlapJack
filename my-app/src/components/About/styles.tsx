@@ -1,32 +1,113 @@
 import styled from 'styled-components';
 
 export const IntroContainer = styled.div`
-    background: url('./imgs/intro-bg.png');
-    background-size: cover;
+    background: url('./imgs/about-intro-bg.png');
+    background-size: 100% 100%;;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: flex-start;
     padding: 80px 40px;
     width: 100%;
-    height: 91vh;
+    height: 1086px;
     font-family: 'Mulish';
+    gap: 100px;
+`;
+
+export const IntroItems = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: center;
+
+    .text-bubble-intro {
+        position: absolute;
+        top: 340px;
+        width: 75%;
+        left: 37px;
+        height: 300px;
+    }
+
+    h2 {
+        position: absolute;
+        top: 430px;
+        left: 70px;
+        color: #134254;
+        font-weight: 700;
+        font-size: 64px;
+        z-index: 1;
+    }
+
+    .intro-bubble {
+        margin-top: 160px;
+        width: 100%;
+    }
+
+    .shawn-intro {
+        transform: scaleX(-1);
+        max-width: 170px;
+    }
+`;
+
+export const IntroTitle = styled.h2`
+    position: absolute;
+    color: #134254;
+    font-weight: 700;
+    font-size: 64px;
+    z-index: 1;
+`;
+
+export const IntroTitleBubble = styled.img`
+    position: absolute;
+    top: 340px;
+    width: 75%;
+    left: 37px;
+`;
+
+export const IntroTitleContainer = styled.div`
+    text-align: right;
+
+    .intro-title-who {
+        top: 1280px;
+        left: 70px;
+    }
+
+    .text-bubble-who {
+        top: 1250px;
+    }
+
+    .intro-title-how {
+        left: 70px;
+    }
+
+    .text-bubble-how {
+        top: 3590px;
+    }
+
+    .intro-title-meet {
+        top: 5010px;
+        left: 480px;
+    }
+
+    .text-bubble-meet {
+        top: 4980px;
+        left: 435px;
+        transform: scaleX(-1);
+    }
 `;
 
 export const IntroHeader = styled.div`
     display: flex;
     flex-direction: column;
     color: black;
-    width: 50%;
 
     h1 {
-        color: black;
-        font-weight: 600;
-        font-size: 48px;
+        color: #134254;
+        font-weight: 700;
+        font-size: 78px;
     }
 
     p {
-        font-size: 20px;
+        font-size: 32px;
     }
 `;
 
@@ -36,11 +117,24 @@ export const IntroPopUp = styled.div`
     background-color: #F7EDE1;
     flex-direction: column;
     justify-content: center;
-    padding: 24px;
+    padding: 35px;
     border-radius: 20px;
 
     :nth-child(2) {
-        width: 60%;
+        width: 100%;
+    }
+`;
+
+export const IntroDescription = styled.p`
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 25px;
+    color: black;
+    margin: 0;
+
+    a {
+        color: black;
+        text-decoration: underline;
     }
 `;
 
@@ -52,14 +146,13 @@ export const AboutContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 5100px;
+    height: 6134.55px;
 
     background: url('./imgs/about-bg.png');
     font-family: 'Mulish';
+    background-size: 100% 100%;
 
-    .presentation {
-        margin-top: 75px;
-        
+    .presentation {        
         h2 {
             height: 115px;
         }
@@ -69,6 +162,14 @@ export const AboutContainer = styled.div`
         }
     }
 
+    .intro-how {
+        margin-bottom: -50px;
+    }
+
+    .about-fish {
+        background-size: 100% 100%;
+        width: 100%;
+    }
 `;
 
 export const FirstAboutSection = styled.div`
@@ -94,6 +195,23 @@ export const AboutSection = styled.div`
     justify-content: space-evenly;
     gap: 36px;
 
+    .features-two {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .video-popup {
+        width: 40%;
+    }
+
+    #features-3 {
+        width: 85%;
+        height: 500px;
+    }
+
     h3 {
         font-size: 36px;
     }
@@ -108,16 +226,52 @@ export const WhoDetails = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 36px;
+    background: #F7EDE1;
+    border-radius: 20px;
+    padding: 24px;
 `;
 
 export const FeatureContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    width: 40%;
+    height: 650px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px;
     gap: 36px;
+    background-color: #F7EDE1;
+    border-radius: 20px;
 
-    :first-child {
-        margin-top: 56px;
+    h3 {
+        color: #134254;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    p {
+        margin-bottom: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .read-more-button {
+        align-self: flex-end;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+
+        img {
+            width: 20px;
+            border: none;
+            pointer-events: none;
+        }
+    }
+
+    .show-less-arrow {
+        transform: translateY(-1);
     }
 
     :nth-child(3) {
@@ -125,7 +279,9 @@ export const FeatureContainer = styled.div`
     }
 
     img {
-        width: 40%;
+        border: 10px solid black;
+        width: 650px;
+        border-radius: 10px;
     }
 
     div {
@@ -133,6 +289,22 @@ export const FeatureContainer = styled.div`
         flex-direction: column;
         justify-content: center;
         gap: 20px;
+        background: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+    }
+
+    .gifs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        
+        img {
+            width: 30%;
+        }
     }
 `;
 
@@ -144,7 +316,19 @@ export const StatusContainer = styled.div`
     justify-content: space-between;
     color: white;
     margin-top: 60px;
-    margin-bottom: 60px;
+    
+    div:first-child {
+        background: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+        color: black;
+
+        h3 {
+            color: #134254;
+            font-weight: 700;
+            font-size: 50px;        
+        }
+    }
 
     h2 {
         color: white;
@@ -178,32 +362,87 @@ export const TeamContainer = styled.div`
     gap: 20px;
 
     h2 {
-        color: white;
+        color: #134254;
     }
+
+    .intro-meet {
+        text-align: left;
+        margin-bottom: -80px;
+    }
+`;
+
+export const FirstRowBios = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
 `;
 
 export const MeetContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    color: white;
+    color: black;
     gap: 24px;
-    margin-top: 24px;
+    background: #F7EDE1;
+    width: 40%;
+    padding: 36px;
+    border-radius: 20px;
+    height: 638.38px;
 
-    img {
+    .profile-pic {
         height: 240px;
     }
 
     .about-text {
-        width: 88%;
         display: flex;
         flex-direction: column;
-        color: white;
+        color: black;
         gap: 20px;
 
         h2 {
+            color: #134254;
+            font-size: 36px;
             margin: 0;
+        }
+    
+        p {
+            margin-bottom: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #meet-delaney-text {
+            -webkit-line-clamp: 4;
+        }
+
+        #meet-brian-text {
+            -webkit-line-clamp: 6;
+        }
+
+        #meet-aaron-text {
+            overflow: initial;
+            display: block;
+        }
+    
+        .read-more-button {
+            align-self: flex-end;
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+    
+            img {
+                width: 20px;
+                border: none;
+                pointer-events: none;
+            }
+        }
+    
+        .show-less-arrow {
+            transform: translateY(-1);
         }
 
         p {
@@ -230,9 +469,8 @@ export const MeetContainer = styled.div`
             }
     
             a {
-                color: white;
+                color: black;
                 font-size: 20px;
-                text-decoration: none;
             }
     
             img {
@@ -263,6 +501,7 @@ export const AquariumContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-top: 0;
 
     h2 {
         color: white;
@@ -273,22 +512,51 @@ export const AquariumContainer = styled.div`
     }
 `;
 
+export const AdventureText = styled.div`
+    background-color: #F7EDE1;
+    padding: 36px;
+    gap: 20px;
+    border-radius: 20px;
+
+    h2 {
+        color: #134254;
+        font-weight: 700;
+        font-size: 50px;
+    }
+
+    p {
+        color: black;
+        margin: 0;
+    }
+`;
+
 export const AcknowledgementsContainer = styled.div`
     background: url('./imgs/acknowledgements-bg.png');
-    height: 500px;
-    background-size: cover;
+    height: 599px;
+    background-size: 100% 100%;
     font-family: 'Mulish';
     padding: 80px 40px;
     border-top: none;
     display: flex;
     flex-direction: column;
     gap: 36px;
+
+    div {
+        background-color: #F7EDE1;
+        border-radius: 20px;
+        padding: 36px;
+        gap: 20px;
+    }
+
     h2 {
-        color: white;
+        color: #134254;
+        font-weight: 700;
+        font-size: 50px;
     }
 
     p {
+        color: black;
+        margin: 0;
         font-size: 20px;
-        color: white;
     }
 `;

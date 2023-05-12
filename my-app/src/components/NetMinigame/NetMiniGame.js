@@ -4,14 +4,12 @@ import {
 	User,
 	Net,
 	Obstacle,
-	Whale
+	Whale,
+	NextButton,
+	PointsContainer,
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
 import PancakeModal from './images/PancakeModal.png';
-import continueButton from './images/ContinueButton.png';
-import locationButton from './images/LocationButton.png';
-import finishButton from './images/FinishButton.png';
-import squareImg from './square.png'
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -26,7 +24,6 @@ function NetMiniGame(props) {
 	const [netRemove, setNetRemove] = useState(0);
 	//Obstacle
 	const [squarePoints, setSquarePoints] = useState({})
-	const [hasObstacle, setHasObstacle] = useState(false)
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -48,32 +45,33 @@ function NetMiniGame(props) {
 			width: user.current.width,
 			height: user.current.height
 		}
+		// if (event.key === 'a') {
+		// 	console.log(squarePoints)
+		// }
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.xPosition += 100;
-			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
-				setXAxis(xAxis + 50)
+			if (!checkObstacle(newPlayerCords)) {
+				setXAxis(xAxis + 50);
 			}
 		}
 		if (event.key === 'ArrowLeft') {
 			newPlayerCords.xPosition -= 100;
-			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
-				setXAxis(xAxis - 50)
+			if (!checkObstacle(newPlayerCords)) {
+				setXAxis(xAxis - 50);
 			}
 		}
 		if (event.key === 'ArrowDown') {
 			newPlayerCords.yPosition += 50;
-			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
-				setYAxis(yAxis + 50)
+			if (!checkObstacle(newPlayerCords)) {
+				setYAxis(yAxis + 50);
 			}
 		}
 		if (event.key === 'ArrowUp') {
 			newPlayerCords.yPosition -= 50;
-			if (!checkObstacle(newPlayerCords) || !hasObstacle) {
-				setYAxis(yAxis - 50)
+			if (!checkObstacle(newPlayerCords)) {
+				setYAxis(yAxis - 50);
 			}
 		}
-		// console.log(newPlayerCords.xPosition, newPlayerCords.yPosition, "Uuser Position")
-		checkObstacle(newPlayerCords);
 		checkWithinRange();
 	};
 
@@ -111,18 +109,7 @@ function NetMiniGame(props) {
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
 
-		square.current.focus();
 		document.getElementById('square').classList.add('hidden');
-		const squareX = square.current.offsetLeft + (square.current.width / 2)
-		const squareY = square.current.offsetTop + (square.current.height / 2)
-		setSquarePoints({
-			x: squareX,
-			y: squareY,
-			leftEdge: squareX - (square.current.width / 2),
-			rightEdge: squareX + (square.current.width / 2),
-			topEdge: squareY - (square.current.height / 2),
-			bottomEdge: squareY + (square.current.height / 2)
-		})
 	}, []);
 
 	function checkWithinRange() {
@@ -148,12 +135,14 @@ function NetMiniGame(props) {
 	function checkObstacle(newPlayerCords) {
 		// Corners
 		const playerCorners = [[1, 1], [-1, 1], [-1, -1], [1, -1]].filter((cords, i) => {
-			const newCorners = { x: newPlayerCords.xPosition + (75) * cords[0], y: newPlayerCords.yPosition - (75) * cords[1] }
-			// console.log(newCorners);
-			return (squarePoints.leftEdge <= newCorners.x && newCorners.x <= squarePoints.rightEdge &&
-				newCorners.y <= squarePoints.bottomEdge && squarePoints.topEdge <= newCorners.y)
+			const newCorners = { x: newPlayerCords.xPosition + (75 * cords[0]), y: newPlayerCords.yPosition - (75 * cords[1]) }
+			// console.log((squarePoints.leftEdge <= newCorners.x))
+			return (
+				(squarePoints.leftEdge <= newCorners.x &&
+					newCorners.x <= squarePoints.rightEdge) &&
+				(newCorners.y <= squarePoints.bottomEdge) &&
+				(squarePoints.topEdge <= newCorners.y))
 		})
-		// console.log(playerCorners, "check")
 		return playerCorners.length >= 1;
 	}
 
@@ -165,17 +154,33 @@ function NetMiniGame(props) {
 	}
 
 	const loadNextModal = () => {
-		let newPage = page + 1;
-		setPage(newPage);
-		document.getElementById(`load-modal-`+ (page + 1)).click();
+		if (level === 3) {
+			let newPage = page + 1;
+			setPage(newPage);
+			document.getElementById(`load-modal-` + (page + 1)).click();
+		} else {
+			loadNextLevel();
+		}
 	}
 
 	const loadNextLevel = () => {
 		// Load Beach Level
 		if (level === 1) {
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-sea.png)`;
-			setHasObstacle(true);
+
+			square.current.focus();
 			document.getElementById('square').classList.remove('hidden');
+			const squareX = square.current.offsetLeft + (square.current.width / 2)
+			const squareY = square.current.offsetTop + (square.current.height / 2)
+			setSquarePoints({
+				x: squareX,
+				y: squareY,
+				leftEdge: squareX - (square.current.width / 2),
+				rightEdge: squareX + (square.current.width / 2),
+				topEdge: squareY - (square.current.height / 2),
+				bottomEdge: squareY + (square.current.height / 2)
+			})
+
 		} else if (level === 2) {
 			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
 		}
@@ -200,92 +205,20 @@ function NetMiniGame(props) {
 		}
 	}
 
-	console.log(level, postGameDialogue[level]['page-2'].video);
+	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i} />)
 
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
-			<a id="load-modal-1" data-bs-toggle="modal" data-bs-target="#modal-1-Backdrop" />
-			<div className="modal fade" id="modal-1-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				{/* Pancake Image */}
-				<img src={PancakeModal} className='pancake-modal' />
-				<div className="modal-dialog modal-xl modal-dialog-centered">
-					<div className="modal-content">
-						<div className='container modal-container'>
-							<div className='row'>
-								<h1 className="modal-title fs-5" id="staticBackdropLabel">{postGameDialogue[level]['page-1'].title}</h1>
-							</div>
-							<div className='row model-info'>
-								<p className='modal-body'>{postGameDialogue[level]['page-1'].body}</p>
-							</div>
-							<div className='modal-buttons'>
-								<button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
-									<img src={continueButton} className='modal-button-img' />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a id="load-modal-2" data-bs-toggle="modal" data-bs-target="#modal-2-Backdrop" />
-			<div className="modal fade" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				{/* Pancake Image */}
-				<img src={PancakeModal} className='pancake-modal' />
-				<div className="modal-dialog modal-lg modal-dialog-centered">
-					<div className="modal-content">
-						<div className='container modal-container'>
-							<div className='row'>
-								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
-							</div>
-							<div className='row model-info modal-video-content mt-1'>
-								{/* <div className='modal-video-content'> */}
-									<iframe width="100%" height="100%" src={postGameDialogue[level]['page-2'].video} />
-								{/* </div> */}
-								<p className='pt-1' >{postGameDialogue[level]['page-2'].body}</p>
-							</div>
-
-							<div className='modal-buttons'>
-								<button className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
-									<img src={continueButton} className='modal-button-img' />
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a id="load-modal-3" data-bs-toggle="modal" data-bs-target="#modal-3-Backdrop" />
-			<div className="modal fade" id="modal-3-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				
-				<img src={PancakeModal} className='pancake-modal' />
-				<div className="modal-dialog modal-lg modal-dialog-centered">
-					<div className="modal-content">
-						<div className='container modal-container'>
-							<div className='row'>
-								<h1 className="modal-title fs-5 pb-2" id="staticBackdropLabel">{postGameDialogue[level]['page-2'].title}</h1>
-							</div>
-							<div className='row model-info modal-video-content mt-1'>
-								<input type='textarea' height={5}/>
-							</div>
-
-							<div className='modal-buttons'>
-								<button className='modal-continue' type="button" onClick={loadNextLevel} data-bs-dismiss="modal">
-									{(level < 4) && <img src={locationButton} className='modal-button-img' />}
-									{(level === 4) && <img src={finishButton} className='modal-button-img' onClick={() => {
-										navigate('/level2');
-										setIsGameComplete(true);
-									}} />}
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			{DisplayModalCards}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
-				<span className="badge text-bg-secondary net-counter">Net Removed: {netRemove}</span>
+				<PointsContainer>
+					<div><p>Net Removed: {netRemove}</p></div>
+				</PointsContainer>
 				{/* User */}
 				{(level === 3) && <Whale
 					src={'/sprites/sprite-wendy-whale.png'}
-					/>}
+				/>}
 
 				<User
 					style={userPlacement}
@@ -335,6 +268,56 @@ function NetMiniGame(props) {
 	);
 }
 
+export function ModalCards(props) {
+	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
+	const navigate = useNavigate();
+	return (
+		<>
+			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img src={PancakeModal} className='pancake-modal' />
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5" id="staticBackdropLabel">{pageInfo.title}</h1>
+							</div>
+
+							{(pageInfo.type === "text" || pageInfo.type === "last") && <div className='row model-info'>
+								<p className='modal-body'>{pageInfo.body}</p>
+							</div>}
+
+							{pageInfo.type === "text-list" && <div className='row model-info'>
+								<p className='modal-body'>{pageInfo.body}</p>
+								<p className='modal-body'>{pageInfo["body-2"]}</p>
+							</div>}
+
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+								<iframe width="100%" height="100%" src={pageInfo.video} />
+							</div>}
+
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+								<textarea rows={3} placeholder='Type your answer here...' />
+							</div>}
+							<div className='modal-buttons'>
+								{pageInfo.type !== "last" && <NextButton className='modal-continue' type="button" onClick={loadNextModal} data-bs-dismiss="modal">
+									Continue
+								</NextButton>}
+
+								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
+									navigate('/levels');
+									setIsGameComplete(true);
+								}}>
+									Finish
+								</NextButton>}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	)
+}
 
 export default NetMiniGame;
 
