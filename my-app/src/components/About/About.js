@@ -20,9 +20,7 @@ import {
     IntroDescription,
     IntroTitleContainer,
     AboutContainer,
-    FirstAboutSection,
     AboutSection,
-    WhoDetails,
     FeatureContainer,
     StatusContainer,
     StatusIcons,
@@ -62,7 +60,7 @@ const About = () => {
                     </IntroPopUp>
                 </IntroItems>
                 <IntroItems>
-                    <img src='./sprites/sprite-shawn-seagull.png' alt='Shawn the Seagull' className="shawn-intro" />
+                    <img src='./imgs/Marine_Rescue_The_Sea-quel_Logo.png' alt='Marine Rescue The Sea-quel logo' className="shawn-intro" />
                     <img src='./sprites/sprite-user-placeholder.png' alt='User' />
                 </IntroItems>
             </IntroContainer>
@@ -168,7 +166,7 @@ const About = () => {
                 <StatusContainer>
                     <div>
                         <h3>Project Status</h3>
-                        <p>Our project will remain open-source. To view our project in depth, feel free to explore our work:</p>
+                        <p>Our project will be transitioned to open source, effective Jun. 10th, 2023. To view our project in depth, feel free to explore our work:</p>
                     </div>
                     <StatusIcons>
                         <a href='https://miro.com/app/board/uXjVP1qeP0I=/?moveToWidget=3458764542318464274&cot=14'>
@@ -224,16 +222,16 @@ const About = () => {
                                         document.getElementById('meet-jun-text').style.display = 'block';
                                         event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
                                         event.target.classList.add('clicked');
-                                        document.getElementById('jun-container').style.height = '848.38px';
+                                        document.getElementById('jun-container').style.height = '870.38px';
                                     } else {
                                         document.getElementById('meet-jun-text').style.overflow = 'hidden';
-                                        document.getElementById('meet-jun-text').style.display = '-webkit-box';
-                                        event.target.innerHTML = `Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        document.getElementById('meet-jun-text').style.display = 'none';
+                                        event.target.innerHTML = `Read About Jun <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
                                         event.target.classList.remove('clicked');
-                                        document.getElementById('jun-container').style.height = '638.38px';
+                                        document.getElementById('jun-container').style.height = '550px';
                                     }
                                 }}>
-                                    Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                    Read About Jun <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
                                 </button>
                             </div>
                         </MeetContainer>
@@ -252,6 +250,9 @@ const About = () => {
                                     <div>Story Writer</div>
                                     <div>Environment Artist</div>
                                 </RoleContainer>
+                                <RoleContainer id='delaney-blank' className="blank-role">
+                                    <div>Character & Assets Artist</div>
+                                </RoleContainer>
                                 <p id="meet-delaney-text">
                                     Delaney is a senior in Informatics, who aims to become a UX Designer. In this project, she brainstormed the features
                                     for the game, outlined and wrote the story, and went through several iterations of wireframes for the whole game and
@@ -263,25 +264,27 @@ const About = () => {
                                     if (event.target.className !== 'read-more-button clicked') {
                                         document.getElementById('meet-delaney-text').style.overflow = 'initial';
                                         document.getElementById('meet-delaney-text').style.display = 'block';
+                                        document.getElementById('delaney-blank').style.display = 'none';
                                         event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
                                         event.target.classList.add('clicked');
-                                        document.getElementById('delaney-container').style.height = '752.38px';
+                                        document.getElementById('delaney-container').style.height = '780.38px';
                                     } else {
                                         document.getElementById('meet-delaney-text').style.overflow = 'hidden';
-                                        document.getElementById('meet-delaney-text').style.display = '-webkit-box';
-                                        event.target.innerHTML = `Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        document.getElementById('meet-delaney-text').style.display = 'none';
+                                        document.getElementById('delaney-blank').style.display = 'block';
+                                        event.target.innerHTML = `Read About Delaney <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
                                         event.target.classList.remove('clicked');
-                                        document.getElementById('delaney-container').style.height = '638.38px';
+                                        document.getElementById('delaney-container').style.height = '550px';
                                     }
                                 }}>
-                                    Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                    Read About Delaney <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
                                 </button>
                             </div>
                         </MeetContainer>
                     </FirstRowBios>
                     <FirstRowBios>
                         <MeetContainer id="aaron-container">
-                            <div><img src='./imgs/aaron.svg' alt='Aaron Ho' /></div>
+                            <div><img src='./imgs/aaron.svg' alt='Aaron Ho' className="profile-pic" /></div>
                             <div className='about-text'>
                                 <div className="links">
                                     <h2>Aaron Ho</h2>
@@ -294,16 +297,38 @@ const About = () => {
                                     <div>Software Engineer</div>
                                     <div>Debugger</div>
                                 </RoleContainer>
+                                <RoleContainer id='aaron-blank' className="blank-role">
+                                    <div>Character & Assets Artist</div>
+                                </RoleContainer>
                                 <p id="meet-aaron-text">
                                     Aaron is a senior in Informatics, who wants to be a software developer. In this project, Aaron was in charge of
                                     working on creating the tutorial page and game page, as well as the main components of the editor page. Aaron
                                     worked on game features such as movement, collecting nets, obstacles, quizzes, and general bug fixes.
                                     Some of his hobbies includes playing Nintendo games, League of Legends, and dancing games.
                                 </p>
+                                <button className="read-more-button" onClick={(event) => {
+                                    if (event.target.className !== 'read-more-button clicked') {
+                                        document.getElementById('meet-aaron-text').style.overflow = 'initial';
+                                        document.getElementById('meet-aaron-text').style.display = 'block';
+                                        document.getElementById('aaron-blank').style.display = 'none';
+                                        event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
+                                        event.target.classList.add('clicked');
+                                        document.getElementById('aaron-container').style.height = '720.38px';
+                                    } else {
+                                        document.getElementById('meet-aaron-text').style.overflow = 'hidden';
+                                        document.getElementById('meet-aaron-text').style.display = 'none';
+                                        document.getElementById('aaron-blank').style.display = 'block';
+                                        event.target.innerHTML = `Read About Aaron <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        event.target.classList.remove('clicked');
+                                        document.getElementById('aaron-container').style.height = '550px';
+                                    }
+                                }}>
+                                    Read About Aaron <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                </button>
                             </div>
                         </MeetContainer>
                         <MeetContainer id="brian-container">
-                            <div><img src='./imgs/brian.svg' alt='Brian Ho' /></div>
+                            <div><img src='./imgs/brian.svg' alt='Brian Ho' className="profile-pic" /></div>
                             <div className='about-text'>
                                 <div className="links">
                                     <h2>Brian Ho</h2>
@@ -317,6 +342,9 @@ const About = () => {
                                     <div>Story Writer</div>
                                     <div>Software Engineer</div>
                                 </RoleContainer>
+                                <RoleContainer id='brian-blank' className="blank-role">
+                                    <div>Character & Assets Artist</div>
+                                </RoleContainer>
                                 <p id="meet-brian-text">
                                     Brian is currently a senior in Informatics, who wants to become a UI/UX Researcher. In this project, he worked
                                     primarily on the research which included, conducting user interviews, working on market research and literature
@@ -328,18 +356,20 @@ const About = () => {
                                     if (event.target.className !== 'read-more-button clicked') {
                                         document.getElementById('meet-brian-text').style.overflow = 'initial';
                                         document.getElementById('meet-brian-text').style.display = 'block';
+                                        document.getElementById('brian-blank').style.display = 'none';
                                         event.target.innerHTML = `Show Less <img src='./imgs/read-more-arrow.svg' alt='Read Less Arrow' class="show-less-arrow" />`;
                                         event.target.classList.add('clicked');
-                                        document.getElementById('brian-container').style.height = '730.38px';
+                                        document.getElementById('brian-container').style.height = '785.38px';
                                     } else {
                                         document.getElementById('meet-brian-text').style.overflow = 'hidden';
-                                        document.getElementById('meet-brian-text').style.display = '-webkit-box';
-                                        event.target.innerHTML = `Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
+                                        document.getElementById('meet-brian-text').style.display = 'none';
+                                        document.getElementById('brian-blank').style.display = 'block';
+                                        event.target.innerHTML = `Read About Brian <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />`;
                                         event.target.classList.remove('clicked');
-                                        document.getElementById('brian-container').style.height = '638.38px';
+                                        document.getElementById('brian-container').style.height = '550px';
                                     }
                                 }}>
-                                    Read More <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
+                                    Read About Brian <img src='./imgs/read-more-arrow.svg' alt='Read More Arrow' />
                                 </button>
                             </div>
                         </MeetContainer>
@@ -355,40 +385,40 @@ const About = () => {
                     </AdventureText>
                     <div id="pSlider">
                         <ol id="slider-container" dir="ltr">
-                            <li id="slide_1" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_7"> </a>
-                                <a class="next_slide" href="#slide_2"> </a>
+                            <li id="slide_1" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_7"> </a>
+                                <a className="next_slide" href="#slide_2"> </a>
                             </li>
-                            <li id="slide_2" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_1"> </a>
-                                <a class="next_slide" href="#slide_3"> </a>
+                            <li id="slide_2" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_1"> </a>
+                                <a className="next_slide" href="#slide_3"> </a>
                             </li>
-                            <li id="slide_3" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_2"> </a>
-                                <a class="next_slide" href="#slide_4"> </a>
+                            <li id="slide_3" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_2"> </a>
+                                <a className="next_slide" href="#slide_4"> </a>
                             </li>
-                            <li id="slide_4" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_3"> </a>
-                                <a class="next_slide" href="#slide_5"> </a>
+                            <li id="slide_4" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_3"> </a>
+                                <a className="next_slide" href="#slide_5"> </a>
                             </li>
-                            <li id="slide_5" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_4"> </a>
-                                <a class="next_slide" href="#slide_6"> </a>
+                            <li id="slide_5" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_4"> </a>
+                                <a className="next_slide" href="#slide_6"> </a>
                             </li>
-                            <li id="slide_6" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_5"> </a>
-                                <a class="next_slide" href="#slide_7"> </a>
+                            <li id="slide_6" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_5"> </a>
+                                <a className="next_slide" href="#slide_7"> </a>
                             </li>
-                            <li id="slide_7" class="li_slide">
-                                <div class="slide-snapper"></div>
-                                <a class="prev_slide" href="#slide_6"> </a>
-                                <a class="next_slide" href="#slide_1"> </a>
+                            <li id="slide_7" className="li_slide">
+                                <div className="slide-snapper"></div>
+                                <a className="prev_slide" href="#slide_6"> </a>
+                                <a className="next_slide" href="#slide_1"> </a>
                             </li>
                         </ol>
                     </div>
@@ -401,7 +431,7 @@ const About = () => {
                         Our team is grateful for the support from our mentors and peers at the University of Washington’s Information
                         School for their advice through each iteration of our project. Throughout this project, we were supported by
                         Andrey Butenko, the software engineer from the team that worked on the first iteration of Marine Rescue. He provided
-                        invaluable feedback and advice throughout our project. We were also greatly supported by two professors, Nam-Ho Park
+                        invaluable feedback and advice throughout our project. We were also greatly supported by two professors, Nam-ho Park
                         and Marlina Hales. They both provided valuable feedback and support throughout our capstone project.
                     </p>
                 </div>

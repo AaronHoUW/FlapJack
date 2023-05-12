@@ -1,7 +1,7 @@
 const LEVEL2 = {
   "pancakeIntro": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": undefined,
     "nextScene": "pancakeNorthAmerica",
     "baseFrame": [],
@@ -38,7 +38,7 @@ const LEVEL2 = {
   },
   "sallyTalking": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": undefined,
     "nextScene": "quiz",
     "baseFrame": [
@@ -71,7 +71,7 @@ const LEVEL2 = {
   },
   "sallyTalking2": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyTalking",
     "nextScene": {
       "Where did you go?": "sallyTalkingA",
@@ -107,7 +107,7 @@ const LEVEL2 = {
   },
   "sallyTalkingA": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyTalking2",
     "nextScene": "sallyNetCutScene",
     "baseFrame": [
@@ -249,7 +249,7 @@ const LEVEL2 = {
   },
   "sallyCardGame": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyNetCutScene",
     "nextScene": "sallyTalkingAContinued",
     "baseFrame": [],
@@ -273,7 +273,7 @@ const LEVEL2 = {
   },
   "sallyTalkingAContinued": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyCardGame",
     "nextScene": "minigame",
     "baseFrame": [
@@ -350,7 +350,7 @@ const LEVEL2 = {
   },
   "sallyTalkingB": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyTalking2",
     "nextScene": "sallyTalkingB2",
     "baseFrame": [
@@ -382,7 +382,7 @@ const LEVEL2 = {
   },
   "sallyTalkingB2": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "sallyTalkingB",
     "nextScene": "sallyNetCutScene",
     "baseFrame": [
@@ -421,7 +421,7 @@ const LEVEL2 = {
   },
   "postGame": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "nextScene": "postGame2",
     "baseFrame": [
       {
@@ -524,7 +524,7 @@ const LEVEL2 = {
   },
   "pancakeTalkToSalmon": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": undefined,
     "nextScene": {
       "Yes, I can help!": "tutorial",
@@ -559,7 +559,7 @@ const LEVEL2 = {
   },
   "postGame2": {
     "type": "comic",
-    "background": "sea",
+    "background": "mid-sea",
     "previousScene": "postGame2",
     "nextScene": "end",
     "baseFrame": [
