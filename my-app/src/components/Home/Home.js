@@ -81,6 +81,7 @@ function Home() {
                         </ParentButton>
                     </MoreInfo>
                 </IntroText>
+                <img className='official-logo' src='./imgs/Marine_Rescue_The_Sea-quel_Logo.png' alt='Marine Rescue: The Sea-quel logo' />
             </IntroContainer>
 
             <MeetContainer>

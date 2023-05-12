@@ -7,16 +7,21 @@ export const HomeContainer = styled.div`
 `;
 
 export const IntroContainer = styled.div`
-    background: url('./imgs/intro-bg.png');
+    background: url('./imgs/intro-bg-home.png');
     background-size: 100% 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 300px;
     align-items: center;
     padding: 80px 40px;
     width: 100%;
     height: 91vh;
     font-family: 'Mulish';
+
+    .official-logo {
+        width: 400px;
+    }
 `;
 
 export const Notification = styled.div`
