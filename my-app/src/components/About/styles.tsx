@@ -327,6 +327,7 @@ export const StatusContainer = styled.div`
         border-radius: 20px;
         padding: 24px;
         color: black;
+        width: 50%;
 
         h3 {
             color: #134254;
