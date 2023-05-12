@@ -43,8 +43,7 @@ export const IntroItems = styled.div`
     }
 
     .shawn-intro {
-        transform: scaleX(-1);
-        max-width: 170px;
+        max-width: 250px;
     }
 `;
 
@@ -68,19 +67,23 @@ export const IntroTitleContainer = styled.div`
 
     .intro-title-who {
         top: 1280px;
-        left: 70px;
+        left: 330px;
     }
 
     .text-bubble-who {
-        top: 1250px;
+        top: 1260px;
+        width: 60%;
+        left: 300px;
     }
 
     .intro-title-how {
-        left: 70px;
+        left: 100px;
     }
 
     .text-bubble-how {
         top: 3590px;
+        width: 73%;
+        left: 70px;
     }
 
     .intro-title-meet {
@@ -89,9 +92,11 @@ export const IntroTitleContainer = styled.div`
     }
 
     .text-bubble-meet {
-        top: 4980px;
         left: 435px;
         transform: scaleX(-1);
+        width: 50%;
+        height: 40%;
+        top: 4870px;
     }
 `;
 
@@ -152,7 +157,7 @@ export const AboutContainer = styled.div`
     font-family: 'Mulish';
     background-size: 100% 100%;
 
-    .presentation {        
+    .presentation {
         h2 {
             height: 115px;
         }
@@ -360,6 +365,7 @@ export const TeamContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 
     h2 {
         color: #134254;
@@ -385,10 +391,14 @@ export const MeetContainer = styled.div`
     color: black;
     gap: 24px;
     background: #F7EDE1;
-    width: 40%;
+    width: 729.19px;
     padding: 36px;
     border-radius: 20px;
-    height: 638.38px;
+    height: 550px;
+
+    .blank-role {
+        visibility: hidden;
+    }
 
     .profile-pic {
         height: 240px;
@@ -399,6 +409,7 @@ export const MeetContainer = styled.div`
         flex-direction: column;
         color: black;
         gap: 20px;
+        width: 622.44px;
 
         h2 {
             color: #134254;
@@ -408,24 +419,7 @@ export const MeetContainer = styled.div`
     
         p {
             margin-bottom: 0;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        #meet-delaney-text {
-            -webkit-line-clamp: 4;
-        }
-
-        #meet-brian-text {
-            -webkit-line-clamp: 6;
-        }
-
-        #meet-aaron-text {
-            overflow: initial;
-            display: block;
+            display: none;
         }
     
         .read-more-button {

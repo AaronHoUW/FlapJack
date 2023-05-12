@@ -15,7 +15,7 @@ function Navbar() {
             <NavContainer>
                 <LogoContainer>
                     <Link to='/'>
-                        <img src='./imgs/Marine_Rescue_The_Sea-quel.svg' height={75} />
+                        <img src='./imgs/Marine_Rescue_The_Sea-quel.png' height={75} />
                         <div>
                             <h1>Marine Rescue</h1>
                             <h3>The Sea-quel</h3>
