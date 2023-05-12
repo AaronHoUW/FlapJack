@@ -20,9 +20,7 @@ import {
     IntroDescription,
     IntroTitleContainer,
     AboutContainer,
-    FirstAboutSection,
     AboutSection,
-    WhoDetails,
     FeatureContainer,
     StatusContainer,
     StatusIcons,
@@ -168,7 +166,7 @@ const About = () => {
                 <StatusContainer>
                     <div>
                         <h3>Project Status</h3>
-                        <p>Our project will remain open-source. To view our project in depth, feel free to explore our work:</p>
+                        <p>Our project will be transitioned to open source, effective Jun. 10th, 2023. To view our project in depth, feel free to explore our work:</p>
                     </div>
                     <StatusIcons>
                         <a href='https://miro.com/app/board/uXjVP1qeP0I=/?moveToWidget=3458764542318464274&cot=14'>
