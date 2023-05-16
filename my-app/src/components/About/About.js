@@ -139,7 +139,7 @@ const About = () => {
                         </FeatureContainer>
                     </AboutSection>
                 </div>
-                <img src="./imgs/about-fish.svg" alt='Sally the Salmon and her friend' className="about-fish" />
+                <img src="./imgs/about-fish.svg" alt='Sally the Salmon and her friend' className="about-fish sprite-normal" />
                 <div>
                     <IntroTitleContainer className="intro-how">
                         <IntroTitle className="intro-title-how">How and why did you make Marine Rescue?</IntroTitle>
@@ -183,6 +183,9 @@ const About = () => {
                         </a>
                     </StatusIcons>
                 </StatusContainer>
+                <div className="whale-cut sprite-container">
+                    <img src='./sprites/sprite-wendy-whale.png' alt='Wendy the Whale' />
+                </div>
                 <TeamContainer>
                     <IntroTitleContainer className="intro-meet">
                         <img src='./sprites/sprite-user-placeholder.png' alt='User' />
