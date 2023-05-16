@@ -115,10 +115,10 @@ function WhaleMinigame(props) {
 		net2.current.focus();
 		net3.current.focus();
 
-		trash.current.focus();
-		trash2.current.focus();
-		trash3.current.focus();
-		trash4.current.focus();
+		// trash.current.focus();
+		// trash2.current.focus();
+		// trash3.current.focus();
+		// trash4.current.focus();
 
 		// Hard Code
 		setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
@@ -165,29 +165,29 @@ function WhaleMinigame(props) {
 			document.getElementById('net3').classList.remove('in-range');
 		}
 
-		if (Math.sqrt((user.current.x - trash.current.x) ** 2 + (user.current.y - trash.current.y) ** 2) <= 400) {
-			document.getElementById('trash').classList.add('in-range');
-		} else {
-			document.getElementById('trash').classList.remove('in-range');
-		}
+		// if (Math.sqrt((user.current.x - trash.current.x) ** 2 + (user.current.y - trash.current.y) ** 2) <= 400) {
+		// 	document.getElementById('trash').classList.add('in-range');
+		// } else {
+		// 	document.getElementById('trash').classList.remove('in-range');
+		// }
 
-		if (Math.sqrt((user.current.x - trash2.current.x) ** 2 + (user.current.y - trash2.current.y) ** 2) <= 400) {
-			document.getElementById('trash2').classList.add('in-range');
-		} else {
-			document.getElementById('trash2').classList.remove('in-range');
-		}
+		// if (Math.sqrt((user.current.x - trash2.current.x) ** 2 + (user.current.y - trash2.current.y) ** 2) <= 400) {
+		// 	document.getElementById('trash2').classList.add('in-range');
+		// } else {
+		// 	document.getElementById('trash2').classList.remove('in-range');
+		// }
 
-		if (Math.sqrt((user.current.x - trash3.current.x) ** 2 + (user.current.y - trash3.current.y) ** 2) <= 400) {
-			document.getElementById('trash3').classList.add('in-range');
-		} else {
-			document.getElementById('trash3').classList.remove('in-range');
-		}
+		// if (Math.sqrt((user.current.x - trash3.current.x) ** 2 + (user.current.y - trash3.current.y) ** 2) <= 400) {
+		// 	document.getElementById('trash3').classList.add('in-range');
+		// } else {
+		// 	document.getElementById('trash3').classList.remove('in-range');
+		// }
 
-		if (Math.sqrt((user.current.x - trash4.current.x) ** 2 + (user.current.y - trash4.current.y) ** 2) <= 400) {
-			document.getElementById('trash4').classList.add('in-range');
-		} else {
-			document.getElementById('trash4').classList.remove('in-range');
-		}
+		// if (Math.sqrt((user.current.x - trash4.current.x) ** 2 + (user.current.y - trash4.current.y) ** 2) <= 400) {
+		// 	document.getElementById('trash4').classList.add('in-range');
+		// } else {
+		// 	document.getElementById('trash4').classList.remove('in-range');
+		// }
 	}
 
 	function checkObstacle(newPlayerCords) {
@@ -212,7 +212,7 @@ function WhaleMinigame(props) {
 	const loadNextPage = () => {
 		let newPage = page - 1;
 		setPage(newPage);
-		document.getElementById("load-modal-" + (page - 1)).click()
+		document.getElementById("load-modal-" + (page - 1)).click();
 	}
 
 	
@@ -353,6 +353,7 @@ function WhaleMinigame(props) {
 					alt="Trash4"
 					id='trash4'
 				/> */}
+				{objectList}
 			</div>
 		</>
 	);
@@ -385,8 +386,6 @@ function ModalCards(props) {
 		}
 		return false
 	}
-
-
 
 	const removeTrash = (event, targetID) => {
 		if (isInRange(event), !solved) {
