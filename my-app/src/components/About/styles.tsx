@@ -87,7 +87,7 @@ export const IntroTitleContainer = styled.div`
     }
 
     .intro-title-meet {
-        top: 5010px;
+        top: 5586px;
         left: 480px;
     }
 
@@ -96,7 +96,7 @@ export const IntroTitleContainer = styled.div`
         transform: scaleX(-1);
         width: 50%;
         height: 40%;
-        top: 4870px;
+        top: 5450px;
     }
 `;
 
@@ -151,11 +151,20 @@ export const AboutContainer = styled.div`
     gap: 46px;
 
     width: 100%;
-    height: 6134.55px;
+    height: 6600px;
 
     background: url('./imgs/about-bg.png');
     font-family: 'Mulish';
     background-size: 100% 100%;
+
+    .whale-cut {
+        background-image: url('./imgs/whale-cut.png');
+        background-size: 100% 100%;
+
+        img {
+            transform: scaleX(-1);
+        }
+    }
 
     .presentation {
         h2 {
