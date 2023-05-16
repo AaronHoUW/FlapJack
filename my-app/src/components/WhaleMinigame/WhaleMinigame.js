@@ -7,6 +7,10 @@ import {
 	Whale,
 	PointsContainer,
 	Trash,
+	ScreenModal,
+	ModalRowText,
+	ModalContent,
+	NextButton,
 } from './styles.tsx';
 import RemoveIgnore from '../Stories/RemoveIgnore.json';
 import postRemoveDialogue from '../Stories/postRemoveDialogue.json';
@@ -205,12 +209,12 @@ function WhaleMinigame(props) {
 		}
 	}
 
-	const removeTrash = (event) => {
-		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
-			event.target.classList.add('hidden');
-			setTrashRemove(trashRemove + 1);
-		}
+	const loadNextPage = () => {
+		let newPage = page - 1;
+		setPage(newPage);
+		document.getElementById("load-modal-" + (page - 1)).click()
 	}
+
 	
 	if (lastResult && trashRemove === 10 && netRemove === 3) {
 		document.getElementById("load-modal-100").click();
