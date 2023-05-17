@@ -44,6 +44,33 @@ export const Net = styled.img<Props>`
     }
 `;
 
+export const ScreenModal = styled.div`
+    padding-top: 5vh
+`;
+
+export const ModalContent = styled.div`
+    background-color: #C2EEFF;
+`;
+
+export const ModalRowText = styled.div`
+    height: 0%;
+    font-size: 25px
+`;
+
+export const NextButton = styled.button`
+    padding: 12px 24px;
+    border: none;
+    background: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
 export const Trash = styled.img<Props>`
     position: relative;
     animation: MoveUpDown 1.5s linear infinite;

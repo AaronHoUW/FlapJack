@@ -204,7 +204,7 @@ function ModalCards(props) {
 										<p className="post">
 											{/* {textResult} */}
 											{(correctAnswer &&
-												<p><span className='text-success fw-bold'>Correct!</span> {textResult}</p>) || (correctAnswer !== undefined && <p><span className='text-danger'>Uh Oh!</span> {textResult}</p>)}
+												<p><span className='text-success'>Correct!</span> {textResult}</p>) || (correctAnswer !== undefined && <p><span className='text-danger'>Uh Oh!</span> {textResult}</p>)}
 										</p>
 									</div>
 								</ModalRowText>
