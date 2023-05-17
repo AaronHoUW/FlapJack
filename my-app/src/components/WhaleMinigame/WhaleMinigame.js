@@ -215,49 +215,12 @@ function WhaleMinigame(props) {
 		document.getElementById("load-modal-" + (page - 1)).click();
 	}
 
-	
 	if (lastResult && trashRemove === 10 && netRemove === 3) {
 		document.getElementById("load-modal-100").click();
 	}
 
 	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} />);
 	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} />);
-
-	const loadNextModal = () => {
-		let newPage = page + 1;
-		setPage(newPage);
-		document.getElementById(`load-modal-` + (page + 1)).click();
-	}
-
-	const loadNextLevel = () => {
-		// Load Beach Level
-		if (level === 1) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-mid-sea.png)`;
-			setHasObstacle(true);
-			document.getElementById('square').classList.remove('hidden');
-		} else if (level === 2) {
-			document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-deep-sea-level.png)`;
-		}
-		if (level < 3) {
-			document.getElementById("play-area").click();
-			// Reset Level
-			setXAxis(60);
-			setYAxis(100)
-			setNetPlacement({ top: randomPx() + 'px', left: randomPx() + 'px' });
-			setNetPlacement2({ top: randomPx() + 'px', left: randomPx() + 'px' })
-			setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' })
-			document.getElementById('net').classList.remove('hidden');
-			document.getElementById('net2').classList.remove('hidden');
-			document.getElementById('net3').classList.remove('hidden');
-			// Reset Values
-			setNetRemove(0);
-			checkWithinRange();
-			setLevel(level + 1);
-			setPage(1);
-		} else {
-			props.setIsGameComplete(true);
-		}
-	}
 
 	// Note: When finished watching video, it closes with next video
 	return (
@@ -313,46 +276,6 @@ function WhaleMinigame(props) {
 					alt="Net3"
 					id='net3'
 				/>
-				{/* Trash 1 */}
-				{/* <Trash
-					style={trashPlacement}
-					src={`/sprites/sprite-trash.png`}
-					ref={trash}
-					onClick={removeTrash}
-					className='img-size'
-					alt="Trash"
-					id='trash'
-				/> */}
-				{/* Trash 2 */}
-				{/* <Trash
-					style={trashPlacement2}
-					src={`/sprites/sprite-trash.png`}
-					ref={trash2}
-					onClick={removeTrash}
-					className='img-size'
-					alt="Trash2"
-					id='trash2'
-				/> */}
-				{/* Trash 3 */}
-				{/* <Trash
-					style={trashPlacement3}
-					src={`/sprites/sprite-trash.png`}
-					ref={trash3}
-					onClick={removeTrash}
-					className='img-size'
-					alt="Trash3"
-					id='trash3'
-				/> */}
-				{/* Trash 4 */}
-				{/* <Trash
-					style={trashPlacement4}
-					src={`/sprites/sprite-trash.png`}
-					ref={trash4}
-					onClick={removeTrash}
-					className='img-size'
-					alt="Trash4"
-					id='trash4'
-				/> */}
 				{objectList}
 			</div>
 		</>
