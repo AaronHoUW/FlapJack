@@ -44,34 +44,58 @@ function NetMiniGame(props) {
 			xPosition: grabUserXPosition(),
 			yPosition: grabUserYPosition(),
 			width: user.current.width,
-			height: user.current.height
+			height: user.current.height,
+		
+			offsetLeft: user.current.offsetLeft,
+			offsetRight: (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth),
+			offsetTop: user.current.offsetTop,
+			offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
+		}
+		if (event.key === 'a') {
+			console.log("left", user.current.offsetLeft)
+			console.log("top", user.current.offsetTop)
+			console.log("right", (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth))
+			console.log("bottom", (window.innerHeight - user.current.offsetTop - user.current.offsetHeight))
 		}
 		if (event.key === 'ArrowRight') {
-			newPlayerCords.xPosition += 100;
-			if (!checkObstacle(newPlayerCords)) {
-				setXAxis(xAxis + 50)
-				checkWithinRange(newPlayerCords);
+			newPlayerCords.offsetRight += 50;
+			if (!checkOutRange(newPlayerCords)) {
+				newPlayerCords.xPosition += 100;			
+				if (!checkObstacle(newPlayerCords)) {
+					setXAxis(xAxis + 50)
+					checkWithinRange(newPlayerCords);
+				}
 			}
 		}
 		if (event.key === 'ArrowLeft') {
-			newPlayerCords.xPosition -= 100;
-			if (!checkObstacle(newPlayerCords)) {
-				setXAxis(xAxis - 50)
-				checkWithinRange(newPlayerCords);
+			newPlayerCords.offsetLeft -= 50;
+			console.log(newPlayerCords)
+			if(!checkOutRange(newPlayerCords)) {
+				newPlayerCords.xPosition -= 100;
+				if (!checkObstacle(newPlayerCords)) {
+					setXAxis(xAxis - 50)
+					checkWithinRange(newPlayerCords);
+				}
 			}
 		}
 		if (event.key === 'ArrowDown') {
-			newPlayerCords.yPosition += 50;
-			if (!checkObstacle(newPlayerCords)) {
-				setYAxis(yAxis + 50)
-				checkWithinRange(newPlayerCords);
-			}
+			newPlayerCords.offsetBottom += 50;
+			if(!checkOutRange(newPlayerCords)) {
+				newPlayerCords.yPosition += 50;
+				if (!checkObstacle(newPlayerCords)) {
+					setYAxis(yAxis + 50)
+					checkWithinRange(newPlayerCords);
+				}
+			}			
 		}
 		if (event.key === 'ArrowUp') {
-			newPlayerCords.yPosition -= 50;
-			if (!checkObstacle(newPlayerCords)) {
-				setYAxis(yAxis - 50)
-				checkWithinRange(newPlayerCords);
+			newPlayerCords.offsetTop -= 50;
+			if(!checkOutRange(newPlayerCords)) {
+				newPlayerCords.yPosition -= 50;
+				if (!checkObstacle(newPlayerCords)) {
+					setYAxis(yAxis - 50)
+					checkWithinRange(newPlayerCords);
+				}
 			}
 		}
 	};
@@ -162,6 +186,17 @@ function NetMiniGame(props) {
 			return matchPoints.length >= 1;
 		})
 		return playerCorners.length >= 1;
+	}
+
+	function checkOutRange(newPlayerCords) {
+		console.log(newPlayerCords)
+		// console.log((newPlayerCords.offsetLeft < 0))
+		return (newPlayerCords.offsetLeft < 0) || (newPlayerCords.offsetRight < 0) || (newPlayerCords.offsetTop < 0) || (newPlayerCords.offsetBottom < 0); 
+		// console.log("left", user.current.offsetLeft)
+		// console.log("top", user.current.offsetTop)
+		// console.log("right", (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth))
+		// console.log("bottom", (window.innerHeight - user.current.offsetTop - user.current.offsetHeight))
+		// return false;
 	}
 
 	function grabObstaclePoistion(refObject) {

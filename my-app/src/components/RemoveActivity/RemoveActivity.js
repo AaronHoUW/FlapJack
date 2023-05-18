@@ -143,7 +143,9 @@ function ModalCards(props) {
 	const onLoad = () => {
 		setImageResult(objectData.image)
 		setXPosition((Math.random() * 250) + 50)
+		// setXPosition(Math.floor(Math.random() * 20))
 		setYPosition((Math.random() * 250) + 50)
+		// setYPosition(Math.floor(Math.random() * 20))
 	}
 
 	const onClickRemove = () => {
@@ -186,7 +188,7 @@ function ModalCards(props) {
 	return (
 		<>
 			{/* <a  /> */}
-			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
+			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition}} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
 			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
 				<ScreenModal className="modal" id={`modal-` + int + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div className="modal-dialog modal-lg modal-dialog-centered">
