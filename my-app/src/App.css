@@ -147,6 +147,10 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #F7EDE1;
+  padding: 35px;
+  width: 0px;
+  border-radius: 35px;
 }
 
 .nav-play {
@@ -187,6 +191,9 @@ footer {
 .preface p {
   margin: 0;
   font-size: 20px;
+  background-color: #F7EDE1;
+  border-radius: 20px;
+  padding: 35px;
 }
 
 .play-area {
@@ -929,6 +936,7 @@ footer {
 
 .sally-level {
   width: 300px;
+  transform: scaleX(-1);
 }
 
 .wendy-level {
@@ -985,7 +993,7 @@ footer {
   flex-direction: row;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 600px;
   height: 434px;
   width: 100%;
   background-image: url("../public/imgs/firstlvl.png");
@@ -997,15 +1005,10 @@ footer {
   flex-direction: row;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 600px;
   height: 417px;
   width: 100%;
   background-image: url("../public/imgs/secondlevel.png");
-}
-
-#last-title,
-#last-info {
-  color: white;
 }
 
 .whale {
@@ -1014,7 +1017,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 365px;
   height: 380px;
   width: 100%;
 }
