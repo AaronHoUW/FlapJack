@@ -119,6 +119,7 @@ export const GameCards = styled.div`
         }
 
         img {
+            width: 350px;
             height: 207px;
         }
 
