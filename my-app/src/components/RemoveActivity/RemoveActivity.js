@@ -40,6 +40,10 @@ function RemoveActivity(props) {
 
 	const handleKeyDown = event => {
 		const newPlayerCords = {
+			xPosition: grabUserXPosition(),
+			yPosition: grabUserYPosition(),
+			width: user.current.width,
+			height: user.current.height,
 			offsetLeft: user.current.offsetLeft,
 			offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
 			offsetTop: user.current.offsetTop,
@@ -72,6 +76,14 @@ function RemoveActivity(props) {
 		checkWithinRange(newPlayerCords);
 	};
 
+	function grabUserXPosition() {
+		return user.current.offsetLeft + (user.current.width / 2);
+	}
+
+	function grabUserYPosition() {
+		return user.current.offsetTop + (user.current.height / 2)
+	}
+
 	useEffect(() => {
 		user.current.focus()
 		setReandomizeTrash(shuffle(Object.keys(RemoveIgnore)))
@@ -86,14 +98,10 @@ function RemoveActivity(props) {
 	}
 
 	function checkWithinRange(newPlayerCords) {
-		// console.log(newPlayerCords);
 		[...Array(10)].forEach((e, i) => {
-			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
-			// grabObstaclePosition
-			// Compare player's positions to see if it match
-
-			// then if statement uses it to compare
-			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
+			const trashPosition = grabObstaclePoistion(document.getElementById(`trash-image-`+i))
+			if ((newPlayerCords.xPosition - trashPosition.x) <= 100 && (newPlayerCords.xPosition - trashPosition.x) >= -100 
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
 				document.getElementById(`trash-image-`+i).classList.add('in-range');	
 			} else {
 				document.getElementById(`trash-image-`+i).classList.remove('in-range');
