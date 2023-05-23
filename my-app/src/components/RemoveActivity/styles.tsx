@@ -135,6 +135,20 @@ export const NextButton = styled.button`
     font-size: 30px;
 `;
 
+export const StartButton = styled.button`
+    padding: 12px 24px;
+    border: none;
+    background: #134254;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+`;
+
 export const Background = styled.div`
     width: 100%;
     background-image: url('./sprites/bg-beach-level.png');

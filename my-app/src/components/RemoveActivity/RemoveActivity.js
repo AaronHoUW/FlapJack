@@ -10,7 +10,8 @@ import {
 	ModalContent,
 	Background,
 	NextButton,
-	PointsContainer
+	PointsContainer,
+	StartButton
 } from './styles.tsx';
 import RemoveIgnore from '../Stories/RemoveIgnore.json';
 import postRemoveDialogue from '../Stories/postRemoveDialogue.json';
@@ -74,10 +75,6 @@ function RemoveActivity(props) {
 				setYAxis(yAxis - 50)
 			}
 		}
-		if (event.key === "\\") {
-			setLastResult(true)
-			setCorrectCount(10);
-		}
 		checkWithinRange(newPlayerCords);
 	};
 
@@ -96,6 +93,7 @@ function RemoveActivity(props) {
 			return `trash-image-`+i;
 		})
 		setUnSolvedTrash(trashList)
+		document.getElementById(`load-modal-999`).click();
 	}, [shuffle])
 
 	if (lastResult && correctCount === 10 && page === 100) {
@@ -143,6 +141,24 @@ function RemoveActivity(props) {
 	</VidCards>)
 	return (
 		<div>
+			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">					
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 fw-bold text-dark" id="staticBackdropLabel">Instructions</h1>
+							</div>
+							 <div className='row model-info'>
+								<p className='modal-body'>Click on all of the trash and other objects on the beach, and decide whether they should be removed or ignored</p>
+							</div>
+							<div className='modal-buttons'>
+								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			{pageList}
 			<Background className='remove-area' onClick={() => user.current.focus()}>
 				<PointsContainer>
