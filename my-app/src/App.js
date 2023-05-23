@@ -174,7 +174,6 @@ function App() {
 						/>
 					} />
 					<Route path='/storyteller/editor' element={<EditorPage />} />
-
 				</Routes>
 			</div>
 			{/* <footer /> */}
