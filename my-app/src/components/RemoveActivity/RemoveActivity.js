@@ -39,19 +39,37 @@ function RemoveActivity(props) {
 
 
 	const handleKeyDown = event => {
+		const newPlayerCords = {
+			offsetLeft: user.current.offsetLeft,
+			offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
+			offsetTop: user.current.offsetTop,
+			offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
+		}
 		if (event.key === 'ArrowRight') {
-			setXAxis(xAxis + 50)
+			newPlayerCords.offsetRight -= 50;
+			if (!checkOutRange(newPlayerCords)) { 
+				setXAxis(xAxis + 50)
+			}
 		}
 		if (event.key === 'ArrowLeft') {
-			setXAxis(xAxis - 50)
+			newPlayerCords.offsetLeft -= 50;
+			if(!checkOutRange(newPlayerCords)) {
+				setXAxis(xAxis - 50)
+			}
 		}
 		if (event.key === 'ArrowDown') {
-			setYAxis(yAxis + 50)
+			newPlayerCords.offsetBottom -= 50;
+			if(!checkOutRange(newPlayerCords)) { 
+				setYAxis(yAxis + 50)
+			}
 		}
 		if (event.key === 'ArrowUp') {
-			setYAxis(yAxis - 50)
+			newPlayerCords.offsetTop -= 50;
+			if(!checkOutRange(newPlayerCords)) { 
+				setYAxis(yAxis - 50)
+			}
 		}
-		checkWithinRange();
+		checkWithinRange(newPlayerCords);
 	};
 
 	useEffect(() => {
@@ -63,14 +81,36 @@ function RemoveActivity(props) {
 		document.getElementById("load-modal-100").click();
 	}
 
-	function checkWithinRange() {
+	function checkOutRange(newPlayerCords) {
+		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
+	}
+
+	function checkWithinRange(newPlayerCords) {
+		// console.log(newPlayerCords);
 		[...Array(10)].forEach((e, i) => {
 			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
+			// grabObstaclePosition
+			// Compare player's positions to see if it match
+
+			// then if statement uses it to compare
 			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
 				document.getElementById(`trash-image-`+i).classList.add('in-range');	
 			} else {
 				document.getElementById(`trash-image-`+i).classList.remove('in-range');
 			}
+		})
+	}
+
+	function grabObstaclePoistion(refObject) {
+		const objectX = refObject.offsetLeft + (refObject.width / 2)
+		const objectY = refObject.offsetTop + (refObject.height / 2)
+		return ({
+			x: objectX,
+			y: objectY,
+			leftEdge: objectX - (refObject.width / 2),
+			rightEdge: objectX + (refObject.width / 2),
+			topEdge: objectY - (refObject.height / 2),
+			bottomEdge: objectY + (refObject.height / 2)
 		})
 	}
 
@@ -97,7 +137,7 @@ function RemoveActivity(props) {
 					ref={user}
 					tabIndex={-1}
 					onKeyDown={handleKeyDown}
-					src={`/sprites/sprite-user-placeholder.png`}
+					src={`/sprites/sprite-user.png`}
 					id='one-playable'
 					className='img-size'
 					alt="User's placeholder"
@@ -171,6 +211,7 @@ function ModalCards(props) {
 			setCorrectAnswer(true)
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
+			document.getElementById("trash-image-" + int).classList.add('ignore');
 		}
 		else {
 			setTextResult(objectData.incorrect)

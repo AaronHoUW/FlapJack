@@ -45,20 +45,14 @@ function NetMiniGame(props) {
 			yPosition: grabUserYPosition(),
 			width: user.current.width,
 			height: user.current.height,
-		
 			offsetLeft: user.current.offsetLeft,
-			offsetRight: (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth),
+			offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
 			offsetTop: user.current.offsetTop,
 			offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
 		}
-		if (event.key === 'a') {
-			console.log("left", user.current.offsetLeft)
-			console.log("top", user.current.offsetTop)
-			console.log("right", (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth))
-			console.log("bottom", (window.innerHeight - user.current.offsetTop - user.current.offsetHeight))
-		}
 		if (event.key === 'ArrowRight') {
-			newPlayerCords.offsetRight += 50;
+			newPlayerCords.offsetRight -= 50;
+			console.log(newPlayerCords.offsetRight, "after")
 			if (!checkOutRange(newPlayerCords)) {
 				newPlayerCords.xPosition += 100;			
 				if (!checkObstacle(newPlayerCords)) {
@@ -69,7 +63,6 @@ function NetMiniGame(props) {
 		}
 		if (event.key === 'ArrowLeft') {
 			newPlayerCords.offsetLeft -= 50;
-			console.log(newPlayerCords)
 			if(!checkOutRange(newPlayerCords)) {
 				newPlayerCords.xPosition -= 100;
 				if (!checkObstacle(newPlayerCords)) {
@@ -79,7 +72,7 @@ function NetMiniGame(props) {
 			}
 		}
 		if (event.key === 'ArrowDown') {
-			newPlayerCords.offsetBottom += 50;
+			newPlayerCords.offsetBottom -= 50;
 			if(!checkOutRange(newPlayerCords)) {
 				newPlayerCords.yPosition += 50;
 				if (!checkObstacle(newPlayerCords)) {
@@ -144,15 +137,8 @@ function NetMiniGame(props) {
 		
 		})
 		setObstaclePosition(newPositions)
-
-		// setObstaclePosition
-
-		// Hard Code
 		changeNetPositions()
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
-
-		// document.getElementById('square').classList.add('hidden');
-		// document.getElementById('square1').classList.add('hidden');
 	}, [setObstacleList, setObstaclePosition]);
 
 	function checkWithinRange(newPlayerCords) {
@@ -189,14 +175,7 @@ function NetMiniGame(props) {
 	}
 
 	function checkOutRange(newPlayerCords) {
-		console.log(newPlayerCords)
-		// console.log((newPlayerCords.offsetLeft < 0))
-		return (newPlayerCords.offsetLeft < 0) || (newPlayerCords.offsetRight < 0) || (newPlayerCords.offsetTop < 0) || (newPlayerCords.offsetBottom < 0); 
-		// console.log("left", user.current.offsetLeft)
-		// console.log("top", user.current.offsetTop)
-		// console.log("right", (window.innerWidth - user.current.offsetLeft - user.current.offsetWidth))
-		// console.log("bottom", (window.innerHeight - user.current.offsetTop - user.current.offsetHeight))
-		// return false;
+		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
 	}
 
 	function grabObstaclePoistion(refObject) {
@@ -291,10 +270,6 @@ function NetMiniGame(props) {
 				<PointsContainer>
 					<div><p>Net Removed: {netRemove}</p></div>
 				</PointsContainer>
-				{/* User */}
-				{(level === 3) && <Whale
-					src={'/sprites/sprite-wendy-whale.png'}
-				/>}
 
 				<User
 					style={userPlacement}
@@ -368,9 +343,6 @@ export function ObstacleImages(props) {
 	} else if (randomImage[level - 1] === '/sprites/sprite-obstacle-jellyfish.png') {
 		obstacleSize = 100;
 	}
-
-	
-
 	return (
 		<Obstacle
 			style={{ top: (obstaclePosition[int].y * 1.2) + 'px', left: (obstaclePosition[int].x * randomLocation[level - 1]) + 'px', width: obstacleSize + `px` }}

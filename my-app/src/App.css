@@ -108,6 +108,10 @@ body {
   visibility: hidden;
 }
 
+.ignore {
+  opacity: 50%;
+}
+
 body {
   background-color: #FFFFFF;
 }
@@ -235,12 +239,12 @@ footer {
 
 #playable {
   position: relative;
-  width: 250px;
+  width: 150px;
 }
 
 #one-playable {
   position: relative;
-  width: 350px;
+  width: 150px;
 }
 
 #net,
