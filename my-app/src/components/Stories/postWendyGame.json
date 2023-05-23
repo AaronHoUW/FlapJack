@@ -1,0 +1,35 @@
+{
+    "1" : {
+        "page-1": {
+            "type": "text",
+            "title": "Great job helping out Wendy!",
+            "body" : "Good job collecting all the ghost nets and debris that Wendy has swallowed. I’m sure you helped her stomach ache go away! All of that stuff was definitely not good for Wendy’s health."
+        },
+        "page-2": {
+            "type": "input",
+            "title": "How do you think nets in the deep ocean are collected?"
+        },
+        "page-3": {
+            "type": "input",
+            "title": "Have you ever been on a fishing or boat trip and see objects get thrown into the water?"
+        },
+        "page-4": {
+            "type": "video",
+            "title": "How did the nets impact the whale?",
+            "video" : "https://www.youtube.com/embed/xCKPsVi3vBo?clip=Ugkx_-P9iOVTaOHYLLpC81SyxkIV_g_5Tt36&amp;clipt=EAAY6P4C"
+
+        },
+        "page-5": {
+            "type": "input",
+            "title": "How do some of these objects end up in the ocean?"
+        },
+        "page-6": {
+            "type": "input",
+            "title": "Good job collecting and learning about how the nets can impact many aspects of animals in the deep ocean! Can you think of other ways that you can help with the nets getting trapped under sea?"
+        },
+        "page-7": {
+            "type": "last",
+            "title": "Make sure to never throw trash in or around the ocean, so that marine animals like Wendy can’t eat it!"
+        }
+    }
+}

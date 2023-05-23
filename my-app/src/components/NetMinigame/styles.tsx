@@ -50,7 +50,6 @@ export const Obstacle = styled.img<Props>`
     position: absolute;
     top: 40%;
     right: 45%;
-    width: 300px;
 `;
 
 export const Whale = styled.img`
