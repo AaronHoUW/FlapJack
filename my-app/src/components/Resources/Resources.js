@@ -6,9 +6,7 @@ import {
     VideosContainer,
     VideoContent,
     MoreVideosContainer,
-    ReadContainer,
     SectionTitleLight,
-    Articles,
     SimilarGamesContainer,
     GameCards,
     DeepSea
@@ -24,14 +22,15 @@ function Resources() {
     return (
         <div>
             <ResourcesContainer>
-                <SectionTitle>Resources</SectionTitle>
-                <ParagraphText>
-                    Want to learn more about marine life and how they are impacted by us humans? Browse the
-                    resources below! You can watch the full videos from the game.
-                </ParagraphText>
+                <div>
+                    <SectionTitle>Resources</SectionTitle>
+                    <ParagraphText>
+                        Want to learn more about marine life and how they are impacted by us humans? Browse the
+                        resources below! You can watch the full videos from the game.
+                    </ParagraphText>
+                </div>
             </ResourcesContainer>
             <VideosContainer>
-                <SectionTitle>Videos</SectionTitle>
                 <VideoContent>
                     <div>
                         <h2>A Whale's Tale</h2>
@@ -42,12 +41,12 @@ function Resources() {
                             you can also clear the water of plastic!
                         </ParagraphText>
                     </div>
-                    <iframe title="A Whale's Tale by Hope Works" width='50%' src="https://www.youtube.com/embed/xFPoIU5iiYQ" />
+                    <iframe title="A Whale's Tale by Hope Works" width='80%' src="https://www.youtube.com/embed/xFPoIU5iiYQ" />
                 </VideoContent>
             </VideosContainer>
             <MoreVideosContainer>
                 <VideoContent className='more-content'>
-                    <iframe title="Whale Tangled in Net Saved by The Dodo" width='50%' src="https://www.youtube.com/embed/hC_isxflaVA" />
+                    <iframe title="Whale Tangled in Net Saved by The Dodo" width='60%' src="https://www.youtube.com/embed/hC_isxflaVA" />
                     <div>
                         <h2>Whale Tangled In Net Saved</h2>
                         <h3>By: The Dodo</h3>
@@ -66,7 +65,7 @@ function Resources() {
                             nets and plastic, it can trap fish, turtles, and many more marine animals.
                         </ParagraphText>
                     </div>
-                    <iframe title="Protecting Our Oceans from Ghost Traps by Great Big Story" width='50%' src="https://www.youtube.com/embed/xCKPsVi3vBo" />
+                    <iframe title="Protecting Our Oceans from Ghost Traps by Great Big Story" width='60%' src="https://www.youtube.com/embed/xCKPsVi3vBo" />
                 </VideoContent>
                 <SimilarGamesContainer>
                     <SectionTitleLight>Play Similar Games</SectionTitleLight>
