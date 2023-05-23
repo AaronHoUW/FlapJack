@@ -33,43 +33,25 @@ function RemoveActivity(props) {
 
 
 	// Change Player's Position
-	const userPlacement = { top: yAxis + 'px', left: xAxis + 10 + 'px' };
+	const userPlacement = { top: yAxis + 500 + 'px', left: xAxis + 10 + 'px' };
 	const navigate = useNavigate();
 	const user = useRef(null);
 
 
 	const handleKeyDown = event => {
-		const newPlayerCords = {
-			offsetLeft: user.current.offsetLeft,
-			offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
-			offsetTop: user.current.offsetTop,
-			offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
-		}
 		if (event.key === 'ArrowRight') {
-			newPlayerCords.offsetRight -= 50;
-			if (!checkOutRange(newPlayerCords)) { 
-				setXAxis(xAxis + 50)
-			}
+			setXAxis(xAxis + 50)
 		}
 		if (event.key === 'ArrowLeft') {
-			newPlayerCords.offsetLeft -= 50;
-			if(!checkOutRange(newPlayerCords)) {
-				setXAxis(xAxis - 50)
-			}
+			setXAxis(xAxis - 50)
 		}
 		if (event.key === 'ArrowDown') {
-			newPlayerCords.offsetBottom -= 50;
-			if(!checkOutRange(newPlayerCords)) { 
-				setYAxis(yAxis + 50)
-			}
+			setYAxis(yAxis + 50)
 		}
 		if (event.key === 'ArrowUp') {
-			newPlayerCords.offsetTop -= 50;
-			if(!checkOutRange(newPlayerCords)) { 
-				setYAxis(yAxis - 50)
-			}
+			setYAxis(yAxis - 50)
 		}
-		checkWithinRange(newPlayerCords);
+		checkWithinRange();
 	};
 
 	useEffect(() => {
@@ -81,39 +63,9 @@ function RemoveActivity(props) {
 		document.getElementById("load-modal-100").click();
 	}
 
-	function checkOutRange(newPlayerCords) {
-		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
+	function checkWithinRange() {
+
 	}
-
-	function checkWithinRange(newPlayerCords) {
-		// console.log(newPlayerCords);
-		[...Array(10)].forEach((e, i) => {
-			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
-			// grabObstaclePosition
-			// Compare player's positions to see if it match
-
-			// then if statement uses it to compare
-			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
-				document.getElementById(`trash-image-`+i).classList.add('in-range');	
-			} else {
-				document.getElementById(`trash-image-`+i).classList.remove('in-range');
-			}
-		})
-	}
-
-	function grabObstaclePoistion(refObject) {
-		const objectX = refObject.offsetLeft + (refObject.width / 2)
-		const objectY = refObject.offsetTop + (refObject.height / 2)
-		return ({
-			x: objectX,
-			y: objectY,
-			leftEdge: objectX - (refObject.width / 2),
-			rightEdge: objectX + (refObject.width / 2),
-			topEdge: objectY - (refObject.height / 2),
-			bottomEdge: objectY + (refObject.height / 2)
-		})
-	}
-
 	const objectList = randomizeTtash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setCorrectCount} correctCount={correctCount} setLastResult={setLastResult}>
 	</ModalCards>)
 	const loadNextPage = () => {
@@ -137,7 +89,7 @@ function RemoveActivity(props) {
 					ref={user}
 					tabIndex={-1}
 					onKeyDown={handleKeyDown}
-					src={`/sprites/sprite-user.png`}
+					src={`/sprites/sprite-user-placeholder.png`}
 					id='one-playable'
 					className='img-size'
 					alt="User's placeholder"
@@ -171,21 +123,28 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
+		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
+			return true
+		}
+		return false
 	}
 
-	const removeTrash = (event) => {
-		if (isInRange(event) && !solved) {
-			document.getElementById("load-modal-" + int).click();
+
+
+	const removeTrash = (event, targetID) => {
+		if (isInRange(event), !solved) {
+			loadModal();
 		}
+	}
+
+	const loadModal = () => {
+		document.getElementById("load-modal-" + int).click();
 	}
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
 		setXPosition((Math.random() * 250) + 50)
-		// setXPosition(Math.floor(Math.random() * 20))
 		setYPosition((Math.random() * 250) + 50)
-		// setYPosition(Math.floor(Math.random() * 20))
 	}
 
 	const onClickRemove = () => {
@@ -211,7 +170,6 @@ function ModalCards(props) {
 			setCorrectAnswer(true)
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
-			document.getElementById("trash-image-" + int).classList.add('ignore');
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -229,7 +187,7 @@ function ModalCards(props) {
 	return (
 		<>
 			{/* <a  /> */}
-			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition}} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
+			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
 			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
 				<ScreenModal className="modal" id={`modal-` + int + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div className="modal-dialog modal-lg modal-dialog-centered">
