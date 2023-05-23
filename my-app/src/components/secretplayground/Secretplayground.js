@@ -29,44 +29,90 @@ function Secretplayground() {
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	const navigate = useNavigate();
 
+    let keys = {
+        ArrowUp: false,
+        ArrowDown: false,
+        ArrowLeft: false,
+        ArrowRight: false
+    }
+
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "ArrowLeft") {
+            keys.ArrowLeft = false
+        }
+        if (event.key === "ArrowRight") {
+            keys.ArrowRight = false
+        }
+        if (event.key === "ArrowUp") {
+            keys.ArrowUp = false
+        }
+        if (event.key === "ArrowDown") {
+            keys.ArrowDown = false
+        }
+    })
+
+    document.addEventListener("keydown", (event) => {
+        console.log(event)
+        if (event.key === "ArrowLeft") {
+            keys.ArrowLeft = true
+        }
+        if (event.key === "ArrowRight") {
+            keys.ArrowRight = true
+        }
+        if (event.key === "ArrowUp") {
+            keys.ArrowUp = true
+        }
+        if (event.key === "ArrowDown") {
+            keys.ArrowDown = true
+        }
+
+        if (keys.ArrowLeft) {
+            setXAxis(xAxis - 50)
+        } else if (keys.ArrowRight) {
+            setXAxis(xAxis + 50)
+        } else if (keys.ArrowUp) {
+            setYAxis(yAxis - 50)
+        } else if (keys.ArrowDown) {
+            setYAxis(yAxis + 50)
+        }
+    })
+
     const handleKeyDown = event => {
-        if(event.key === "a") {
-            // console.log(sqaure.current.x, sqaure.current.y, "square.current")
-            console.log(user.current.offsetLeft, user.current.offsetTop, "user.offset")
-            console.log(whale.current.offsetLeft, whale.current.offsetTop, "Whale.offset")
-            console.log("X center", grabUserXPosition())
-            console.log("Y center", grabUserYPosition())
-            // console.log("sqaure center", squarePoints)
-        }
-        const newPlayerCords = {xPosition: grabUserXPosition(),
-                                yPosition: grabUserYPosition(),
-                                width: user.current.width,
-                                height: user.current.height}
-        if(event.key === 'ArrowRight') {
-            newPlayerCords.xPosition+=100;
-            if(!checkObstacle(newPlayerCords)) {
-                setXAxis(xAxis + 50)
-            }
-        }
-        if(event.key === 'ArrowLeft') {
-            newPlayerCords.xPosition-=100;
-            if(!checkObstacle(newPlayerCords)) {
-                setXAxis(xAxis - 50)
-            }
-        }
-        if(event.key === 'ArrowDown') {
-            newPlayerCords.yPosition+=50;
-            if(!checkObstacle(newPlayerCords)) {
-                setYAxis(yAxis + 50)
-            }
-        }
-        if(event.key === 'ArrowUp') {
-            newPlayerCords.yPosition-=50;
-            if(!checkObstacle(newPlayerCords)) {
-                setYAxis(yAxis - 50)
-            }
-        }
-        checkWhaleRange();
+        // if(event.key === "a") {
+        //     // console.log(sqaure.current.x, sqaure.current.y, "square.current")
+        //     console.log("X center", grabUserXPosition())
+        //     console.log("Y center", grabUserYPosition())
+        //     // console.log("sqaure center", squarePoints)
+        // }
+        // const newPlayerCords = {xPosition: grabUserXPosition(),
+        //                         yPosition: grabUserYPosition(),
+        //                         width: user.current.width,
+        //                         height: user.current.height}
+        // if(event.key === 'ArrowRight') {
+        //     newPlayerCords.xPosition+=100;
+        //     if(!checkObstacle(newPlayerCords)) {
+        //         setXAxis(xAxis + 50)
+        //     }
+        // }
+        // if(event.key === 'ArrowLeft') {
+        //     newPlayerCords.xPosition-=100;
+        //     if(!checkObstacle(newPlayerCords)) {
+        //         setXAxis(xAxis - 50)
+        //     }
+        // }
+        // if(event.key === 'ArrowDown') {
+        //     newPlayerCords.yPosition+=50;
+        //     if(!checkObstacle(newPlayerCords)) {
+        //         setYAxis(yAxis + 50)
+        //     }
+        // }
+        // if(event.key === 'ArrowUp') {
+        //     newPlayerCords.yPosition-=50;
+        //     if(!checkObstacle(newPlayerCords)) {
+        //         setYAxis(yAxis - 50)
+        //     }
+        // }
+        // checkWhaleRange();
         // checkObstacle(newPlayerCords);
         // setMoveCount(moveCount + 1)
         // checkWithinRange(newPlayerCords);
@@ -89,16 +135,15 @@ function Secretplayground() {
 	const user = useRef(null);
 	// const sqaure = useRef(null);
     // const net = useRef(null)
-    const whale = useRef(null);
+    // const whale = useRef(null);
 
 	useEffect(() => {
 		user.current.focus();
         // net.current.focus();
-        whale.current.focus();
+        // whale.current.focus();
 
         // sqaure.current.focus();
         // Insert code to the set the usestate of thw square's location
-        console.log(whale.current.offsetLeft, whale.current.offsetTop)
         // const squareX = sqaure.current.offsetLeft + (sqaure.current.width / 2)
         // const squareY = sqaure.current.offsetTop + (sqaure.current.height / 2)
         // setSquarePoints({
@@ -146,38 +191,37 @@ function Secretplayground() {
 		}
 	}
 
-    function checkWhaleRange() {
-        console.log(Math.sqrt((grabUserXPosition()- whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2 ));
-        if(Math.sqrt((grabUserXPosition() - whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2) <= 100) {
-            document.getElementById('playable').classList.add('in-range');
-        } else {
-            document.getElementById('playable').classList.remove('in-range');
-        }
-    }
+    // function checkWhaleRange() {
+    //     console.log(Math.sqrt((grabUserXPosition()- whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2 ));
+    //     if(Math.sqrt((grabUserXPosition() - whale.current.offsetLeft)**2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2)))**2) <= 100) {
+    //         document.getElementById('playable').classList.add('in-range');
+    //     } else {
+    //         document.getElementById('playable').classList.remove('in-range');
+    //     }
+    // }
 
-    const onClickWhate = () => {
-        if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 100) {
-            // Switch to scene to go into whale
-            console.log("Next Phrase")
-        } 
-    }
+    // const onClickWhate = () => {
+    //     if(Math.sqrt((user.current.x - whale.current.offsetLeft)**2 + (user.current.y - whale.current.offsetTop)**2 ) <= 100) {
+    //         // Switch to scene to go into whale
+    //         console.log("Next Phrase")
+    //     } 
+    // }
 
 
     return (
         <div className='play-area' onClick={() => user.current.focus()}>
             {/* User */}
-            <Whale
+            {/* <Whale
                 src={'/sprites/sprite-wendy-whale.png'}
                 id={"Whale"}
                 ref={whale}
                 onClick={onClickWhate}
-            />
+            /> */}
             <User
 				style={userPlacement}
 				ref={user}
 				tabIndex={0}
 				onKeyDown={handleKeyDown}
-                onClick={onClickWhate}
 				src={`/sprites/sprite-user-placeholder.png`}
 				id='playable'
 				className='img-size'

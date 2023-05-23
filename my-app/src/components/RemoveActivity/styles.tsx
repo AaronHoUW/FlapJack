@@ -145,4 +145,5 @@ export const Background = styled.div`
 
 export const User = styled.img<Props>`
     position: absolute;
+    width: 150px;
 `;
