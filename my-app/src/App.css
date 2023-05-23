@@ -108,10 +108,6 @@ body {
   visibility: hidden;
 }
 
-.ignore {
-  opacity: 50%;
-}
-
 body {
   background-color: #FFFFFF;
 }
@@ -239,12 +235,12 @@ footer {
 
 #playable {
   position: relative;
-  width: 150px;
+  width: 250px;
 }
 
 #one-playable {
   position: relative;
-  width: 150px;
+  width: 350px;
 }
 
 #net,
@@ -683,10 +679,6 @@ footer {
   margin-top: 1.3rem;
   padding: 20px;
   height: 300px;
-}
-
-.modal-video-content iframe {
-  height: 500px;
 }
 
 .modal-buttons {

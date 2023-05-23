@@ -42,7 +42,6 @@ function VisualNovel(props) {
             currentScene = level['sallyTalking'];
             buildDialogue();
         } else if (isQuiz && !isGameComplete) {
-            // Enter Quiz Here
             clearSprites();
             currentScene = level[levelThreePath];
             buildDialogue();
