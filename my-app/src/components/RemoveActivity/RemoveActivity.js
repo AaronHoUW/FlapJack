@@ -74,6 +74,10 @@ function RemoveActivity(props) {
 				setYAxis(yAxis - 50)
 			}
 		}
+		if (event.key === "\\") {
+			setLastResult(true)
+			setCorrectCount(10);
+		}
 		checkWithinRange(newPlayerCords);
 	};
 
@@ -94,9 +98,7 @@ function RemoveActivity(props) {
 		setUnSolvedTrash(trashList)
 	}, [shuffle])
 
-	console.log(unSolvedTrash);
-
-	if (lastResult && correctCount === 10) {
+	if (lastResult && correctCount === 10 && page === 100) {
 		document.getElementById("load-modal-100").click();
 	}
 
@@ -107,7 +109,7 @@ function RemoveActivity(props) {
 	function checkWithinRange(newPlayerCords) {
 		unSolvedTrash.forEach((trash, i) => {
 			const trashPosition = grabObstaclePoistion(document.getElementById(trash))
-			if ((newPlayerCords.xPosition - trashPosition.x) <= 100 && (newPlayerCords.xPosition - trashPosition.x) >= -100 
+			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
 				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
 				document.getElementById(trash).classList.add('in-range');	
 			} else {
@@ -290,7 +292,6 @@ export function VidCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src='./sprites/sprite-pancake-flapjack-octopus.png' className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
