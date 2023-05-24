@@ -10,7 +10,8 @@ import {
 	ModalContent,
 	Background,
 	NextButton,
-	PointsContainer
+	PointsContainer,
+	StartButton
 } from './styles.tsx';
 import RemoveIgnore from '../Stories/RemoveIgnore.json';
 import postRemoveDialogue from '../Stories/postRemoveDialogue.json';
@@ -21,6 +22,7 @@ function RemoveActivity(props) {
 	const [yAxis, setYAxis] = useState(100);
 	//correct count of trash picked up
 	const [correctCount, setCorrectCount] = useState(0);
+	const [unSolvedTrash, setUnSolvedTrash] = useState([]);
 	// randomize trash placement from json file
 	const [randomizeTtash, setReandomizeTrash] = useState(Object.keys(RemoveIgnore))
 	// loads and allows for next page video modal to appear
@@ -40,6 +42,10 @@ function RemoveActivity(props) {
 
 	const handleKeyDown = event => {
 		const newPlayerCords = {
+			xPosition: grabUserXPosition(),
+			yPosition: grabUserYPosition(),
+			width: user.current.width,
+			height: user.current.height,
 			offsetLeft: user.current.offsetLeft,
 			offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
 			offsetTop: user.current.offsetTop,
@@ -72,12 +78,25 @@ function RemoveActivity(props) {
 		checkWithinRange(newPlayerCords);
 	};
 
+	function grabUserXPosition() {
+		return user.current.offsetLeft + (user.current.width / 2);
+	}
+
+	function grabUserYPosition() {
+		return user.current.offsetTop + (user.current.height / 2)
+	}
+
 	useEffect(() => {
 		user.current.focus()
-		setReandomizeTrash(shuffle(Object.keys(RemoveIgnore)))
+		setReandomizeTrash(shuffle(Object.keys(RemoveIgnore)));
+		const trashList = [...Array(10)].map((e, i) => {
+			return `trash-image-`+i;
+		})
+		setUnSolvedTrash(trashList)
+		document.getElementById(`load-modal-999`).click();
 	}, [shuffle])
 
-	if (lastResult && correctCount === 10) {
+	if (lastResult && correctCount === 10 && page === 100) {
 		document.getElementById("load-modal-100").click();
 	}
 
@@ -86,17 +105,13 @@ function RemoveActivity(props) {
 	}
 
 	function checkWithinRange(newPlayerCords) {
-		// console.log(newPlayerCords);
-		[...Array(10)].forEach((e, i) => {
-			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
-			// grabObstaclePosition
-			// Compare player's positions to see if it match
-
-			// then if statement uses it to compare
-			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
-				document.getElementById(`trash-image-`+i).classList.add('in-range');	
+		unSolvedTrash.forEach((trash, i) => {
+			const trashPosition = grabObstaclePoistion(document.getElementById(trash))
+			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
+				document.getElementById(trash).classList.add('in-range');	
 			} else {
-				document.getElementById(`trash-image-`+i).classList.remove('in-range');
+				document.getElementById(trash).classList.remove('in-range');
 			}
 		})
 	}
@@ -114,7 +129,7 @@ function RemoveActivity(props) {
 		})
 	}
 
-	const objectList = randomizeTtash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setCorrectCount} correctCount={correctCount} setLastResult={setLastResult}>
+	const objectList = randomizeTtash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setCorrectCount} correctCount={correctCount} setLastResult={setLastResult} unSolvedTrash={unSolvedTrash}>
 	</ModalCards>)
 	const loadNextPage = () => {
 		let newPage = page - 1;
@@ -126,6 +141,24 @@ function RemoveActivity(props) {
 	</VidCards>)
 	return (
 		<div>
+			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">					
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 fw-bold text-dark" id="staticBackdropLabel">Instructions</h1>
+							</div>
+							 <div className='row model-info'>
+								<p className='modal-body'>Click on all of the trash and other objects on the beach, and decide whether they should be removed or ignored</p>
+							</div>
+							<div className='modal-buttons'>
+								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			{pageList}
 			<Background className='remove-area' onClick={() => user.current.focus()}>
 				<PointsContainer>
@@ -161,14 +194,12 @@ function ModalCards(props) {
 	// correct answer of choosing remove or ignore, based on json data choices
 	const [correctAnswer, setCorrectAnswer] = useState()
 
+	const { object, int, user, unSolvedTrash, setCorrectCount, correctCount, setLastResult } = props;
 
-	const { object, int, user } = props;
 	const objectData = RemoveIgnore[object]
 	const item = useRef(null);
 
 	const [solved, setSolved] = useState(false)
-
-	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
 		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
@@ -183,9 +214,7 @@ function ModalCards(props) {
 	const onLoad = () => {
 		setImageResult(objectData.image)
 		setXPosition((Math.random() * 250) + 50)
-		// setXPosition(Math.floor(Math.random() * 20))
-		setYPosition((Math.random() * 250) + 50)
-		// setYPosition(Math.floor(Math.random() * 20))
+		setYPosition(Math.floor(Math.random() * 74) + 1)
 	}
 
 	const onClickRemove = () => {
@@ -196,21 +225,22 @@ function ModalCards(props) {
 			document.getElementById("trash-image-" + int).classList.add('hidden');
 			setCorrectAnswer(true)
 			setSolved(true)
-
+			updateTrashList()
 		}
 		else {
 			setTextResult(objectData.incorrect)
 			setCorrectAnswer(false)
 		}
-
-
 	}
+
 	const onClickIgnore = () => {
 		if (!objectData.remove) {
 			setTextResult(objectData.correct)
 			setCorrectAnswer(true)
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
+			updateTrashList()
+			document.getElementById("trash-image-" + int).classList.remove('in-range');
 			document.getElementById("trash-image-" + int).classList.add('ignore');
 		}
 		else {
@@ -218,6 +248,12 @@ function ModalCards(props) {
 			setCorrectAnswer(false)
 		}
 	}
+
+	function updateTrashList() {
+		const index = unSolvedTrash.indexOf("trash-image-" + int);
+		unSolvedTrash.splice(index, 1)
+	}
+
 	const closeModal = () => {
 		setTextResult();
 		setCorrectAnswer();
@@ -229,7 +265,7 @@ function ModalCards(props) {
 	return (
 		<>
 			{/* <a  /> */}
-			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition}} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
+			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition + '%', left: xPosition}} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
 			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
 				<ScreenModal className="modal" id={`modal-` + int + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div className="modal-dialog modal-lg modal-dialog-centered">
@@ -272,7 +308,6 @@ export function VidCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src='./sprites/sprite-pancake-flapjack-octopus.png' className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>

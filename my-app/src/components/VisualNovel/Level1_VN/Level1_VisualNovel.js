@@ -49,6 +49,7 @@ function VisualNovel(props) {
                 currentScene = level['shawnQuestion2'];
             }
             buildDialogue();
+            document.getElementById('backBtn').disabled = true;
         } else if (isGameComplete) {
             clearSprites();
             currentScene = level['postGame'];
