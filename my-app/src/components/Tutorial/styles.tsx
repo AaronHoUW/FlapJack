@@ -33,6 +33,25 @@ export const Flapjack = styled.img<Props>`
     }
 `;
 
+export const FlapjackBowl = styled.img`
+    left: 10%;
+    top: 60%;
+    position: fixed;
+    max-height: 120px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    animation: MoveUpDown 2s linear infinite;
+
+    @keyframes MoveUpDown {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+`;
+
 export const ArrowKeys = styled.img`
     width: 100px;
 `;
