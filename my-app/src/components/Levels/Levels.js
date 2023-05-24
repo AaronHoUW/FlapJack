@@ -13,7 +13,7 @@ function Levels(props) {
     return (
         <>
             <div className='preface'>
-                <img src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
+                <img className = 'user' src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
                 <div>
                     <p>
                         You’ll be playing as a scuba diver and exploring the ocean! As you explore different parts of the ocean,
