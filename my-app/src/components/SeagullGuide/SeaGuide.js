@@ -40,16 +40,16 @@ function FlapGuide(props) {
   };
 
   const handleWithinRange = (event) => {
-    if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
+    if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200) {
       navigate('/level1');
     }
   }
 
   function checkWithinRange() {
-    if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 400) {
-      document.getElementById('transition').classList.add('in-range');
+    if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 200) {
+      document.getElementById('seagull-guide').classList.add('in-range');
     } else {
-      document.getElementById('transition').classList.remove('in-range');
+      document.getElementById('seagull-guide').classList.remove('in-range');
     }
   }
 
