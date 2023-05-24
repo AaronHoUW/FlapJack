@@ -294,7 +294,7 @@ function WhaleMinigame(props) {
 				{/* Net 1 */}
 				<Net
 					style={netPlacement}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net}
 					onClick={removeNet}
 					className='img-size'
@@ -304,7 +304,7 @@ function WhaleMinigame(props) {
 				{/* Net 2 */}
 				<Net
 					style={netPlacement2}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net2}
 					onClick={removeNet}
 					className='img-size'
@@ -314,7 +314,7 @@ function WhaleMinigame(props) {
 				{/* Net 3 */}
 				<Net
 					style={netPlacement3}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net3}
 					onClick={removeNet}
 					className='img-size'
