@@ -11,6 +11,7 @@ import {
 	ModalRowText,
 	ModalContent,
 	NextButton,
+	StartButton
 } from './styles.tsx';
 import RemoveIgnore from '../Stories/RemoveIgnore.json';
 import postRemoveDialogue from '../Stories/postWendyGame.json';
@@ -137,6 +138,7 @@ function WhaleMinigame(props) {
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-whale-stomach.png)`;
 		setRandomizeTrash(shuffle(Object.keys(RemoveIgnore)));
+		document.getElementById(`load-modal-999`).click()
 	}, [shuffle]);
 
 	function checkWithinRange() {
@@ -231,6 +233,24 @@ function WhaleMinigame(props) {
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
+			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">					
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 fw-bold text-dark" id="staticBackdropLabel">Instructions</h1>
+							</div>
+							 <div className='row model-info'>
+								<p className='modal-body'>Click on all of the ghost nets and trash floating in Wendy’s stomach to help her feel better! Be sure to avoid any obstacles!!</p>
+							</div>
+							<div className='modal-buttons'>
+								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			{pageList}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<PointsContainer>
