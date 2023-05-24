@@ -37,6 +37,7 @@ function Quiz(props) {
 	useEffect(() => {
 		setDisplayQuestion({
 			Question: (Object.keys(questionList)[questionNumber]),
+			QuestionImage: (questionList[(Object.keys(questionList)[questionNumber])].question_image || ""),
 			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[questionNumber])].answers)),
 			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
 			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
@@ -117,6 +118,7 @@ function Quiz(props) {
 							</div>
 
 							<ModalRowText className='row model-info modal-video-content mt-1'>
+								{displayQuestion.QuestionImage !== "" && <img className='questionImage mx-auto' src={`/sprites/`+displayQuestion.QuestionImage} alt={displayQuestion.QuestionImage} />}
 								<p className='pt-1' >{displayQuestion.Question}</p>
 								<div className="container text-center">
 									<div className="row justify-content-center">
