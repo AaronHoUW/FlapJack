@@ -13,7 +13,7 @@ import {
 	NextButton,
 	StartButton
 } from './styles.tsx';
-import RemoveIgnore from '../Stories/RemoveIgnore.json';
+import RemoveIgnore from '../Stories/RemoveIgnoreWhale.json';
 import postRemoveDialogue from '../Stories/postWendyGame.json';
 
 function WhaleMinigame(props) {
@@ -263,7 +263,7 @@ function WhaleMinigame(props) {
 								<p className='modal-body'>Click on all of the ghost nets and trash floating in Wendy’s stomach to help her feel better! Be sure to avoid any obstacles!!</p>
 							</div>
 							<div className='modal-buttons'>
-								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
 							</div>
 						</div>
 					</div>
@@ -349,7 +349,7 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
+		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400;
 	}
 
 	const removeTrash = (event, targetID) => {
@@ -387,6 +387,7 @@ function ModalCards(props) {
 			setCorrectAnswer(true)
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
+			document.getElementById("trash-image-" + int).classList.remove('in-range');
 			document.getElementById("trash-image-" + int).classList.add('ignore');
 			updateTrashList()
 		}
@@ -455,7 +456,6 @@ export function VidCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src='./sprites/sprite-pancake-flapjack-octopus.png' className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>

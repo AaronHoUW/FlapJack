@@ -10,7 +10,6 @@ import {
 	StartButton
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
-import PancakeModal from './images/PancakeModal.png';
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -279,7 +278,7 @@ function NetMiniGame(props) {
 								<p className='modal-body'>Click on all of the ghost nets floating in the ocean, making sure to avoid the obstacles!</p>
 							</div>
 							<div className='modal-buttons'>
-								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
 							</div>
 						</div>
 					</div>
@@ -353,7 +352,7 @@ export function ObstacleImages(props) {
 		setRandomLocation(location)
 	}, [])
 	function randomNumber() {
-		return Math.random() + (Math.floor(Math.random() * 2.5)) + 1;
+		return Math.random() + (Math.floor(Math.random() * 2)) + 1;
 	}
 
 
@@ -379,7 +378,6 @@ export function ModalCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src={PancakeModal} className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>

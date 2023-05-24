@@ -153,7 +153,7 @@ function RemoveActivity(props) {
 								<p className='modal-body'>Click on all of the trash and other objects on the beach, and decide whether they should be removed or ignored</p>
 							</div>
 							<div className='modal-buttons'>
-								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
 							</div>
 						</div>
 					</div>
