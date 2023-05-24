@@ -31,6 +31,7 @@ function WhaleMinigame(props) {
 	const [obstacleList, setObstacleList] = useState([])
 	// Trash
 	const [trashRemove, setTrashRemove] = useState(0);
+	const [unSolvedTrash, setUnSolvedTrash] = useState([]);
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -43,11 +44,6 @@ function WhaleMinigame(props) {
 
 	// Player Controls
 	const handleKeyDown = event => {
-		if (event.key === '/') {
-			setLastResult(true)
-			setTrashRemove(10)
-			setNetRemove(3)
-		}
 		const newPlayerCords = {
 			xPosition: grabUserXPosition(),
 			yPosition: grabUserYPosition(),
@@ -100,7 +96,6 @@ function WhaleMinigame(props) {
 			}
 		}
 		checkObstacle(newPlayerCords);
-		checkWithinRange();
 	};
 
 	// Create function to grab true XY positions
@@ -143,10 +138,14 @@ function WhaleMinigame(props) {
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-whale-stomach.png)`;
 		setRandomizeTrash(shuffle(Object.keys(RemoveIgnore)));
+		const trashList = [...Array(10)].map((e, i) => {
+			return `trash-image-`+i;
+		})
+		setUnSolvedTrash(trashList)
 		document.getElementById(`load-modal-999`).click()
 	}, [shuffle]);
 
-	function checkWithinRange() {
+	function checkWithinRange(newPlayerCords) {
 		if (Math.sqrt((user.current.x - net.current.x) ** 2 + (user.current.y - net.current.y) ** 2) <= 400) {
 			document.getElementById('net').classList.add('in-range');
 		} else {
@@ -163,12 +162,13 @@ function WhaleMinigame(props) {
 		} else {
 			document.getElementById('net3').classList.remove('in-range');
 		}
-		[...Array(10)].forEach((e, i) => {
-			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
-			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
-				document.getElementById(`trash-image-`+i).classList.add('in-range');	
+		unSolvedTrash.forEach((trash, i) => {
+			const trashPosition = grabTrashPoistion(document.getElementById(trash))
+			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
+				document.getElementById(trash).classList.add('in-range');	
 			} else {
-				document.getElementById(`trash-image-`+i).classList.remove('in-range');
+				document.getElementById(trash).classList.remove('in-range');
 			}
 		})
 	}
@@ -197,6 +197,19 @@ function WhaleMinigame(props) {
 
 	function checkOutRange(newPlayerCords) {
 		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
+	}
+
+	function grabTrashPoistion(refObject) {
+		const objectX = refObject.offsetLeft + (refObject.width / 2)
+		const objectY = refObject.offsetTop + (refObject.height / 2)
+		return ({
+			x: objectX,
+			y: objectY,
+			leftEdge: objectX - (refObject.width / 2),
+			rightEdge: objectX + (refObject.width / 2),
+			topEdge: objectY - (refObject.height / 2),
+			bottomEdge: objectY + (refObject.height / 2)
+		})
 	}
 
 	function grabObstaclePoistion(refObject) {
@@ -231,7 +244,7 @@ function WhaleMinigame(props) {
 		document.getElementById("load-modal-100").click();
 	}
 
-	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} />);
+	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} unSolvedTrash={unSolvedTrash}/>);
 	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} />);
 	const DisplayObstacles = [square, square1].map((obstacle, i) => <ObstacleImages obstacleRef={obstacle} int={i} key={i} />)
 
@@ -327,7 +340,7 @@ function ModalCards(props) {
 	const [correctAnswer, setCorrectAnswer] = useState()
 
 
-	const { object, int, user } = props;
+	const { object, int, user, unSolvedTrash } = props;
 	const objectData = RemoveIgnore[object]
 	const item = useRef(null);
 
@@ -359,7 +372,7 @@ function ModalCards(props) {
 			document.getElementById("trash-image-" + int).classList.add('hidden');
 			setCorrectAnswer(true)
 			setSolved(true)
-
+			updateTrashList()
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -375,12 +388,19 @@ function ModalCards(props) {
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
 			document.getElementById("trash-image-" + int).classList.add('ignore');
+			updateTrashList()
 		}
 		else {
 			setTextResult(objectData.incorrect)
 			setCorrectAnswer(false)
 		}
 	}
+
+	function updateTrashList() {
+		const index = unSolvedTrash.indexOf("trash-image-" + int);
+		unSolvedTrash.splice(index, 1)
+	}
+
 	const closeModal = () => {
 		setTextResult();
 		setCorrectAnswer();
