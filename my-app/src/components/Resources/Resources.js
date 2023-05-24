@@ -6,9 +6,7 @@ import {
     VideosContainer,
     VideoContent,
     MoreVideosContainer,
-    ReadContainer,
     SectionTitleLight,
-    Articles,
     SimilarGamesContainer,
     GameCards,
     DeepSea
@@ -24,14 +22,15 @@ function Resources() {
     return (
         <div>
             <ResourcesContainer>
-                <SectionTitle>Resources</SectionTitle>
-                <ParagraphText>
-                    Want to learn more about marine life and how they are impacted by us humans? Browse the
-                    resources below! You can watch the full videos from the game, or read articles that helped us write the content for the game.
-                </ParagraphText>
+                <div>
+                    <SectionTitle>Resources</SectionTitle>
+                    <ParagraphText>
+                        Want to learn more about marine life and how they are impacted by us humans? Browse the
+                        resources below! You can watch the full videos from the game.
+                    </ParagraphText>
+                </div>
             </ResourcesContainer>
             <VideosContainer>
-                <SectionTitle>Videos</SectionTitle>
                 <VideoContent>
                     <div>
                         <h2>A Whale's Tale</h2>
@@ -42,12 +41,12 @@ function Resources() {
                             you can also clear the water of plastic!
                         </ParagraphText>
                     </div>
-                    <iframe title="A Whale's Tale by Hope Works" width='50%' src="https://www.youtube.com/embed/xFPoIU5iiYQ" />
+                    <iframe title="A Whale's Tale by Hope Works" width='80%' src="https://www.youtube.com/embed/xFPoIU5iiYQ" />
                 </VideoContent>
             </VideosContainer>
             <MoreVideosContainer>
                 <VideoContent className='more-content'>
-                    <iframe title="Whale Tangled in Net Saved by The Dodo" width='50%' src="https://www.youtube.com/embed/hC_isxflaVA" />
+                    <iframe title="Whale Tangled in Net Saved by The Dodo" width='60%' src="https://www.youtube.com/embed/hC_isxflaVA" />
                     <div>
                         <h2>Whale Tangled In Net Saved</h2>
                         <h3>By: The Dodo</h3>
@@ -66,23 +65,8 @@ function Resources() {
                             nets and plastic, it can trap fish, turtles, and many more marine animals.
                         </ParagraphText>
                     </div>
-                    <iframe title="Protecting Our Oceans from Ghost Traps by Great Big Story" width='50%' src="https://www.youtube.com/embed/xCKPsVi3vBo" />
+                    <iframe title="Protecting Our Oceans from Ghost Traps by Great Big Story" width='60%' src="https://www.youtube.com/embed/xCKPsVi3vBo" />
                 </VideoContent>
-                <ReadContainer>
-                    <SectionTitleLight>Read More About Climate Change</SectionTitleLight>
-                    <Articles>
-                        <p className='citation'>Time. (2019, August 14). How humans are destroying the world's oceans. Time. Retrieved January 17, 2023, from <a href='https://time.com/collection/davos-2019/5502588/oceans-in-peril/'>https://time.com/collection/davos-2019/5502588/oceans-in-peril/</a></p>
-                        <p className='detail'>This article gives information about what impacts humans have had on the ocean environment.</p>
-                    </Articles>
-                    <Articles>
-                        <p className='citation'>United Nations. (n.d.). Education is key to addressing climate change. United Nations. Retrieved January 17, 2023, from <a href='https://www.un.org/en/climatechange/climate-solutions/education-key-addressing-climate-change'>https://www.un.org/en/climatechange/climate-solutions/education-key-addressing-climate-change</a></p>
-                        <p className='detail'>This article explains how important education is about climate change in shaping people to be more responsible with their actions towards the environment. It also discusses the curriculum that UNESCO has created about climate change.</p>
-                    </Articles>
-                    <Articles>
-                        <p className='citation'>Kamenetz, A. (2019, April 22). Most teachers don't teach climate change; 4 in 5 parents wish they did. NPR. Retrieved January 17, 2023, from <a href='https://www.npr.org/2019/04/22/714262267/most-teachers-dont-teach-climate-change-4-in-5-parents-wish-they-did'>https://www.npr.org/2019/04/22/714262267/most-teachers-dont-teach-climate-change-4-in-5-parents-wish-they-did</a></p>
-                        <p className='detail last'>This article discusses how little information about climate change is taught in schools and how teachers and parents feel about it.</p>
-                    </Articles>
-                </ReadContainer>
                 <SimilarGamesContainer>
                     <SectionTitleLight>Play Similar Games</SectionTitleLight>
                     <GameCards>

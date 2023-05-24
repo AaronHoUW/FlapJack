@@ -41,26 +41,48 @@ function Tutorial(props) {
 
     const handleKeyDown = event => {
         if (canMove) {
+            const newPlayerCords = {
+                offsetLeft: user.current.offsetLeft,
+                offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
+                offsetTop: user.current.offsetTop,
+                offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
+            }
             if (event.key === 'ArrowRight') {
-                setXAxis(xAxis + 50);
+                newPlayerCords.offsetRight -= 50;
+                if (!checkOutRange(newPlayerCords)) { 
+                    setXAxis(xAxis + 50)
+                }
             }
             if (event.key === 'ArrowLeft') {
-                setXAxis(xAxis - 50);
+                newPlayerCords.offsetLeft -= 50;
+                if(!checkOutRange(newPlayerCords)) {
+                    setXAxis(xAxis - 50)
+                }
             }
             if (event.key === 'ArrowDown') {
-                setYAxis(yAxis + 50);
+                newPlayerCords.offsetBottom -= 50;
+                if(!checkOutRange(newPlayerCords)) { 
+                    setYAxis(yAxis + 50)
+                }
             }
             if (event.key === 'ArrowUp') {
-                setYAxis(yAxis - 50);
+                newPlayerCords.offsetTop -= 50;
+                if(!checkOutRange(newPlayerCords)) { 
+                    setYAxis(yAxis - 50)
+                }
             }
-            setMoveCount(moveCount + 1)
             checkWithinRange();
+            setMoveCount(moveCount + 1) 
         }
         if (moveCount === 10) {
             // show circle
             setTextPage(textPage + 1);
         }
     };
+
+    function checkOutRange(newPlayerCords) {
+		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
+	}
 
     function randomPx() {
         let px = Math.floor((Math.random() * 250) + 50);
@@ -159,7 +181,7 @@ function Tutorial(props) {
                 ref={user}
                 tabIndex={0}
                 onKeyDown={handleKeyDown}
-                src={`/sprites/sprite-user-placeholder.png`}
+                src={`/sprites/sprite-user.png`}
                 id='playable'
                 className='img-size'
                 alt="User's character"
