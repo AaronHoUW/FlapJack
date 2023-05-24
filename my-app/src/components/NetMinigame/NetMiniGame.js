@@ -396,11 +396,11 @@ export function ModalCards(props) {
 								<p className='modal-body'>{pageInfo["body-2"]}</p>
 							</div>}
 
-							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content video mt-1'>
 								<iframe width="100%" height="100%" src={pageInfo.video} />
 							</div>}
 
-							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content modal-input mt-1'>
 								<textarea rows={3} placeholder='Type your answer here...' />
 							</div>}
 							<div className='modal-buttons'>

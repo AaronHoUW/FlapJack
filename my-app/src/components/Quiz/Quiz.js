@@ -118,7 +118,7 @@ function Quiz(props) {
 								<h1 className="modal-title fs-5 pb-2 text-black" id="staticBackdropLabel">Time to Test Your Scuba Knowledge!</h1>
 							</div>
 
-							<ModalRowText className='row model-info modal-video-content mt-1'>
+							<ModalRowText className='row model-info modal-video-content modal-quiz mt-1'>
 								{displayQuestion.QuestionImage !== "" && <img className='questionImage mx-auto' src={`/sprites/`+displayQuestion.QuestionImage} alt={displayQuestion.QuestionImage} />}
 								<p className='pt-1' >{displayQuestion.Question}</p>
 								<div className="container text-center">

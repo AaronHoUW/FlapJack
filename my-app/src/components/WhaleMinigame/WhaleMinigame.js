@@ -43,6 +43,11 @@ function WhaleMinigame(props) {
 
 	// Player Controls
 	const handleKeyDown = event => {
+		if (event.key === '/') {
+			setLastResult(true)
+			setTrashRemove(10)
+			setNetRemove(3)
+		}
 		const newPlayerCords = {
 			xPosition: grabUserXPosition(),
 			yPosition: grabUserYPosition(),
@@ -222,7 +227,7 @@ function WhaleMinigame(props) {
 		document.getElementById("load-modal-" + (page - 1)).click();
 	}
 
-	if (lastResult && trashRemove === 10 && netRemove === 3) {
+	if (lastResult && trashRemove === 10 && netRemove === 3 && page === 100) {
 		document.getElementById("load-modal-100").click();
 	}
 
@@ -454,11 +459,11 @@ export function VidCards(props) {
 								<p className='modal-body'>{pageInfo["body-2"]}</p>
 							</div>}
 
-							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content video mt-1'>
 								<iframe width="100%" height="100%" src={pageInfo.video} />
 							</div>}
 
-							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content modal-input mt-1'>
 								<textarea rows={3} placeholder="Type your answer here..." />
 							</div>}
 							<div className='modal-buttons'>
