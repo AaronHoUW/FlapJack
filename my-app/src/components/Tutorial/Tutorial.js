@@ -3,6 +3,7 @@ import {
     User,
     Net,
     Flapjack,
+    FlapjackBowl,
     Circle,
     ArrowKeys,
     DialogueImg,
@@ -15,6 +16,8 @@ import arrowKeys from './tutorial-arrow-keys.png'
 import textBubble from './misc-textbubble-left.png';
 
 function Tutorial(props) {
+    setTimeout(() => document.querySelector('body').classList.remove('fade'), 500);
+
     const { currentLevel } = props;
     // Player Movement
     const [xAxis, setXAxis] = useState(200);
@@ -38,6 +41,15 @@ function Tutorial(props) {
         "Great job! Your help in saving the ocean is greatly appreciated by all of us marine animals.",
         "I think you're ready to go. Let's go meet other marine animals in the ocean!" // Stop player movement, End of tutorial
     ];
+
+    let background = '';
+    if (currentLevel === 1) {
+        background = "url(./sprites/bg-beach-level.png)";
+    } else if (currentLevel === 2) {
+        background = "url(./sprites/bg-mid-sea.png)";
+    } else if (currentLevel === 3) {
+        background = "url(./sprites/bg-deep-sea-level.png)";
+    }
 
     const handleKeyDown = event => {
         if (canMove) {
@@ -153,10 +165,8 @@ function Tutorial(props) {
         }
     }
 
-    console.log(textPage);
-
     return (
-        <div className='play-area' onClick={() => user.current.focus()}>
+        <div id='tutorial-background' className='play-area' onClick={() => user.current.focus()} style={{ backgroundImage: background }}>
             {textPage === 2 && <Circle
                 src={circleImg}
                 ref={circle} />}
@@ -168,21 +178,32 @@ function Tutorial(props) {
                 </DialogueMessageContainer>
                 {displayButton && <NextButton className='nextBtn' onClick={handleNextText}>Next</NextButton>}
             </div>
-            <Flapjack
-                tabIndex={-1}
-                onKeyDown={handleKeyDown}
-                src={`/sprites/sprite-pancake-flapjack-octopus.png`}
-                className='img-size'
-                alt="Pancake the flapjack"
-            />
+            {currentLevel === 1 &&
+                <FlapjackBowl
+                    tabIndex={-1}
+                    onKeyDown={handleKeyDown}
+                    src={`/sprites/sprite-pancake-bowl.png`}
+                    className='img-size'
+                    alt="Pancake the flapjack"
+                />
+            }
+            {currentLevel === 2 &&
+                <Flapjack
+                    tabIndex={-1}
+                    onKeyDown={handleKeyDown}
+                    src={`/sprites/sprite-pancake-flapjack-octopus.png`}
+                    className='img-size'
+                    alt="Pancake the flapjack"
+                />
+            }
             {/* User */}
             <User
                 style={userPlacement}
                 ref={user}
                 tabIndex={0}
                 onKeyDown={handleKeyDown}
-                src={`/sprites/sprite-user.png`}
-                id='playable'
+                src={`/sprites/sprite-user-placeholder.png`}
+                id='tutorial-playable'
                 className='img-size'
                 alt="User's character"
             />

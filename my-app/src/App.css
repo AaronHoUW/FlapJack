@@ -2,7 +2,13 @@ body {
   font-family: 'Mulish';
   height: inherit;
   box-sizing: border-box;
-  /* overflow: hidden; */
+  opacity: 1;
+  transition-duration: 0.7s;
+  transition-property: opacity;
+}
+
+body.fade {
+  opacity: 0;
 }
 
 .main-container {
@@ -215,6 +221,38 @@ footer {
   background-image: url('../public/sprites/bg-deep-sea-level.png');
 }
 
+.entering-whale {
+  animation: shrink 2s;
+  background-color: rgba(0,0,0,.1);
+}
+
+@keyframes shrink { 
+  from {
+    clip-path: circle(125%);
+    background-color: black;
+  }
+  to {
+    clip-path: circle(0%);
+    background-color: black;
+  }
+}
+
+.entered-whale {
+  animation: grow 2s;
+  background-color: rgba(0,0,0,.1);
+}
+
+@keyframes grow {
+  from {
+    clip-path: circle(0%);
+    background-color: black;
+  }
+  to {
+    clip-path: circle(125%);
+    background-color: black;
+  }
+}
+
 .sprite-container,
 .sprite-normal {
   animation: MoveUpDown 1.5s linear infinite;
@@ -244,14 +282,19 @@ footer {
   display: none;
 }
 
+#tutorial-playable {
+  position: relative;
+  width: 250px;
+}
+
 #playable {
   position: relative;
-  width: 150px;
+  width: 250px;
 }
 
 #one-playable {
   position: relative;
-  width: 150px;
+  width: 250px;
 }
 
 #net,
@@ -789,7 +832,15 @@ footer {
   left: 878px;
   top: 276.71px;
   transform: rotate(-8.52deg);
+}
 
+.play-area #seagull-guide {
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  left: 250px;
+  top: 513px;
+  transform: scaleX(-1);
 }
 
 .play-area #transition {

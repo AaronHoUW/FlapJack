@@ -67,7 +67,7 @@ function FlapGuide(props) {
           <p>Let's approach this seagull with the exclamation marks! <ExclamationMarks src='./imgs/excel.png' alt='Exclamation marks' /> Walk to it and click on the seagull to talk to them.</p>
         </DialogueMessageContainer>
         <img className="excel sprite-container" src='./imgs/excel.png' />
-        <img className="fish sprite-container" id="transition" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
+        <img className="fish sprite-container" id="seagull-guide" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
         <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-flapjack-octopus.png' />
       </Background>
       {/* User */}
@@ -76,8 +76,8 @@ function FlapGuide(props) {
         ref={user}
         tabIndex={-1}
         onKeyDown={handleKeyDown}
-        src={`/sprites/sprite-user.png`}
-        id='one-playable'
+        src={`/sprites/sprite-user-placeholder.png`}
+        id='tutorial-playable'
         className='img-size'
         alt="User's placeholder"
       />

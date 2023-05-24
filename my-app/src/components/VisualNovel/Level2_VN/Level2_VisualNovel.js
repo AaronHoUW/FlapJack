@@ -38,10 +38,10 @@ function VisualNovel(props) {
             buildDialogue();
         } else if (isQuiz && !isGameComplete) {
             clearSprites();
-            if(questionNumber === 2) {
+            if (questionNumber === 2) {
                 currentScene = level['pancakeTalkToSalmon'];
             } else if (questionNumber === 3) {
-                currentScene = level['sallyTalking2'];   
+                currentScene = level['sallyTalking2'];
             }
             buildDialogue();
             document.getElementById('backBtn').disabled = true;
@@ -88,6 +88,7 @@ function VisualNovel(props) {
 
         if (scene === level['sallyCardGame']) {
             createCards();
+            document.getElementById('nextBtn').disabled = true;
         } else {
             clearCards();
         }
@@ -129,13 +130,11 @@ function VisualNovel(props) {
             'Sometimes, animals get tangled up in nets that are floating in the water.',
         ]
         let count = 0;
+        let correctCount = 0;
 
         for (let i = 0; i < 2; i++) {
             const row = document.createElement('div');
             row.classList.add('row');
-            if (i === 1) {
-                row.classList.add('bottom-cards');
-            }
             while (count < 3) {
                 const card = document.createElement('div');
                 card.classList.add('card');
@@ -162,8 +161,10 @@ function VisualNovel(props) {
 
                 if (!images[0].includes('_')) {
                     text.appendChild(correct);
+                    text.classList.add('correct-text');
                 } else {
                     text.appendChild(incorrect);
+                    text.classList.add('incorrect-text');
                 }
                 explanation.textContent = ' ' + explanations[0];
                 explanation.classList.add('explanation');
@@ -178,8 +179,14 @@ function VisualNovel(props) {
 
                 card.appendChild(cardInner);
 
-                card.addEventListener('click', () => {
+                card.addEventListener('click', (event) => {
                     card.classList.toggle('card-clicked');
+                    if (!event.target.alt.includes('_')) {
+                        correctCount++;
+                    }
+                    if (correctCount === 3) {
+                        document.getElementById('nextBtn').disabled = false;
+                    }
                 });
 
                 row.appendChild(card);
@@ -384,7 +391,6 @@ function VisualNovel(props) {
                 <div class="keyword">
                     <div>
                         <h4>${capitalizeFirstLetter(keyword)}</h4>
-                        <img src='./imgs/audio.png' alt='Audio symbol' />
                     </div>
                     <p>${TERMS[keyword]}</p>
                 </div>

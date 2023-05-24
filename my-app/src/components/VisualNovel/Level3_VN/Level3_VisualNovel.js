@@ -29,7 +29,6 @@ function VisualNovel(props) {
         setLevelThreePath,
         setCurrentLevel,
         isEnterWhale,
-        setIsEnterWhale,
     } = props;
     let currentScene = level['pancakeIntro'];
 
@@ -37,12 +36,8 @@ function VisualNovel(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isFlapGuide && !isGameComplete && questionNumber < 3) {
-            clearSprites();
-            currentScene = level['sallyTalking'];
-            buildDialogue();
-        } else if (isQuiz && !isGameComplete) {
-            // Enter Quiz Here
+        if (isQuiz && !isGameComplete) {
+            document.getElementById('backBtn').disabled = true;
             clearSprites();
             currentScene = level[levelThreePath];
             buildDialogue();
@@ -54,8 +49,19 @@ function VisualNovel(props) {
         } else if (isEnterWhale) {
             clearSprites();
             currentScene = level['wendyEntered'];
+            document.getElementById('visual-novel-container').classList.add('entered-whale');
             document.getElementById('visual-novel-container').style.backgroundImage = 'url("./sprites/bg-whale-stomach.png")';
+            document.getElementById('backBtn').disabled = true;
             buildDialogue();
+            let sprites = document.getElementsByClassName('sprite-container');
+            for (let i = 0; i < sprites.length; i++) {
+                sprites[i].classList.add('hidden');
+            }
+            setTimeout(() => {
+                for (let i = 0; i < sprites.length; i++) {
+                    sprites[i].classList.remove('hidden');
+                }
+            }, 2000);
         } else {
             currentScene = level['pancakeIntro'];
             document.getElementById('backBtn').disabled = true;
@@ -388,7 +394,6 @@ function VisualNovel(props) {
                 <div class="keyword">
                     <div>
                         <h4>${capitalizeFirstLetter(keyword)}</h4>
-                        <img src='./imgs/audio.png' alt='Audio symbol' />
                     </div>
                     <p>${TERMS[keyword]}</p>
                 </div>
@@ -417,6 +422,14 @@ function VisualNovel(props) {
         if (document.getElementById('dialogue')) {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
+
+            if (currentScene.dialogue[dialoguePosition].keyword) {
+                if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
+                    buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
+                } else {
+                    buildTerm(currentScene.dialogue[dialoguePosition].keyword);
+                }
+            }
         }
 
         let type = currentScene.dialogue[dialoguePosition].type;
@@ -430,9 +443,7 @@ function VisualNovel(props) {
         }
 
         let message = currentScene.dialogue[dialoguePosition].message;
-        if (isFlapGuide && !isGameComplete) {
-            message = 'Hi! I’m Sally the Salmon! I’m a Chum Salmon.';
-        } else if (isGameComplete) {
+        if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
         } else if (isQuiz && levelThreePath === 'wendyAPathAfterQuiz') {
             message = 'Some of my other friends in our pod have been doing the same thing and I think it might be what has been making us all feel sick.';
@@ -442,14 +453,6 @@ function VisualNovel(props) {
             message = "It’s really starting to weigh me down... And my stomach hurts!";
         } else if (isEnterWhale) {
             message = "Woah! There's a lot of debris and nets in here that Wendy swallowed.";
-        }
-
-        if (currentScene.dialogue[dialoguePosition].keyword) {
-            if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
-                buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
-            } else {
-                buildTerm(currentScene.dialogue[dialoguePosition].keyword);
-            }
         }
 
         return (
@@ -581,6 +584,7 @@ function VisualNovel(props) {
                                         navigate('/')
                                     } else if (e.target.getAttribute('key') === 'minigame') {
                                         setIsQuiz(false);
+                                        clearSprites();
                                         navigate('/enter-wendy');
                                     } else {
                                         buildDialogue();
@@ -621,7 +625,7 @@ function VisualNovel(props) {
     }
 
     return (
-        <div>
+        <div id='enter-whale-div'>
             {buildVisuals()}
             <DialogueBox id='dialogue' className={`dialogue-${currentScene.dialogue[dialoguePosition].type}`}>
             </DialogueBox>
