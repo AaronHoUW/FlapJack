@@ -141,10 +141,24 @@ function ModalCards(props) {
 		document.getElementById("load-modal-" + int).click();
 	}
 
+	
+	
 	const onLoad = () => {
 		setImageResult(objectData.image)
 		setXPosition((Math.random() * 250) + 50)
 		setYPosition((Math.random() * 250) + 50)
+	}
+
+	const fitScreen = () => {	
+		console.log((window.innerWidth - item.current.offsetLeft - item.current.offsetWidth))
+		if ((window.innerWidth - item.current.offsetLeft - item.current.offsetWidth) < 0) {
+			setXPosition(xPosition - 100)
+		}
+	}
+
+	const loadItem = () => {
+		onLoad()
+		fitScreen()
 	}
 
 	const onClickRemove = () => {
@@ -188,7 +202,7 @@ function ModalCards(props) {
 		<>
 			{/* <a  /> */}
 			<img className='trash sprite-normal' onClick={(event) => removeTrash(event, "modal-remove-" + int)} style={{ top: yPosition, left: xPosition }} id={"trash-image-" + int} ref={item} src='./sprites/sprite-trash.png'></img>
-			<a onLoad={onLoad} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
+			<a onLoad={() => {onLoad(); fitScreen()}} id={"load-modal-" + int} data-bs-toggle="modal" data-bs-target={`#modal-` + int + `-Backdrop`} >
 				<ScreenModal className="modal" id={`modal-` + int + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 					<div className="modal-dialog modal-lg modal-dialog-centered">
 						<img className='pancake' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>

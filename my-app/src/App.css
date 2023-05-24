@@ -527,7 +527,7 @@ footer {
   width: 185px;
   height: 112.59px;
   right: 905px;
-  top: 80px;
+  top: 10px;
   z-index: 2;
 }
 
@@ -566,6 +566,12 @@ footer {
   font-size: 25px;
 
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1400px) {
+  .next {
+    left:9px;
+  }
+  }
 
 .last-section {
   margin-top: 5px;
@@ -695,7 +701,6 @@ footer {
   /* right: 50%; */
   /* margin-left: 25%;  */
 }
-
 
 .talk {
   position: absolute;
@@ -1168,3 +1173,36 @@ footer {
   line-height: 45px;
   color: #000000;
 }
+
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .modal-containers {
+    left:-11%;
+  }
+  .picture {
+    width:35%;
+  }
+  .removeTitle {
+    width: 455px;
+  }
+  .pancake {
+    right: 714px;
+    top: 23px;
+  }
+  }
+
+
+  @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .modal-containers {
+      left: -22%;
+    }
+    .picture {
+      width:35%;
+    }
+    .removeTitle {
+      width: 455px;
+    }
+    .pancake {
+      right: 809px;
+      top: 21px;
+    }
+    }
