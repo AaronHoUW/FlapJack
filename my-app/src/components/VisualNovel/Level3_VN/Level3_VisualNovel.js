@@ -46,6 +46,7 @@ function VisualNovel(props) {
             clearSprites();
             currentScene = level[levelThreePath];
             buildDialogue();
+            document.getElementById('backBtn').disabled = true;
         } else if (isGameComplete) {
             clearSprites();
             currentScene = level['postGame'];
