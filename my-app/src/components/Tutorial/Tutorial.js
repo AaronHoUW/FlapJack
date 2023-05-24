@@ -3,6 +3,7 @@ import {
     User,
     Net,
     Flapjack,
+    FlapjackBowl,
     Circle,
     ArrowKeys,
     DialogueImg,
@@ -15,6 +16,8 @@ import arrowKeys from './tutorial-arrow-keys.png'
 import textBubble from './misc-textbubble-left.png';
 
 function Tutorial(props) {
+    setTimeout(() => document.querySelector('body').classList.remove('fade'), 500);
+
     const { currentLevel } = props;
     // Player Movement
     const [xAxis, setXAxis] = useState(200);
@@ -39,28 +42,59 @@ function Tutorial(props) {
         "I think you're ready to go. Let's go meet other marine animals in the ocean!" // Stop player movement, End of tutorial
     ];
 
+    let background = '';
+    if (currentLevel === 1) {
+        background = "url(./sprites/bg-beach-level.png)";
+    } else if (currentLevel === 2) {
+        background = "url(./sprites/bg-mid-sea.png)";
+    } else if (currentLevel === 3) {
+        background = "url(./sprites/bg-deep-sea-level.png)";
+    }
+
     const handleKeyDown = event => {
         if (canMove) {
+            const newPlayerCords = {
+                offsetLeft: user.current.offsetLeft,
+                offsetRight: window.innerWidth - user.current.offsetLeft - user.current.offsetWidth,
+                offsetTop: user.current.offsetTop,
+                offsetBottom: (window.innerHeight - user.current.offsetTop - user.current.offsetHeight)
+            }
             if (event.key === 'ArrowRight') {
-                setXAxis(xAxis + 50);
+                newPlayerCords.offsetRight -= 50;
+                if (!checkOutRange(newPlayerCords)) { 
+                    setXAxis(xAxis + 50)
+                }
             }
             if (event.key === 'ArrowLeft') {
-                setXAxis(xAxis - 50);
+                newPlayerCords.offsetLeft -= 50;
+                if(!checkOutRange(newPlayerCords)) {
+                    setXAxis(xAxis - 50)
+                }
             }
             if (event.key === 'ArrowDown') {
-                setYAxis(yAxis + 50);
+                newPlayerCords.offsetBottom -= 50;
+                if(!checkOutRange(newPlayerCords)) { 
+                    setYAxis(yAxis + 50)
+                }
             }
             if (event.key === 'ArrowUp') {
-                setYAxis(yAxis - 50);
+                newPlayerCords.offsetTop -= 50;
+                if(!checkOutRange(newPlayerCords)) { 
+                    setYAxis(yAxis - 50)
+                }
             }
-            setMoveCount(moveCount + 1)
             checkWithinRange();
+            setMoveCount(moveCount + 1) 
         }
         if (moveCount === 10) {
             // show circle
             setTextPage(textPage + 1);
         }
     };
+
+    function checkOutRange(newPlayerCords) {
+		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
+	}
 
     function randomPx() {
         let px = Math.floor((Math.random() * 250) + 50);
@@ -131,10 +165,8 @@ function Tutorial(props) {
         }
     }
 
-    console.log(textPage);
-
     return (
-        <div className='play-area' onClick={() => user.current.focus()}>
+        <div id='tutorial-background' className='play-area' onClick={() => user.current.focus()} style={{ backgroundImage: background }}>
             {textPage === 2 && <Circle
                 src={circleImg}
                 ref={circle} />}
@@ -146,13 +178,24 @@ function Tutorial(props) {
                 </DialogueMessageContainer>
                 {displayButton && <NextButton className='nextBtn' onClick={handleNextText}>Next</NextButton>}
             </div>
-            <Flapjack
-                tabIndex={-1}
-                onKeyDown={handleKeyDown}
-                src={`/sprites/sprite-pancake-flapjack-octopus.png`}
-                className='img-size'
-                alt="Pancake the flapjack"
-            />
+            {currentLevel === 1 &&
+                <FlapjackBowl
+                    tabIndex={-1}
+                    onKeyDown={handleKeyDown}
+                    src={`/sprites/sprite-pancake-bowl.png`}
+                    className='img-size'
+                    alt="Pancake the flapjack"
+                />
+            }
+            {currentLevel === 2 &&
+                <Flapjack
+                    tabIndex={-1}
+                    onKeyDown={handleKeyDown}
+                    src={`/sprites/sprite-pancake-flapjack-octopus.png`}
+                    className='img-size'
+                    alt="Pancake the flapjack"
+                />
+            }
             {/* User */}
             <User
                 style={userPlacement}
@@ -160,7 +203,7 @@ function Tutorial(props) {
                 tabIndex={0}
                 onKeyDown={handleKeyDown}
                 src={`/sprites/sprite-user-placeholder.png`}
-                id='playable'
+                id='tutorial-playable'
                 className='img-size'
                 alt="User's character"
             />

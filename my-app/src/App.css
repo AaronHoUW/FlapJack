@@ -2,7 +2,13 @@ body {
   font-family: 'Mulish';
   height: inherit;
   box-sizing: border-box;
-  /* overflow: hidden; */
+  opacity: 1;
+  transition-duration: 0.7s;
+  transition-property: opacity;
+}
+
+body.fade {
+  opacity: 0;
 }
 
 .main-container {
@@ -108,6 +114,10 @@ body {
   visibility: hidden;
 }
 
+.ignore {
+  opacity: 50%;
+}
+
 body {
   background-color: #FFFFFF;
 }
@@ -147,6 +157,10 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: #F7EDE1;
+  padding: 35px;
+  width: 0px;
+  border-radius: 35px;
 }
 
 .nav-play {
@@ -187,6 +201,9 @@ footer {
 .preface p {
   margin: 0;
   font-size: 20px;
+  background-color: #F7EDE1;
+  border-radius: 20px;
+  padding: 35px;
 }
 
 .play-area {
@@ -202,6 +219,38 @@ footer {
 
 #whale-area {
   background-image: url('../public/sprites/bg-deep-sea-level.png');
+}
+
+.entering-whale {
+  animation: shrink 2s;
+  background-color: rgba(0,0,0,.1);
+}
+
+@keyframes shrink { 
+  from {
+    clip-path: circle(125%);
+    background-color: black;
+  }
+  to {
+    clip-path: circle(0%);
+    background-color: black;
+  }
+}
+
+.entered-whale {
+  animation: grow 2s;
+  background-color: rgba(0,0,0,.1);
+}
+
+@keyframes grow {
+  from {
+    clip-path: circle(0%);
+    background-color: black;
+  }
+  to {
+    clip-path: circle(125%);
+    background-color: black;
+  }
 }
 
 .sprite-container,
@@ -233,6 +282,11 @@ footer {
   display: none;
 }
 
+#tutorial-playable {
+  position: relative;
+  width: 250px;
+}
+
 #playable {
   position: relative;
   width: 250px;
@@ -240,7 +294,7 @@ footer {
 
 #one-playable {
   position: relative;
-  width: 350px;
+  width: 250px;
 }
 
 #net,
@@ -647,6 +701,13 @@ footer {
   height: 371px;
 }
 
+.questionImage {
+  /* height: auto !important; */
+  flex: none !important;
+  height: 150px !important;
+  width: 200px !important;
+}
+
 .content-height {
   height: 500px;
 }
@@ -679,6 +740,10 @@ footer {
   margin-top: 1.3rem;
   padding: 20px;
   height: 300px;
+}
+
+.modal-video-content iframe {
+  height: 500px;
 }
 
 .modal-buttons {
@@ -767,7 +832,15 @@ footer {
   left: 878px;
   top: 276.71px;
   transform: rotate(-8.52deg);
+}
 
+.play-area #seagull-guide {
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  left: 250px;
+  top: 513px;
+  transform: scaleX(-1);
 }
 
 .play-area #transition {
@@ -929,6 +1002,7 @@ footer {
 
 .sally-level {
   width: 300px;
+  transform: scaleX(-1);
 }
 
 .wendy-level {
@@ -985,7 +1059,7 @@ footer {
   flex-direction: row;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 600px;
   height: 434px;
   width: 100%;
   background-image: url("../public/imgs/firstlvl.png");
@@ -997,15 +1071,10 @@ footer {
   flex-direction: row;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 600px;
   height: 417px;
   width: 100%;
   background-image: url("../public/imgs/secondlevel.png");
-}
-
-#last-title,
-#last-info {
-  color: white;
 }
 
 .whale {
@@ -1014,7 +1083,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 40px;
-  gap: 74px;
+  gap: 365px;
   height: 380px;
   width: 100%;
 }

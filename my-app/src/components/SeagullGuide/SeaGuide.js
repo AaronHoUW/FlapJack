@@ -40,16 +40,16 @@ function FlapGuide(props) {
   };
 
   const handleWithinRange = (event) => {
-    if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) {
+    if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200) {
       navigate('/level1');
     }
   }
 
   function checkWithinRange() {
-    if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 400) {
-      document.getElementById('transition').classList.add('in-range');
+    if (Math.sqrt((user.current.x - fish.current.x) ** 2 + (user.current.y - fish.current.y) ** 2) <= 200) {
+      document.getElementById('seagull-guide').classList.add('in-range');
     } else {
-      document.getElementById('transition').classList.remove('in-range');
+      document.getElementById('seagull-guide').classList.remove('in-range');
     }
   }
 
@@ -67,7 +67,7 @@ function FlapGuide(props) {
           <p>Let's approach this seagull with the exclamation marks! <ExclamationMarks src='./imgs/excel.png' alt='Exclamation marks' /> Walk to it and click on the seagull to talk to them.</p>
         </DialogueMessageContainer>
         <img className="excel sprite-container" src='./imgs/excel.png' />
-        <img className="fish sprite-container" id="transition" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
+        <img className="fish sprite-container" id="seagull-guide" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
         <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-flapjack-octopus.png' />
       </Background>
       {/* User */}
@@ -77,7 +77,7 @@ function FlapGuide(props) {
         tabIndex={-1}
         onKeyDown={handleKeyDown}
         src={`/sprites/sprite-user-placeholder.png`}
-        id='one-playable'
+        id='tutorial-playable'
         className='img-size'
         alt="User's placeholder"
       />

@@ -37,11 +37,13 @@ function Quiz(props) {
 	useEffect(() => {
 		setDisplayQuestion({
 			Question: (Object.keys(questionList)[questionNumber]),
+			QuestionImage: (questionList[(Object.keys(questionList)[questionNumber])].question_image || ""),
 			Choices: shuffle(Object.keys(questionList[(Object.keys(questionList)[questionNumber])].answers)),
 			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
 			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
 			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong,
-			Images: questionList[(Object.keys(questionList)[questionNumber])].images
+			Images: questionList[(Object.keys(questionList)[questionNumber])].images,
+			Background: questionList[(Object.keys(questionList)[questionNumber])].background,
 		})
 	}, [questionNumber, shuffle]);
 
@@ -106,7 +108,7 @@ function Quiz(props) {
 	}
 
 	return (
-		<div className='play-area' style={{backgroundImage: "url('./sprites/bg-beach-flipped.png')"}}>
+		<div className='play-area' style={{backgroundImage: "url(./sprites/"+ displayQuestion.Background +")"}}>
 			<ScreenModal className="" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<div className="modal-dialog modal-lg modal-dialog-centered">
@@ -117,6 +119,7 @@ function Quiz(props) {
 							</div>
 
 							<ModalRowText className='row model-info modal-video-content mt-1'>
+								{displayQuestion.QuestionImage !== "" && <img className='questionImage mx-auto' src={`/sprites/`+displayQuestion.QuestionImage} alt={displayQuestion.QuestionImage} />}
 								<p className='pt-1' >{displayQuestion.Question}</p>
 								<div className="container text-center">
 									<div className="row justify-content-center">

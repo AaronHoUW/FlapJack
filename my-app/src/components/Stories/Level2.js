@@ -3,7 +3,7 @@ const LEVEL2 = {
     "type": "comic",
     "background": "mid-sea",
     "previousScene": undefined,
-    "nextScene": "pancakeNorthAmerica",
+    "nextScene": "pancakeWashingtonState",
     "baseFrame": [],
     "frames": [
       {
@@ -113,19 +113,19 @@ const LEVEL2 = {
     "baseFrame": [
       {
         "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-3",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
         "image": "sally-salmon",
-        "x": "14",
+        "x": "18",
         "y": "40",
         "size": "15",
         "flipX": true
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": 47.099999999999994,
+        "y": -3.1999999999999993,
+        "size": 50,
+        "flipX": false
       }
     ],
     "frames": [],
@@ -149,34 +149,10 @@ const LEVEL2 = {
       }
     ]
   },
-  "pancakeNorthAmerica": {
-    "type": "comic",
-    "background": "north-america-blank",
-    "previousScene": "pancakeIntro",
-    "nextScene": "clickMap",
-    "baseFrame": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "frames": [],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "This is a map of North America. Do you know where the Pacific Ocean is? Click on where you think the Pacific Ocean is.",
-        "type": "nospeaker"
-      }
-    ]
-  },
   "pancakeWashingtonState": {
     "type": "comic",
     "background": "washington-state",
-    "previousScene": "pancakeNorthAmerica",
+    "previousScene": "pancakeIntro",
     "nextScene": "pancakeMap",
     "baseFrame": [
       {
@@ -279,19 +255,19 @@ const LEVEL2 = {
     "baseFrame": [
       {
         "type": "sprite",
-        "image": "user-placeholder",
-        "x": "47.6",
-        "y": "-1",
-        "size": 50,
-        "flipX": false
-      },
-      {
-        "type": "sprite",
         "image": "sally-sad",
-        "x": "14",
+        "x": "18",
         "y": "40",
         "size": "15",
         "flipX": true
+      },
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": 47.099999999999994,
+        "y": -3.1999999999999993,
+        "size": 50,
+        "flipX": false
       },
       {
         "type": "sprite",
@@ -450,54 +426,6 @@ const LEVEL2 = {
       }
     ]
   },
-  "pacificOcean_correct": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "010",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Correct! The Pacific Ocean is on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      },
-    ]
-  },
-  "pacificOcean_incorrect": {
-    "type": "comic",
-    "background": "north-america",
-    "previousScene": "pancakeNorthAmerica",
-    "nextScene": "pancakeWashingtonState",
-    "baseFrame": [],
-    "frames": [
-      {
-        "type": "sprite",
-        "image": "pancake-flapjack-octopus",
-        "x": "5",
-        "y": "80",
-        "size": "10",
-        "flipX": false
-      }
-    ],
-    "dialogue": [
-      {
-        "speaker": "",
-        "message": "Uh Oh! Looks like you weren’t sure where the Pacific Ocean is. Its on the west side of the United States, near Washington, Oregon and California.",
-        "type": "nospeaker"
-      }
-    ]
-  },
   "pancakeElwhaNews": {
     "type": "comic",
     "background": "elwha-news",
@@ -546,7 +474,7 @@ const LEVEL2 = {
         "y": "35",
         "size": "15",
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
