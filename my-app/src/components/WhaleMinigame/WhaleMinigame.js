@@ -336,20 +336,13 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
-			return true
-		}
-		return false
+		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
 	}
 
 	const removeTrash = (event, targetID) => {
-		if (isInRange(event), !solved) {
-			loadModal();
+		if (isInRange(event) && !solved) {
+			document.getElementById("load-modal-" + int).click();
 		}
-	}
-
-	const loadModal = () => {
-		document.getElementById("load-modal-" + int).click();
 	}
 
 	const onLoad = () => {
