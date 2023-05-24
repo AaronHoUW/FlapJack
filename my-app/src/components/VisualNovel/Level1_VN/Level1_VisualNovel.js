@@ -394,7 +394,6 @@ function VisualNovel(props) {
                 <div class="keyword">
                     <div>
                         <h4>${capitalizeFirstLetter(keyword)}</h4>
-                        <img src='./imgs/audio.png' alt='Audio symbol' />
                     </div>
                     <p>${TERMS[keyword]}</p>
                 </div>
@@ -574,6 +573,7 @@ function VisualNovel(props) {
                                     currentScene = level[e.target.getAttribute('key')];
                                     if (e.target.getAttribute('key') === 'tutorial') {
                                         setCurrentLevel(1);
+                                        document.querySelector('body').classList.add('fade');
                                         navigate('/tutorial');
                                     } else if (e.target.getAttribute('key') === 'end') {
                                         setIsGameComplete(false);

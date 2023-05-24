@@ -140,20 +140,20 @@ const LEVEL1 = {
     "baseFrame": [
       {
         "type": "sprite",
-        "image": "pancake-bowl",
-        "x": "15",
-        "y": "30",
-        "size": "10",
+        "image": "user-placeholder",
+        "x": "47.6",
+        "y": "-1",
+        "size": 50,
         "flipX": false
       },
       {
         "type": "sprite",
-        "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
-        "size": 50,
+        "image": "pancake-bowl",
+        "x": "18",
+        "y": "35",
+        "size": "15",
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [
@@ -188,7 +188,7 @@ const LEVEL1 = {
         "y": "35",
         "size": "15",
         "flipX": false
-      }
+      },
     ],
     "frames": [],
     "dialogue": [

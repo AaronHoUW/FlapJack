@@ -27,7 +27,8 @@ const LEVEL3 = {
       {
         "speaker": "",
         "message": "Hi again! We’re deeper in the ocean now! There are a whole lot of weird and mysterious creatures down here. This is generally where I hang out!",
-        "type": "left"
+        "type": "left",
+        "keyword": "mysterious"
       }
     ]
   },
@@ -188,7 +189,8 @@ const LEVEL3 = {
       {
         "speaker": "",
         "message": "Some of my other friends in our pod have been doing the same thing and I think it might be what has been making us all feel sick.",
-        "type": "left"
+        "type": "left",
+        "keyword": "pod"
       },
       {
         "speaker": "",
@@ -230,7 +232,8 @@ const LEVEL3 = {
       {
         "speaker": "",
         "message": "Similar to dolphins, us Orcas tend to swim in pods, so me and my friends get to explore the ocean together!",
-        "type": "left"
+        "type": "left",
+        "keyword": "pods"
       },
       {
         "speaker": "",
