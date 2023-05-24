@@ -349,8 +349,8 @@ function ModalCards(props) {
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
-		setYPosition(Math.floor(Math.random() * 50) + 1)
-		setYPosition(Math.floor(Math.random() * 74) + 1)
+		setXPosition(Math.floor(Math.random() * 8) + 1)
+		setYPosition(Math.floor(Math.random() * 25) + 1)
 	}
 
 	const onClickRemove = () => {
@@ -405,7 +405,7 @@ function ModalCards(props) {
 
 								<ModalRowText className='row model-info modal-video-content mt-1'>
 									<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
-									{(textResult === undefined) && <button className="removebtn" onClick={onClickRemove}>Remove from Beach</button>}
+									{(textResult === undefined) && <button className="removebtn" onClick={onClickRemove}>Remove from Wendy</button>}
 									{(textResult === undefined) && <button className="ignorebtn" onClick={onClickIgnore}>Ignore</button>}
 									<div />
 									<div className="container text-container">
