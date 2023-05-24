@@ -1,5 +1,6 @@
 {
     "Insert Question Here": {
+        "background": "bg-beach-flipped.png",
         "correct": "This is the responses what happen if it's correct",
         "wrong": "This appears when it's wrong",
         "answers" :{
@@ -10,6 +11,7 @@
         }
     },
     "How many dams does the Elwha river currently have in it?": {
+        "background": "bg-mid-sea.png",
         "correct": "There used to be two dams in the Elwha river, but they were both removed in 2011, so there are no longer any dams.",
         "wrong": "There used to be two dams in the Elwha river, but they were both removed in 2011, so there are no longer any dams.",
         "answers" : {
@@ -20,6 +22,7 @@
         }
     },
     "What kind of fish is Sally?": {
+        "background": "bg-mid-sea.png",
         "correct": "Great job. Lets keep chatting more with Sally.",
         "wrong": "Looks like you’re not sure what kind of fish Sally is. If you want to go back and talk to her again, you can find the right answer.",
         "answers" :{
@@ -30,6 +33,7 @@
         }
     },
     "What do you think is stuck on Shawn’s leg?": {
+        "background": "bg-beach-flipped.png",
         "question_image": "sprite-shawn-sad.png",
         "correct": "Shawn stepped into a soda can ring awhile back and his foot got tangled up in all of the plastic.",
         "wrong": "All of these are common types of litter that can be dangerous to animals that live on the beach, however, Shawn got tangled up in some soda can rings.",
@@ -45,6 +49,7 @@
         } 
     },
     "Which of these things do Killer Whales not eat?": {
+        "background": "bg-deep-sea-level.png",
         "correct": "Killer whales are carnivorous, so they only eat meat, not plants!",
         "wrong": "Not quite! Killer whales are carnivorous, so they only eat meat, not plants! If you want to go back and talk to Wendy again, you can find the right answer.",
         "answers" :{
@@ -55,6 +60,7 @@
         }
     },
     "How much does Wendy weigh?": {
+        "background": "bg-deep-sea-level.png",
         "correct": "Killer whales can weigh anywhere between 6,600 pounds to 8,800 pounds!",
         "wrong": "Not quite! Whales actually weigh way more than that! If you want to go back and talk to Wendy again, you can find the right answer.",
         "answers" :{
@@ -65,6 +71,7 @@
         }
     },
     "Last Placeholder Question": {
+        "background": "bg-beach-flipped.png",
         "correct": "This is the responses what happen if it's correct",
         "wrong": "This appears when it's wrong",
         "answers" :{

@@ -42,7 +42,8 @@ function Quiz(props) {
 			AnswersResults: questionList[(Object.keys(questionList)[questionNumber])].answers,
 			Correct: questionList[(Object.keys(questionList)[questionNumber])].correct,
 			Wrong: questionList[(Object.keys(questionList)[questionNumber])].wrong,
-			Images: questionList[(Object.keys(questionList)[questionNumber])].images
+			Images: questionList[(Object.keys(questionList)[questionNumber])].images,
+			Background: questionList[(Object.keys(questionList)[questionNumber])].background,
 		})
 	}, [questionNumber, shuffle]);
 
@@ -107,7 +108,7 @@ function Quiz(props) {
 	}
 
 	return (
-		<div className='play-area' style={{backgroundImage: "url('./sprites/bg-beach-flipped.png')"}}>
+		<div className='play-area' style={{backgroundImage: "url(./sprites/"+ displayQuestion.Background +")"}}>
 			<ScreenModal className="" id="modal-2-Backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 				{/* Pancake Image */}
 				<div className="modal-dialog modal-lg modal-dialog-centered">
