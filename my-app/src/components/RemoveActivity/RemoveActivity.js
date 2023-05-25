@@ -108,7 +108,7 @@ function RemoveActivity(props) {
 		unSolvedTrash.forEach((trash, i) => {
 			const trashPosition = grabObstaclePoistion(document.getElementById(trash))
 			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
-				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 150 && (newPlayerCords.yPosition - trashPosition.y) >= -150) {
 				document.getElementById(trash).classList.add('in-range');	
 			} else {
 				document.getElementById(trash).classList.remove('in-range');
@@ -202,7 +202,7 @@ function ModalCards(props) {
 	const [solved, setSolved] = useState(false)
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
+		return (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 250) || (event.target.classList.contains('in-range'));
 	}
 
 	const removeTrash = (event) => {
