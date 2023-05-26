@@ -144,6 +144,10 @@ export const LearnContainer = styled.div`
     font-family: 'Mulish';
 `;
 
+export const LevelsContainer = styled.div`
+    overflow-x: hidden;
+`;
+
 export const LearnText = styled.div`
     display: flex;
     flex-direction: column;
