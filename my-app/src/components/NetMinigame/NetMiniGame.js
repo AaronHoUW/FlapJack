@@ -7,9 +7,9 @@ import {
 	Whale,
 	NextButton,
 	PointsContainer,
+	StartButton
 } from './styles.tsx';
 import postGameDialogue from '../Stories/postGameDialogue.json';
-import PancakeModal from './images/PancakeModal.png';
 
 function NetMiniGame(props) {
 	const { isGameComplete, setIsGameComplete } = props;
@@ -139,6 +139,7 @@ function NetMiniGame(props) {
 		setObstaclePosition(newPositions)
 		changeNetPositions()
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-beach-level.png)`;
+		document.getElementById(`load-modal-999`).click();
 	}, [setObstacleList, setObstaclePosition]);
 
 	function checkWithinRange(newPlayerCords) {
@@ -265,6 +266,24 @@ function NetMiniGame(props) {
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
+			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">					
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 fw-bold text-dark" id="staticBackdropLabel">Instructions</h1>
+							</div>
+							 <div className='row model-info'>
+								<p className='modal-body'>Click on all of the ghost nets floating in the ocean, making sure to avoid the obstacles!</p>
+							</div>
+							<div className='modal-buttons'>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			{DisplayModalCards}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<PointsContainer>
@@ -333,7 +352,7 @@ export function ObstacleImages(props) {
 		setRandomLocation(location)
 	}, [])
 	function randomNumber() {
-		return Math.random() + (Math.floor(Math.random() * 2.5)) + 1;
+		return Math.random() + (Math.floor(Math.random() * 2)) + 1;
 	}
 
 
@@ -359,7 +378,6 @@ export function ModalCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src={PancakeModal} className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
@@ -376,11 +394,11 @@ export function ModalCards(props) {
 								<p className='modal-body'>{pageInfo["body-2"]}</p>
 							</div>}
 
-							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content video mt-1'>
 								<iframe width="100%" height="100%" src={pageInfo.video} />
 							</div>}
 
-							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content modal-input mt-1'>
 								<textarea rows={3} placeholder='Type your answer here...' />
 							</div>}
 							<div className='modal-buttons'>

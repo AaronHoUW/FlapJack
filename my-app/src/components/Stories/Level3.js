@@ -9,8 +9,8 @@ const LEVEL3 = {
       {
         "type": "sprite",
         "image": "user-placeholder",
-        "x": "50",
-        "y": 0,
+        "x": "47.6",
+        "y": "-1",
         "size": 50,
         "flipX": false
       },
@@ -19,7 +19,7 @@ const LEVEL3 = {
         "image": "pancake-flapjack-octopus",
         "x": "15",
         "y": "40",
-        "size": "10",
+        "size": "15",
         "flipX": false
       }
     ],
@@ -67,7 +67,7 @@ const LEVEL3 = {
         "image": "pancake-flapjack-octopus",
         "x": "15",
         "y": "40",
-        "size": "10",
+        "size": "15",
         "flipX": false
       },
       {
@@ -356,7 +356,7 @@ const LEVEL3 = {
         "image": "pancake-flapjack-octopus",
         "x": "15",
         "y": "40",
-        "size": "10",
+        "size": "15",
         "flipX": false
       },
       {
