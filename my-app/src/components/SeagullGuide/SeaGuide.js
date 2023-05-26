@@ -68,7 +68,7 @@ function FlapGuide(props) {
         </DialogueMessageContainer>
         <img className="excel sprite-container" src='./imgs/excel.png' />
         <img className="fish sprite-container" id="seagull-guide" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
-        <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-flapjack-octopus.png' />
+        <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-bowl.png' />
       </Background>
       {/* User */}
       <User
@@ -77,8 +77,8 @@ function FlapGuide(props) {
         tabIndex={-1}
         onKeyDown={handleKeyDown}
         src={`/sprites/sprite-user-placeholder.png`}
-        id='tutorial-playable'
-        className='img-size'
+        id='guide-playable'
+        className="img-size"
         alt="User's placeholder"
       />
     </div>

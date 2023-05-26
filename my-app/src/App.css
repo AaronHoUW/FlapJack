@@ -282,6 +282,10 @@ footer {
   display: none;
 }
 
+#guide-playable {
+  position: relative;
+}
+
 #tutorial-playable {
   position: relative;
   width: 250px;
@@ -815,11 +819,9 @@ footer {
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
-
 .flapjack-guide {
   position: absolute;
-  width: 142.97px;
-  height: 92.86px;
+  width: 130px;
   left: 750px;
   top: 380px;
 
