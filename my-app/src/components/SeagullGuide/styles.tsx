@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const User = styled.img<Props>`
+    width: 150px
 `;
 
 export const Background = styled.div`

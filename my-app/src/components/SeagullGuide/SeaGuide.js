@@ -40,7 +40,9 @@ function FlapGuide(props) {
   };
 
   const handleWithinRange = (event) => {
+  console.log(Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2))
     if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200) {
+      console.log("testing")
       navigate('/level1');
     }
   }
@@ -76,7 +78,7 @@ function FlapGuide(props) {
         ref={user}
         tabIndex={-1}
         onKeyDown={handleKeyDown}
-        src={`/sprites/sprite-user-placeholder.png`}
+        src={`/sprites/sprite-user.png`}
         id='guide-playable'
         className="img-size"
         alt="User's placeholder"

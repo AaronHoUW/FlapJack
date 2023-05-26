@@ -34,7 +34,9 @@ function App() {
 	const [isFlapGuide, setIsFlapGuide] = useState(false);
 	const [isSeaGuide, setIsSeaGuide] = useState(false);
 	const [isEnterWhale, setIsEnterWhale] = useState(false);
-	const [isGameComplete, setIsGameComplete] = useState(false);
+	const [isGame1Complete, setIsGame1Complete] = useState(false);
+	const [isGame2Complete, setIsGame2Complete] = useState(false);
+	const [isGame3Complete, setIsGame3Complete] = useState(false);
 	const [questionNumber, setQuestionNumber] = useState(1);
 	const [amountQuestionsTake, setAmountQuestionsTake] = useState(1);
 	const [isQuiz, setIsQuiz] = useState(false);
@@ -85,15 +87,15 @@ function App() {
 					} />
 					<Route path='/play' element={
 						<>
-							<NetMiniGame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
+							<NetMiniGame isGameComplete={isGame2Complete} setIsGameComplete={setIsGame2Complete} />
 						</>
 					} />
 					<Route path='/play-whale' element={
 						<>
-							<WhaleMinigame isGameComplete={isGameComplete} setIsGameComplete={setIsGameComplete} />
+							<WhaleMinigame isGameComplete={isGame3Complete} setIsGameComplete={setIsGame3Complete} />
 						</>
 					} />
-					<Route path='/play-seagull' element={<RemoveActivity />}/>
+					<Route path='/play-seagull' element={<RemoveActivity isGameComplete={isGame1Complete} setIsGameComplete={setIsGame1Complete}/>}/>
 					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
 					<Route path='/flapguide' element={
 						<>
@@ -111,8 +113,8 @@ function App() {
 								level={LEVEL1}
 								isSeaGuide={isSeaGuide}
 								setIsSeaGuide={setIsSeaGuide}
-								isGameComplete={isGameComplete}
-								setIsGameComplete={setIsGameComplete}
+								isGameComplete={isGame1Complete}
+								setIsGameComplete={setIsGame1Complete}
 								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
@@ -130,8 +132,8 @@ function App() {
 								level={LEVEL2}
 								isFlapGuide={isFlapGuide}
 								setIsFlapGuide={setIsFlapGuide}
-								isGameComplete={isGameComplete}
-								setIsGameComplete={setIsGameComplete}
+								isGameComplete={isGame2Complete}
+								setIsGameComplete={setIsGame2Complete}
 								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
@@ -147,8 +149,8 @@ function App() {
 								level={LEVEL3}
 								isFlapGuide={isFlapGuide}
 								setIsFlapGuide={setIsFlapGuide}
-								isGameComplete={isGameComplete}
-								setIsGameComplete={setIsGameComplete}
+								isGameComplete={isGame3Complete}
+								setIsGameComplete={setIsGame3Complete}
 								questionNumber={questionNumber}
 								setQuestionNumber={setQuestionNumber}
 								setAmountQuestionsTake={setAmountQuestionsTake}
