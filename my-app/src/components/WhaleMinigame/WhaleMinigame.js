@@ -349,7 +349,7 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400;
+		return (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) || (event.target.classList.contains('in-range'));
 	}
 
 	const removeTrash = (event, targetID) => {
