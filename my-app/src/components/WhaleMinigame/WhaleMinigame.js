@@ -11,8 +11,9 @@ import {
 	ModalRowText,
 	ModalContent,
 	NextButton,
+	StartButton
 } from './styles.tsx';
-import RemoveIgnore from '../Stories/RemoveIgnore.json';
+import RemoveIgnore from '../Stories/RemoveIgnoreWhale.json';
 import postRemoveDialogue from '../Stories/postWendyGame.json';
 
 function WhaleMinigame(props) {
@@ -30,6 +31,7 @@ function WhaleMinigame(props) {
 	const [obstacleList, setObstacleList] = useState([])
 	// Trash
 	const [trashRemove, setTrashRemove] = useState(0);
+	const [unSolvedTrash, setUnSolvedTrash] = useState([]);
 	// Change Player's Position
 	const userPlacement = { top: yAxis + 'px', left: xAxis + 'px' };
 	// Level
@@ -94,7 +96,6 @@ function WhaleMinigame(props) {
 			}
 		}
 		checkObstacle(newPlayerCords);
-		checkWithinRange();
 	};
 
 	// Create function to grab true XY positions
@@ -137,9 +138,14 @@ function WhaleMinigame(props) {
 		setNetPlacement3({ top: randomPx() + 'px', left: randomPx() + 'px' });
 		document.getElementById('play-area').style.backgroundImage = `url(/sprites/bg-whale-stomach.png)`;
 		setRandomizeTrash(shuffle(Object.keys(RemoveIgnore)));
+		const trashList = [...Array(10)].map((e, i) => {
+			return `trash-image-`+i;
+		})
+		setUnSolvedTrash(trashList)
+		document.getElementById(`load-modal-999`).click()
 	}, [shuffle]);
 
-	function checkWithinRange() {
+	function checkWithinRange(newPlayerCords) {
 		if (Math.sqrt((user.current.x - net.current.x) ** 2 + (user.current.y - net.current.y) ** 2) <= 400) {
 			document.getElementById('net').classList.add('in-range');
 		} else {
@@ -156,12 +162,13 @@ function WhaleMinigame(props) {
 		} else {
 			document.getElementById('net3').classList.remove('in-range');
 		}
-		[...Array(10)].forEach((e, i) => {
-			const trashPosition = document.getElementById(`trash-image-`+i).getBoundingClientRect();
-			if (Math.sqrt((user.current.x - trashPosition.x) ** 2 + (user.current.y - trashPosition.y) ** 2) <= 200) {
-				document.getElementById(`trash-image-`+i).classList.add('in-range');	
+		unSolvedTrash.forEach((trash, i) => {
+			const trashPosition = grabTrashPoistion(document.getElementById(trash))
+			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
+				document.getElementById(trash).classList.add('in-range');	
 			} else {
-				document.getElementById(`trash-image-`+i).classList.remove('in-range');
+				document.getElementById(trash).classList.remove('in-range');
 			}
 		})
 	}
@@ -192,6 +199,19 @@ function WhaleMinigame(props) {
 		return (newPlayerCords.offsetLeft < -100) || (newPlayerCords.offsetRight < -100) || (newPlayerCords.offsetTop < -100) || (newPlayerCords.offsetBottom < -100); 
 	}
 
+	function grabTrashPoistion(refObject) {
+		const objectX = refObject.offsetLeft + (refObject.width / 2)
+		const objectY = refObject.offsetTop + (refObject.height / 2)
+		return ({
+			x: objectX,
+			y: objectY,
+			leftEdge: objectX - (refObject.width / 2),
+			rightEdge: objectX + (refObject.width / 2),
+			topEdge: objectY - (refObject.height / 2),
+			bottomEdge: objectY + (refObject.height / 2)
+		})
+	}
+
 	function grabObstaclePoistion(refObject) {
 		const objectX = refObject.current.offsetLeft + (refObject.current.width / 2)
 		const objectY = refObject.current.offsetTop + (refObject.current.height / 2)
@@ -220,17 +240,35 @@ function WhaleMinigame(props) {
 		document.getElementById("load-modal-" + (page - 1)).click();
 	}
 
-	if (lastResult && trashRemove === 10 && netRemove === 3) {
+	if (lastResult && trashRemove === 10 && netRemove === 3 && page === 100) {
 		document.getElementById("load-modal-100").click();
 	}
 
-	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} />);
+	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} unSolvedTrash={unSolvedTrash}/>);
 	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} />);
 	const DisplayObstacles = [square, square1].map((obstacle, i) => <ObstacleImages obstacleRef={obstacle} int={i} key={i} />)
 
 	// Note: When finished watching video, it closes with next video
 	return (
 		<>
+			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
+			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div className="modal-dialog modal-xl modal-dialog-centered">
+					<div className="modal-content">					
+						<div className='container modal-container'>
+							<div className='row'>
+								<h1 className="modal-title fs-5 fw-bold text-dark" id="staticBackdropLabel">Instructions</h1>
+							</div>
+							 <div className='row model-info'>
+								<p className='modal-body'>Click on all of the ghost nets and trash floating in Wendy’s stomach to help her feel better! Be sure to avoid any obstacles!!</p>
+							</div>
+							<div className='modal-buttons'>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			{pageList}
 			<div id='play-area' className='play-area' onClick={() => user.current.focus()}>
 				<PointsContainer>
@@ -256,7 +294,7 @@ function WhaleMinigame(props) {
 				{/* Net 1 */}
 				<Net
 					style={netPlacement}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net}
 					onClick={removeNet}
 					className='img-size'
@@ -266,7 +304,7 @@ function WhaleMinigame(props) {
 				{/* Net 2 */}
 				<Net
 					style={netPlacement2}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net2}
 					onClick={removeNet}
 					className='img-size'
@@ -276,7 +314,7 @@ function WhaleMinigame(props) {
 				{/* Net 3 */}
 				<Net
 					style={netPlacement3}
-					src={`/sprites/sprite-fishing-net.png`}
+					src={`/sprites/sprite-net-no-fish.png`}
 					ref={net3}
 					onClick={removeNet}
 					className='img-size'
@@ -302,7 +340,7 @@ function ModalCards(props) {
 	const [correctAnswer, setCorrectAnswer] = useState()
 
 
-	const { object, int, user } = props;
+	const { object, int, user, unSolvedTrash } = props;
 	const objectData = RemoveIgnore[object]
 	const item = useRef(null);
 
@@ -311,26 +349,19 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 500) {
-			return true
-		}
-		return false
+		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400;
 	}
 
 	const removeTrash = (event, targetID) => {
-		if (isInRange(event), !solved) {
-			loadModal();
+		if (isInRange(event) && !solved) {
+			document.getElementById("load-modal-" + int).click();
 		}
-	}
-
-	const loadModal = () => {
-		document.getElementById("load-modal-" + int).click();
 	}
 
 	const onLoad = () => {
 		setImageResult(objectData.image)
-		setYPosition(Math.floor(Math.random() * 50) + 1)
-		setYPosition(Math.floor(Math.random() * 74) + 1)
+		setXPosition(Math.floor(Math.random() * 8) + 1)
+		setYPosition(Math.floor(Math.random() * 25) + 1)
 	}
 
 	const onClickRemove = () => {
@@ -341,7 +372,7 @@ function ModalCards(props) {
 			document.getElementById("trash-image-" + int).classList.add('hidden');
 			setCorrectAnswer(true)
 			setSolved(true)
-
+			updateTrashList()
 		}
 		else {
 			setTextResult(objectData.incorrect)
@@ -356,13 +387,21 @@ function ModalCards(props) {
 			setCorrectAnswer(true)
 			setCorrectCount(correctCount + 1)
 			setSolved(true)
+			document.getElementById("trash-image-" + int).classList.remove('in-range');
 			document.getElementById("trash-image-" + int).classList.add('ignore');
+			updateTrashList()
 		}
 		else {
 			setTextResult(objectData.incorrect)
 			setCorrectAnswer(false)
 		}
 	}
+
+	function updateTrashList() {
+		const index = unSolvedTrash.indexOf("trash-image-" + int);
+		unSolvedTrash.splice(index, 1)
+	}
+
 	const closeModal = () => {
 		setTextResult();
 		setCorrectAnswer();
@@ -385,7 +424,7 @@ function ModalCards(props) {
 
 								<ModalRowText className='row model-info modal-video-content mt-1'>
 									<h1 className="removeTitle" id="staticBackdropLabel">{object}</h1>
-									{(textResult === undefined) && <button className="removebtn" onClick={onClickRemove}>Remove from Beach</button>}
+									{(textResult === undefined) && <button className="removebtn" onClick={onClickRemove}>Remove from Wendy</button>}
 									{(textResult === undefined) && <button className="ignorebtn" onClick={onClickIgnore}>Ignore</button>}
 									<div />
 									<div className="container text-container">
@@ -417,7 +456,6 @@ export function VidCards(props) {
 		<>
 			<a id={`load-modal-` + page} data-bs-toggle="modal" data-bs-target={`#modal-` + page + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + page + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<img src='./sprites/sprite-pancake-flapjack-octopus.png' className='pancake-modal' />
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">
 						<div className='container modal-container'>
@@ -434,11 +472,11 @@ export function VidCards(props) {
 								<p className='modal-body'>{pageInfo["body-2"]}</p>
 							</div>}
 
-							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content video mt-1'>
 								<iframe width="100%" height="100%" src={pageInfo.video} />
 							</div>}
 
-							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content modal-input mt-1'>
 								<textarea rows={3} placeholder="Type your answer here..." />
 							</div>}
 							<div className='modal-buttons'>

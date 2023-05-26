@@ -1,0 +1,62 @@
+{
+    "You've found a rope.": {
+        "remove": true,
+        "correct": "This rope isn’t supposed to be eaten by whales!",
+        "incorrect": "This rope should be removed because it is not meant to be eaten by animals!",
+        "image": "./imgs/cards/nets/rope.png"
+    },
+    "You’ve found plastic.": {
+        "remove": true,
+        "correct": "This plastic can be dangerous if animals swallow it.",
+        "incorrect": "This plastic should be removed because it is not meant to be eaten by animals!",
+        "image": "./imgs/cards/nets/plastic.png"
+    },
+    "You’ve found a plastic cup with a straw.": {
+        "remove": true,
+        "correct": "This cup isn’t supposed to be eaten by whales!",
+        "incorrect": "This cup should be removed because it is not meant to be eaten by animals!",
+        "image": "./imgs/cards/nets/cup.png"
+    },
+    "You’ve found a plastic snack bag.": {
+        "remove": true,
+        "correct": "This plastic bag can be dangerous if animals swallow it.",
+        "incorrect": "This plastic bag should be removed because it can be dangerous if animals swallow it.",
+        "image": "./imgs/cards/nets/bag.png"
+    },
+    "You’ve found a sharp piece of plastic.": {
+        "remove": true,
+        "correct": "This sharp object can be dangerous if it cuts an animal or if they swallow it.",
+        "incorrect": "This sharp object should be removed because it can be dangerous if it cuts an animal or if they swallow it.",
+        "image": "./imgs/cards/nets/sharp.png"
+    },
+    "You’ve found a cigarette butt.": {
+        "remove": true,
+        "correct": "This cigarette butt is toxic to animals and can be dangerous if they eat it.",
+        "incorrect": "This cigarette butt should be removed because it is toxic to animals and can be dangerous if they eat it.",
+        "image": "./imgs/cards/nets/cigarette.png"
+    },
+    "You’ve found a fish.": {
+        "remove": false,
+        "correct": "Orca’s eat fish, so this is good for Wendy!",
+        "incorrect": "This fish should be ignored because it is food for Wendy.",
+        "image": "./imgs/cards/nets/fish.png"
+    },
+    "You’ve found a seal": {
+        "remove": false,
+        "correct": "Orca’s eat seals, so this is good for Wendy!",
+        "incorrect": "This seal should be ignored because it is food for Wendy.",
+        "image": "./imgs/cards/nets/seal.png"
+    },
+    "You’ve found a seagull.": {
+        "remove": false,
+        "correct": "Orca’s eat seagulls, so this is good for Wendy!",
+        "incorrect": "This seagull should be ignored because it is food for Wendy.",
+        "image": "./imgs/cards/nets/seagull.png"
+    },
+    "You’ve found some seaweed.": {
+        "remove": false,
+        "correct": "Although Orca’s don’t eat seaweed, this isn’t harming Wendy.",
+        "incorrect":"This seaweed should be ignored because although Orca’s don’t eat seaweed, this isn’t harming Wendy.",
+        "image": "./imgs/cards/nets/seaweed.png"
+    }
+}
