@@ -87,7 +87,7 @@ export const IntroTitleContainer = styled.div`
     }
 
     .intro-title-meet {
-        top: 5610px;
+        top: 5590px;
         left: 480px;
     }
 
