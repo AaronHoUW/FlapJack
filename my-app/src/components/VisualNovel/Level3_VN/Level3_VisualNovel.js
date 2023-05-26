@@ -73,6 +73,7 @@ function VisualNovel(props) {
             || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
+        console.log(currentScene);
         document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete, isEnterWhale, isQuiz, questionNumber]);
 
@@ -423,6 +424,7 @@ function VisualNovel(props) {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
 
+            console.log(currentScene);
             if (currentScene.dialogue[dialoguePosition].keyword) {
                 if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
                     buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
@@ -523,13 +525,7 @@ function VisualNovel(props) {
                     } else {
                         dialoguePosition = 0;
                         event.target.disabled = true;
-                        if (currentScene.previousScene === 'sallyTalking2') {
-                            dialoguePosition = 0;
-                            event.target.disabled = false;
-                            currentScene = level['sallyTalking2'];
-                            buildDialogue();
-                            nextScene(currentScene);
-                        } else if (typeof currentScene.previousScene === 'object') {
+                        if (typeof currentScene.previousScene === 'object') {
                             dialoguePosition = 0;
                             currentScene = level['sallyTalking'];
                             event.target.disabled = true;
