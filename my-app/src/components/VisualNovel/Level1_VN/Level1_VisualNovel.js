@@ -39,7 +39,8 @@ function VisualNovel(props) {
             buildDialogue();
         } else if (isQuiz) {
             clearSprites();
-            if(levelOnePath === "animalImpactTrash1") {
+            console.log(levelOnePath);
+            if(levelOnePath === "shawnCardGame1") {
                 currentScene = level['shawnQuestion1'];
             } else if (levelOnePath === 'shawnIntro') {
                 currentScene = level['shawnQuestion2'];
@@ -442,7 +443,7 @@ function VisualNovel(props) {
             message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
-        } else if (levelOnePath === 'animalImpactTrash1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
+        } else if (levelOnePath === 'shawnCardGame1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
             message = "It's gotten really tangled up that I can't get out of it easily.";
         }
 
@@ -495,6 +496,9 @@ function VisualNovel(props) {
                     () => {
                         setIsSeaGuide(false);
                         setIsGameComplete(false);
+                        dialoguePosition = 0;
+                        currentScene = level['pancakeIntro'];
+                        document.getElementById('backBtn').disabled = true;
                         navigate('/');
                     }
                 }>Exit</ExitButton>
