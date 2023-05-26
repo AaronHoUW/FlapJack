@@ -20,7 +20,11 @@ export const Flapjack = styled.img<Props>`
 `;
 
 export const ScreenModal = styled.div`
-    padding-top: 5vh
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px
 `;
 
 export const Modal = styled.div`
