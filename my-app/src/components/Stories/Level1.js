@@ -1350,6 +1350,37 @@ const LEVEL1 = {
       }
     ]
   },
+  "postGame": {
+    "type": "comic",
+    "background": "beach-level",
+    "nextScene": "end",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-bowl",
+        "x": "15",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Thank you for helping the seagulls by removing the trash on the beach",
+        "type": "left"
+      }
+    ]
+  }
 }
 
 export default LEVEL1;
