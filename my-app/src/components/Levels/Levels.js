@@ -6,12 +6,15 @@ import {
     FooterText,
     FooterCopyright,
 } from '../Home/styles.tsx';
+import {
+    LevelsContainer
+} from './styles.tsx';
 
 function Levels(props) {
     const { setQuestionNumber } = props
     const navigate = useNavigate();
     return (
-        <>
+        <LevelsContainer>
             <div className='preface'>
                 <img className = 'user' src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
                 <div>
@@ -74,7 +77,7 @@ function Levels(props) {
                 </FooterCopyright>
                 <img src='./imgs/iSchool-logo.png' alt='logo of the Information School at the University of Washington' />
             </FooterContainer>
-        </>
+        </LevelsContainer>
     );
 
 }

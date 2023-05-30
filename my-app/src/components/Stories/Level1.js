@@ -17,7 +17,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "pancake-bowl",
-        "x": "18",
+        "x": "12",
         "y": "35",
         "size": "15",
         "flipX": false
@@ -149,7 +149,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "pancake-bowl",
-        "x": "18",
+        "x": "12",
         "y": "35",
         "size": "15",
         "flipX": false
@@ -167,7 +167,7 @@ const LEVEL1 = {
   "pancakeTalkToSeagull": {
     "type": "comic",
     "background": "beach-level",
-    "previousScene": undefined,
+    "previousScene": "beginningScene",
     "nextScene": {
       "Yes, I can help!": "tutorial",
       "No, I'd like to exit the game.": "end",
@@ -184,7 +184,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "pancake-bowl",
-        "x": "18",
+        "x": "12",
         "y": "35",
         "size": "15",
         "flipX": false
@@ -211,7 +211,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -246,7 +246,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -277,8 +277,8 @@ const LEVEL1 = {
   "trashIsland1": {
     "type": "comic",
     "background": "trash-island",
-    "previousScene": "lifeOnBeach1",
-    "nextScene": "animalImpactTrash1",
+    "previousScene": "shawnBeach1",
+    "nextScene": "shawnCardGame1",
     "baseFrame": [
       {
         "type": "sprite",
@@ -325,13 +325,13 @@ const LEVEL1 = {
   "animalImpactTrash1": {
     "type": "comic",
     "background": "beach-level",
-    "previousScene": "animalImpactTrash1",
+    "previousScene": "shawnCardGame1",
     "nextScene": "quiz", // quiz1: shawnQuestion1
     "baseFrame": [
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -370,7 +370,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -402,7 +402,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -444,7 +444,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -468,7 +468,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -515,7 +515,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -552,7 +552,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -578,7 +578,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -613,7 +613,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -647,7 +647,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -732,7 +732,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -771,7 +771,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -803,7 +803,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -845,7 +845,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -869,7 +869,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -916,7 +916,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -944,9 +944,9 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
-        "size": "15",
+        "size": "13",
         "flipX": false
       },
       {
@@ -978,7 +978,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-sad",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -1021,7 +1021,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -1045,7 +1045,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "15",
         "flipX": false
@@ -1077,7 +1077,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "shawnBeach3",
-    "nextScene": "animalImpactTrash3",
+    "nextScene": "shawnCardGame3",
     "baseFrame": [
       {
         "type": "sprite",
@@ -1140,7 +1140,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -1169,9 +1169,9 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
-        "size": "15",
+        "size": "13",
         "flipX": false
       },
       {
@@ -1203,7 +1203,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -1235,7 +1235,7 @@ const LEVEL1 = {
     "type": "comic",
     "background": "trash-island",
     "previousScene": "couldntWalk4",
-    "nextScene": "couldntWalkContinued4",
+    "nextScene": "shawnCardGame4",
     "baseFrame": [
       {
         "type": "sprite",
@@ -1298,7 +1298,7 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
         "size": "13",
         "flipX": false
@@ -1327,9 +1327,9 @@ const LEVEL1 = {
       {
         "type": "sprite",
         "image": "shawn-seagull",
-        "x": "15",
+        "x": "12",
         "y": "20",
-        "size": "15",
+        "size": "13",
         "flipX": false
       },
       {
@@ -1350,6 +1350,37 @@ const LEVEL1 = {
       }
     ]
   },
+  "postGame": {
+    "type": "comic",
+    "background": "beach-level",
+    "nextScene": "end",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-bowl",
+        "x": "15",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Thank you for helping the seagulls by removing the trash on the beach",
+        "type": "left"
+      }
+    ]
+  }
 }
 
 export default LEVEL1;

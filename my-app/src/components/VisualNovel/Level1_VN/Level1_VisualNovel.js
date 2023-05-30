@@ -39,7 +39,8 @@ function VisualNovel(props) {
             buildDialogue();
         } else if (isQuiz) {
             clearSprites();
-            if(levelOnePath === "animalImpactTrash1") {
+            console.log(levelOnePath);
+            if(levelOnePath === "shawnCardGame1") {
                 currentScene = level['shawnQuestion1'];
             } else if (levelOnePath === 'shawnIntro') {
                 currentScene = level['shawnQuestion2'];
@@ -53,6 +54,8 @@ function VisualNovel(props) {
         } else if (isGameComplete) {
             clearSprites();
             currentScene = level['postGame'];
+            console.log(currentScene);
+            document.getElementById('backBtn').disabled = true;
             buildDialogue();
         } else {
             currentScene = level['pancakeIntro'];
@@ -274,8 +277,8 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
-                        } else if (sprite.image === 'dead-salmon' || sprite.image === 'thought-bubble') {
-                            spriteContainer.setAttribute('style', `position: absolute; top: ${sprite.y}%;`);
+                        }  else if (sprite.image === 'pancake-bowl') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: ${sprite.y}%`);
                         } else {
                             spriteContainer.setAttribute('style', `position: absolute; top: 40%;`);
                         }
@@ -286,7 +289,7 @@ function VisualNovel(props) {
                         newSprite.setAttribute('width', `${spriteSize}%`);
                         newSprite.setAttribute('class', 'sprite');
 
-                        if (sprite.image === 'pancake-flapjack-octopus') {
+                        if (sprite.image === 'pancake-bowl') {
                             newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                         } else {
                             newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
@@ -315,6 +318,8 @@ function VisualNovel(props) {
                             spriteContainer.setAttribute('style', `position: absolute; top: 0;`);
                         } else if (sprite.image === 'pancake-flapjack-octopus' && currentScene.dialogue[0].type === 'nospeaker') {
                             spriteContainer.setAttribute('style', `position: absolute; top: 80%; z-index: 3;`);
+                        } else if (sprite.image === 'pancake-bowl') {
+                            spriteContainer.setAttribute('style', `position: absolute; top: ${sprite.y}%`);
                         }
 
                         const newSprite = document.createElement('img');
@@ -323,7 +328,7 @@ function VisualNovel(props) {
                         newSprite.setAttribute('width', `${spriteSize}%`);
                         newSprite.setAttribute('class', 'sprite-normal');
 
-                        if (sprite.image === 'pancake-flapjack-octopus') {
+                        if (sprite.image === 'pancake-bowl') {
                             newSprite.setAttribute('style', `position: absolute; z-index: 3; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
                         } else {
                             newSprite.setAttribute('style', `position: absolute; left: ${sprite.x}%; top: ${sprite.y}%; transform: scaleX(${sprite.flipX ? -1 : 1});`);
@@ -440,7 +445,7 @@ function VisualNovel(props) {
             message = 'Hello! I’m Shawn the Seagull! I’m a ring billed seagull.';
         } else if (isGameComplete) {
             message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
-        } else if (levelOnePath === 'animalImpactTrash1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
+        } else if (levelOnePath === 'shawnCardGame1' || levelOnePath === 'shawnIntro' || levelOnePath === 'shawnCardGame2')  {
             message = "It's gotten really tangled up that I can't get out of it easily.";
         }
 
@@ -493,6 +498,9 @@ function VisualNovel(props) {
                     () => {
                         setIsSeaGuide(false);
                         setIsGameComplete(false);
+                        dialoguePosition = 0;
+                        currentScene = level['pancakeIntro'];
+                        document.getElementById('backBtn').disabled = true;
                         navigate('/');
                     }
                 }>Exit</ExitButton>

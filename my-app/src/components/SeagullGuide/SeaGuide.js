@@ -40,7 +40,9 @@ function FlapGuide(props) {
   };
 
   const handleWithinRange = (event) => {
+  console.log(Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2))
     if (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200) {
+      console.log("testing")
       navigate('/level1');
     }
   }
@@ -68,7 +70,7 @@ function FlapGuide(props) {
         </DialogueMessageContainer>
         <img className="excel sprite-container" src='./imgs/excel.png' />
         <img className="fish sprite-container" id="seagull-guide" ref={fish} src='./sprites/sprite-shawn-seagull.png' onClick={handleWithinRange} />
-        <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-flapjack-octopus.png' />
+        <img className="flapjack-guide sprite-container" src='./sprites/sprite-pancake-bowl.png' />
       </Background>
       {/* User */}
       <User
@@ -76,9 +78,9 @@ function FlapGuide(props) {
         ref={user}
         tabIndex={-1}
         onKeyDown={handleKeyDown}
-        src={`/sprites/sprite-user-placeholder.png`}
-        id='tutorial-playable'
-        className='img-size'
+        src={`/sprites/sprite-user.png`}
+        id='guide-playable'
+        className="img-size"
         alt="User's placeholder"
       />
     </div>

@@ -108,7 +108,7 @@ function RemoveActivity(props) {
 		unSolvedTrash.forEach((trash, i) => {
 			const trashPosition = grabObstaclePoistion(document.getElementById(trash))
 			if ((newPlayerCords.xPosition - trashPosition.x) <= 150 && (newPlayerCords.xPosition - trashPosition.x) >= -150 
-				&& (newPlayerCords.yPosition - trashPosition.y) <= 100 && (newPlayerCords.yPosition - trashPosition.y) >= -100) {
+				&& (newPlayerCords.yPosition - trashPosition.y) <= 150 && (newPlayerCords.yPosition - trashPosition.y) >= -150) {
 				document.getElementById(trash).classList.add('in-range');	
 			} else {
 				document.getElementById(trash).classList.remove('in-range');
@@ -143,6 +143,7 @@ function RemoveActivity(props) {
 		<div>
 			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img className='pancake modal-instruction' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">					
 						<div className='container modal-container'>
@@ -153,7 +154,7 @@ function RemoveActivity(props) {
 								<p className='modal-body'>Click on all of the trash and other objects on the beach, and decide whether they should be removed or ignored</p>
 							</div>
 							<div className='modal-buttons'>
-								<StartButton className='modal-continue text-light' type="button" data-bs-dismiss="modal">{"Start"}</StartButton>
+								<StartButton className='modal-continue text-light' type="button" onClick={() => user.current.focus()} data-bs-dismiss="modal">{"Start"}</StartButton>
 							</div>
 						</div>
 					</div>
@@ -202,7 +203,7 @@ function ModalCards(props) {
 	const [solved, setSolved] = useState(false)
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 200;
+		return (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 250) || (event.target.classList.contains('in-range'));
 	}
 
 	const removeTrash = (event) => {
@@ -324,11 +325,11 @@ export function VidCards(props) {
 								<p className='modal-body'>{pageInfo["body-2"]}</p>
 							</div>}
 
-							{pageInfo.type === "video" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "video" && <div className='row model-info modal-video-content video mt-1'>
 								<iframe width="100%" height="100%" src={pageInfo.video} />
 							</div>}
 
-							{pageInfo.type === "input" && <div className='row model-info modal-video-content mt-1'>
+							{pageInfo.type === "input" && <div className='row model-info modal-video-content modal-input mt-1'>
 								<textarea rows={3} placeholder="Type your answer here..." />
 							</div>}
 							<div className='modal-buttons'>
