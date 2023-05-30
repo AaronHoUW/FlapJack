@@ -8,18 +8,30 @@ export const ResourcesContainer = styled.div`
     justify-content: center;
     padding: 40px;
     gap: 12px;
+
+    div {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-direction: column;
+        width: 50%;
+        background-color: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+    }
 `;
 
 export const SectionTitle = styled.h1`
-    color: black;
-    font-weight: 400;
+    color: #134254;
+    font-weight: 700;
     font-size: 60px;
     line-height: 69px;
     margin: 0;
 `;
 
 export const SectionTitleLight = styled.h1`
-    color: white;
+    color: #134254;
     font-weight: 400;
     font-size: 60px;
     line-height: 69px;
@@ -43,8 +55,15 @@ export const VideoContent = styled.div`
     align-items: center;
     gap: 40px;
 
+    div {
+        background-color: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+    }
+
     h2 {
         font-size: 48px;
+        color: #134254;
     }
 
     h3 {
@@ -69,43 +88,14 @@ export const MoreVideosContainer = styled.div`
     }
 `;
 
-export const ReadContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
-    gap: 20px;
-    color: white;
-
-    p {
-        font-size: 20px;
-        margin: 0;
-    }
-`;
-
-export const Articles = styled.div`
-    .citation {
-        font-weight: 700;
-    }
-
-    a {
-        color: white;
-        font-weight: 700;
-    }
-
-    .detail {
-        margin-bottom: 32px;
-    }
-
-    .last {
-        margin: 0;
-    }
-`;
-
 export const SimilarGamesContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    h1 {
+        color: white;
+    }
 `;
 
 export const GameCards = styled.div`
@@ -119,7 +109,38 @@ export const GameCards = styled.div`
         display: flex;
         flex-direction: column;
         gap: 20px;
-        color: white;
+        color: black;
+        background-color: #F7EDE1;
+        border-radius: 20px;
+        padding: 24px;
+        
+        @media screen and (min-width: 901px) and (max-width: 1200px) {
+            display: flex;
+            flex-direction: column;
+            gap: 39px;
+            color: black;
+            background-color: rgb(247, 237, 225);
+            border-radius: 20px;
+            padding: 24px;
+            width: 326px;
+            max-width: 661px;        
+         }
+
+         @media screen and (min-width: 1200px) and (max-width: 1500px) {
+            display: flex;
+            flex-direction: column;
+            gap: 39px;
+            color: black;
+            background-color: rgb(247, 237, 225);
+            border-radius: 20px;
+            padding: 24px;
+            width: 326px;
+         }
+ 
+
+        p {
+            font-size: 20px;
+        }
 
         img {
             width: 350px;
@@ -135,12 +156,13 @@ export const GameCards = styled.div`
         }
 
         button {
-            width: 40%;
-            background: #FFFFFF;
+            width: 35%;
+            background: #85C9E3;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 40px;
             border: none;
             padding: 16px 24px;
+            font-size: 20px;
         }
     }
 `;
