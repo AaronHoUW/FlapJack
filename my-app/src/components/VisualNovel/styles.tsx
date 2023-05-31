@@ -9,7 +9,7 @@ export const VisualNovelContainer = styled.div<ContainerProps>`
     background-size: contain;
     overflow: hidden;
     background-image: ${(props) => props.backgroundImage};
-    background-size: 100% 100%;
+    background-size: cover;
 
     .dialogue-left .textBox {
         transform: scaleX(-1);
@@ -36,6 +36,7 @@ export const ExitButton = styled.button`
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
+}
 `;
 
 export const NextButton = styled.button`
@@ -57,6 +58,7 @@ export const NextButton = styled.button`
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
+}
 `;
 
 export const BackButton = styled.button`
@@ -78,6 +80,7 @@ export const BackButton = styled.button`
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
+}
 `;
 
 export const DialogueBox = styled.div`
@@ -87,6 +90,8 @@ export const DialogueBox = styled.div`
     width: 100%;
     font-family: 'Mulish';
     font-size: 36px;
+    }
+  
 `;
 
 export const DialogueImg = styled.img`
@@ -95,12 +100,31 @@ export const DialogueImg = styled.img`
     bottom: 30px;
     left: 150px;
     z-index: 1;
+    }
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        width: 98%;
+        top: 500px;
+        left: 7px;
+        height: 112px;
+      }
+      @media screen and (min-width: 600px) and (max-width: 900px) {
+        width: 80%;
+        height: 220px;
+        bottom: 205px;
+        left: 116px;
+    }
+
+    @media screen and (min-width: 901px) and (max-width: 1500px) {
+        width: 77%;
+    }
+        
+            }
 `;
 
 export const DialogueMessageContainer = styled.div`
     position: absolute;
     top: 80%;
-    left: 45%;
+    left: 53%;
     transform: translate(-50%, -50%);
     z-index: 2;
 
@@ -109,9 +133,26 @@ export const DialogueMessageContainer = styled.div`
     font-weight: 400;
     font-size: 36px;
     line-height: 45px;
-
     color: #000000;
     z-index: 1;
+    }
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+        top: 77%;
+        left: 51%;
+        p {
+            width: 110%;
+            font-size: 25px;
+            line-height: 25px;
+            height: 334px;
+        }
+    }
+         @media screen and (min-width: 901px) and (max-width: 1500px) {
+            width: 65%;
+            left: 53%;
+            top: 85%;
+            font-size: 30px;
+         }
+
 `;
 
 export const SpeakerContainer = styled.div`
@@ -132,12 +173,18 @@ export const SpeakerContainer = styled.div`
     p {
         white-space: pre-wrap;
     }
+    @media only screen and (max-width: 600px) {
+            p {
+                font-size: 2px;
+            }
+          }
 `;
 
 export const IntroContainer = styled.div`
-    background: url('/sprites/bg-mid-sea.png');
+    background: url('/sprites/bg-sea.png');
     height: 100vh;
     overflow: hidden;
+
 `;
 
 export const IntroBox = styled.div`

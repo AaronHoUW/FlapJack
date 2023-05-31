@@ -83,6 +83,34 @@ export const DialogueMessageContainer = styled.div`
     line-height: 45px;
 
     color: #000000;
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    width: 54%;
+    height: 184px;
+    top: 734px;
+    left: 396px;
+}
+
+@media screen and (min-width: 901px) and (max-width: 1000px) {
+    width: 70%;
+    left: 440px;
+    top: 708px;
+
+ }
+
+ @media screen and (min-width: 1001px) and (max-width: 1399px) {
+    width: 70%;
+    left: 480px;
+    top: 687px;
+
+ }
+
+@media screen and (min-width: 1400px) and (max-width: 1500px) {
+  width: 77%;
+  left: 530px;
+}
+  
+      }
 `;
 
 export const DialogueImg = styled.img`
@@ -91,6 +119,39 @@ export const DialogueImg = styled.img`
     bottom: 30px;
     left: 150px;
     z-index: 1;
+}
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    top: 77%;
+    left: 9%;
+    width: 75%;
+    height: 180px;
+    p {
+        width: 110%;
+        font-size: 25px;
+        line-height: 25px;
+        height: 334px;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1050px) {
+    width: 61%;
+    left: 13%;
+    top: 75%;
+
+ }
+
+ @media screen and (min-width: 1051px) and (max-width: 1399px) {
+    width: 60%;
+    left: 6%;
+    top: 70%;
+
+ }
+     @media screen and (min-width: 1400px) and (max-width: 1500px) {
+        width: 60%;
+        left: 6%;
+        top: 70%;
+    
+     }
 `;
 
 export const Circle = styled.img<Props>`
