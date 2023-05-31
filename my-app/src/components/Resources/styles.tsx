@@ -83,6 +83,14 @@ export const MoreVideosContainer = styled.div`
     align-items: center;
     gap: 80px;
 
+    @media screen and (min-width: 1301px) and (max-width: 1600px) {
+        gap: 43px;
+    }
+
+    @media screen and (min-width: 1601px) and (max-width: 1850px) {
+        gap: 61px;
+     }
+
     .more-content {
         gap: 74px;
     }
@@ -114,7 +122,7 @@ export const GameCards = styled.div`
         border-radius: 20px;
         padding: 24px;
         
-        @media screen and (min-width: 901px) and (max-width: 1200px) {
+        @media screen and (min-width: 901px) and (max-width: 1300px) {
             display: flex;
             flex-direction: column;
             gap: 39px;
@@ -122,19 +130,24 @@ export const GameCards = styled.div`
             background-color: rgb(247, 237, 225);
             border-radius: 20px;
             padding: 24px;
-            width: 326px;
-            max-width: 661px;        
+            width: 287px;
+            max-width: 641px;   
+        
+        }
+
+         @media screen and (min-width: 1301px) and (max-width: 1600px) {
+            display: flex;
+            flex-direction: column;
+            gap: 39px;
+            color: black;
+            background-color: rgb(247, 237, 225);
+            border-radius: 20px;
+            padding: 24px;
+            width: 368px;
          }
 
-         @media screen and (min-width: 1200px) and (max-width: 1500px) {
-            display: flex;
-            flex-direction: column;
-            gap: 39px;
-            color: black;
-            background-color: rgb(247, 237, 225);
-            border-radius: 20px;
-            padding: 24px;
-            width: 326px;
+         @media screen and (min-width: 1601px) and (max-width: 1850px) {
+            width: 475px;
          }
  
 
@@ -145,6 +158,14 @@ export const GameCards = styled.div`
         img {
             width: 350px;
             height: 207px;
+            @media screen and (min-width: 901px) and (max-width: 1300px) {
+                width: 241px;
+                height: 99px;
+            }
+            @media screen and (min-width: 1301px) and (max-width: 1600px) {
+                width: 326px;
+                height: 155px; 
+            }
         }
 
         h3, p {
@@ -163,7 +184,24 @@ export const GameCards = styled.div`
             border: none;
             padding: 16px 24px;
             font-size: 20px;
-        }
+            
+            @media screen and (min-width: 901px) and (max-width: 1300px) {
+                width: 49%;
+                background: rgb(133, 201, 227);
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+                border-radius: 40px;
+                border: none;
+                padding: 9px 18px;
+                font-size: 15px;
+    }
+    @media screen and (min-width: 1301px) and (max-width: 1600px) {
+        width: 46%;
+        background: rgb(133, 201, 227);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+        border-radius: 40px;
+        border: none;
+        padding: 9px 18px;
+        font-size: 15px;
     }
 `;
 

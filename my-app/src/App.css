@@ -233,30 +233,14 @@ footer {
   display: none;
 }
 
-<<<<<<< HEAD
-=======
-#guide-playable {
-  position: relative;
-}
-
-#tutorial-playable {
+#playable {
   position: relative;
   width: 250px;
 }
 
->>>>>>> 732b41d83e688c3b8bb7f5d4947a9e2ea83234fa
-#playable {
-  position: relative;
-  width: 150px;
-}
-
 #one-playable {
   position: relative;
-<<<<<<< HEAD
   width: 350px;
-=======
-  width: 150px;
->>>>>>> 732b41d83e688c3b8bb7f5d4947a9e2ea83234fa
 }
 
 #net,
@@ -466,7 +450,7 @@ footer {
   align-items: flex-start;
   padding: 16px 24px;
   gap: 10px;
-  width: 295px;
+  width: 290px;
   height: 73px;
   background: #6C1A1A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -703,22 +687,6 @@ footer {
   height: 300px;
 }
 
-<<<<<<< HEAD
-=======
-.modal-video-content.modal-input, .modal-video-content.video {
-  width: auto;
-}
-
-.pancake.modal-instruction {
-  right: 75%;
-  top: 20%;
-}
-
-.modal-video-content iframe {
-  height: 500px;
-}
-
->>>>>>> 732b41d83e688c3b8bb7f5d4947a9e2ea83234fa
 .modal-buttons {
   margin-bottom: 1.3rem;
   margin-top: 1.3rem;
@@ -787,9 +755,11 @@ footer {
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
+
 .flapjack-guide {
   position: absolute;
-  width: 130px;
+  width: 142.97px;
+  height: 92.86px;
   left: 750px;
   top: 380px;
 
@@ -848,13 +818,9 @@ footer {
   border: 0;
 }
 
-.modal-video-content.modal-quiz {
-  width: 720px;
-}
-
 .modal-video-content {
   margin-bottom: 50px;
-  width: 900px;
+  width: 720px;
   margin: auto;
 }
 
