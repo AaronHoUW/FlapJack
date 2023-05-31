@@ -35,14 +35,6 @@ export const IntroTitle = styled.h2`
     width: 100%;
     height: 60px;
     margin-bottom: 10px;
-
-@media screen and (min-width: 1100px) and (max-width: 1500px) {
-        width: 106%;
-        font-size: 36px;
-        height: 132px;
-    }
-        
-            }
 `;
 
 export const IntroDescription = styled.p`
@@ -265,7 +257,6 @@ export const ResourceText = styled.div`
         margin-bottom: 10px;
     }
 
-    
     button {
         padding: 16px 24px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
