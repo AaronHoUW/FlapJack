@@ -28,7 +28,7 @@ function VisualNovel(props) {
         levelThreePath,
         setLevelThreePath,
         setCurrentLevel,
-        isEnterWhale,
+        isEnterWhale,e
     } = props;
     let currentScene = level['pancakeIntro'];
 
@@ -44,6 +44,7 @@ function VisualNovel(props) {
             document.getElementById('backBtn').disabled = true;
         } else if (isGameComplete) {
             clearSprites();
+            document.getElementById('backBtn').disabled = true;
             currentScene = level['postGame'];
             buildDialogue();
         } else if (isEnterWhale) {
@@ -73,6 +74,7 @@ function VisualNovel(props) {
             || currentScene === level['end']) {
             document.getElementById('backBtn').disabled = true;
         }
+        console.log(currentScene);
         document.getElementById('nextBtn').disabled = false;
     }, [isFlapGuide, isGameComplete, isEnterWhale, isQuiz, questionNumber]);
 
@@ -422,7 +424,9 @@ function VisualNovel(props) {
         if (document.getElementById('dialogue')) {
             document.getElementById('dialogue').innerHTML = '';
             document.getElementById('dialogue').classList.remove('vn-decision');
+            console.log("currentScene", currentScene);
 
+            console.log(currentScene);
             if (currentScene.dialogue[dialoguePosition].keyword) {
                 if (typeof currentScene.dialogue[dialoguePosition].keyword === 'object') {
                     buildMultipleTerms(currentScene.dialogue[dialoguePosition].keyword);
@@ -444,7 +448,7 @@ function VisualNovel(props) {
 
         let message = currentScene.dialogue[dialoguePosition].message;
         if (isGameComplete) {
-            message = 'Wow! Thank you so much for helping to remove all of the dangerous ghost nets near me and my friends!';
+            message = "Thank you for helping Wendy and helping her feel better! The ocean is a lot more safe now thanks to you!";
         } else if (isQuiz && levelThreePath === 'wendyAPathAfterQuiz') {
             message = 'Some of my other friends in our pod have been doing the same thing and I think it might be what has been making us all feel sick.';
         } else if (isQuiz && levelThreePath === 'WendyBPathAfterQuiz1') {
@@ -523,13 +527,7 @@ function VisualNovel(props) {
                     } else {
                         dialoguePosition = 0;
                         event.target.disabled = true;
-                        if (currentScene.previousScene === 'sallyTalking2') {
-                            dialoguePosition = 0;
-                            event.target.disabled = false;
-                            currentScene = level['sallyTalking2'];
-                            buildDialogue();
-                            nextScene(currentScene);
-                        } else if (typeof currentScene.previousScene === 'object') {
+                        if (typeof currentScene.previousScene === 'object') {
                             dialoguePosition = 0;
                             currentScene = level['sallyTalking'];
                             event.target.disabled = true;

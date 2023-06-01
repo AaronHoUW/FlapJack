@@ -11,7 +11,7 @@ import {
 } from './styles.tsx';
 
 function Levels(props) {
-    const { setQuestionNumber } = props
+    const { setQuestionNumber, setIsQuiz } = props
     const navigate = useNavigate();
     return (
         <LevelsContainer>
@@ -32,6 +32,7 @@ function Levels(props) {
                         </p>
                         <LearnButton className="link-button" onClick={() => {
                             setQuestionNumber(3);
+                            setIsQuiz(false);
                             navigate('/level1');
                         }}>Play</LearnButton>
                     </div>
@@ -46,6 +47,7 @@ function Levels(props) {
                             </p>
                             <LearnButton className="link-button" onClick={() => {
                                 setQuestionNumber(1);
+                                setIsQuiz(false);
                                 navigate('/level2')
                             }}>Play</LearnButton>
                         </div>
@@ -59,6 +61,7 @@ function Levels(props) {
                             </p>
                             <LearnButton className="link-button" onClick={() => {
                                 setQuestionNumber(4);
+                                setIsQuiz(false);
                                 navigate('/level3');
                             }}>Play</LearnButton>
                         </div>

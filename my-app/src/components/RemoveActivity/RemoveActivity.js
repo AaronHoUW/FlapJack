@@ -136,13 +136,17 @@ function RemoveActivity(props) {
 		setPage(newPage);
 		document.getElementById("load-modal-" + (page - 1)).click()
 	}
-	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage}>
+
+	const { setIsQuiz, setIsGameComplete } = props
+
+	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} setIsQuiz={setIsQuiz} setIsGameComplete={setIsGameComplete}>
 
 	</VidCards>)
 	return (
 		<div>
 			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img className='pancake modal-instruction' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">					
 						<div className='container modal-container'>
@@ -302,7 +306,7 @@ function shuffle(array) {
 }
 
 export function VidCards(props) {
-	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
+	const { pageInfo, page, loadNextModal, setIsGameComplete, setIsQuiz } = props
 	const navigate = useNavigate();
 	return (
 		<>
@@ -337,8 +341,9 @@ export function VidCards(props) {
 								</NextButton>}
 
 								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
-									navigate('/levels');
 									setIsGameComplete(true);
+									setIsQuiz(false)
+									navigate('/level1');
 								}}>
 									Finish
 								</NextButton>}

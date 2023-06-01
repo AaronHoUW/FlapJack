@@ -56,7 +56,6 @@ function WhaleMinigame(props) {
 		}
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.offsetRight -= 50;
-			console.log(newPlayerCords.offsetRight, "after")
 			if (!checkOutRange(newPlayerCords)) {
 				newPlayerCords.xPosition += 100;			
 				if (!checkObstacle(newPlayerCords)) {
@@ -182,7 +181,6 @@ function WhaleMinigame(props) {
 			const matchPoints = obstacleList.filter((object) => {
 				const obstacle = grabObstaclePoistion(object);
 				const newCorners = { x: newPlayerCords.xPosition + (20 * cords[0]), y: newPlayerCords.yPosition - (40 * cords[1]) }
-				// console.log(newCorners);
 				return (
 					(obstacle.leftEdge <= newCorners.x && 
 					newCorners.x <= obstacle.rightEdge) &&
@@ -245,7 +243,7 @@ function WhaleMinigame(props) {
 	}
 
 	const objectList = randomizeTrash.map((object, i) => <ModalCards int={i} key={i} object={object} user={user} setCorrectCount={setTrashRemove} correctCount={trashRemove} setLastResult={setLastResult} unSolvedTrash={unSolvedTrash}/>);
-	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} />);
+	const pageList = Object.keys(postRemoveDialogue[1]).map((pageInfo, i) => <VidCards pageInfo={postRemoveDialogue[1][pageInfo]} page={100 - i} key={i} loadNextModal={loadNextPage} setIsQuiz={props.setIsQuiz} setIsGameComplete={props.setIsGameComplete} />);
 	const DisplayObstacles = [square, square1].map((obstacle, i) => <ObstacleImages obstacleRef={obstacle} int={i} key={i} />)
 
 	// Note: When finished watching video, it closes with next video
@@ -253,6 +251,7 @@ function WhaleMinigame(props) {
 		<>
 			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img className='pancake modal-instruction' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">					
 						<div className='container modal-container'>
@@ -349,7 +348,7 @@ function ModalCards(props) {
 	const { setCorrectCount, correctCount, setLastResult } = props;
 
 	const isInRange = (event) => {
-		return Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400;
+		return (Math.sqrt((user.current.x - event.target.x) ** 2 + (user.current.y - event.target.y) ** 2) <= 400) || (event.target.classList.contains('in-range'));
 	}
 
 	const removeTrash = (event, targetID) => {
@@ -450,7 +449,7 @@ function shuffle(array) {
 }
 
 export function VidCards(props) {
-	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
+	const { pageInfo, page, loadNextModal, setIsGameComplete, setIsQuiz } = props
 	const navigate = useNavigate();
 	return (
 		<>
@@ -485,8 +484,9 @@ export function VidCards(props) {
 								</NextButton>}
 
 								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
-									navigate('/levels');
 									setIsGameComplete(true);
+									setIsQuiz(false);
+									navigate('/level3');
 								}}>
 									Finish
 								</NextButton>}
@@ -514,8 +514,6 @@ export function ObstacleImages(props) {
 		let px = Math.floor((Math.random() * 300) + 100);
 		return px;
 	}
-
-	console.log(randomLocation)
 
 	return (
 		<Obstacle

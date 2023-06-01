@@ -54,6 +54,8 @@ function VisualNovel(props) {
         } else if (isGameComplete) {
             clearSprites();
             currentScene = level['postGame'];
+            console.log(currentScene);
+            document.getElementById('backBtn').disabled = true;
             buildDialogue();
         } else {
             currentScene = level['pancakeIntro'];

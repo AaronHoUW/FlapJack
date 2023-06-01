@@ -12,7 +12,7 @@ import {
 import postGameDialogue from '../Stories/postGameDialogue.json';
 
 function NetMiniGame(props) {
-	const { isGameComplete, setIsGameComplete } = props;
+	const { isGameComplete, setIsGameComplete, setIsQuiz } = props;
 
 	// Player Movement
 	const [xAxis, setXAxis] = useState(60);
@@ -52,7 +52,6 @@ function NetMiniGame(props) {
 		}
 		if (event.key === 'ArrowRight') {
 			newPlayerCords.offsetRight -= 50;
-			console.log(newPlayerCords.offsetRight, "after")
 			if (!checkOutRange(newPlayerCords)) {
 				newPlayerCords.xPosition += 100;			
 				if (!checkObstacle(newPlayerCords)) {
@@ -259,7 +258,7 @@ function NetMiniGame(props) {
 		}
 	}
 
-	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i} />)
+	const DisplayModalCards = Object.keys(postGameDialogue[level]).map((pageInfo, i) => <ModalCards loadNextModal={loadNextModal} pageInfo={postGameDialogue[level][pageInfo]} page={i + 1} setIsGameComplete={setIsGameComplete} key={i} setIsQuiz={setIsQuiz} />)
 
 	const DisplayObstacles = obstacleList.map((obstacle, i) => <ObstacleImages obstacleRef={obstacle} int={i} key={i} obstaclePosition={obstaclePosition} level={level}/>)
 
@@ -268,6 +267,7 @@ function NetMiniGame(props) {
 		<>
 			<a onLoad={() => document.getElementById(`load-modal-999`).click()} id={`load-modal-` + 999} data-bs-toggle="modal" data-bs-target={`#modal-` + 999 + `-Backdrop`} />
 			<div className="modal fade" id={`modal-` + 999 + `-Backdrop`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<img className='pancake modal-instruction' src='./sprites/sprite-pancake-flapjack-octopus.png'></img>
 				<div className="modal-dialog modal-xl modal-dialog-centered">
 					<div className="modal-content">					
 						<div className='container modal-container'>
@@ -372,7 +372,7 @@ export function ObstacleImages(props) {
 }
 
 export function ModalCards(props) {
-	const { pageInfo, page, loadNextModal, setIsGameComplete } = props
+	const { pageInfo, page, loadNextModal, setIsGameComplete, setIsQuiz } = props
 	const navigate = useNavigate();
 	return (
 		<>
@@ -407,8 +407,9 @@ export function ModalCards(props) {
 								</NextButton>}
 
 								{pageInfo.type === "last" && <NextButton className='modal-continue' type="button" data-bs-dismiss="modal" onClick={() => {
-									navigate('/levels');
 									setIsGameComplete(true);
+									setIsQuiz(false)
+									navigate('/level2');
 								}}>
 									Finish
 								</NextButton>}

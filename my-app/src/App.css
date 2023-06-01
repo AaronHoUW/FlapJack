@@ -750,6 +750,11 @@ footer {
   width: auto;
 }
 
+.pancake.modal-instruction {
+  right: 75%;
+  top: 20%;
+}
+
 .modal-video-content iframe {
   height: 500px;
 }

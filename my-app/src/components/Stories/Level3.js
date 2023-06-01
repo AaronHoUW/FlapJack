@@ -1,4 +1,35 @@
 const LEVEL3 = {
+  "postGame": {
+    "type": "comic",
+    "background": "dark-blue",
+    "nextScene": "end",
+    "baseFrame": [
+      {
+        "type": "sprite",
+        "image": "user-placeholder",
+        "x": "50",
+        "y": 0,
+        "size": 50,
+        "flipX": false
+      },
+      {
+        "type": "sprite",
+        "image": "pancake-bowl",
+        "x": "15",
+        "y": "40",
+        "size": "15",
+        "flipX": true
+      }
+    ],
+    "frames": [],
+    "dialogue": [
+      {
+        "speaker": "",
+        "message": "Thank you for helping Wendy and helping her feel better! The ocean is a lot more safe now thanks to you!",
+        "type": "left"
+      }
+    ]
+  },
   "pancakeIntro": {
     "type": "comic",
     "background": "dark-blue",
@@ -128,6 +159,7 @@ const LEVEL3 = {
   "wendyAPath": {
     "type": "comic",
     "background": "dark-blue",
+    "previousScene": "wendyIntro",
     "quizNextScene": "wendyAPathAfterQuiz",
     "nextScene": "quiz",
     "baseFrame": [
@@ -202,6 +234,7 @@ const LEVEL3 = {
   "wendyBPath": {
     "type": "comic",
     "background": "dark-blue",
+    "previousScene": "wendyIntro",
     "quizNextScene": "WendyBPathAfterQuiz1",
     "nextScene": "quiz",
     "baseFrame": [
@@ -282,6 +315,7 @@ const LEVEL3 = {
   "WendyBPathAfterQuiz2": {
     "type": "comic",
     "background": "dark-blue",
+    "previousScene": "WendyBPathAfterQuiz1",
     "nextScene": "wendyEnd",
     "baseFrame": [
       {
@@ -381,7 +415,7 @@ const LEVEL3 = {
         "type": "left"
       },
     ]
-  }
+  },
 }
 
 export default LEVEL3;

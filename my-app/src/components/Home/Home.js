@@ -118,7 +118,7 @@ function Home() {
                     <NormalSprite>
                         <img src='./sprites/sprite-fish-extra2.png' alt='Extra fish 1' className='left-fish sprite-normal' />
                     </NormalSprite>
-                    <WendySprite>
+                    <WendySprite className='wendy-container'>
                         <div className='sprite-container'>
                             <img src='./sprites/sprite-wendy-whale.png' alt='Wendy the Whale' className='sprite-image' />
                         </div>
@@ -138,7 +138,7 @@ function Home() {
                     </LearnDescription>
                     <LearnButton onClick={() => navigate('/parents')}>Learn More</LearnButton>
                 </LearnText>
-                <IntroSprites>
+                <IntroSprites className='intro-sprites'>
                     <img src='./sprites/sprite-pancake-flapjack-octopus.png' alt='sprite of Pancake, the flapjack octopus' className='pancake-home sprite-normal' />
                     <img src='./sprites/sprite-user-placeholder.png' alt='sprite of the user' className='user sprite-normal' />
                 </IntroSprites>
