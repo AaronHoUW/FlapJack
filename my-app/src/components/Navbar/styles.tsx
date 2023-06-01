@@ -9,6 +9,22 @@ export const NavContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .mobile-button {
+        display: none;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        max-width: 480px;
+        margin: auto;
+        position: relative;
+
+        .mobile-button {
+            display: block;
+            background: transparent;
+            border: none;
+        }
+    }
 `;
 
 export const LogoContainer = styled.div`
@@ -36,6 +52,10 @@ export const LogoContainer = styled.div`
         margin: 0;
         font-weight: 400;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        height: 100px;
+    }
 `;
 
 export const ListContainer = styled.div`
@@ -43,6 +63,27 @@ export const ListContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        top: 100px;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+        align-items: flex-start;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding-bottom: 20px;
+
+        a {
+            position: inherit;
+            margin: 0;
+            width: 100%;
+        }
+    }
 `;
 
 export const ListItem = styled.div`
@@ -58,6 +99,12 @@ export const Link = styled(NavLink)`
     text-align: center;
     font-size: 20px;
     font-family: Mulish;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 `;
 
 export const PlayButton = styled(NavLink)`
