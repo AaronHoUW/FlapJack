@@ -54,6 +54,13 @@ export const FlapjackBowl = styled.img`
 
 export const ArrowKeys = styled.img`
     width: 100px;
+
+    @media screen and (min-width: 1400px) and (max-width: 1500px) {
+        width: 60px;
+        position: absolute;
+        right: 160px;
+        top: 10px;
+    }
 `;
 
 export const DialogueBox = styled.div`
@@ -83,6 +90,16 @@ export const DialogueMessageContainer = styled.div`
     line-height: 45px;
 
     color: #000000;
+
+    @media screen and (min-width: 1400px) and (max-width: 1500px) {
+        width: 77%;
+        left: 530px;
+
+        p {
+            position: absolute;
+            top: -30px;
+        }
+    }
 `;
 
 export const DialogueImg = styled.img`

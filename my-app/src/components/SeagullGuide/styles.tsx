@@ -20,6 +20,10 @@ export const Background = styled.div`
     background-size: 100% 100%;
     overflow: hidden;
     height: 100vh;
+
+    @media screen and (min-width: 1301px) and (max-width: 1500px) {
+        background-size: cover;
+     }
 `;
 
 export const ExclamationMarks = styled.img`
@@ -44,6 +48,22 @@ export const DialogueMessageContainer = styled.div`
     line-height: 45px;
 
     color: #000000;
+
+    @media screen and (min-width: 1301px) and (max-width: 1500px) {
+        width: 65%;
+        left: 43%;
+        top: 33%;
+        font-size: 30px;
+
+        p {
+            font-size: 25px;
+            line-height: 25px;
+            width: 100%;
+            height: 220px;
+            position: absolute;
+            left: -160px;
+        }
+     }
 `;
 
 export const DialogueImg = styled.img`

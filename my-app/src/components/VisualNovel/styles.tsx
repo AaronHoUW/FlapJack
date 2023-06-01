@@ -14,6 +14,10 @@ export const VisualNovelContainer = styled.div<ContainerProps>`
     .dialogue-left .textBox {
         transform: scaleX(-1);
     }
+
+    @media screen and (min-width: 1400px) and (max-width: 1500px) {
+        background-size: cover;
+    }
 `;
 
 export const ExitButton = styled.button`
@@ -112,6 +116,12 @@ export const DialogueMessageContainer = styled.div`
 
     color: #000000;
     z-index: 1;
+
+    @media screen and (min-width: 1400px) and (max-width: 1500px) {
+        font-size: 28px;
+        top: 83%;
+        left: 48%;
+    }
 `;
 
 export const SpeakerContainer = styled.div`

@@ -25,6 +25,11 @@ export const IntroItems = styled.div`
         width: 75%;
         left: 37px;
         height: 300px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            top: 402px;
+            width: 63%;
+        }
     }
 
     h2 {
@@ -35,11 +40,22 @@ export const IntroItems = styled.div`
         font-weight: 700;
         font-size: 64px;
         z-index: 1;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            font-size: 41px;
+            top: 515px;
+            left: 75px;
+        }
     }
 
     .intro-bubble {
         margin-top: 160px;
         width: 100%;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            width: 100%;
+            margin-top: 250px;
+        }   
     }
 
     .shawn-intro {
@@ -68,27 +84,57 @@ export const IntroTitleContainer = styled.div`
     .intro-title-who {
         top: 1280px;
         left: 330px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            top: 1285px;
+            left: 140px;
+            font-size: 41px;
+        }
     }
 
     .text-bubble-who {
         top: 1260px;
         width: 60%;
         left: 300px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            top: 1260px;
+            width: 63%;
+            left: 101px;
+         }
     }
 
     .intro-title-how {
         left: 100px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) { 
+            top: 3555px;
+            left: 160px;
+            font-size: 41px;
+        }
     }
 
     .text-bubble-how {
         top: 3590px;
         width: 73%;
         left: 70px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) { 
+            top: 3531px;
+            width: 63%;
+            left: 121px  
+        }
     }
 
     .intro-title-meet {
         top: 5590px;
         left: 480px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {   
+            top: 5389px;
+            left: 430px;
+            font-size: 41px;
+        }
     }
 
     .text-bubble-meet {
@@ -97,6 +143,13 @@ export const IntroTitleContainer = styled.div`
         width: 50%;
         height: 40%;
         top: 5450px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {   
+            left: 393px;
+            width: 53%;
+            height: 40%;
+            top: 5231px;
+        }
     }
 `;
 
@@ -109,10 +162,16 @@ export const IntroHeader = styled.div`
         color: #134254;
         font-weight: 700;
         font-size: 78px;
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            font-size: 60px;
+        }
     }
 
     p {
         font-size: 32px;
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            font-size: 27px;
+        }
     }
 `;
 
@@ -161,8 +220,18 @@ export const AboutContainer = styled.div`
         background-image: url('./imgs/whale-cut.png');
         background-size: 100% 100%;
 
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         img {
             transform: scaleX(-1);
+
+            @media screen and (min-width: 1300px) and (max-width: 1599px) {
+                width: 883px;
+            }
         }
     }
 
@@ -256,10 +325,18 @@ export const FeatureContainer = styled.div`
     background-color: #F7EDE1;
     border-radius: 20px;
 
+    @media screen and (min-width: 1300px) and (max-width: 1599px) {
+        width: 44%;
+    }
+
     h3 {
         color: #134254;
         font-size: 50px;
         margin: 0;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            font-size: 44px;
+        }
     }
 
     p {
@@ -296,6 +373,10 @@ export const FeatureContainer = styled.div`
         border: 10px solid black;
         width: 650px;
         border-radius: 10px;
+
+        @media screen and (min-width: 1300px) and (max-width: 1599px) {
+            width: 600px;
+        }
     }
 
     div {
@@ -406,6 +487,17 @@ export const MeetContainer = styled.div`
     border-radius: 20px;
     height: 550px;
 
+    @media screen and (min-width: 1300px) and (max-width: 1599px) {
+        width: 47%;
+        height: 550px;
+        padding: 36px;
+        gap: 36px;
+        background-color: rgb(247, 237, 225);
+        border-radius: 20px;
+        position: relative;
+        left: -9px;
+    }
+
     .blank-role {
         visibility: hidden;
     }
@@ -437,6 +529,10 @@ export const MeetContainer = styled.div`
             border: none;
             background-color: transparent;
             font-size: 20px;
+
+            @media screen and (min-width: 1300px) and (max-width: 1599px) {
+                font-size: 18px;
+            }
     
             img {
                 width: 20px;
@@ -470,6 +566,10 @@ export const MeetContainer = styled.div`
                 justify-content: space-between;
                 align-items: center;
                 gap: 20px;
+
+                @media screen and (min-width: 1300px) and (max-width: 1599px) {
+                    font-size: 14px;
+                }
             }
     
             a {
