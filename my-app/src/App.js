@@ -82,7 +82,7 @@ function App() {
 					<Route path='/levels' element={
 						<>
 							<Navbar />
-							<Levels setQuestionNumber={setQuestionNumber}/>
+							<Levels setQuestionNumber={setQuestionNumber} setIsQuiz={setIsQuiz}/>
 						</>
 					} />
 					<Route path='/play' element={
