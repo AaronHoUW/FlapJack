@@ -78,7 +78,7 @@ function EnterWhale(props) {
             document.getElementById('whale').classList.remove('in-range');
         }
 
-        if (Math.sqrt((user.current.x - whale.current.offsetLeft) ** 2 + (user.current.y - whale.current.offsetTop) ** 2) <= 150) {
+        if (Math.sqrt((grabUserXPosition() - whale.current.offsetLeft) ** 2 + (grabUserYPosition() - (whale.current.offsetTop + (whale.current.height / 2))) ** 2) <= 150) {
             setIsEnterWhale(true);
             document.getElementById('whale-area').classList.add('entering-whale');
             navigate('/level3');
