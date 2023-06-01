@@ -10,12 +10,17 @@ export const NavContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 
+    .mobile-button {
+        display: none;
+    }
+
     @media screen and (min-width: 320px) and (max-width: 480px) {
         max-width: 480px;
         margin: auto;
         position: relative;
 
         .mobile-button {
+            display: block;
             background: transparent;
             border: none;
         }
