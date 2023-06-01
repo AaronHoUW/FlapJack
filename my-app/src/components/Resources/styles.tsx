@@ -8,6 +8,7 @@ export const ResourcesContainer = styled.div`
     justify-content: center;
     padding: 40px;
     gap: 12px;
+    }
 
     div {
         text-align: left;
@@ -19,6 +20,20 @@ export const ResourcesContainer = styled.div`
         background-color: #F7EDE1;
         border-radius: 20px;
         padding: 24px;
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 12px;
+    gap: 12px;
+    width: 269px;
+    height: 289px;
+    background: rgb(247, 237, 225);    
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
     }
 `;
 
@@ -28,6 +43,9 @@ export const SectionTitle = styled.h1`
     font-size: 60px;
     line-height: 69px;
     margin: 0;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        font-size: 36px;
+    
 `;
 
 export const SectionTitleLight = styled.h1`
@@ -41,6 +59,9 @@ export const SectionTitleLight = styled.h1`
 export const ParagraphText = styled.p`
     font-size: 20px;
     margin: 0;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        font-size: 13px;
+    }
 `;
 
 export const VideosContainer = styled.div`
@@ -54,20 +75,45 @@ export const VideoContent = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 40px;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        flex-direction: column-reverse;
+    }
 
     div {
         background-color: #F7EDE1;
         border-radius: 20px;
         padding: 24px;
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            padding: 40px 12px;
+            gap: 12px;
+            width: 288px;
+            height: 289px;
+            background: rgb(247, 237, 225);
+            flex: 0 0 auto;
+            order: 1;
+            align-self: stretch;
+            -webkit-box-flex: 0;
     }
 
     h2 {
         font-size: 48px;
         color: #134254;
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            font-size: 30px;
+        }
     }
 
     h3 {
         font-size: 36px;
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            font-size: 16px;
+        }
     }
 
     iframe {
@@ -112,6 +158,9 @@ export const GameCards = styled.div`
     gap: 80px;
     justify-content: space-between;
     align-items: center;
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        flex-direction: column;
+    }
 
     div {
         display: flex;
@@ -121,6 +170,12 @@ export const GameCards = styled.div`
         background-color: #F7EDE1;
         border-radius: 20px;
         padding: 24px;
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            width: 323px;
+            position: relative;
+            left: -2px;
+        }
+        
         
         @media screen and (min-width: 901px) and (max-width: 1300px) {
             display: flex;
@@ -153,11 +208,18 @@ export const GameCards = styled.div`
 
         p {
             font-size: 20px;
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                font-size: 15px;
+            }
+            
         }
 
         img {
             width: 350px;
             height: 207px;
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                width: 247px;
+            }
             @media screen and (min-width: 901px) and (max-width: 1300px) {
                 width: 241px;
                 height: 99px;
@@ -184,6 +246,9 @@ export const GameCards = styled.div`
             border: none;
             padding: 16px 24px;
             font-size: 20px;
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                width: 247px;
+            }
             
             @media screen and (min-width: 901px) and (max-width: 1300px) {
                 width: 49%;
