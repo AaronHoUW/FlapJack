@@ -16,7 +16,7 @@ function Levels(props) {
     return (
         <LevelsContainer>
             <div className='preface'>
-                <img src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
+                <img className = 'user' src='./sprites/sprite-user-placeholder.png' alt='Sprite of user' />
                 <div>
                     <p>
                         You’ll be playing as a scuba diver and exploring the ocean! As you explore different parts of the ocean,
@@ -26,7 +26,7 @@ function Levels(props) {
             </div>
             <div className='level-one'>
                 <div className='seagull'>
-                    <div className='level-div col my-auto'>
+                    <div className='level-split col my-auto'>
                         <h2 className='first-title'>Level 1: Meet Shawn the Seagull</h2>
                         <p className='first-info'> Meet Shawn and learn about what Trash Islands are. Maybe you can even help clean up trash on the beach!
                         </p>
@@ -41,7 +41,7 @@ function Levels(props) {
                 <div className='level-two'>
                     <div className='salmon'>
                         <img className='sally-level' src='./sprites/sprite-sally-salmon.png' alt="Sally the Salmon"></img>
-                        <div className='level-div col my-auto'>
+                        <div className='level-splits col my-auto'>
                             <h2 className='first-title'>Level 2: Meet Sally the Salmon</h2>
                             <p className='first-info'> Meet Sally and learn about Salmon’s experience of the Elwha. Maybe you can even help clean up ghosts nets and help out fish and other animals in the sea!
                             </p>
@@ -55,7 +55,7 @@ function Levels(props) {
                 </div>
                 <div className='level-three'>
                     <div className='whale'>
-                        <div className='level-div col my-auto'>
+                        <div className='level-split col my-auto'>
                             <h2 className='first-title'>Level 3: Meet Wendy the Whale</h2>
                             <p className='first-info'> Meet Wendy and learn about the whale and the plastic that they eat. Maybe you can even help get rid of plastic inside the whale’s body!
                             </p>

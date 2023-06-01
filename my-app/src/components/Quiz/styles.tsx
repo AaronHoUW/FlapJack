@@ -17,6 +17,19 @@ export const Flapjack = styled.img<Props>`
     position: fixed;
     max-height: 92.86px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+@media screen and (min-width: 1000px) and (max-width: 1249px) {
+    top: 12%;
+    left: 4%;
+    width: 13%;
+    height: 180px;
+}
+
+@media screen and (min-width: 1250px) and (max-width: 1400px) {
+    top: 47%;
+    left: 1%;
+    width: 13%;
+    height: 180px;
 `;
 
 export const ScreenModal = styled.div`
@@ -41,7 +54,11 @@ export const Modal = styled.div`
 
 export const ModalContent = styled.div`
     background-color: #C2EEFF;
-`;
+}
+
+    @media screen and (min-width: 1000px) and (max-width: 1400px) {
+        top: 131px;
+    `;
 
 export const ModalRowText = styled.div`
     height: 0%;
