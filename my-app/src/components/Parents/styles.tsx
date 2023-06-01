@@ -28,13 +28,17 @@ export const IntroText = styled.div`
 `;
 
 export const IntroTitle = styled.h2`
-    font-weight: 400;
+    font-weight: 700;
     font-size: 40px;
     line-height: 45px;
     color: #134254;
     width: 100%;
     height: 60px;
     margin-bottom: 10px;
+
+    @media screen and (min-width: 1100px) and (max-width: 1500px) {
+        font-size: 36px;
+    }
 `;
 
 export const IntroDescription = styled.p`
@@ -95,6 +99,10 @@ export const HelpText = styled.div`
     background-color: #F7EDE1;
     padding: 24px;
     border-radius: 20px;
+
+    @media screen and (min-width: 1100px) and (max-width: 1500px) {
+        width: 50%;
+    }
 `;
 
 export const HelpDescription = styled.p`

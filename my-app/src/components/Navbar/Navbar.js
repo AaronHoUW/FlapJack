@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import {
     NavContainer,
     LogoContainer,
@@ -10,6 +9,25 @@ import {
 } from './styles.tsx';
 
 function Navbar() {
+    const handleClick = () => {
+        const links = document.getElementById('list');
+        if (links.style.display === 'flex') {
+            links.style.display = 'none';
+        } else {
+            links.style.display = 'flex';
+        }
+    };
+
+    const closeMenu = () => {
+        document.getElementById('list').style.display = 'none';
+    }
+
+    const links = document.querySelectorAll('#list div');
+    links.forEach(n => n.addEventListener('click', closeMenu));
+
+    const buttons = document.querySelectorAll('#list div a');
+    buttons.forEach(n => n.addEventListener('click', closeMenu));
+    
     return (
         <nav>
             <NavContainer>
@@ -22,7 +40,7 @@ function Navbar() {
                         </div>
                     </Link>
                 </LogoContainer>
-                <ListContainer>
+                <ListContainer id='list'>
                     <ListItem>
                         <Link to='/resources'>
                             Resources
@@ -44,6 +62,9 @@ function Navbar() {
                         </PlayButton>
                     </ListItem>
                 </ListContainer>
+                <button className='mobile-button' id='mobile' onClick={handleClick}>
+                    <img src='./imgs/hamburger-menu.png' className='mobile-menu' />
+                </button>
             </NavContainer>
         </nav>
     );

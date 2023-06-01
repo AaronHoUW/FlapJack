@@ -19,6 +19,16 @@ export const ResourcesContainer = styled.div`
         background-color: #F7EDE1;
         border-radius: 20px;
         padding: 24px;
+
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            background: rgb(247, 237, 225);    
+        }
     }
 `;
 
@@ -28,6 +38,10 @@ export const SectionTitle = styled.h1`
     font-size: 60px;
     line-height: 69px;
     margin: 0;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        font-size: 36px;
+    }
 `;
 
 export const SectionTitleLight = styled.h1`
@@ -36,6 +50,10 @@ export const SectionTitleLight = styled.h1`
     font-size: 60px;
     line-height: 69px;
     margin: 0;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        font-size: 32px;
+    }
 `;
 
 export const ParagraphText = styled.p`
@@ -47,6 +65,10 @@ export const VideosContainer = styled.div`
     padding: 40px;
     background: url('./imgs/video-bg.png');
     background-size: 100% 100%;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        flex-direction: column-reverse;
+    }
 `;
 
 export const VideoContent = styled.div`
@@ -59,15 +81,41 @@ export const VideoContent = styled.div`
         background-color: #F7EDE1;
         border-radius: 20px;
         padding: 24px;
+
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            padding: 40px 12px;
+            gap: 12px;
+            width: 288px;
+            height: 289px;
+            background: rgb(247, 237, 225);
+            flex: 0 0 auto;
+            order: 1;
+            align-self: stretch;
+            -webkit-box-flex: 0;
+        }
     }
 
     h2 {
         font-size: 48px;
         color: #134254;
+
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            font-size: 30px;
+        }
     }
 
     h3 {
         font-size: 36px;
+
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            font-size: 16px;
+        }
     }
 
     iframe {
@@ -82,6 +130,13 @@ export const MoreVideosContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 80px;
+
+    @media screen and (min-width: 1301px) and (max-width: 1600px) {
+        gap: 43px;
+    }
+    @media screen and (min-width: 1601px) and (max-width: 1850px) {
+        gap: 61px;
+     }
 
     .more-content {
         gap: 74px;
@@ -105,6 +160,10 @@ export const GameCards = styled.div`
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        flex-direction: column;
+    }
+
     div {
         display: flex;
         flex-direction: column;
@@ -114,13 +173,41 @@ export const GameCards = styled.div`
         border-radius: 20px;
         padding: 24px;
 
+         @media screen and (min-width: 1300px) and (max-width: 1500px) {
+            display: flex;
+            flex-direction: column;
+            color: black;
+            background-color: rgb(247, 237, 225);
+            border-radius: 20px;
+            padding: 24px;
+            width: 368px;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 480px) {
+            width: 323px;
+            position: relative;
+            left: -2px;
+        }
+
         p {
             font-size: 20px;
+
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                font-size: 15px;
+            }
         }
 
         img {
             width: 350px;
             height: 207px;
+
+            @media screen and (min-width: 1300px) and (max-width: 1500px) {
+                width: 300px;
+            }
+
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                width: 247px;
+            }
         }
 
         h3, p {
@@ -139,6 +226,14 @@ export const GameCards = styled.div`
             border: none;
             padding: 16px 24px;
             font-size: 20px;
+
+            @media screen and (min-width: 320px) and (max-width: 480px) {
+                width: 247px;
+            }
+
+            @media screen and (min-width: 1300px) and (max-width: 1500px) {
+                width: 60%;
+            }
         }
     }
 `;
@@ -147,4 +242,8 @@ export const DeepSea = styled.div`
     height: 350px;
     background: url('./imgs/deep-sea.png');
     background-size: 100% 100%;
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+        background-size: cover;
+    }
 `;

@@ -41,9 +41,9 @@ function Levels(props) {
                 <div className='level-two'>
                     <div className='salmon'>
                         <img className='sally-level' src='./sprites/sprite-sally-salmon.png' alt="Sally the Salmon"></img>
-                        <div className='level-div col my-auto'>
+                        <div className='level-divs col my-auto'>
                             <h2 className='first-title'>Level 2: Meet Sally the Salmon</h2>
-                            <p className='first-info'> Meet Sally and learn about Salmon’s experience of the Elwha. Maybe you can even help clean up ghosts nets and help out fish and other animals in the sea!
+                            <p className='first-info'> Meet Sally and learn about her experience of the Elwha. Maybe you can even help clean up ghosts nets and help out fish and other animals in the sea!
                             </p>
                             <LearnButton className="link-button" onClick={() => {
                                 setQuestionNumber(1);
