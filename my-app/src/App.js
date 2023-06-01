@@ -87,15 +87,15 @@ function App() {
 					} />
 					<Route path='/play' element={
 						<>
-							<NetMiniGame isGameComplete={isGame2Complete} setIsGameComplete={setIsGame2Complete} />
+							<NetMiniGame isGameComplete={isGame2Complete} setIsGameComplete={setIsGame2Complete} setIsQuiz={setIsQuiz}/>
 						</>
 					} />
 					<Route path='/play-whale' element={
 						<>
-							<WhaleMinigame isGameComplete={isGame3Complete} setIsGameComplete={setIsGame3Complete} />
+							<WhaleMinigame isGameComplete={isGame3Complete} setIsGameComplete={setIsGame3Complete} setIsQuiz={setIsQuiz}/>
 						</>
 					} />
-					<Route path='/play-seagull' element={<RemoveActivity isGameComplete={isGame1Complete} setIsGameComplete={setIsGame1Complete}/>}/>
+					<Route path='/play-seagull' element={<RemoveActivity isGameComplete={isGame1Complete} setIsGameComplete={setIsGame1Complete} setIsQuiz={setIsQuiz}/>}/>
 					<Route path='/enter-wendy' element={<EnterWhale isEnterWhale={isEnterWhale} setIsEnterWhale={setIsEnterWhale} />} />
 					<Route path='/flapguide' element={
 						<>
