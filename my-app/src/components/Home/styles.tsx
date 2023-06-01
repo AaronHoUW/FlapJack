@@ -4,6 +4,10 @@ export const HomeContainer = styled.div`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    @media (max-width: 480px) {
+        overflow: hidden;
+    }
 `;
 
 export const IntroContainer = styled.div`
@@ -21,6 +25,19 @@ export const IntroContainer = styled.div`
 
     .official-logo {
         width: 400px;
+    }
+
+    @media (max-width: 480px) {
+        background-size: cover;
+        gap: 20px;
+        flex-direction: column;
+        padding: 40px 20px;
+        .official-logo {
+            position: absolute;
+            width: 100px;
+            top: 275px;
+            right: 10px;
+        }
     }
 `;
 
@@ -40,6 +57,11 @@ export const Notification = styled.div`
     p {
         margin-bottom: 0;
     }
+
+    @media (max-width: 480px) {
+        position: inherit;
+        width: 100%;
+    }
 `;
 
 export const IntroText = styled.div`
@@ -51,15 +73,28 @@ export const IntroText = styled.div`
     background-color: #f7ede1;
     border-radius: 20px;
     padding: 24px;
+
+    @media (max-width: 480px) {
+        align-items: center;
+        width: 100%;
+        gap: 0;
+    }
 `;
 
 export const IntroTitle = styled.h2`
-    font-weight: 400;
+    font-weight: 700;
     font-size: 48px;
     line-height: 60px;
     color: #134254;
     width: 100%;
     height: 60px;
+
+    @media (max-width: 480px) {
+        font-size: 28px;
+        line-height: 28px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
 `;
 
 export const IntroDescription = styled.p`
@@ -73,6 +108,12 @@ export const IntroDescription = styled.p`
         color: black;
         text-decoration: underline;
     }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 30px;
+    }
 `;
 
 export const MoreInfo = styled.div`
@@ -80,6 +121,16 @@ export const MoreInfo = styled.div`
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+
+    @media (max-width: 480px) {
+        width: 237px;
+        height: 121px;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        line-height: 20px;
+        gap: 10px;
+    }
 `;
 
 export const ParentButton = styled.div`
@@ -104,6 +155,16 @@ export const ParentButton = styled.div`
     img {
         width: 24px;
     }
+
+    @media (max-width: 480px) {
+        padding: 0;
+        gap: 10px;
+        font-size: 16px;
+
+        p {
+            
+        }
+    }
 `;
 
 export const IntroButton = styled.button`
@@ -116,6 +177,12 @@ export const IntroButton = styled.button`
     font-size: 36px;
     color: #134254;
     border: none;
+
+    @media (max-width: 480px) {
+        width: 133px;
+        height: 55px;
+        font-size: 16px;
+    }
 `;
 
 export const IntroSprites = styled.div`
@@ -140,7 +207,7 @@ export const MeetContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 40px;
+    padding: 40px 20px;
     gap: 46px;
 
     width: 100%;
@@ -151,12 +218,24 @@ export const MeetContainer = styled.div`
 `;
 
 export const MeetTitle = styled.h2`
-    font-weight: 400;
+    font-weight: 700;
     font-size: 48px;
     line-height: 60px;
     color: #134254;
     width: 100%;
     height: 60px;
+
+    @media (max-width: 480px) {
+        background-color: #f7ede1;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 24px;
+        font-size: 28px;
+        line-height: 28px;
+        margin: 0;
+    }
 `;
 
 export const MeetSprites = styled.div`
@@ -213,6 +292,16 @@ export const MeetSprites = styled.div`
             animation-delay: 900ms;
         }
     }
+
+    @media (max-width: 480px) {
+        .animation-right {
+            transform: translateX(0px);
+        }
+        
+        .wendy-container .animation-left {
+            transform: translateX(150px);
+        }
+    }
 `;
 
 export const TextBubble = styled.div`
@@ -243,6 +332,24 @@ export const TextBubble = styled.div`
         order: 1;
         z-index: 1;
     }
+
+    @media (max-width: 480px) {
+        width: 237px;
+        height: 115px;
+
+        img {
+            width: 237px;
+            height: 175px;
+        }
+
+        h4 {
+            font-size: 20px;
+            width: 150px;
+            left: 30px;
+            top: 35px;
+            line-height: 28px;
+        }
+    }
 `;
 
 export const ShawnSprite = styled.div`
@@ -262,6 +369,14 @@ export const ShawnSprite = styled.div`
         width: 164px;
         height: 141px;
         transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    @media (max-width: 480px) {
+        left: 0;
+        .sprite-image {
+            width: 123px;
+            height: 100px;
+        }
     }
 `;
 
@@ -302,6 +417,31 @@ export const SallySprite = styled.div`
         order: 1;
         z-index: 1;
     }
+
+    @media (max-width: 480px) {
+        left: 0;
+        top: 250px;
+        .sprite-image {
+            width: 150px;
+            height: 90px;
+        }
+
+        .sprite-container {
+            width: auto;
+        }
+
+        h4 {
+            font-size: 20px;
+            width: 150px;
+            top: 35px;
+            line-height: 28px;
+        }
+
+        .text-bubble {
+            width: 237px;
+            height: 175px;
+        }
+    }
 `;
 
 export const PancakeSprite = styled.div`
@@ -335,6 +475,32 @@ export const PancakeSprite = styled.div`
         color: black;
         order: 1;
         z-index: 1;
+    }
+
+    @media (max-width: 480px) {
+        left: 0;
+        top: 580px;
+        .sprite-image {
+            width: 75px;
+            height: 45px;
+        }
+
+        .sprite-container {
+            width: auto;
+        }
+
+        h4 {
+            font-size: 20px;
+            width: 150px;
+            left: 31px;
+            top: 25px;
+            line-height: 28px;
+        }
+
+        .text-bubble {
+            width: 237px;
+            height: 175px;
+        }
     }
 `;
 
@@ -372,6 +538,33 @@ export const WendySprite = styled.div`
         order: 1;
         z-index: 1;
     }
+
+    @media (max-width: 480px) {
+        left: 0;
+        top: 1100px;
+        .sprite-image {
+            position: absolute;
+            width: 400px;
+            left: -220px;
+        }
+
+        .sprite-container {
+            width: auto;
+        }
+
+        h4 {
+            font-size: 20px;
+            width: 150px;
+            left: 55px;
+            top: 21px;
+            line-height: 28px;
+        }
+
+        .text-bubble {
+            width: 237px;
+            height: 175px;
+        }
+    }
 `;
 
 export const NormalSprite = styled.div`
@@ -391,6 +584,18 @@ export const NormalSprite = styled.div`
         left: 500px;
         top: 791px;
         transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+    @media (max-width: 480px) {
+        .right-fish {
+            left: 140px;
+            top: 530px;
+        }
+
+        .left-fish {
+            left: 30px;
+            top: 920px;
+        }
     }
 `;
 
@@ -433,6 +638,14 @@ export const LearnContainer = styled.div`
     background: url('./imgs/learn-bg.png');
     background-size: 100% 100%;
     font-family: 'Mulish';
+
+    @media (max-width: 480px) {
+        background-size: cover;
+        padding: 40px 20px;
+        .intro-sprites {
+            display: none;
+        }
+    }
 `;
 
 export const LearnText = styled.div`
@@ -442,14 +655,30 @@ export const LearnText = styled.div`
     padding: 0;
     gap: 10px;
     width: 50%;
+    
+    @media (max-width: 480px) {
+        background-color: #f7ede1;
+        border-radius: 20px;
+        padding: 24px;
+        width: 100%;
+        gap: 0;
+    }
 `;
 
 export const LearnTitle = styled.h2`
     width: 100%;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 48px;
     line-height: 60px;
     color: white;
+
+    @media (max-width: 480px) {
+        color: #134254;
+        font-size: 28px;
+        line-height: 28px;
+        margin: 0;
+        margin-bottom: 20px;
+    }
 `;
 
 export const LearnDescription = styled.p`
@@ -457,6 +686,13 @@ export const LearnDescription = styled.p`
     font-size: 20px;
     line-height: 25px;
     color: white;
+
+    @media (max-width: 480px) {
+        color: #134254;
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 30px;
+    }
 `;
 
 export const LearnButton = styled.button`
@@ -465,11 +701,18 @@ export const LearnButton = styled.button`
     font-size: 36px;
 
     background: #85C9E3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 40px;
     border: none;
 
     color: #134254;
     font-size: 30px;
+
+    @media (max-width: 480px) {
+        width: 133px;
+        height: 55px;
+        font-size: 16px;
+    }
 `;
 
 export const FooterContainer = styled.div`
@@ -483,6 +726,17 @@ export const FooterContainer = styled.div`
     height: 15vh;
     background: #F2E0AA;
     font-family: 'Mulish';
+
+    @media (max-width: 480px) {
+        padding: 20px;
+        flex-direction: column;
+        height: 15vh;
+        gap: 0;
+
+        img {
+            width: 200px;
+        }
+    }
 `;
 
 export const FooterText = styled.div`
@@ -504,6 +758,17 @@ export const FooterText = styled.div`
         font-style: italic;
         font-size: 14px;
     }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+        line-height: 20px;
+        width: 100%;
+        align-items: center;
+
+        span {
+            font-size: 12px;
+        }
+    }
 `;
 
 export const FooterCopyright = styled.div`
@@ -520,5 +785,18 @@ export const FooterCopyright = styled.div`
     p {
         margin: 0;
         margin-right: 10px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+        line-height: 20px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8px;
+
+        img {
+            width: 20px;
+        }
     }
 `;
