@@ -9,24 +9,24 @@ import {
 } from './styles.tsx';
 
 function Navbar() {
-    // const handleClick = () => {
-    //     const links = document.getElementById('list');
-    //     if (links.style.display === 'flex') {
-    //         links.style.display = 'none';
-    //     } else {
-    //         links.style.display = 'flex';
-    //     }
-    // };
+    const handleClick = () => {
+        const links = document.getElementById('list');
+        if (links.style.display === 'flex') {
+            links.style.display = 'none';
+        } else {
+            links.style.display = 'flex';
+        }
 
-    // const closeMenu = () => {
-    //     document.getElementById('list').style.display = 'none';
-    // }
+        const linksDiv = document.querySelectorAll('#list div');
+        linksDiv.forEach(n => n.addEventListener('click', closeMenu));
 
-    // const links = document.querySelectorAll('#list div');
-    // links.forEach(n => n.addEventListener('click', closeMenu));
+        const buttons = document.querySelectorAll('#list div a');
+        buttons.forEach(n => n.addEventListener('click', closeMenu));
+    };
 
-    // const buttons = document.querySelectorAll('#list div a');
-    // buttons.forEach(n => n.addEventListener('click', closeMenu));
+    const closeMenu = () => {
+        document.getElementById('list').style.display = 'none';
+    }
     
     return (
         <nav>
@@ -62,9 +62,9 @@ function Navbar() {
                         </PlayButton>
                     </ListItem>
                 </ListContainer>
-                {/* <button className='mobile-button' id='mobile' onClick={handleClick}>
+                <button className='mobile-button' id='mobile' onClick={handleClick}>
                     <img src='./imgs/hamburger-menu.png' className='mobile-menu' />
-                </button> */}
+                </button>
             </NavContainer>
         </nav>
     );
