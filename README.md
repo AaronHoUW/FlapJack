@@ -5,7 +5,7 @@ FlapJack is designing and developing a web app to assist in the education of chi
 ![Marine Rescue: The Sea-quel](/my-app/public/imgs/Marine_Rescue_The_Sea-quel_Logo.png)
 
 ## Contact Information
-- Jun Nguyen - Project Manager, Software Engineer, Character & Assets Artist, Graphic Designer ([GitHub](https://github.com/soshikun), [LinkedIn](https://www.linkedin.com/in/stephanie-nguyen-4910411aa/))
+- Jun Nguyen - Project Manager, Software Engineer, Character & Assets Artist, Graphic Designer ([GitHub](https://github.com/soshikun), [LinkedIn](https://www.linkedin.com/in/jun-nguyen-4910411aa/))
 - Delaney Edwards - UX Designer, Writer, Environment Artist ([GitHub](https://github.com/delaneyedwards), [LinkedIn](https://www.linkedin.com/in/delaneyledwards/))
 - Aaron Ho - Software Engineer ([GitHub](https://github.com/AaronHoUW), [LinkedIn](https://www.linkedin.com/in/aaron-ho-ba00a1196))
 - Brian Ho - Researcher, Writer, Software Engineer ([GitHub](https://github.com/btho1), [LinkedIn](https://www.linkedin.com/in/brian-ho-967a0923b))
