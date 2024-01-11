@@ -200,7 +200,7 @@ const About = () => {
                                     <h2>Jun Nguyen</h2>
                                     <div>
                                         <a href='mailto:s.jun.nguyen@gmail.com'>Email</a>
-                                        <a href='https://www.linkedin.com/in/stephanie-nguyen-4910411aa/' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Jun Nguyen LinkedIn' /></a>
+                                        <a href='https://www.linkedin.com/in/jun-nguyen-4910411aa/' target='_blank' rel="noopener noreferrer"><img src='./imgs/linkedin.svg' alt='Jun Nguyen LinkedIn' /></a>
                                     </div>
                                 </div>
                                 <RoleContainer>
